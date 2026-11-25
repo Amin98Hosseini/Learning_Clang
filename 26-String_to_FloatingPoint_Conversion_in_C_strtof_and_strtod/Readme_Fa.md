@@ -620,5 +620,3 @@ int ParseNumbers(const char *text, double values[], int count);
 ## ۱۴. پیشنهاد برای آموزش بعدی
 
 **String Parsing in C: توابع `strtok()`، `strchr()`، `strstr()` و `sscanf()`**
-
-در آموزش بعدی می‌توانیم روش تقسیم رشته به بخش‌های مختلف (Tokenization)، جست‌وجوی کاراکتر و زیررشته و استخراج چند مقدار از داده‌های متنی ساختاریافته را بررسی کنیم.

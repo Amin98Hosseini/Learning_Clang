@@ -610,5 +610,3 @@ After completing this lesson, you should understand:
 ## 14. Suggested Next Lesson
 
 **String Parsing in C: `strtok()`, `strchr()`, `strstr()`, and `sscanf()`**
-
-In the next lesson, you can explore how to split strings into separate tokens, search for characters and substrings, and extract multiple values from structured text.

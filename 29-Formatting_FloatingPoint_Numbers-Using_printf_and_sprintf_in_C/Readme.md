@@ -1,4 +1,4 @@
-# Formatting Floating-Point Numbers Using `printf()` and `sprintf()` in C
+# 29-Formatting Floating-Point Numbers Using `printf()` and `sprintf()` in C
 
 ## 1. Introduction
 

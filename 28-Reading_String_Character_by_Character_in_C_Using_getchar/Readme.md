@@ -903,19 +903,3 @@ After completing this lesson, you should understand:
 - Why `getchar()` should be stored in an `int`.
 - How to detect `EOF` and input errors.
 
-## 20. Suggested Next Lesson
-
-**Character Processing in C Using `<ctype.h>`**
-
-Recommended topics:
-
-1. `isalpha()` – Check whether a character is an alphabetic letter.
-2. `isdigit()` – Check whether a character is a digit.
-3. `isalnum()` – Check whether a character is alphanumeric.
-4. `isspace()` – Check whitespace characters.
-5. `isupper()` – Check uppercase letters.
-6. `islower()` – Check lowercase letters.
-7. `toupper()` – Convert a character to uppercase.
-8. `tolower()` – Convert a character to lowercase.
-
-These functions will help you develop more advanced input-processing and text-analysis programs in C.

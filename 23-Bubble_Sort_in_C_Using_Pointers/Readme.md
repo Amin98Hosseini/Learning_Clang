@@ -774,9 +774,3 @@ After completing this project, you should understand:
 - How pointer arithmetic relates to array indexing.
 - How early termination improves Bubble Sort performance.
 - How to analyze time and space complexity.
-
-## 16. Next Step
-
-A good next lesson is **Selection Sort and Insertion Sort**.
-
-After understanding these algorithms, compare their behavior with Bubble Sort and learn why more efficient algorithms such as Merge Sort and Quick Sort are useful for larger datasets.
