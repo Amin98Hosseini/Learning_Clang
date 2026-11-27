@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grade Statistics Analyzer in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link active" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-2">Part 2 — Decisions, Operators and Loops</a><span>/</span><span aria-current="page">Lesson 11</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 11 of 40 · Part 2</p><h1>Grade Statistics Analyzer in C</h1><p class="lesson-source">Folder <code>11-Grade_Statistics_Analyzer</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-source-code">2. Source Code</a></li><li><a href="#3-mathematical-background">3. Mathematical Background</a></li><li><a href="#4-understanding-the-c-program">4. Understanding the C Program</a></li><li><a href="#5-example-input-and-output">5. Example Input and Output</a></li><li><a href="#6-important-programming-concepts-learned">6. Important Programming Concepts Learned</a></li><li><a href="#7-important-notes-and-possible-improvements">7. Important Notes and Possible Improvements</a></li><li><a href="#8-compile-and-run">8. Compile and Run</a></li><li><a href="#9-practice-exercises">9. Practice Exercises</a></li><li><a href="#10-learning-objective">10. Learning Objective</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>This program reads a sequence of student grades from the input stream and counts how many times each grade appears.</p>
+<p>The supported grades are:</p>
+<ul><li><code>A</code> or <code>a</code></li><li><code>B</code> or <code>b</code></li><li><code>C</code> or <code>c</code></li><li><code>D</code> or <code>d</code></li><li><code>F</code> or <code>f</code></li></ul>
+<p>After reading all the input, the program calculates:</p>
+<ol><li>The number of occurrences of each grade.</li><li>The percentage of each grade relative to the total number of grades.</li><li>The cumulative percentage of grades.</li><li>Whether more than 60% of the grades are <code>C</code> or better.</li></ol>
+<p>The program uses <code>getchar()</code> to read individual characters until it encounters <code>EOF</code> (End Of File).</p>
+<hr>
+<h2 id="2-source-code">2. Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#define TRUE -1
+
+int main()
+{
+    char g;
+    int nA = 0;
+    int nB = 0;
+    int nC = 0;
+    int nD = 0;
+    int nF = 0;
+
+    while((g = getchar()) != EOF)
+    {
+        switch(g)
+        {
+            case 'A':
+            case 'a':
+                nA++;
+                break;
+
+            case 'B':
+            case 'b':
+                nB++;
+                break;
+
+            case 'C':
+            case 'c':
+                nC++;
+                break;
+
+            case 'D':
+            case 'd':
+                nD++;
+                break;
+
+            case 'F':
+            case 'f':
+                nF++;
+                break;
+
+            case ' ':
+            case '\n':
+            case '\t':
+                break;
+
+            default:
+                printf("Incorrect input. Please enter from letters set {A, B, C, D, F}.\n");
+                break;
+        }
+    }
+
+    int n = nA + nB + nC + nD + nF;
+
+    int cA = nA;
+    int cB = nB + cA;
+    int cC = nC + cB;
+    int cD = nD + cC;
+    int cF = nF + cD;
+
+    printf("Grade\tCount\tPercent\tCum. Percent\n");
+    printf("A\t%d of %d\t%.2f\t%.2f\n", nA, n, (float)nA*100/n, (float)cA*100/n);
+    printf("B\t%d of %d\t%.2f\t%.2f\n", nB, n, (float)nB*100/n, (float)cB*100/n);
+    printf("C\t%d of %d\t%.2f\t%.2f\n", nC, n, (float)nC*100/n, (float)cC*100/n);
+    printf("D\t%d of %d\t%.2f\t%.2f\n", nD, n, (float)nD*100/n, (float)cD*100/n);
+    printf("F\t%d of %d\t%.2f\t%.2f\n", nF, n, (float)nF*100/n, (float)cF*100/n);
+
+    if((float)cC/n &gt; 0.6)
+    {
+        printf("\nCongratulations to Teacher!\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<hr>
+<h2 id="3-mathematical-background">3. Mathematical Background</h2>
+<p>The program calculates the distribution of grades using two types of percentages.</p>
+<h3 id="3-1-total-number-of-grades">3.1. Total Number of Grades</h3>
+<p>The total number of valid grades is:</p>
+<p>\[ n = n_A+n_B+n_C+n_D+n_F \]</p>
+<p>Where:</p>
+<ul><li>\(n_A\): Number of A grades.</li><li>\(n_B\): Number of B grades.</li><li>\(n_C\): Number of C grades.</li><li>\(n_D\): Number of D grades.</li><li>\(n_F\): Number of F grades.</li></ul>
+<h3 id="3-2-individual-percentage">3.2. Individual Percentage</h3>
+<p>The percentage of each grade is calculated using:</p>
+<p>\[ P_X=\frac{n_X}{n}\times100 \]</p>
+<p>For example, if there are 20 grades and 5 of them are A:</p>
+<p>\[ P_A=\frac{5}{20}\times100=25\% \]</p>
+<h3 id="3-3-cumulative-percentage">3.3. Cumulative Percentage</h3>
+<p>A cumulative percentage represents the percentage of all grades up to and including the current grade.</p>
+<p>The cumulative counts are:</p>
+<p>\[ c_A=n_A \]</p>
+<p>\[ c_B=n_A+n_B \]</p>
+<p>\[ c_C=n_A+n_B+n_C \]</p>
+<p>\[ c_D=n_A+n_B+n_C+n_D \]</p>
+<p>\[ c_F=n_A+n_B+n_C+n_D+n_F \]</p>
+<p>The cumulative percentage is:</p>
+<p>\[ CP_X=\frac{c_X}{n}\times100 \]</p>
+<p>For example:</p>
+<p>\[ CP_C=\frac{n_A+n_B+n_C}{n}\times100 \]</p>
+<p>This means the cumulative percentage for C represents the percentage of students who received A, B, or C.</p>
+<hr>
+<h2 id="4-understanding-the-c-program">4. Understanding the C Program</h2>
+<h3 id="4-1-including-the-standard-input-output-library">4.1. Including the Standard Input/Output Library</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<p>The <code>stdio.h</code> library provides standard input and output functions.</p>
+<p>This program uses:</p>
+<ul><li><code>getchar()</code> to read characters.</li><li><code>printf()</code> to display messages and results.</li><li><code>EOF</code> to detect the end of the input stream.</li></ul>
+<h3 id="4-2-defining-a-macro">4.2. Defining a Macro</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#define TRUE -1</code></pre></div>
+<p>The <code>#define</code> directive creates a preprocessor macro.</p>
+<p>In this program, <code>TRUE</code> is defined as <code>-1</code>, but it is never used. Therefore, this definition has no effect on the program's behavior and can be removed.</p>
+<h3 id="4-3-declaring-variables">4.3. Declaring Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char g;
+
+int nA = 0;
+int nB = 0;
+int nC = 0;
+int nD = 0;
+int nF = 0;</code></pre></div>
+<p>The variable <code>g</code> stores the current input character.</p>
+<p>The five integer variables are counters. Each one tracks how many times a particular grade appears.</p>
+<p>All counters start at zero because no grades have been read yet.</p>
+<h3 id="4-4-reading-characters-with-getchar">4.4. Reading Characters with getchar()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while((g = getchar()) != EOF)</code></pre></div>
+<p>The <code>getchar()</code> function reads one character from the standard input stream.</p>
+<p>The <code>while</code> loop continues as long as the input is not equal to <code>EOF</code>.</p>
+<p><code>EOF</code> means End Of File. It indicates that no more input is available.</p>
+<p>On a typical terminal:</p>
+<ul><li>Linux/macOS: Press <code>Ctrl + D</code> to send EOF.</li><li>Windows terminal: Press <code>Ctrl + Z</code>, then Enter.</li></ul>
+<p><strong>Important:</strong> <code>getchar()</code> returns an <code>int</code>, not a <code>char</code>, because it must be able to represent every possible unsigned character value as well as the special <code>EOF</code> value.</p>
+<p>For reliable EOF detection, it is better to declare:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int g;</code></pre></div>
+<p>instead of:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char g;</code></pre></div>
+<h3 id="4-5-using-switch-case">4.5. Using switch-case</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>switch(g)
+{
+    case 'A':
+    case 'a':
+        nA++;
+        break;
+}</code></pre></div>
+<p>The <code>switch</code> statement checks the value of <code>g</code> and executes the matching case.</p>
+<p>Both uppercase and lowercase letters are accepted.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>case 'A':
+case 'a':
+    nA++;
+    break;</code></pre></div>
+<p>Both cases execute the same instruction:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>nA++;</code></pre></div>
+<p>The <code>++</code> operator increases the counter by one.</p>
+<p>The <code>break</code> statement prevents execution from continuing into the next case.</p>
+<h3 id="4-6-ignoring-whitespace">4.6. Ignoring Whitespace</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>case ' ':
+case '\n':
+case '\t':
+    break;</code></pre></div>
+<p>The program ignores three whitespace characters:</p>
+<div class="table-wrap"><table><thead><tr><th>Character</th><th>Meaning</th></tr></thead><tbody><tr><td><code>' '</code></td><td>Space</td></tr><tr><td><code>'\n'</code></td><td>Newline</td></tr><tr><td><code>'\t'</code></td><td>Horizontal tab</td></tr></tbody></table></div>
+<p>This allows users to enter grades separated by spaces, tabs, or new lines.</p>
+<h3 id="4-7-handling-incorrect-input">4.7. Handling Incorrect Input</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>default:
+    printf("Incorrect input. Please enter from letters set {A, B, C, D, F}.\n");
+    break;</code></pre></div>
+<p>The <code>default</code> branch executes when the input character does not match any supported grade or ignored whitespace character.</p>
+<p>For example, entering <code>X</code> displays an error message.</p>
+<p>The invalid character is not added to any counter.</p>
+<h3 id="4-8-calculating-the-total">4.8. Calculating the Total</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int n = nA + nB + nC + nD + nF;</code></pre></div>
+<p>After the input loop finishes, the program calculates the total number of valid grades.</p>
+<p>Notice that spaces, tabs, newlines, and invalid characters are not included in this total.</p>
+<h3 id="4-9-calculating-cumulative-counts">4.9. Calculating Cumulative Counts</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int cA = nA;
+int cB = nB + cA;
+int cC = nC + cB;
+int cD = nD + cC;
+int cF = nF + cD;</code></pre></div>
+<p>These variables store cumulative grade counts.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int cC = nC + cB;</code></pre></div>
+<p>Since <code>cB</code> already contains the number of A and B grades, <code>cC</code> contains the total number of A, B, and C grades.</p>
+<h3 id="4-10-displaying-the-results">4.10. Displaying the Results</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Grade\tCount\tPercent\tCum. Percent\n");</code></pre></div>
+<p>The <code>\t</code> escape sequence inserts a horizontal tab to help align the output columns.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("A\t%d of %d\t%.2f\t%.2f\n",
+       nA, n, (float)nA*100/n, (float)cA*100/n);</code></pre></div>
+<p>The format specifiers are:</p>
+<div class="table-wrap"><table><thead><tr><th>Format</th><th>Meaning</th></tr></thead><tbody><tr><td><code>%d</code></td><td>Display an integer</td></tr><tr><td><code>%f</code></td><td>Display a floating-point number</td></tr><tr><td><code>%.2f</code></td><td>Display a floating-point number with two digits after the decimal point</td></tr><tr><td><code>\t</code></td><td>Horizontal tab</td></tr><tr><td><code>\n</code></td><td>Newline</td></tr></tbody></table></div>
+<p>The expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(float)nA * 100 / n</code></pre></div>
+<p>converts <code>nA</code> to a floating-point value before performing the percentage calculation.</p>
+<p>This is important because integer division would otherwise discard the fractional part.</p>
+<h3 id="4-11-checking-the-teacher-s-result">4.11. Checking the Teacher's Result</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if((float)cC/n &gt; 0.6)
+{
+    printf("\nCongratulations to Teacher!\n");
+}</code></pre></div>
+<p>This condition checks whether the cumulative proportion of A, B, and C grades is greater than 60%.</p>
+<p>For example:</p>
+<p>\[ \frac{c_C}{n}&gt;0.6 \]</p>
+<p>If 70% of students received A, B, or C, the condition is true and the congratulations message is printed.</p>
+<hr>
+<h2 id="5-example-input-and-output">5. Example Input and Output</h2>
+<h3 id="example-input">Example Input</h3>
+<p>Enter the following grades:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>A
+B
+A
+C
+B
+D
+C
+A
+F
+B</code></pre></div>
+<p>After entering the last grade, send EOF:</p>
+<ul><li>Windows: <code>Ctrl + Z</code>, then Enter.</li><li>Linux/macOS: <code>Ctrl + D</code>.</li></ul>
+<h3 id="expected-output">Expected Output</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Grade   Count   Percent   Cum. Percent
+A       3 of 10 30.00     30.00
+B       3 of 10 30.00     60.00
+C       2 of 10 20.00     80.00
+D       1 of 10 10.00     90.00
+F       1 of 10 10.00     100.00
+
+Congratulations to Teacher!</code></pre></div>
+<p>The actual spacing depends on terminal tab settings.</p>
+<h3 id="understanding-the-result">Understanding the Result</h3>
+<p>There are 10 valid grades:</p>
+<div class="table-wrap"><table><thead><tr><th>Grade</th><th>Count</th><th>Percentage</th><th>Cumulative Percentage</th></tr></thead><tbody><tr><td>A</td><td>3</td><td>30%</td><td>30%</td></tr><tr><td>B</td><td>3</td><td>30%</td><td>60%</td></tr><tr><td>C</td><td>2</td><td>20%</td><td>80%</td></tr><tr><td>D</td><td>1</td><td>10%</td><td>90%</td></tr><tr><td>F</td><td>1</td><td>10%</td><td>100%</td></tr></tbody></table></div>
+<p>The cumulative percentage for C is 80%.</p>
+<p>Since 80% is greater than 60%, the program displays the congratulations message.</p>
+<hr>
+<h2 id="6-important-programming-concepts-learned">6. Important Programming Concepts Learned</h2>
+<p>By studying this program, you will learn:</p>
+<ol><li><strong>Character input:</strong> Reading individual characters using <code>getchar()</code>.</li><li><strong>EOF detection:</strong> Identifying the end of an input stream.</li><li><strong>While loop:</strong> Repeating an operation until a condition becomes false.</li><li><strong>Switch-case:</strong> Selecting an operation based on a character value.</li><li><strong>Counters:</strong> Counting occurrences using integer variables.</li><li><strong>Increment operator:</strong> Increasing a variable using <code>++</code>.</li><li><strong>Break statement:</strong> Exiting a <code>switch</code> case.</li><li><strong>Default case:</strong> Handling unsupported input.</li><li><strong>Type conversion:</strong> Converting an integer to <code>float</code>.</li><li><strong>Percentage calculation:</strong> Calculating the relative frequency of each grade.</li><li><strong>Cumulative statistics:</strong> Calculating cumulative counts and percentages.</li><li><strong>Conditional statements:</strong> Using <code>if</code> to check a mathematical condition.</li><li><strong>Formatted output:</strong> Using <code>printf()</code> format specifiers.</li></ol>
+<hr>
+<h2 id="7-important-notes-and-possible-improvements">7. Important Notes and Possible Improvements</h2>
+<p>The supplied program demonstrates useful C concepts, but there are a few issues worth understanding.</p>
+<h3 id="7-1-use-int-for-getchar">7.1. Use int for getchar()</h3>
+<p>Recommended:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int g;
+
+while((g = getchar()) != EOF)
+{
+    switch(g)
+    {
+        /* grade cases */
+    }
+}</code></pre></div>
+<p>This ensures that the <code>EOF</code> value can be detected reliably.</p>
+<h3 id="7-2-prevent-division-by-zero">7.2. Prevent Division by Zero</h3>
+<p>If the user enters no valid grades, then:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int n = 0;</code></pre></div>
+<p>The percentage calculations would divide by zero.</p>
+<p>A safer approach is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(n == 0)
+{
+    printf("No valid grades were entered.\n");
+    return 0;
+}</code></pre></div>
+<p>Place this check immediately after calculating <code>n</code> and before calculating percentages.</p>
+<h3 id="7-3-remove-unused-macro">7.3. Remove Unused Macro</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#define TRUE -1</code></pre></div>
+<p>This macro is not used anywhere in the program. It can be removed without changing the result.</p>
+<h3 id="7-4-understand-cumulative-percentage">7.4. Understand Cumulative Percentage</h3>
+<p>The cumulative percentage for C includes A, B, and C.</p>
+<p>It does not represent only the percentage of C grades.</p>
+<p>For this example:</p>
+<ul><li>A percentage = 30%</li><li>B percentage = 30%</li><li>C percentage = 20%</li><li>Cumulative percentage for C = 80%</li></ul>
+<h3 id="7-5-invalid-input-messages">7.5. Invalid Input Messages</h3>
+<p>The program prints an error message for every invalid character. For example, entering <code>ABCX</code> produces an error for <code>X</code>.</p>
+<p>You can improve this behavior by counting invalid characters or displaying a single summary message after input finishes.</p>
+<hr>
+<h2 id="8-compile-and-run">8. Compile and Run</h2>
+<h3 id="using-gcc">Using GCC</h3>
+<p>Compile the program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o grade_analyzer</code></pre></div>
+<p>Run on Linux/macOS:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./grade_analyzer</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\grade_analyzer.exe</code></pre></div>
+<h3 id="using-visual-studio-code">Using Visual Studio Code</h3>
+<ol><li>Open the project folder.</li><li>Open <code>main.c</code>.</li><li>Open the integrated terminal.</li><li>Compile the program using GCC.</li><li>Run the generated executable.</li><li>Enter grades and send EOF to finish.</li></ol>
+<hr>
+<h2 id="9-practice-exercises">9. Practice Exercises</h2>
+<p>Try the following exercises to improve your understanding:</p>
+<h3 id="exercise-1-add-more-grade-categories">Exercise 1: Add More Grade Categories</h3>
+<p>Extend the program to support additional grades such as <code>E</code>.</p>
+<h3 id="exercise-2-count-invalid-characters">Exercise 2: Count Invalid Characters</h3>
+<p>Create an integer variable called <code>invalidCount</code> and increase it whenever an unsupported character is entered.</p>
+<h3 id="exercise-3-calculate-the-average-grade">Exercise 3: Calculate the Average Grade</h3>
+<p>Assign numerical values to grades:</p>
+<ul><li>A = 5</li><li>B = 4</li><li>C = 3</li><li>D = 2</li><li>F = 0</li></ul>
+<p>Calculate the average numerical grade.</p>
+<h3 id="exercise-4-display-only-nonzero-grades">Exercise 4: Display Only Nonzero Grades</h3>
+<p>Modify the output so that grades with a count of zero are not displayed.</p>
+<h3 id="exercise-5-improve-input-handling">Exercise 5: Improve Input Handling</h3>
+<p>Modify the program to use <code>int</code> for the input character and prevent division by zero.</p>
+<hr>
+<h2 id="10-learning-objective">10. Learning Objective</h2>
+<p>The main objective of this exercise is to understand how a C program can process a continuous stream of character input, classify each character, count its occurrences, and generate statistical results.</p>
+<p>This program is a practical introduction to:</p>
+<ul><li>Input processing</li><li>Character classification</li><li>Counters and loops</li><li>Conditional logic</li><li>Basic statistical calculations</li></ul>
+<p>These concepts are useful in text processing, data analysis, input validation, and many other C programming applications.</p>
+<hr></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="pager-dir">← Previous</span><span class="pager-name">10 · C Programming – Arithmetic Progression and Power Series Using For Loop</span></a><a class="pager-link next" href="12-prime-number-checker-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">12 · Prime Number Checker in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

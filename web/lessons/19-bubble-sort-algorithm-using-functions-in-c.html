@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bubble Sort Algorithm Using Functions in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link active" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-4">Part 4 — Arrays, Data Analysis and Sorting</a><span>/</span><span aria-current="page">Lesson 19</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 19 of 40 · Part 4</p><h1>Bubble Sort Algorithm Using Functions in C</h1><p class="lesson-source">Folder <code>19-Bubble_Sort_Algorithm_Using_Functions</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-original-source-code">2. Original Source Code</a></li><li><a href="#3-important-correction-the-const-keyword">3. Important Correction: The const Keyword</a></li><li><a href="#4-corrected-complete-source-code">4. Corrected Complete Source Code</a></li><li><a href="#5-understanding-the-bubble-sort-algorithm">5. Understanding the Bubble Sort Algorithm</a></li><li><a href="#6-understanding-the-main-function">6. Understanding the Main Function</a></li><li><a href="#7-understanding-the-bubblesort-function">7. Understanding the BubbleSort() Function</a></li><li><a href="#8-understanding-the-swap-function">8. Understanding the Swap() Function</a></li><li><a href="#9-understanding-the-printarray-function">9. Understanding the PrintArray() Function</a></li><li><a href="#10-understanding-the-complete-sorting-process">10. Understanding the Complete Sorting Process</a></li><li><a href="#11-expected-output">11. Expected Output</a></li><li><a href="#12-bubble-sort-in-descending-order">12. Bubble Sort in Descending Order</a></li><li><a href="#13-optimized-bubble-sort">13. Optimized Bubble Sort</a></li><li><a href="#14-time-and-space-complexity">14. Time and Space Complexity</a></li><li><a href="#15-important-characteristics-of-bubble-sort">15. Important Characteristics of Bubble Sort</a></li><li><a href="#16-important-c-programming-concepts">16. Important C Programming Concepts</a></li><li><a href="#17-suggested-exercises">17. Suggested Exercises</a></li><li><a href="#18-compile-and-run">18. Compile and Run</a></li><li><a href="#learning-objectives">Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>This program demonstrates how to sort an integer array in ascending order using the <strong>Bubble Sort algorithm</strong>.</p>
+<p>Bubble Sort is a simple sorting algorithm that repeatedly compares adjacent elements and swaps them when they are in the wrong order.</p>
+<p>The algorithm continues making passes through the array until all elements are sorted.</p>
+<p>This example also introduces several important C programming concepts:</p>
+<ul><li>Sorting algorithms</li><li>Bubble Sort</li><li>Arrays and array indexing</li><li>Function declarations and definitions</li><li>Passing arrays to functions</li><li>The <code>const</code> keyword</li><li>Nested <code>for</code> loops</li><li>Conditional statements</li><li>Swapping two variables</li><li>Temporary variables</li><li>The <code>break</code> statement</li><li>Algorithm time complexity</li><li>In-place sorting</li></ul>
+<p>The program uses three functions:</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Purpose</th></tr></thead><tbody><tr><td><code>PrintArray()</code></td><td>Displays the elements of an array</td></tr><tr><td><code>BubbleSort()</code></td><td>Sorts the array in ascending order</td></tr><tr><td><code>Swap()</code></td><td>Exchanges the positions of two array elements</td></tr></tbody></table></div>
+<h2 id="2-original-source-code">2. Original Source Code</h2>
+<p>The supplied code is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+void PrintArray(int a[], int N);
+void BubbleSort(const int a[], int N);
+void Swap(int a[], int j1, int j2);
+
+int main()
+{
+    int a[]={23,53,12,10,17,56,78,34,29,37,45,12,19,20,40,90,43,48,62};
+
+    int N=sizeof(a)/sizeof(a[0]);
+
+    printf("Array before sorting:\n");
+    PrintArray(a,N);
+    printf("\n\n");
+
+    BubbleSort(a,N);
+
+    printf("Array after sorting:\n");
+    PrintArray(a,N);
+    printf("\n\n");
+
+    return 0;
+}
+
+void BubbleSort(const int a[], int N)
+{
+    int i, j;
+    int swapped;
+
+    for(i=0; i&lt;N; i++)
+    {
+        swapped = 0;
+
+        for(j=0; j&lt;N-1; j++)
+        {
+            if(a[j]&gt;a[j+1])
+            {
+                Swap(a,j,j+1);
+                swapped = 1;
+            }
+        }
+
+        if(!swapped) break;
+    }
+}
+
+void Swap(int a[], int j1, int j2)
+{
+    int temp;
+
+    temp = a[j1];
+    a[j1] = a[j2];
+    a[j2] = temp;
+}
+
+void PrintArray(int a[], int N)
+{
+    int i;
+
+    for(i=0; i&lt;N; i++)
+    {
+        printf("%d",a[i]);
+
+        if(i&lt;N-1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<h2 id="3-important-correction-the-const-keyword">3. Important Correction: The const Keyword</h2>
+<p>There is a problem in the original function declaration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(const int a[], int N);</code></pre></div>
+<p>And in its definition:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(const int a[], int N)</code></pre></div>
+<p>The <code>const</code> keyword means that the function cannot modify array elements through the parameter <code>a</code>.</p>
+<p>However, inside <code>BubbleSort()</code>, the following function is called:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Swap(a,j,j+1);</code></pre></div>
+<p>The <code>Swap()</code> function is declared as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Swap(int a[], int j1, int j2);</code></pre></div>
+<p>It requires a modifiable integer array because it changes the values of its elements.</p>
+<p>Passing a pointer to <code>const int</code> to a parameter expecting <code>int *</code> discards the <code>const</code> qualifier. This is not valid in standard C and requires a diagnostic from the compiler.</p>
+<h3 id="correct-solution">Correct solution</h3>
+<p>Remove <code>const</code> from the <code>BubbleSort()</code> declaration and definition:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(int a[], int N);</code></pre></div>
+<p>And:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(int a[], int N)</code></pre></div>
+<p>The sorting function must be allowed to modify the original array.</p>
+<p><strong>Important:</strong> <code>PrintArray()</code> could use <code>const int a[]</code> because it only displays elements and does not modify them.</p>
+<h2 id="4-corrected-complete-source-code">4. Corrected Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+void PrintArray(const int a[], int N);
+void BubbleSort(int a[], int N);
+void Swap(int a[], int j1, int j2);
+
+int main()
+{
+    int a[]={23,53,12,10,17,56,78,34,29,37,45,12,19,20,40,90,43,48,62};
+
+    int N=sizeof(a)/sizeof(a[0]);
+
+    printf("Array before sorting:\n");
+    PrintArray(a,N);
+    printf("\n\n");
+
+    BubbleSort(a,N);
+
+    printf("Array after sorting:\n");
+    PrintArray(a,N);
+    printf("\n\n");
+
+    return 0;
+}
+
+void BubbleSort(int a[], int N)
+{
+    int i, j;
+    int swapped;
+
+    for(i=0; i&lt;N; i++)
+    {
+        swapped = 0;
+
+        for(j=0; j&lt;N-1; j++)
+        {
+            if(a[j]&gt;a[j+1])
+            {
+                Swap(a,j,j+1);
+                swapped = 1;
+            }
+        }
+
+        if(!swapped) break;
+    }
+}
+
+void Swap(int a[], int j1, int j2)
+{
+    int temp;
+
+    temp = a[j1];
+    a[j1] = a[j2];
+    a[j2] = temp;
+}
+
+void PrintArray(const int a[], int N)
+{
+    int i;
+
+    for(i=0; i&lt;N; i++)
+    {
+        printf("%d",a[i]);
+
+        if(i&lt;N-1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<p>The main algorithm is unchanged. Only the parameter of <code>BubbleSort()</code> has been corrected, and <code>PrintArray()</code> has been declared with <code>const</code> because it only reads the array.</p>
+<h2 id="5-understanding-the-bubble-sort-algorithm">5. Understanding the Bubble Sort Algorithm</h2>
+<p>Bubble Sort works by comparing two neighboring elements.</p>
+<p>If the left element is greater than the right element, their positions are exchanged.</p>
+<p>For ascending order:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(a[j] &gt; a[j+1])
+{
+    Swap(a,j,j+1);
+}</code></pre></div>
+<p>The algorithm moves through the array and repeatedly pushes larger values toward the right side.</p>
+<p>After a complete pass, the largest element among the unsorted elements reaches its correct position at the end.</p>
+<p>This process is repeated until the array is sorted.</p>
+<h3 id="example">Example</h3>
+<p>Consider this small array:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>5, 3, 8, 2</code></pre></div>
+<p>The first comparison is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>5 &gt; 3</code></pre></div>
+<p>The condition is true, so the values are exchanged:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>3, 5, 8, 2</code></pre></div>
+<p>The next comparison is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>5 &gt; 8</code></pre></div>
+<p>The condition is false, so nothing changes.</p>
+<p>The next comparison is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>8 &gt; 2</code></pre></div>
+<p>The condition is true, so the values are exchanged:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>3, 5, 2, 8</code></pre></div>
+<p>At the end of the first pass, the largest element (<code>8</code>) is in its correct final position.</p>
+<p>The algorithm continues with additional passes until the array is sorted:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2, 3, 5, 8</code></pre></div>
+<h2 id="6-understanding-the-main-function">6. Understanding the Main Function</h2>
+<h3 id="6-1-creating-the-array">6.1. Creating the Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a[]={23,53,12,10,17,56,78,34,29,37,45,12,19,20,40,90,43,48,62};</code></pre></div>
+<p>This statement creates an integer array containing 19 elements.</p>
+<p>The array is initially unsorted.</p>
+<h3 id="6-2-calculating-the-number-of-elements">6.2. Calculating the Number of Elements</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int N=sizeof(a)/sizeof(a[0]);</code></pre></div>
+<p>The <code>sizeof</code> operator returns the size of an object in bytes.</p>
+<ul><li><code>sizeof(a)</code> returns the total size of the array.</li><li><code>sizeof(a[0])</code> returns the size of one array element.</li></ul>
+<p>Therefore:</p>
+<p>\[ N=\frac{\text{Total Array Size}}{\text{Size of One Element}} \]</p>
+<p>Assuming each integer occupies 4 bytes:</p>
+<p>\[ N=\frac{76}{4}=19 \]</p>
+<p>The variable <code>N</code> stores the number of array elements.</p>
+<h3 id="6-3-displaying-the-original-array">6.3. Displaying the Original Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Array before sorting:\n");
+PrintArray(a,N);</code></pre></div>
+<p>First, a message is printed.</p>
+<p>Then <code>PrintArray()</code> is called to display the original array.</p>
+<h3 id="6-4-sorting-the-array">6.4. Sorting the Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BubbleSort(a,N);</code></pre></div>
+<p>This function call starts the sorting process.</p>
+<p>Two arguments are passed:</p>
+<ul><li><code>a</code>: the array to be sorted.</li><li><code>N</code>: the number of array elements.</li></ul>
+<p>Because the function receives access to the original array elements through its pointer parameter, the sorting operations modify the original array.</p>
+<h3 id="6-5-displaying-the-sorted-array">6.5. Displaying the Sorted Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Array after sorting:\n");
+PrintArray(a,N);</code></pre></div>
+<p>After sorting is complete, the same <code>PrintArray()</code> function displays the updated array.</p>
+<h2 id="7-understanding-the-bubblesort-function">7. Understanding the BubbleSort() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(int a[], int N)
+{
+    int i, j;
+    int swapped;
+
+    for(i=0; i&lt;N; i++)
+    {
+        swapped = 0;
+
+        for(j=0; j&lt;N-1; j++)
+        {
+            if(a[j]&gt;a[j+1])
+            {
+                Swap(a,j,j+1);
+                swapped = 1;
+            }
+        }
+
+        if(!swapped) break;
+    }
+}</code></pre></div>
+<p>This is the main sorting function.</p>
+<p>It uses:</p>
+<ul><li>Two <code>for</code> loops</li><li>One <code>if</code> statement</li><li>One flag variable</li><li>The <code>Swap()</code> function</li><li>The <code>break</code> statement</li></ul>
+<h3 id="7-1-function-parameters">7.1. Function Parameters</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(int a[], int N)</code></pre></div>
+<p>The function receives:</p>
+<ul><li><code>a[]</code>: the array that must be sorted.</li><li><code>N</code>: the number of array elements.</li></ul>
+<p>The return type is <code>void</code> because the function modifies the original array directly and does not need to return a separate array.</p>
+<h3 id="7-2-declaring-variables">7.2. Declaring Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int i, j;
+int swapped;</code></pre></div>
+<ul><li><code>i</code>: controls the outer loop.</li><li><code>j</code>: controls the inner loop.</li><li><code>swapped</code>: indicates whether at least one exchange happened during the current pass.</li></ul>
+<p>The <code>swapped</code> variable is important for improving the algorithm's performance when the array is already sorted.</p>
+<h3 id="7-3-understanding-the-outer-loop">7.3. Understanding the Outer Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(i=0; i&lt;N; i++)</code></pre></div>
+<p>The outer loop controls the number of passes through the array.</p>
+<p>In the worst case, the algorithm may need up to <code>N</code> passes with this implementation.</p>
+<p>Each pass attempts to move larger elements toward the end of the array.</p>
+<h3 id="7-4-understanding-the-swapped-variable">7.4. Understanding the swapped Variable</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>swapped = 0;</code></pre></div>
+<p>At the beginning of every pass, <code>swapped</code> is reset to zero.</p>
+<p>The meaning is:</p>
+<ul><li><code>0</code>: No exchange has happened yet.</li><li><code>1</code>: At least one exchange has happened.</li></ul>
+<p>Whenever two elements are exchanged, the following statement executes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>swapped = 1;</code></pre></div>
+<h3 id="7-5-understanding-the-inner-loop">7.5. Understanding the Inner Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(j=0; j&lt;N-1; j++)</code></pre></div>
+<p>The inner loop compares adjacent elements.</p>
+<p>The comparison uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[j]
+a[j+1]</code></pre></div>
+<p>For example:</p>
+<div class="table-wrap"><table><thead><tr><th>j</th><th>First Element</th><th>Second Element</th></tr></thead><tbody><tr><td>0</td><td>a[0]</td><td>a[1]</td></tr><tr><td>1</td><td>a[1]</td><td>a[2]</td></tr><tr><td>2</td><td>a[2]</td><td>a[3]</td></tr><tr><td>3</td><td>a[3]</td><td>a[4]</td></tr></tbody></table></div>
+<p>The loop stops at <code>N-2</code>, because the second element of the final comparison is <code>a[N-1]</code>.</p>
+<h3 id="7-6-comparing-adjacent-elements">7.6. Comparing Adjacent Elements</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(a[j]&gt;a[j+1])</code></pre></div>
+<p>This condition checks whether two neighboring elements are in the wrong order.</p>
+<p>For ascending sorting:</p>
+<ul><li>If the left element is greater, they must be exchanged.</li><li>If the left element is smaller or equal, their positions remain unchanged.</li></ul>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>23, 12</code></pre></div>
+<p>Because:</p>
+<p>\[ 23&gt;12 \]</p>
+<p>The elements must be exchanged.</p>
+<p>After the exchange:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12, 23</code></pre></div>
+<h3 id="7-7-calling-the-swap-function">7.7. Calling the Swap Function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Swap(a,j,j+1);</code></pre></div>
+<p>This statement calls the <code>Swap()</code> function.</p>
+<p>It passes:</p>
+<ul><li>The array.</li><li>The index of the first element.</li><li>The index of the second element.</li></ul>
+<p>The function exchanges the values stored at those two positions.</p>
+<h3 id="7-8-understanding-the-break-condition">7.8. Understanding the Break Condition</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(!swapped) break;</code></pre></div>
+<p>The <code>!</code> operator is the logical NOT operator.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>!swapped</code></pre></div>
+<p>is true when <code>swapped</code> equals zero.</p>
+<p>If no exchange happens during an entire pass, the array is already sorted.</p>
+<p>There is no need to perform additional passes, so <code>break</code> terminates the outer loop.</p>
+<p>This optimization is called the <strong>early-exit optimization</strong>.</p>
+<p>Without this optimization, the algorithm would continue executing unnecessary passes even when the array was already sorted.</p>
+<h2 id="8-understanding-the-swap-function">8. Understanding the Swap() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Swap(int a[], int j1, int j2)
+{
+    int temp;
+
+    temp = a[j1];
+    a[j1] = a[j2];
+    a[j2] = temp;
+}</code></pre></div>
+<p>The purpose of this function is to exchange two array elements.</p>
+<p>It receives three parameters:</p>
+<ul><li><code>a[]</code>: the original array.</li><li><code>j1</code>: the index of the first element.</li><li><code>j2</code>: the index of the second element.</li></ul>
+<h3 id="8-1-why-do-we-need-a-temporary-variable">8.1. Why Do We Need a Temporary Variable?</h3>
+<p>Suppose we want to exchange these two values:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[j1] = 10
+a[j2] = 20</code></pre></div>
+<p>A direct assignment like this would not work:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[j1] = a[j2];
+a[j2] = a[j1];</code></pre></div>
+<p>After the first statement, both elements would contain 20. The original value of the first element would be lost.</p>
+<p>We therefore use a temporary variable.</p>
+<h3 id="8-2-step-by-step-swapping">8.2. Step-by-Step Swapping</h3>
+<p><strong>Step 1: Save the first value</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>temp = a[j1];</code></pre></div>
+<p>Now:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>temp = 10
+a[j1] = 10
+a[j2] = 20</code></pre></div>
+<p><strong>Step 2: Copy the second value into the first position</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[j1] = a[j2];</code></pre></div>
+<p>Now:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>temp = 10
+a[j1] = 20
+a[j2] = 20</code></pre></div>
+<p><strong>Step 3: Copy the saved value into the second position</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[j2] = temp;</code></pre></div>
+<p>Final result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[j1] = 20
+a[j2] = 10</code></pre></div>
+<p>The two values have been exchanged successfully.</p>
+<h2 id="9-understanding-the-printarray-function">9. Understanding the PrintArray() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N)
+{
+    int i;
+
+    for(i=0; i&lt;N; i++)
+    {
+        printf("%d",a[i]);
+
+        if(i&lt;N-1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<p>This function displays all elements of the array.</p>
+<h3 id="function-parameters">Function Parameters</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const int a[], int N</code></pre></div>
+<ul><li><code>a[]</code>: the array to display.</li><li><code>N</code>: the number of elements.</li><li><code>const</code>: prevents the function from modifying the array elements through this parameter.</li></ul>
+<p>The array is declared with <code>const</code> because printing does not require modifying its contents.</p>
+<h3 id="understanding-the-loop">Understanding the Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(i=0; i&lt;N; i++)</code></pre></div>
+<p>The loop visits every array element.</p>
+<p>The statement:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%d",a[i]);</code></pre></div>
+<p>prints the current element.</p>
+<h3 id="avoiding-an-extra-comma">Avoiding an Extra Comma</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(i&lt;N-1)
+{
+    printf(", ");
+}</code></pre></div>
+<p>This condition ensures that a comma is printed only between elements, not after the last element.</p>
+<h2 id="10-understanding-the-complete-sorting-process">10. Understanding the Complete Sorting Process</h2>
+<p>The original array contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>23, 53, 12, 10, 17, 56, 78, 34, 29, 37, 45, 12, 19, 20, 40, 90, 43, 48, 62</code></pre></div>
+<p>The algorithm repeatedly compares neighboring elements.</p>
+<p>For example, the first few comparisons of the first pass are:</p>
+<div class="table-wrap"><table><thead><tr><th>Comparison</th><th>Condition</th><th>Result</th></tr></thead><tbody><tr><td>23 and 53</td><td>23 &gt; 53?</td><td>No swap</td></tr><tr><td>53 and 12</td><td>53 &gt; 12?</td><td>Swap</td></tr><tr><td>53 and 10</td><td>53 &gt; 10?</td><td>Swap</td></tr><tr><td>53 and 17</td><td>53 &gt; 17?</td><td>Swap</td></tr><tr><td>53 and 56</td><td>53 &gt; 56?</td><td>No swap</td></tr><tr><td>56 and 78</td><td>56 &gt; 78?</td><td>No swap</td></tr><tr><td>78 and 34</td><td>78 &gt; 34?</td><td>Swap</td></tr></tbody></table></div>
+<p>The process continues until the end of the array.</p>
+<p>At the end of the first complete pass, the largest element (<code>90</code>) reaches the final position.</p>
+<p>Subsequent passes move the remaining elements into their correct positions.</p>
+<h3 id="important-detail-about-this-implementation">Important Detail About This Implementation</h3>
+<p>The inner loop always uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>j&lt;N-1</code></pre></div>
+<p>It does not reduce its comparison range after each pass.</p>
+<p>This is correct, but it performs some unnecessary comparisons.</p>
+<p>A more optimized version can use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(j=0; j&lt;N-i-1; j++)</code></pre></div>
+<p>This avoids comparing elements that are already in their final positions.</p>
+<p>The supplied implementation is useful for learning the basic algorithm and the early-exit optimization.</p>
+<h2 id="11-expected-output">11. Expected Output</h2>
+<p><strong>Array before sorting:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>23, 53, 12, 10, 17, 56, 78, 34, 29, 37, 45, 12, 19, 20, 40, 90, 43, 48, 62</code></pre></div>
+<p><strong>Array after sorting:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10, 12, 12, 17, 19, 20, 23, 29, 34, 37, 40, 43, 45, 48, 53, 56, 62, 78, 90</code></pre></div>
+<p>The array is sorted in ascending order, from the smallest element to the largest element.</p>
+<h2 id="12-bubble-sort-in-descending-order">12. Bubble Sort in Descending Order</h2>
+<p>The current program sorts the array in ascending order.</p>
+<p>To sort in descending order, change:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(a[j]&gt;a[j+1])</code></pre></div>
+<p>to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(a[j]&lt;a[j+1])</code></pre></div>
+<p>Now, smaller elements move toward the right side of the array.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Original:
+5, 3, 8, 2
+
+Descending:
+8, 5, 3, 2</code></pre></div>
+<h2 id="13-optimized-bubble-sort">13. Optimized Bubble Sort</h2>
+<p>The original implementation uses a fixed inner-loop limit.</p>
+<p>We can improve it by reducing the comparison range after every pass.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(int a[], int N)
+{
+    int i, j;
+    int swapped;
+
+    for(i=0; i&lt;N-1; i++)
+    {
+        swapped = 0;
+
+        for(j=0; j&lt;N-i-1; j++)
+        {
+            if(a[j]&gt;a[j+1])
+            {
+                Swap(a,j,j+1);
+                swapped = 1;
+            }
+        }
+
+        if(!swapped)
+            break;
+    }
+}</code></pre></div>
+<p>Why does this work?</p>
+<p>After each complete pass, the largest remaining element is placed at the end of the unsorted section.</p>
+<p>Therefore, it does not need to be compared again.</p>
+<p>The expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>N-i-1</code></pre></div>
+<p>reduces the number of comparisons in subsequent passes.</p>
+<p>Both implementations sort correctly. The optimized version avoids unnecessary comparisons.</p>
+<h2 id="14-time-and-space-complexity">14. Time and Space Complexity</h2>
+<p>Let <code>N</code> represent the number of elements in the array.</p>
+<h3 id="original-implementation">Original Implementation</h3>
+<div class="table-wrap"><table><thead><tr><th>Case</th><th>Time Complexity</th><th>Explanation</th></tr></thead><tbody><tr><td>Best case</td><td>O(N)</td><td>One pass with no swaps, then early exit</td></tr><tr><td>Average case</td><td>O(N²)</td><td>Multiple passes and comparisons</td></tr><tr><td>Worst case</td><td>O(N²)</td><td>Many passes and swaps</td></tr></tbody></table></div>
+<p>The inner loop performs <code>N-1</code> comparisons per pass.</p>
+<p>In the worst case, the outer loop can execute <code>N</code> times.</p>
+<p>Therefore, the total number of comparisons is bounded by:</p>
+<p>\[ N(N-1) \]</p>
+<p>This gives:</p>
+<p>\[ O(N^2) \]</p>
+<h3 id="optimized-implementation">Optimized Implementation</h3>
+<p>The optimized implementation has:</p>
+<ul><li>Best case: O(N)</li><li>Average case: O(N²)</li><li>Worst case: O(N²)</li></ul>
+<h3 id="space-complexity">Space Complexity</h3>
+<p>Bubble Sort is an in-place sorting algorithm.</p>
+<p>It does not create another array.</p>
+<p>The <code>Swap()</code> function uses only one temporary integer variable.</p>
+<p>Therefore, auxiliary space complexity is:</p>
+<p>\[ O(1) \]</p>
+<h2 id="15-important-characteristics-of-bubble-sort">15. Important Characteristics of Bubble Sort</h2>
+<div class="table-wrap"><table><thead><tr><th>Characteristic</th><th>Description</th></tr></thead><tbody><tr><td>Algorithm type</td><td>Comparison-based sorting</td></tr><tr><td>Sorting direction</td><td>Ascending in this program</td></tr><tr><td>In-place</td><td>Yes</td></tr><tr><td>Stable</td><td>Yes</td></tr><tr><td>Best-case complexity</td><td>O(N) with early exit</td></tr><tr><td>Average-case complexity</td><td>O(N²)</td></tr><tr><td>Worst-case complexity</td><td>O(N²)</td></tr><tr><td>Auxiliary space</td><td>O(1)</td></tr></tbody></table></div>
+<h3 id="what-does-stable-sorting-mean">What Does Stable Sorting Mean?</h3>
+<p>A stable sorting algorithm preserves the relative order of elements that have equal values.</p>
+<p>This implementation is stable because it swaps elements only when:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[j] &gt; a[j+1]</code></pre></div>
+<p>Equal elements are not exchanged.</p>
+<p>For example, if two equal values originally appear in a particular order, Bubble Sort preserves their relative order.</p>
+<h2 id="16-important-c-programming-concepts">16. Important C Programming Concepts</h2>
+<h3 id="array-parameters">Array Parameters</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(int a[], int N);</code></pre></div>
+<p>An array parameter provides access to the original array elements through a pointer.</p>
+<h3 id="const-keyword">const Keyword</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N);</code></pre></div>
+<p>The <code>const</code> keyword prevents modification of the elements through this parameter.</p>
+<h3 id="nested-loops">Nested Loops</h3>
+<p>Bubble Sort uses an outer loop and an inner loop.</p>
+<p>The outer loop controls passes, while the inner loop performs adjacent comparisons.</p>
+<h3 id="logical-not-operator">Logical NOT Operator</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(!swapped)</code></pre></div>
+<p>The <code>!</code> operator reverses a logical value.</p>
+<p>When <code>swapped</code> is zero, <code>!swapped</code> is true.</p>
+<h3 id="temporary-variables">Temporary Variables</h3>
+<p>A temporary variable allows two values to be exchanged without losing either original value.</p>
+<h3 id="break-statement">break Statement</h3>
+<p>The <code>break</code> statement immediately exits the nearest enclosing loop.</p>
+<h2 id="17-suggested-exercises">17. Suggested Exercises</h2>
+<h3 id="exercise-1-descending-order">Exercise 1: Descending Order</h3>
+<p>Modify the program to sort the array from largest to smallest.</p>
+<h3 id="exercise-2-user-input">Exercise 2: User Input</h3>
+<p>Instead of using fixed array values, receive the array elements from the user using <code>scanf()</code>.</p>
+<h3 id="exercise-3-find-the-minimum-and-maximum">Exercise 3: Find the Minimum and Maximum</h3>
+<p>After sorting, display the smallest and largest elements.</p>
+<h3 id="exercise-4-count-swaps">Exercise 4: Count Swaps</h3>
+<p>Modify <code>BubbleSort()</code> to count the total number of swaps.</p>
+<h3 id="exercise-5-count-comparisons">Exercise 5: Count Comparisons</h3>
+<p>Add a counter to calculate how many comparisons are performed during sorting.</p>
+<h3 id="exercise-6-optimize-the-algorithm">Exercise 6: Optimize the Algorithm</h3>
+<p>Use <code>j&lt;N-i-1</code> instead of <code>j&lt;N-1</code> and compare the number of operations.</p>
+<h3 id="exercise-7-search-after-sorting">Exercise 7: Search After Sorting</h3>
+<p>After sorting the array, implement a function that searches for a specific number.</p>
+<h3 id="exercise-8-sort-floating-point-numbers">Exercise 8: Sort Floating-Point Numbers</h3>
+<p>Modify the program to sort an array of <code>float</code> values.</p>
+<h2 id="18-compile-and-run">18. Compile and Run</h2>
+<p>Using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o bubble_sort</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./bubble_sort</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>bubble_sort.exe</code></pre></div>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After completing this example, you should understand:</p>
+<ul><li>What a sorting algorithm is.</li><li>How Bubble Sort works.</li><li>How to compare adjacent array elements.</li><li>How to exchange two values using a temporary variable.</li><li>How to organize a sorting algorithm into separate functions.</li><li>How to pass arrays to functions.</li><li>Why a sorting function must be allowed to modify its array.</li><li>How nested loops work.</li><li>How the <code>swapped</code> flag improves performance.</li><li>How the <code>break</code> statement terminates a loop.</li><li>How to calculate time and space complexity.</li><li>The difference between stable and unstable sorting algorithms.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">18 · Functions, Arrays, and Parameter Passing in C</span></a><a class="pager-link next" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">20 · Array Size and Variable Length Arrays in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

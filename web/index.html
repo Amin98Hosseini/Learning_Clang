@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hands-on C course · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body class="home">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="index.html">Home</a><a href="index.html#curriculum">Curriculum</a><a href="index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+
+<main id="main">
+  <section class="hero">
+    <div class="container hero-inner">
+      <p class="eyebrow">A hands-on C course · 40 lessons</p>
+      <h1>Learn C, one small program at a time.</h1>
+      <p class="hero-lead">
+        Forty numbered lessons that build on each other: print a line, read a number, branch, loop,
+        write functions, work with arrays, follow pointers, handle strings, and finally define your
+        own types with structures and enumerations.
+      </p>
+      <div class="hero-actions">
+        <a class="btn" href="lessons/01-hello-world-in-c.html">Start with lesson 01</a>
+        <a class="btn btn-ghost" href="#curriculum">Browse the curriculum</a>
+      </div>
+      <dl class="stats">
+        <div><dt>Lessons</dt><dd>40</dd></div>
+        <div><dt>Parts</dt><dd>7</dd></div>
+        <div><dt>Language</dt><dd>C11</dd></div>
+        <div><dt>License</dt><dd>GPL-3.0</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Introduction</p>
+        <h2>What this course is</h2>
+      </div>
+      <div class="two-col">
+        <div class="prose">
+          <p>
+            This is a progressive, hands-on C course kept as a single repository and split into
+            <strong>40 numbered lesson folders</strong>. Each lesson is a small, self-contained program
+            plus its own documentation, and the numbering follows the order the topics are meant to be
+            studied in — from printing a line of text to structures, function pointers and enumerations.
+          </p>
+          <p>
+            Every lesson builds on the ones before it, so reading the lessons in order gives a complete
+            beginner-to-intermediate path through the language. The programs are short enough to read in
+            one sitting and are meant to be compiled, run and modified.
+          </p>
+          <p>
+            Each lesson's notes in the repository are available in both English and Persian
+            (<code>Readme.md</code> and <code>Readme_Fa.md</code>). The pages on this site reproduce the
+            English notes of every lesson.
+          </p>
+        </div>
+        <ul class="checklist">
+          <li><strong>Read</strong> the lesson page — concept, code and explanation.</li>
+          <li><strong>Compile</strong> the matching <code>.c</code> file with GCC.</li>
+          <li><strong>Run</strong> it, then change something and observe the result.</li>
+          <li><strong>Practise</strong> with the exercises at the end of the notes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="curriculum">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Curriculum</p>
+        <h2>Seven parts, forty lessons</h2>
+        <p class="section-lead">Pick a lesson from the list, or follow the parts in order. Every page has the full course menu in the sidebar.</p>
+      </div>
+      <section class="part" id="part-1"><div class="part-head"><span class="part-badge">Part 1</span><h3>First Programs</h3><span class="part-count">4 lessons · 01–04</span></div><p class="part-blurb">Structure of a C program, output, input and a first tiny calculator.</p><div class="lesson-grid"><a class="lesson-card" href="lessons/01-hello-world-in-c.html"><span class="card-num">01</span><span class="card-body"><span class="card-title">Hello World in C</span><span class="card-desc">Program structure, <code>main</code>, <code>printf</code>, exit status</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/02-escape-sequences-and-special-characters-in-c.html"><span class="card-num">02</span><span class="card-body"><span class="card-title">Escape Sequences and Special Characters in C</span><span class="card-desc">Escape sequences <code>\n</code>, <code>\t</code>, <code>\a</code>, <code>\"</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/03-user-input-scanf-and-printf.html"><span class="card-num">03</span><span class="card-body"><span class="card-title">User Input (scanf and printf)</span><span class="card-desc"><code>scanf</code>, format specifiers, <code>&amp;</code> address-of</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/04-c-programming-adding-two-integer-numbers.html"><span class="card-num">04</span><span class="card-body"><span class="card-title">C Programming – Adding Two Integer Numbers</span><span class="card-desc">Reading two integers and adding them</span></span><span class="card-arrow" aria-hidden="true">→</span></a></div></section><section class="part" id="part-2"><div class="part-head"><span class="part-badge">Part 2</span><h3>Decisions, Operators and Loops</h3><span class="part-count">7 lessons · 05–11</span></div><p class="part-blurb">Conditions, increment operators, while and for loops, series and statistics.</p><div class="lesson-grid"><a class="lesson-card" href="lessons/05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="card-num">05</span><span class="card-body"><span class="card-title">Even/Odd and Positive/Negative Number Checker in C</span><span class="card-desc"><code>if</code>/<code>else if</code>/<code>else</code>, <code>%</code> operator, sign tests</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/06-pre-increment-and-post-increment-operators-in-c.html"><span class="card-num">06</span><span class="card-body"><span class="card-title">Pre-Increment and Post-Increment Operators in C</span><span class="card-desc"><code>++a</code> versus <code>a++</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/07-while-loop-break-sum-mean-in-c.html"><span class="card-num">07</span><span class="card-body"><span class="card-title">While Loop, Break, Sum &amp; Mean in C</span><span class="card-desc">Sentinel-controlled loop, <code>break</code>, running sum and mean</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/08-c-programming-arithmetic-progression-and-series-summation.html"><span class="card-num">08</span><span class="card-body"><span class="card-title">C Programming – Arithmetic Progression and Series Summation</span><span class="card-desc">Arithmetic progression printed with a <code>while</code> loop</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/09-c-programming-arithmetic-progression-using-for-loop.html"><span class="card-num">09</span><span class="card-body"><span class="card-title">C Programming – Arithmetic Progression Using For Loop</span><span class="card-desc">The same progression with a <code>for</code> loop</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="card-num">10</span><span class="card-body"><span class="card-title">C Programming – Arithmetic Progression and Power Series Using For Loop</span><span class="card-desc">Series and power series with <code>pow()</code> from <code>math.h</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/11-grade-statistics-analyzer-in-c.html"><span class="card-num">11</span><span class="card-body"><span class="card-title">Grade Statistics Analyzer in C</span><span class="card-desc"><code>getchar</code> loop, <code>switch</code>, counts, percentages, cumulative percentages</span></span><span class="card-arrow" aria-hidden="true">→</span></a></div></section><section class="part" id="part-3"><div class="part-head"><span class="part-badge">Part 3</span><h3>Functions, Recursion and Mathematics</h3><span class="part-count">3 lessons · 12–14</span></div><p class="part-blurb">User-defined functions, recursion, and solving real equations.</p><div class="lesson-grid"><a class="lesson-card" href="lessons/12-prime-number-checker-in-c.html"><span class="card-num">12</span><span class="card-body"><span class="card-title">Prime Number Checker in C</span><span class="card-desc">User-defined function, <code>sqrt()</code> trial division, <code>do</code>/<code>while</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="card-num">13</span><span class="card-body"><span class="card-title">Fibonacci Sequence in C — Iterative vs Recursive</span><span class="card-desc">Iterative versus recursive Fibonacci</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/14-quadratic-equation-solver-in-c.html"><span class="card-num">14</span><span class="card-body"><span class="card-title">Quadratic Equation Solver in C</span><span class="card-desc"><code>if</code>/<code>else</code> chains, discriminant, real/complex roots</span></span><span class="card-arrow" aria-hidden="true">→</span></a></div></section><section class="part" id="part-4"><div class="part-head"><span class="part-badge">Part 4</span><h3>Arrays, Data Analysis and Sorting</h3><span class="part-count">7 lessons · 15–21</span></div><p class="part-blurb">Storing collections of values and processing them with functions.</p><div class="lesson-grid"><a class="lesson-card" href="lessons/15-fibonacci-sequence-using-an-array-in-c.html"><span class="card-num">15</span><span class="card-body"><span class="card-title">Fibonacci Sequence Using an Array in C</span><span class="card-desc">Filling and printing an array</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/16-statistical-analysis-and-histogram-using-c.html"><span class="card-num">16</span><span class="card-body"><span class="card-title">Statistical Analysis and Histogram Using C</span><span class="card-desc">Frequencies, mean, standard deviation, text histogram</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/17-character-array-and-string-length-in-c.html"><span class="card-num">17</span><span class="card-body"><span class="card-title">Character Array and String Length in C</span><span class="card-desc"><code>char</code> arrays, <code>%9s</code>, <code>sizeof</code>, <code>'\0'</code>, manual <code>strlen</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/18-functions-arrays-and-parameter-passing-in-c.html"><span class="card-num">18</span><span class="card-body"><span class="card-title">Functions, Arrays, and Parameter Passing in C</span><span class="card-desc">Arrays as arguments, <code>const</code>, by-value vs by-reference effects</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/19-bubble-sort-algorithm-using-functions-in-c.html"><span class="card-num">19</span><span class="card-body"><span class="card-title">Bubble Sort Algorithm Using Functions in C</span><span class="card-desc">Bubble sort split into <code>PrintArray</code> / <code>Swap</code> / <code>BubbleSort</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/20-array-size-and-variable-length-arrays-in-c.html"><span class="card-num">20</span><span class="card-body"><span class="card-title">Array Size and Variable Length Arrays in C</span><span class="card-desc"><code>sizeof</code> on arrays, variable-length arrays (VLA)</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="card-num">21</span><span class="card-body"><span class="card-title">Finding Integer Divisors Using Functions and Arrays in C</span><span class="card-desc">Two-pass design: count first, then fill; <code>NULL</code> argument</span></span><span class="card-arrow" aria-hidden="true">→</span></a></div></section><section class="part" id="part-5"><div class="part-head"><span class="part-badge">Part 5</span><h3>Pointers</h3><span class="part-count">3 lessons · 22–24</span></div><p class="part-blurb">Addresses, dereferencing, call by value versus pointers, and function pointers.</p><div class="lesson-grid"><a class="lesson-card" href="lessons/22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="card-num">22</span><span class="card-body"><span class="card-title">Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span><span class="card-desc">Addresses, <code>*</code> and <code>&amp;</code>, call by value vs call by reference, <code>%p</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/23-bubble-sort-in-c-using-pointers.html"><span class="card-num">23</span><span class="card-body"><span class="card-title">Bubble Sort in C Using Pointers</span><span class="card-desc">Sorting and swapping through pointers</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/24-bubble-sort-using-function-pointers-in-c.html"><span class="card-num">24</span><span class="card-body"><span class="card-title">Bubble Sort Using Function Pointers in C</span><span class="card-desc">Comparators passed as function pointers, array of function pointers</span></span><span class="card-arrow" aria-hidden="true">→</span></a></div></section><section class="part" id="part-6"><div class="part-head"><span class="part-badge">Part 6</span><h3>Characters and Strings</h3><span class="part-count">13 lessons · 25–37</span></div><p class="part-blurb">The largest part: characters, ASCII, conversion, formatting, searching and tokenizing text.</p><div class="lesson-grid"><a class="lesson-card" href="lessons/25-characters-strings-ascii-codes-and-character-classification.html"><span class="card-num">25</span><span class="card-body"><span class="card-title">Characters, Strings, ASCII Codes, and Character Classification in C</span><span class="card-desc"><code>getchar</code>, ASCII codes, <code>ctype.h</code> predicates</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="card-num">26</span><span class="card-body"><span class="card-title">String to Floating-Point Conversion in C (strtof and strtod)</span><span class="card-desc"><code>strtof</code> / <code>strtod</code> and the <code>endptr</code> out-parameter</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="card-num">27</span><span class="card-body"><span class="card-title">Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span><span class="card-desc"><code>fgets</code>, <code>strlen</code>, recursive string reversal</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="card-num">28</span><span class="card-body"><span class="card-title">Reading a String Character by Character in C Using getchar()</span><span class="card-desc">Building a string one <code>getchar</code> at a time, manual <code>'\0'</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="card-num">29</span><span class="card-body"><span class="card-title">Formatting Floating-Point Numbers Using printf() and sprintf() in C</span><span class="card-desc"><code>printf</code> vs <code>sprintf</code>, field precision</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="card-num">30</span><span class="card-body"><span class="card-title">Reading and Extracting Data from Strings Using sscanf() in C</span><span class="card-desc">Parsing a formatted string with <code>sscanf</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/31-displaying-error-messages-using-strerror-in-c.html"><span class="card-num">31</span><span class="card-body"><span class="card-title">Displaying Error Messages Using strerror() in C</span><span class="card-desc"><code>errno</code> codes and human-readable messages via <code>strerror</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="card-num">32</span><span class="card-body"><span class="card-title">C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span><span class="card-desc"><code>strcpy</code>, <code>strncpy</code>, <code>strcat</code>, manual termination</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/33-c-programming-comparing-strings-using-strcmp.html"><span class="card-num">33</span><span class="card-body"><span class="card-title">C Programming – Comparing Strings Using strcmp()</span><span class="card-desc">Lexicographic comparison, result sign</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/34-c-programming-searching-for-characters-and-substrings-using.html"><span class="card-num">34</span><span class="card-body"><span class="card-title">C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span><span class="card-desc">Finding all occurrences of a character, first occurrence of a substring</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="card-num">35</span><span class="card-body"><span class="card-title">Splitting Strings into Tokens Using strtok() in C</span><span class="card-desc">Tokenizing with <code>strtok</code> and a delimiter set</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="card-num">36</span><span class="card-body"><span class="card-title">Reading Strings with scanf() Using a Scanset in C</span><span class="card-desc">Scansets: <code>%[^aeiou]</code></span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="card-num">37</span><span class="card-body"><span class="card-title">Reading and Parsing Dates Using scanf() in C</span><span class="card-desc">Parsing <code>YYYY-MM-DD</code> with <code>%*c</code> assignment suppression</span></span><span class="card-arrow" aria-hidden="true">→</span></a></div></section><section class="part" id="part-7"><div class="part-head"><span class="part-badge">Part 7</span><h3>Structures and Enumerations</h3><span class="part-count">3 lessons · 38–40</span></div><p class="part-blurb">Grouping related data into your own types, and naming constants with enum.</p><div class="lesson-grid"><a class="lesson-card" href="lessons/38-structures-and-passing-structures-to-functions-in-c.html"><span class="card-num">38</span><span class="card-body"><span class="card-title">Structures and Passing Structures to Functions in C</span><span class="card-desc"><code>struct</code> + <code>typedef</code>, <code>-&gt;</code>, passing by value vs by pointer</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="card-num">39</span><span class="card-body"><span class="card-title">Complex Numbers and Mathematical Operations Using Structures in C</span><span class="card-desc">A <code>Complex</code> type with add, subtract, multiply, divide, conjugate, modulus</span></span><span class="card-arrow" aria-hidden="true">→</span></a><a class="lesson-card" href="lessons/40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="card-num">40</span><span class="card-body"><span class="card-title">C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span><span class="card-desc"><code>enum</code> with <code>typedef</code>, enums as array indexes</span></span><span class="card-arrow" aria-hidden="true">→</span></a></div></section>
+    </div>
+  </section>
+
+  <section class="section" id="build">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Getting started</p>
+        <h2>Build and run a lesson</h2>
+        <p class="section-lead">You only need a C compiler. The repository's examples are built with GCC.</p>
+      </div>
+      <div class="build-grid">
+        <div>
+          <h3 class="mini-title">Compile one lesson</h3>
+          <div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -Wall -g 5-EvenOdd_PositiveNegative_Zero/main.c -o evenodd
+./evenodd</code></pre></div>
+          <p class="note">
+            Lessons <strong>10, 12, 14, 16 and 39</strong> use <code>&lt;math.h&gt;</code> and need
+            <code>-lm</code> on Linux and macOS, for example
+            <code>gcc -Wall 14-Quadratic_Equation_Solver/main.c -o quad -lm</code>.
+          </p>
+        </div>
+        <div>
+          <h3 class="mini-title">Or use Visual Studio Code</h3>
+          <p class="prose-sm">
+            Open the repository in VS Code, open a <code>.c</code> file and press
+            <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>B</kbd> to run the provided
+            <strong>C/C++: gcc.exe build active file</strong> task. The binary is written next to the source.
+            If your compiler is not at <code>C:\mingw64\bin\gcc.exe</code>, update the
+            <code>command</code> field in <code>.vscode/tasks.json</code>.
+          </p>
+          <h3 class="mini-title">Example output</h3>
+          <div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World!</code></pre></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="quirks">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Honest notes</p>
+        <h2>Known quirks in the code</h2>
+        <p class="section-lead">These are part of the repository as it stands, kept so that earlier lessons stay exactly as they were written.</p>
+      </div>
+      <div class="quirks">
+        <div class="quirk"><h3>Lesson 5 has a real bug worth fixing.</h3><p>The sign branches print <code>"%d is Positive.\n"</code> without passing <code>a</code>, so the number is missing. Adding the argument is a good first exercise.</p></div><div class="quirk"><h3><code>25-…/mian.c</code></h3><p>The source file is misspelled (<code>mian</code> instead of <code>main</code>), and its binary is therefore <code>mian.exe</code>.</p></div><div class="quirk"><h3><code>4-SimppleAdder_Scanf</code></h3><p>"Simpple" is the original spelling — build commands must match it.</p></div><div class="quirk"><h3>A folder name with a space</h3><p><code>36-Reading_Strings_with_scanf_Using_Scanset _in_C_Language</code> contains a space, so quote paths in the shell.</p></div><div class="quirk"><h3><code>#include "stdio.h"</code></h3><p>Lessons 1–4 use quotes instead of angle brackets. It compiles, but <code>&lt;stdio.h&gt;</code> is the portable form.</p></div><div class="quirk"><h3>Lesson 13 is deliberately slow.</h3><p>Printing <code>F(0)</code>…<code>F(44)</code> with the recursive implementation performs billions of calls.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container cta-inner">
+      <div>
+        <h2>Ready for <code>printf("Hello World!\n");</code>?</h2>
+        <p>Lesson 01 takes about five minutes. The rest of the course is waiting after it.</p>
+      </div>
+      <a class="btn" href="lessons/01-hello-world-in-c.html">Open lesson 01</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="index.html">Home</a> · <a href="index.html#curriculum">All lessons</a></p></div></footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

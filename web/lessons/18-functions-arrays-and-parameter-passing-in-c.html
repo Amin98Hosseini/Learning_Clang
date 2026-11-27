@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Functions, Arrays, and Parameter Passing in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link active" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-4">Part 4 — Arrays, Data Analysis and Sorting</a><span>/</span><span aria-current="page">Lesson 18</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 18 of 40 · Part 4</p><h1>Functions, Arrays, and Parameter Passing in C</h1><p class="lesson-source">Folder <code>18-Functions_Arrays_and_Parameter_Passing</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-complete-source-code">2. Complete Source Code</a></li><li><a href="#3-understanding-function-prototypes">3. Understanding Function Prototypes</a></li><li><a href="#4-understanding-the-main-function">4. Understanding the Main Function</a></li><li><a href="#5-understanding-the-printarray-function">5. Understanding the PrintArray() Function</a></li><li><a href="#6-understanding-the-mean-function">6. Understanding the Mean() Function</a></li><li><a href="#7-understanding-the-makedouble-function">7. Understanding the MakeDouble() Function</a></li><li><a href="#8-understanding-makedouble2-and-pass-by-value">8. Understanding MakeDouble2() and Pass by Value</a></li><li><a href="#9-pass-by-value-vs-array-parameters">9. Pass by Value vs. Array Parameters</a></li><li><a href="#10-understanding-void-and-return-values">10. Understanding void and Return Values</a></li><li><a href="#11-complete-program-execution">11. Complete Program Execution</a></li><li><a href="#12-expected-output">12. Expected Output</a></li><li><a href="#13-function-summary">13. Function Summary</a></li><li><a href="#14-time-and-space-complexity">14. Time and Space Complexity</a></li><li><a href="#15-important-notes">15. Important Notes</a></li><li><a href="#16-suggested-exercises">16. Suggested Exercises</a></li><li><a href="#17-compile-and-run">17. Compile and Run</a></li><li><a href="#learning-objectives">Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>This program demonstrates how to define and use functions in the C programming language.</p>
+<p>It introduces several important C concepts:</p>
+<ul><li>Function declarations (prototypes)</li><li>Function definitions</li><li>Function calls</li><li>Function parameters and arguments</li><li>Returning values from functions</li><li>Passing arrays to functions</li><li>The <code>const</code> keyword</li><li>Modifying array elements inside a function</li><li>Pass by Value</li><li>Understanding the difference between arrays and ordinary variables when passed to functions</li></ul>
+<p>The program defines four functions:</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Purpose</th></tr></thead><tbody><tr><td><code>PrintArray()</code></td><td>Displays all elements of an array</td></tr><tr><td><code>Mean()</code></td><td>Calculates and returns the arithmetic mean</td></tr><tr><td><code>MakeDouble()</code></td><td>Multiplies every array element by two</td></tr><tr><td><code>MakeDouble2()</code></td><td>Multiplies a local copy of an integer by two</td></tr></tbody></table></div>
+<p>The main purpose of this example is to understand how functions interact with arrays and variables in C.</p>
+<h2 id="2-complete-source-code">2. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+void PrintArray(const int a[], int N);
+float Mean(const int a[], int N);
+void MakeDouble(int a[], int N);
+void MakeDouble2(int s);
+
+int main()
+{
+    int p[]={1,2,3,4,5,6,7,8,9,0};
+
+    int N=sizeof(p)/sizeof(p[0]);
+
+    PrintArray(p,N);
+
+    float m = Mean(p,N);
+    printf("Mean of Array Elements = %f\n\n",m);
+
+    printf("Calling MakeDouble function ...\n\n");
+    MakeDouble(p,N);
+
+    PrintArray(p,N);
+
+    int s = 10;
+    printf("Before MakeDouble2: s = %d\n",s);
+    MakeDouble2(s);
+    printf("After MakeDouble2: s = %d\n",s);
+
+    return 0;
+}
+
+void PrintArray(const int a[], int N)
+{
+    printf("List of array members:\n");
+
+    int i;
+    for(i=0; i&lt;N; i++)
+    {
+        printf("%d",a[i]);
+
+        if(i&lt;N-1)
+        {
+            printf(", ");
+        }
+    }
+
+    printf("\n\n");
+}
+
+float Mean(const int a[], int N)
+{
+    int sum = 0;
+    int i;
+
+    for(i=0; i&lt;N; i++)
+    {
+        sum += a[i];
+    }
+
+    return (float)sum/N;
+}
+
+void MakeDouble(int a[], int N)
+{
+    int i;
+
+    for(i=0; i&lt;N; i++)
+    {
+        a[i]*=2;
+    }
+}
+
+void MakeDouble2(int s)
+{
+    s*=2;
+}</code></pre></div>
+<h2 id="3-understanding-function-prototypes">3. Understanding Function Prototypes</h2>
+<p>At the beginning of the program, four function prototypes are declared:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N);
+float Mean(const int a[], int N);
+void MakeDouble(int a[], int N);
+void MakeDouble2(int s);</code></pre></div>
+<p>A function prototype informs the compiler about a function before its actual definition.</p>
+<p>It specifies:</p>
+<ol><li>The function's return type.</li><li>The function's name.</li><li>The number of parameters.</li><li>The data types of its parameters.</li></ol>
+<h3 id="understanding-the-return-types">Understanding the Return Types</h3>
+<div class="table-wrap"><table><thead><tr><th>Return Type</th><th>Meaning</th></tr></thead><tbody><tr><td><code>void</code></td><td>The function does not return a value</td></tr><tr><td><code>float</code></td><td>The function returns a floating-point value</td></tr><tr><td><code>int</code></td><td>The function returns an integer</td></tr></tbody></table></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float Mean(const int a[], int N);</code></pre></div>
+<p>This declaration means:</p>
+<ul><li>Function name: <code>Mean</code></li><li>Return type: <code>float</code></li><li>First parameter: an integer array</li><li>Second parameter: an integer representing the array size</li></ul>
+<p>The function returns the calculated mean as a floating-point number.</p>
+<h3 id="why-do-we-use-function-prototypes">Why Do We Use Function Prototypes?</h3>
+<p>The compiler must know a function's interface before it is called.</p>
+<p>In this program, the function prototypes appear before <code>main()</code>, while the actual function definitions appear after <code>main()</code>.</p>
+<p>This organization allows the program to call functions before their definitions appear in the source file.</p>
+<h2 id="4-understanding-the-main-function">4. Understanding the Main Function</h2>
+<h3 id="4-1-creating-an-array">4.1 Creating an Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int p[]={1,2,3,4,5,6,7,8,9,0};</code></pre></div>
+<p>This statement creates an integer array containing ten elements.</p>
+<p>The array is stored in memory as consecutive integer elements.</p>
+<div class="table-wrap"><table><thead><tr><th>Index</th><th>Value</th></tr></thead><tbody><tr><td>p[0]</td><td>1</td></tr><tr><td>p[1]</td><td>2</td></tr><tr><td>p[2]</td><td>3</td></tr><tr><td>p[3]</td><td>4</td></tr><tr><td>p[4]</td><td>5</td></tr><tr><td>p[5]</td><td>6</td></tr><tr><td>p[6]</td><td>7</td></tr><tr><td>p[7]</td><td>8</td></tr><tr><td>p[8]</td><td>9</td></tr><tr><td>p[9]</td><td>0</td></tr></tbody></table></div>
+<h3 id="4-2-calculating-the-array-size">4.2 Calculating the Array Size</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int N=sizeof(p)/sizeof(p[0]);</code></pre></div>
+<p>The <code>sizeof</code> operator returns the size of an object in bytes.</p>
+<ul><li><code>sizeof(p)</code> returns the total size of the array.</li><li><code>sizeof(p[0])</code> returns the size of one array element.</li></ul>
+<p>Assuming an <code>int</code> occupies 4 bytes:</p>
+<p>\[ N=\frac{40}{4}=10 \]</p>
+<p>Therefore, <code>N</code> contains the number of elements in the array.</p>
+<p>This technique works here because <code>p</code> is an actual array in the scope of <code>main()</code>.</p>
+<p><strong>Important:</strong> When an array is passed to a function, it is treated as a pointer parameter. Therefore, <code>sizeof(a)</code> inside a function does not give the original array's total size. This is why the program passes <code>N</code> separately.</p>
+<h3 id="4-3-calling-printarray">4.3 Calling PrintArray()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>PrintArray(p,N);</code></pre></div>
+<p>This statement calls the <code>PrintArray()</code> function.</p>
+<p>Two arguments are passed:</p>
+<ul><li><code>p</code>: the array.</li><li><code>N</code>: the number of elements.</li></ul>
+<p>The function displays all array elements.</p>
+<h3 id="4-4-calling-mean">4.4 Calling Mean()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float m = Mean(p,N);
+printf("Mean of Array Elements = %f\n\n",m);</code></pre></div>
+<p>The <code>Mean()</code> function receives the array and its size, calculates the average, and returns the result.</p>
+<p>The returned value is stored in the variable <code>m</code>.</p>
+<h2 id="5-understanding-the-printarray-function">5. Understanding the PrintArray() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N)
+{
+    printf("List of array members:\n");
+
+    int i;
+    for(i=0; i&lt;N; i++)
+    {
+        printf("%d",a[i]);
+
+        if(i&lt;N-1)
+        {
+            printf(", ");
+        }
+    }
+
+    printf("\n\n");
+}</code></pre></div>
+<p>This function displays the contents of an integer array.</p>
+<h3 id="function-parameters">Function Parameters</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const int a[], int N</code></pre></div>
+<ul><li><code>a[]</code>: the array whose elements must be displayed.</li><li><code>N</code>: the number of elements in the array.</li><li><code>const</code>: prevents this function from modifying the array elements through this parameter.</li></ul>
+<h3 id="understanding-const">Understanding const</h3>
+<p>The <code>const</code> keyword makes the elements read-only through the parameter <code>a</code>.</p>
+<p>For example, this is allowed:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%d",a[i]);</code></pre></div>
+<p>But this is not allowed:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[i] = 100;</code></pre></div>
+<p>The compiler will report an error because the array elements are treated as constant through this parameter.</p>
+<p>This is useful when a function only needs to read data.</p>
+<h3 id="understanding-the-for-loop">Understanding the for Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(i=0; i&lt;N; i++)</code></pre></div>
+<p>The loop starts from index zero and continues until it reaches the last array element.</p>
+<p>For an array with ten elements:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>i = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9</code></pre></div>
+<h3 id="understanding-the-if-statement">Understanding the if Statement</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(i&lt;N-1)
+{
+    printf(", ");
+}</code></pre></div>
+<p>This condition prints a comma after each element except the last one.</p>
+<p>Without this condition, the output would contain an unnecessary comma after the final element.</p>
+<h2 id="6-understanding-the-mean-function">6. Understanding the Mean() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float Mean(const int a[], int N)
+{
+    int sum = 0;
+    int i;
+
+    for(i=0; i&lt;N; i++)
+    {
+        sum += a[i];
+    }
+
+    return (float)sum/N;
+}</code></pre></div>
+<p>This function calculates the arithmetic mean of the array elements.</p>
+<h3 id="mathematical-background">Mathematical Background</h3>
+<p>The arithmetic mean is calculated using:</p>
+<p>\[ \text{Mean}=\frac{\sum_{i=0}^{N-1}a[i]}{N} \]</p>
+<p>Where:</p>
+<ul><li>\(a[i]\) represents an array element.</li><li>\(N\) represents the number of elements.</li><li>\(\sum a[i]\) represents the sum of all elements.</li></ul>
+<p>For this program:</p>
+<p>\[ 1+2+3+4+5+6+7+8+9+0=45 \]</p>
+<p>The number of elements is:</p>
+<p>\[ N=10 \]</p>
+<p>Therefore:</p>
+<p>\[ \text{Mean}=\frac{45}{10}=4.5 \]</p>
+<h3 id="understanding-the-sum-calculation">Understanding the Sum Calculation</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int sum = 0;</code></pre></div>
+<p>Creates an integer variable to store the sum.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(i=0; i&lt;N; i++)
+{
+    sum += a[i];
+}</code></pre></div>
+<p>Adds each array element to <code>sum</code>.</p>
+<p>The statement:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sum += a[i];</code></pre></div>
+<p>is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sum = sum + a[i];</code></pre></div>
+<h3 id="understanding-type-casting">Understanding Type Casting</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return (float)sum/N;</code></pre></div>
+<p>This is an important part of the program.</p>
+<p>The expression <code>(float)sum</code> converts the integer value of <code>sum</code> into a floating-point value before division.</p>
+<p>Without this conversion:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return sum/N;</code></pre></div>
+<p>both operands would be integers, so C would perform integer division.</p>
+<p>For example:</p>
+<p>\[ 45/10=4 \]</p>
+<p>With floating-point conversion:</p>
+<p>\[ 45.0/10=4.5 \]</p>
+<p>The result preserves the fractional part.</p>
+<h2 id="7-understanding-the-makedouble-function">7. Understanding the MakeDouble() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void MakeDouble(int a[], int N)
+{
+    int i;
+
+    for(i=0; i&lt;N; i++)
+    {
+        a[i]*=2;
+    }
+}</code></pre></div>
+<p>This function multiplies every element of the array by two.</p>
+<h3 id="function-parameters-2">Function Parameters</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a[], int N</code></pre></div>
+<p>Unlike <code>PrintArray()</code> and <code>Mean()</code>, the array parameter does not have <code>const</code>.</p>
+<p>This is intentional because the function must modify the original array elements.</p>
+<h3 id="understanding-the-multiplication">Understanding the Multiplication</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[i]*=2;</code></pre></div>
+<p>This statement is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a[i] = a[i] * 2;</code></pre></div>
+<p>Each array element is multiplied by two.</p>
+<h3 id="example">Example</h3>
+<p>Before calling <code>MakeDouble()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1, 2, 3, 4, 5, 6, 7, 8, 9, 0</code></pre></div>
+<p>After calling <code>MakeDouble()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2, 4, 6, 8, 10, 12, 14, 16, 18, 0</code></pre></div>
+<h3 id="why-does-the-original-array-change">Why Does the Original Array Change?</h3>
+<p>In C, when an array is passed to a function, the array parameter is adjusted to a pointer to its first element.</p>
+<p>The function receives access to the original array's elements.</p>
+<p>Therefore, modifying <code>a[i]</code> changes the corresponding element in <code>p</code>.</p>
+<p>The function does not receive an independent copy of the entire array.</p>
+<p><strong>Important:</strong> C technically passes all function arguments by value. In the case of an array parameter, the value being passed is a pointer to the original array's first element. The pointer itself is copied, but it still points to the original elements.</p>
+<h2 id="8-understanding-makedouble2-and-pass-by-value">8. Understanding MakeDouble2() and Pass by Value</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void MakeDouble2(int s)
+{
+    s*=2;
+}</code></pre></div>
+<p>This function receives an ordinary integer variable.</p>
+<p>Unlike the array example, the function receives a copy of the integer value.</p>
+<p>Consider the following statements in <code>main()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int s = 10;
+
+printf("Before MakeDouble2: s = %d\n",s);
+
+MakeDouble2(s);
+
+printf("After MakeDouble2: s = %d\n",s);</code></pre></div>
+<p>The function call:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>MakeDouble2(s);</code></pre></div>
+<p>passes the value <code>10</code> to the function.</p>
+<p>Inside the function, the local parameter <code>s</code> is multiplied by two:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s*=2;</code></pre></div>
+<p>The local copy becomes 20, but the original variable in <code>main()</code> remains unchanged.</p>
+<p>Therefore, the output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Before MakeDouble2: s = 10
+After MakeDouble2: s = 10</code></pre></div>
+<h3 id="why-does-the-value-not-change">Why Does the Value Not Change?</h3>
+<p>C uses <strong>Pass by Value</strong> for function arguments.</p>
+<p>This means that the function receives a copy of the argument's value.</p>
+<p>Changing the parameter inside the function does not modify the original variable.</p>
+<h3 id="how-can-we-modify-the-original-variable">How Can We Modify the Original Variable?</h3>
+<p>To modify an ordinary variable inside a function, we can pass its address using a pointer.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void MakeDouble2(int *s)
+{
+    *s *= 2;
+}</code></pre></div>
+<p>Call it like this:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int s = 10;
+
+MakeDouble2(&amp;s);
+
+printf("s = %d\n",s);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s = 20</code></pre></div>
+<p>Here:</p>
+<ul><li><code>&amp;s</code> obtains the address of the original variable.</li><li><code>int *s</code> declares a pointer parameter.</li><li><code>*s</code> accesses the value stored at that address.</li></ul>
+<p>This allows the function to modify the original variable.</p>
+<h2 id="9-pass-by-value-vs-array-parameters">9. Pass by Value vs. Array Parameters</h2>
+<p>This example demonstrates an important distinction.</p>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th>Ordinary Integer</th><th>Array Parameter</th></tr></thead><tbody><tr><td>Example</td><td><code>int s</code></td><td><code>int a[]</code></td></tr><tr><td>What is passed?</td><td>A copy of the integer value</td><td>A copy of a pointer to the first element</td></tr><tr><td>Can the function modify the original data?</td><td>Not through the copied integer parameter</td><td>Yes, through the pointer</td></tr><tr><td>Does the original change?</td><td>No</td><td>Yes, if elements are modified</td></tr><tr><td>How to modify original data?</td><td>Pass its address using a pointer</td><td>Modify the pointed-to elements</td></tr></tbody></table></div>
+<p>Remember: C does not have true pass-by-reference parameters. Array parameters are adjusted to pointer parameters, and the pointer is passed by value.</p>
+<h2 id="10-understanding-void-and-return-values">10. Understanding void and Return Values</h2>
+<p>The program uses two different return types.</p>
+<h3 id="functions-with-void">Functions with void</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N);
+void MakeDouble(int a[], int N);
+void MakeDouble2(int s);</code></pre></div>
+<p>These functions do not return a value.</p>
+<p>They perform operations such as displaying data or modifying array elements.</p>
+<h3 id="function-returning-float">Function Returning float</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float Mean(const int a[], int N);</code></pre></div>
+<p>This function returns a floating-point value.</p>
+<p>The <code>return</code> statement sends the calculated result back to the calling function.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return (float)sum/N;</code></pre></div>
+<h2 id="11-complete-program-execution">11. Complete Program Execution</h2>
+<p>The program executes the following steps:</p>
+<ol><li>Creates an integer array with ten elements.</li><li>Calculates the number of elements.</li><li>Calls <code>PrintArray()</code> to display the original array.</li><li>Calls <code>Mean()</code> to calculate the average.</li><li>Prints the average.</li><li>Calls <code>MakeDouble()</code> to multiply all array elements by two.</li><li>Calls <code>PrintArray()</code> again to display the modified array.</li><li>Creates an integer variable <code>s</code> with the value 10.</li><li>Calls <code>MakeDouble2()</code> with <code>s</code>.</li><li>Displays <code>s</code> again to demonstrate that its original value has not changed.</li></ol>
+<h2 id="12-expected-output">12. Expected Output</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>List of array members:
+1, 2, 3, 4, 5, 6, 7, 8, 9, 0
+
+Mean of Array Elements = 4.500000
+
+Calling MakeDouble function ...
+
+List of array members:
+2, 4, 6, 8, 10, 12, 14, 16, 18, 0
+
+Before MakeDouble2: s = 10
+After MakeDouble2: s = 10</code></pre></div>
+<h2 id="13-function-summary">13. Function Summary</h2>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Input</th><th>Return</th><th>Operation</th></tr></thead><tbody><tr><td><code>PrintArray()</code></td><td>Array, size</td><td><code>void</code></td><td>Displays array elements</td></tr><tr><td><code>Mean()</code></td><td>Array, size</td><td><code>float</code></td><td>Calculates the mean</td></tr><tr><td><code>MakeDouble()</code></td><td>Array, size</td><td><code>void</code></td><td>Doubles each array element</td></tr><tr><td><code>MakeDouble2()</code></td><td>Integer</td><td><code>void</code></td><td>Doubles a local copy of an integer</td></tr></tbody></table></div>
+<h2 id="14-time-and-space-complexity">14. Time and Space Complexity</h2>
+<p>Let \(N\) be the number of array elements.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Time Complexity</th><th>Auxiliary Space</th></tr></thead><tbody><tr><td><code>PrintArray()</code></td><td>O(N)</td><td>O(1)</td></tr><tr><td><code>Mean()</code></td><td>O(N)</td><td>O(1)</td></tr><tr><td><code>MakeDouble()</code></td><td>O(N)</td><td>O(1)</td></tr><tr><td><code>MakeDouble2()</code></td><td>O(1)</td><td>O(1)</td></tr></tbody></table></div>
+<p>The complete program has O(N) time complexity because it performs several linear operations over the array.</p>
+<p>The functions use only a fixed number of additional variables, so their auxiliary space complexity is O(1).</p>
+<h2 id="15-important-notes">15. Important Notes</h2>
+<ol><li>A function prototype must match the corresponding function definition.</li><li>The <code>void</code> return type means that the function does not return a value.</li><li>The <code>return</code> statement sends a result back to the calling function.</li><li>The <code>const</code> keyword prevents modification of array elements through that parameter.</li><li>An array parameter is adjusted to a pointer parameter in a function declaration or definition.</li><li>Modifying array elements through that pointer changes the original array.</li><li>Ordinary integer arguments are passed by value.</li><li>Changing a local parameter does not change the original integer variable.</li><li>Use pointers when a function needs to modify an ordinary variable in the caller.</li><li>Pass the array size separately because an array parameter does not retain the original array length.</li></ol>
+<h2 id="16-suggested-exercises">16. Suggested Exercises</h2>
+<h3 id="exercise-1-calculate-the-maximum">Exercise 1: Calculate the Maximum</h3>
+<p>Create a function named <code>Maximum()</code> that receives an integer array and returns its largest element.</p>
+<h3 id="exercise-2-calculate-the-minimum">Exercise 2: Calculate the Minimum</h3>
+<p>Create a function named <code>Minimum()</code> that returns the smallest element of an array.</p>
+<h3 id="exercise-3-calculate-the-sum">Exercise 3: Calculate the Sum</h3>
+<p>Create a function named <code>SumArray()</code> that calculates and returns the sum of all array elements.</p>
+<h3 id="exercise-4-reverse-an-array">Exercise 4: Reverse an Array</h3>
+<p>Create a function named <code>ReverseArray()</code> that reverses the order of array elements.</p>
+<h3 id="exercise-5-modify-an-integer-using-a-pointer">Exercise 5: Modify an Integer Using a Pointer</h3>
+<p>Rewrite <code>MakeDouble2()</code> using a pointer so that the original integer changes.</p>
+<h3 id="exercise-6-create-a-copy-of-an-array">Exercise 6: Create a Copy of an Array</h3>
+<p>Write a function that copies all elements from one array into another array.</p>
+<h3 id="exercise-7-find-an-element">Exercise 7: Find an Element</h3>
+<p>Create a function named <code>SearchArray()</code> that receives an array and a number, then returns the index of the number if it exists.</p>
+<h2 id="17-compile-and-run">17. Compile and Run</h2>
+<p>Using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o functions</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./functions</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>functions.exe</code></pre></div>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>After studying this program, you should understand:</p>
+<ul><li>How to declare, define, and call functions in C.</li><li>How function prototypes work.</li><li>How to pass arguments to functions.</li><li>How to return values from functions.</li><li>How to pass arrays to functions.</li><li>How to use <code>const</code> with array parameters.</li><li>How to modify original array elements inside a function.</li><li>Why ordinary integer variables do not change when passed by value.</li><li>How pointers allow functions to modify original variables.</li><li>The difference between array parameters and ordinary variable parameters.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="17-character-array-and-string-length-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">17 · Character Array and String Length in C</span></a><a class="pager-link next" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">19 · Bubble Sort Algorithm Using Functions in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

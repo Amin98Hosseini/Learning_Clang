@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat) · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link active" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 32</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 32 of 40 · Part 6</p><h1>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</h1><p class="lesson-source">Folder <code>32-String-Copy_and_Concatenation_strcpy_strncpy_and_strcat_in_C_Language</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-complete-source-code">3. Complete Source Code</a></li><li><a href="#4-understanding-the-code">4. Understanding the Code</a></li><li><a href="#5-program-output">5. Program Output</a></li><li><a href="#6-comparison-of-string-functions">6. Comparison of String Functions</a></li><li><a href="#7-important-safety-considerations">7. Important Safety Considerations</a></li><li><a href="#8-common-mistakes">8. Common Mistakes</a></li><li><a href="#9-compilation-and-execution">9. Compilation and Execution</a></li><li><a href="#10-practice-exercises">10. Practice Exercises</a></li><li><a href="#11-learning-objectives">11. Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, strings are character arrays terminated by a special character called the <strong>null terminator (<code>'\0'</code>)</strong>.</p>
+<p>The <code>&lt;string.h&gt;</code> library provides several useful functions for manipulating strings. In this lesson, we will learn three important functions:</p>
+<ul><li><code>strcpy()</code> – Copies one string into another.</li><li><code>strncpy()</code> – Copies a specified number of characters from one string to another.</li><li><code>strcat()</code> – Appends one string to the end of another string.</li></ul>
+<p>These functions are commonly used when working with character arrays and text data in C.</p>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Header</th><th>Purpose</th></tr></thead><tbody><tr><td><code>stdio.h</code></td><td>Provides input/output functions such as <code>printf()</code>.</td></tr><tr><td><code>stdlib.h</code></td><td>Provides general-purpose functions. It is not required by this particular program.</td></tr><tr><td><code>string.h</code></td><td>Provides string manipulation functions such as <code>strcpy()</code>, <code>strncpy()</code>, and <code>strcat()</code>.</td></tr></tbody></table></div>
+<p>For this example, <code>stdio.h</code> and <code>string.h</code> are sufficient.</p>
+<h2 id="3-complete-source-code">3. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char s1[] = "Hello World!";
+    char s2[40];
+    char s3[40];
+
+    printf("Using strcpy:\n");
+
+    strcpy(s2, s1);
+
+    printf("s1 = %s\n", s1);
+    printf("s2 = %s\n", s2);
+    printf("\n");
+
+    printf("Using strncpy:\n");
+
+    strncpy(s3, s1, 5);
+    s3[5] = '\0';
+
+    printf("s1 = %s\n", s1);
+    printf("s3 = %s\n", s3);
+    printf("\n");
+
+    char s4[] = "World!";
+    char s5[50];
+
+    strcpy(s5, "Hello ");
+    s5[6] = '\0';
+
+    printf("Before strcat:\n");
+
+    printf("s4 = %s\n", s4);
+    printf("s5 = %s\n", s5);
+
+    strcat(s5, s4);
+
+    printf("After strcat:\n");
+
+    printf("s4 = %s\n", s4);
+    printf("s5 = %s\n", s5);
+
+    return 0;
+}</code></pre></div>
+<h2 id="4-understanding-the-code">4. Understanding the Code</h2>
+<h3 id="4-1-declaring-string-variables">4.1. Declaring String Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s1[] = "Hello World!";
+char s2[40];
+char s3[40];</code></pre></div>
+<p>Here, three character arrays are declared.</p>
+<ul><li><code>s1</code> contains the string <code>"Hello World!"</code>.</li><li><code>s2</code> is an empty character array with a capacity of 40 characters.</li><li><code>s3</code> is another character array with a capacity of 40 characters.</li></ul>
+<p>When a string is initialized using double quotation marks, C automatically adds a null terminator (<code>'\0'</code>) at the end.</p>
+<p>For example, the string <code>"Hello"</code> is stored as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>H  e  l  l  o  \0</code></pre></div>
+<p>The null terminator tells C where the string ends.</p>
+<h3 id="4-2-using-strcpy">4.2. Using <code>strcpy()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcpy(s2, s1);</code></pre></div>
+<p>The <code>strcpy()</code> function copies the complete source string into the destination array.</p>
+<p><strong>Syntax:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcpy(destination, source);</code></pre></div>
+<p>In this example:</p>
+<ul><li>Destination: <code>s2</code></li><li>Source: <code>s1</code></li></ul>
+<p>After executing the function, <code>s2</code> contains a copy of <code>s1</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s1 = Hello World!
+s2 = Hello World!</code></pre></div>
+<p>Important: <code>strcpy()</code> also copies the null terminator.</p>
+<p>The destination array must have enough space for all characters and the terminating <code>'\0'</code>.</p>
+<p>For <code>"Hello World!"</code>, 13 bytes are required:</p>
+<ul><li>12 characters</li><li>1 null terminator</li></ul>
+<p>Since <code>s2</code> has 40 bytes, the copy is safe.</p>
+<h3 id="4-3-using-strncpy">4.3. Using <code>strncpy()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strncpy(s3, s1, 5);
+s3[5] = '\0';</code></pre></div>
+<p>The <code>strncpy()</code> function copies up to a specified number of characters from the source string.</p>
+<p><strong>Syntax:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strncpy(destination, source, number_of_characters);</code></pre></div>
+<p>In this example:</p>
+<ul><li>Destination: <code>s3</code></li><li>Source: <code>s1</code></li><li>Number of characters: <code>5</code></li></ul>
+<p>Therefore, the first five characters of <code>s1</code> are copied into <code>s3</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s1 = Hello World!
+s3 = Hello</code></pre></div>
+<p><strong>Important difference between <code>strcpy()</code> and <code>strncpy()</code>:</strong></p>
+<p>Unlike <code>strcpy()</code>, <code>strncpy()</code> does not always append a null terminator.</p>
+<p>When the source string contains at least as many characters as the specified copy limit, the destination may not be null-terminated.</p>
+<p>That is why this line is necessary:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s3[5] = '\0';</code></pre></div>
+<p>It explicitly adds the null terminator after the five copied characters.</p>
+<p>Without this line, printing <code>s3</code> using <code>%s</code> could read beyond the valid string and cause undefined behavior.</p>
+<h3 id="4-4-understanding-string-concatenation">4.4. Understanding String Concatenation</h3>
+<p>Before learning <code>strcat()</code>, we declare two more strings:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s4[] = "World!";
+char s5[50];</code></pre></div>
+<ul><li><code>s4</code> contains <code>"World!"</code>.</li><li><code>s5</code> is an empty character array with a capacity of 50 bytes.</li></ul>
+<p>Next:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcpy(s5, "Hello ");</code></pre></div>
+<p>This copies <code>"Hello "</code> into <code>s5</code>.</p>
+<p>The content of <code>s5</code> is now:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello \0</code></pre></div>
+<p>Then:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s5[6] = '\0';</code></pre></div>
+<p>This line explicitly places a null terminator at index 6.</p>
+<p>However, this assignment is redundant in this specific program because <code>strcpy()</code> has already placed a null terminator at that position.</p>
+<p>The character indexes are:</p>
+<div class="table-wrap"><table><thead><tr><th>Index</th><th>Character</th></tr></thead><tbody><tr><td>0</td><td>H</td></tr><tr><td>1</td><td>e</td></tr><tr><td>2</td><td>l</td></tr><tr><td>3</td><td>l</td></tr><tr><td>4</td><td>o</td></tr><tr><td>5</td><td>Space</td></tr><tr><td>6</td><td><code>'\0'</code></td></tr></tbody></table></div>
+<h3 id="4-5-using-strcat">4.5. Using <code>strcat()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcat(s5, s4);</code></pre></div>
+<p>The <code>strcat()</code> function appends the source string to the end of the destination string.</p>
+<p><strong>Syntax:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcat(destination, source);</code></pre></div>
+<p>In this example:</p>
+<ul><li>Destination: <code>s5</code>, containing <code>"Hello "</code></li><li>Source: <code>s4</code>, containing <code>"World!"</code></li></ul>
+<p>After concatenation, <code>s5</code> contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World!</code></pre></div>
+<p>The resulting memory layout is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>H  e  l  l  o     W  o  r  l  d  !  \0</code></pre></div>
+<p>Notice that the original space at the end of <code>"Hello "</code> is preserved.</p>
+<p>The original <code>s4</code> string remains unchanged because <code>strcat()</code> appends its contents to the destination rather than modifying the source.</p>
+<p><strong>Important:</strong> The destination array must have enough available space for both strings and the final null terminator.</p>
+<p>In this example, <code>s5</code> has 50 bytes, which is more than enough.</p>
+<h2 id="5-program-output">5. Program Output</h2>
+<p>When you run the program, the output will be:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Using strcpy:
+s1 = Hello World!
+s2 = Hello World!
+
+Using strncpy:
+s1 = Hello World!
+s3 = Hello
+
+Before strcat:
+s4 = World!
+s5 = Hello
+After strcat:
+s4 = World!
+s5 = Hello World!</code></pre></div>
+<h2 id="6-comparison-of-string-functions">6. Comparison of String Functions</h2>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Purpose</th><th>Copies null terminator?</th></tr></thead><tbody><tr><td><code>strcpy()</code></td><td>Copies the complete source string.</td><td>Yes</td></tr><tr><td><code>strncpy()</code></td><td>Copies up to a specified number of characters.</td><td>Not always</td></tr><tr><td><code>strcat()</code></td><td>Appends one string to another.</td><td>Writes a new terminator at the end</td></tr></tbody></table></div>
+<h3 id="important-differences">Important Differences</h3>
+<p><strong><code>strcpy()</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcpy(destination, source);</code></pre></div>
+<p>Copies the entire string, including its null terminator.</p>
+<p><strong><code>strncpy()</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strncpy(destination, source, n);</code></pre></div>
+<p>Copies at most <code>n</code> characters. It may not null-terminate the destination if the source has <code>n</code> or more characters.</p>
+<p><strong><code>strcat()</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcat(destination, source);</code></pre></div>
+<p>Finds the end of the destination string and appends the source string there.</p>
+<h2 id="7-important-safety-considerations">7. Important Safety Considerations</h2>
+<p>The standard functions <code>strcpy()</code>, <code>strncpy()</code>, and <code>strcat()</code> do not know the actual capacity of the destination array.</p>
+<p>You must ensure that enough memory is available before calling them.</p>
+<h3 id="7-1-safer-alternative-to-strcpy">7.1. Safer Alternative to <code>strcpy()</code></h3>
+<p>For bounded copying, you can use <code>snprintf()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char destination[20];
+const char source[] = "Hello World!";
+
+snprintf(destination, sizeof(destination), "%s", source);
+
+printf("%s\n", destination);</code></pre></div>
+<p><code>snprintf()</code> limits the number of bytes written, including the null terminator.</p>
+<h3 id="7-2-safer-alternative-to-strcat">7.2. Safer Alternative to <code>strcat()</code></h3>
+<p>You can also use <code>snprintf()</code> to concatenate strings:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char destination[30] = "Hello ";
+const char source[] = "World!";
+
+size_t used = strlen(destination);
+
+snprintf(destination + used,
+         sizeof(destination) - used,
+         "%s",
+         source);
+
+printf("%s\n", destination);</code></pre></div>
+<p>This example calculates the current string length and uses only the remaining buffer space.</p>
+<p>For production code, also check the return value of <code>snprintf()</code> to determine whether the output was truncated.</p>
+<h2 id="8-common-mistakes">8. Common Mistakes</h2>
+<ol><li><strong>Destination array is too small</strong></li></ol>
+<p>Calling <code>strcpy()</code> or <code>strcat()</code> without enough destination space causes undefined behavior.</p>
+<ol><li><strong>Forgetting the null terminator</strong></li></ol>
+<p><code>strncpy()</code> may not add <code>'\0'</code> when the source is at least as long as the requested copy length.</p>
+<ol><li><strong>Using an uninitialized destination string with <code>strcat()</code></strong></li></ol>
+<p><code>strcat()</code> requires the destination to already contain a valid null-terminated string.</p>
+<p>Incorrect:</p>
+<p>``<code>c char s[30]; strcat(s, "Hello"); </code>``</p>
+<p>Correct:</p>
+<p>``<code>c char s[30] = ""; strcat(s, "Hello"); </code>``</p>
+<ol><li><strong>Confusing copying and concatenation</strong></li></ol>
+<ul><li><code>strcpy()</code> replaces the destination contents.</li><li><code>strcat()</code> adds characters to the end of the existing destination string.</li></ul>
+<ol><li><strong>Ignoring buffer capacity</strong></li></ol>
+<p>Always calculate the required space, including the null terminator.</p>
+<h2 id="9-compilation-and-execution">9. Compilation and Execution</h2>
+<p>If you are using GCC, save the source file as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o string_operations</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./string_operations</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\string_operations.exe</code></pre></div>
+<p>You can also use Visual Studio Code, Code::Blocks, or another C development environment.</p>
+<h2 id="10-practice-exercises">10. Practice Exercises</h2>
+<p>Try completing these exercises to improve your understanding.</p>
+<p><strong>Exercise 1 – Copy a String</strong></p>
+<p>Create two character arrays and use <code>strcpy()</code> to copy the first string into the second.</p>
+<p><strong>Exercise 2 – Copy a Limited Number of Characters</strong></p>
+<p>Ask the user to enter a string and copy only its first five characters using <code>strncpy()</code>.</p>
+<p>Make sure the destination is null-terminated.</p>
+<p><strong>Exercise 3 – Concatenate Two Strings</strong></p>
+<p>Create two strings:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char first[50] = "Embedded ";
+char second[] = "Systems";</code></pre></div>
+<p>Use <code>strcat()</code> to produce:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Embedded Systems</code></pre></div>
+<p><strong>Exercise 4 – Combine Three Strings</strong></p>
+<p>Create three strings:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s1[] = "STM32";
+char s2[] = " ";
+char s3[] = "Programming";</code></pre></div>
+<p>Use <code>strcpy()</code> and <code>strcat()</code> to generate:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>STM32 Programming</code></pre></div>
+<p><strong>Exercise 5 – Build a Safe Concatenation Program</strong></p>
+<p>Write a program that:</p>
+<ol><li>Reads two strings from the user.</li><li>Stores them in separate character arrays.</li><li>Combines them into a third array.</li><li>Checks that the resulting string fits in the destination buffer.</li><li>Prints the final result.</li></ol>
+<h2 id="11-learning-objectives">11. Learning Objectives</h2>
+<p>After completing this lesson, you should understand:</p>
+<ul><li>How strings are stored in character arrays.</li><li>Why the null terminator is necessary.</li><li>How to copy strings using <code>strcpy()</code>.</li><li>How to copy a limited number of characters using <code>strncpy()</code>.</li><li>Why <code>strncpy()</code> does not always terminate a string.</li><li>How to concatenate strings using <code>strcat()</code>.</li><li>How to calculate string length using <code>strlen()</code>.</li><li>Why destination buffer capacity is important.</li><li>How to use <code>snprintf()</code> for safer string formatting and concatenation.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">31 · Displaying Error Messages Using strerror() in C</span></a><a class="pager-link next" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="pager-dir">Next →</span><span class="pager-name">33 · C Programming – Comparing Strings Using strcmp()</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

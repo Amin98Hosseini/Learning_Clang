@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Characters, Strings, ASCII Codes, and Character Classification in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link active" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 25</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 25 of 40 · Part 6</p><h1>Characters, Strings, ASCII Codes, and Character Classification in C</h1><p class="lesson-source">Folder <code>25-Characters_Strings_ASCII_Codes_and_Character_Classification_in_C</code> · source <code>mian.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-what-is-a-character-in-c">2. What Is a Character in C?</a></li><li><a href="#3-what-is-a-string-in-c">3. What Is a String in C?</a></li><li><a href="#4-ascii-character-codes">4. ASCII Character Codes</a></li><li><a href="#5-understanding-the-program">5. Understanding the Program</a></li><li><a href="#6-reading-characters-using-getchar">6. Reading Characters Using getchar()</a></li><li><a href="#7-understanding-newline-characters">7. Understanding Newline Characters</a></li><li><a href="#8-displaying-the-character-and-its-code">8. Displaying the Character and Its Code</a></li><li><a href="#9-character-classification-using-ctype-h">9. Character Classification Using ctype.h</a></li><li><a href="#10-understanding-the-ternary-operator">10. Understanding the Ternary Operator</a></li><li><a href="#11-corrected-complete-program">11. Corrected Complete Program</a></li><li><a href="#12-understanding-the-original-commented-code">12. Understanding the Original Commented Code</a></li><li><a href="#13-example-input-and-output">13. Example Input and Output</a></li><li><a href="#14-important-character-classification-functions">14. Important Character Classification Functions</a></li><li><a href="#15-ascii-ranges">15. ASCII Ranges</a></li><li><a href="#16-strings-and-character-classification">16. Strings and Character Classification</a></li><li><a href="#17-useful-string-functions">17. Useful String Functions</a></li><li><a href="#18-compile-and-run">18. Compile and Run</a></li><li><a href="#19-exercises">19. Exercises</a></li><li><a href="#20-learning-objectives">20. Learning Objectives</a></li><li><a href="#21-next-step">21. Next Step</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In this project, we begin learning about <strong>characters and strings in the C programming language</strong>.</p>
+<p>Characters and strings are fundamental concepts in C. They are used in almost every application, including:</p>
+<ul><li>Reading user input.</li><li>Processing text.</li><li>Handling commands.</li><li>Working with communication protocols.</li><li>Validating input.</li><li>Processing files.</li><li>Developing embedded systems.</li></ul>
+<p>This project introduces the following concepts:</p>
+<ol><li>Difference between a character and a string.</li><li>Character variables using <code>char</code>.</li><li>How C stores strings.</li><li>ASCII character codes.</li><li>Reading characters using <code>getchar()</code>.</li><li>Detecting the end of input using <code>EOF</code>.</li><li>Character classification using <code>&lt;ctype.h&gt;</code>.</li><li>Digits, letters, uppercase and lowercase characters.</li><li>Punctuation and whitespace characters.</li><li>Conditional expressions using the ternary operator.</li></ol>
+<p>The program reads characters from standard input, displays their character codes, and determines what type of character each input represents.</p>
+<h2 id="2-what-is-a-character-in-c">2. What Is a Character in C?</h2>
+<p>A character is a single symbol, such as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>A
+b
+7
+?
+@
++</code></pre></div>
+<p>In C, a character variable is declared using the <code>char</code> data type.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char ch = 'A';</code></pre></div>
+<p>Here:</p>
+<ul><li><code>char</code> is the data type.</li><li><code>ch</code> is the variable name.</li><li><code>'A'</code> is the character value.</li></ul>
+<p>A character constant uses single quotation marks.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char letter = 'A';
+char digit = '5';
+char symbol = '#';</code></pre></div>
+<p><strong>Important:</strong> Single quotation marks are used for individual character constants, not for string literals.</p>
+<h2 id="3-what-is-a-string-in-c">3. What Is a String in C?</h2>
+<p>A string is a sequence of characters terminated by a special character called the <strong>null character</strong> (<code>'\0'</code>).</p>
+<p>Unlike some programming languages, C does not have a separate built-in <code>string</code> data type.</p>
+<p>Strings are usually represented using arrays of <code>char</code>.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char name[] = "Amin";</code></pre></div>
+<p>The compiler stores this string as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Index:      0    1    2    3    4
+Value:     'A'  'm'  'i'  'n' '\0'</code></pre></div>
+<p>The string contains four visible characters, but the array requires five elements because it must also store the null terminator.</p>
+<p>Another example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char text[] = "Hello";</code></pre></div>
+<p>Memory representation:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>'H'  'e'  'l'  'l'  'o'  '\0'</code></pre></div>
+<h3 id="3-1-character-vs-string">3.1. Character vs. String</h3>
+<p>Compare these declarations:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char ch = 'A';
+
+char text[] = "A";</code></pre></div>
+<p>The first variable stores one character.</p>
+<p>The second variable stores a string containing one visible character and a null terminator.</p>
+<div class="table-wrap"><table><thead><tr><th>Character</th><th>String</th></tr></thead><tbody><tr><td><code>char ch = 'A';</code></td><td><code>char text[] = "A";</code></td></tr><tr><td>One character</td><td>A sequence of characters</td></tr><tr><td>Uses single quotes</td><td>Uses double quotes</td></tr><tr><td>Does not require a null terminator</td><td>Requires a null terminator when represented as a C string</td></tr></tbody></table></div>
+<h3 id="3-2-accessing-string-characters">3.2. Accessing String Characters</h3>
+<p>You can access individual characters using array indexing.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char name[] = "Amin";
+
+printf("%c\n", name[0]);
+printf("%c\n", name[1]);
+printf("%c\n", name[2]);
+printf("%c\n", name[3]);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>A
+m
+i
+n</code></pre></div>
+<p>The null terminator is stored at:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>name[4]</code></pre></div>
+<p>You can check it using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (name[4] == '\0')
+{
+    printf("End of string\n");
+}</code></pre></div>
+<h2 id="4-ascii-character-codes">4. ASCII Character Codes</h2>
+<p>Computers store character data as numeric values.</p>
+<p>In ASCII, each supported character has a corresponding numeric code.</p>
+<p>For example:</p>
+<div class="table-wrap"><table><thead><tr><th>Character</th><th>Decimal ASCII code</th></tr></thead><tbody><tr><td><code>A</code></td><td>65</td></tr><tr><td><code>B</code></td><td>66</td></tr><tr><td><code>C</code></td><td>67</td></tr><tr><td><code>a</code></td><td>97</td></tr><tr><td><code>b</code></td><td>98</td></tr><tr><td><code>c</code></td><td>99</td></tr><tr><td><code>0</code></td><td>48</td></tr><tr><td><code>1</code></td><td>49</td></tr><tr><td><code>2</code></td><td>50</td></tr><tr><td><code> </code> (space)</td><td>32</td></tr><tr><td><code>!</code></td><td>33</td></tr><tr><td><code>?</code></td><td>63</td></tr></tbody></table></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char ch = 'A';
+
+printf("%c\n", ch);
+printf("%d\n", ch);</code></pre></div>
+<p>Output on an ASCII-compatible system:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>A
+65</code></pre></div>
+<p>The <code>%c</code> format specifier displays a character.</p>
+<p>The <code>%d</code> format specifier displays its integer value.</p>
+<p><strong>Important:</strong> The C language does not require every implementation to use ASCII internally. The numeric values above describe ASCII and are correct on common ASCII-compatible systems. C guarantees that the basic decimal digits are consecutive and that the letters in each alphabetic range are consecutive, but code should not assume every character encoding is ASCII.</p>
+<h2 id="5-understanding-the-program">5. Understanding the Program</h2>
+<h3 id="5-1-header-files">5.1. Header Files</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;</code></pre></div>
+<p>The program uses two standard C libraries.</p>
+<p><strong>stdio.h</strong></p>
+<p>Provides input and output functions, including:</p>
+<ul><li><code>printf()</code></li><li><code>getchar()</code></li></ul>
+<p><strong>ctype.h</strong></p>
+<p>Provides functions for classifying and converting characters.</p>
+<p>Examples:</p>
+<ul><li><code>isdigit()</code></li><li><code>isalpha()</code></li><li><code>islower()</code></li><li><code>isupper()</code></li><li><code>ispunct()</code></li><li><code>isspace()</code></li></ul>
+<h3 id="5-2-the-main-function">5.2. The Main Function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int main()
+{
+    char ch;</code></pre></div>
+<p>The original program declares <code>ch</code> as a <code>char</code>.</p>
+<p>However, this should be changed to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int ch;</code></pre></div>
+<p>Why?</p>
+<p>Because <code>getchar()</code> returns an <code>int</code>, not a <code>char</code>.</p>
+<p>It must be able to return:</p>
+<ul><li>A character value.</li><li>The special value <code>EOF</code>, which indicates that no more input is available or that an input error occurred.</li></ul>
+<p>A <code>char</code> variable might not be able to represent <code>EOF</code> correctly.</p>
+<p>Therefore, the correct declaration is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int ch;</code></pre></div>
+<h2 id="6-reading-characters-using-getchar">6. Reading Characters Using getchar()</h2>
+<p>The original program uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while ((ch = getchar()) != EOF)</code></pre></div>
+<p>The <code>getchar()</code> function reads one character from standard input.</p>
+<p>For example, if the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello</code></pre></div>
+<p>The program receives the characters one at a time:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>H
+e
+l
+l
+o</code></pre></div>
+<p>After the user presses Enter, the input stream also contains a newline character, unless the environment handles the input differently.</p>
+<p>The loop continues until <code>getchar()</code> returns <code>EOF</code>.</p>
+<h3 id="6-1-what-is-eof">6.1. What Is EOF?</h3>
+<p><code>EOF</code> means End Of File.</p>
+<p>It is a special value defined in <code>&lt;stdio.h&gt;</code>.</p>
+<p>It indicates that no more input is available or that an input error occurred.</p>
+<p>On common systems, you can send EOF from the keyboard using:</p>
+<p><strong>Linux/macOS:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Ctrl + D</code></pre></div>
+<p><strong>Windows terminal:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Ctrl + Z</code></pre></div>
+<p>Usually, press Enter after the Windows key combination.</p>
+<p>The exact behavior can depend on the terminal and input environment.</p>
+<h3 id="6-2-why-use-a-while-loop">6.2. Why Use a While Loop?</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while ((ch = getchar()) != EOF)</code></pre></div>
+<p>This loop performs two operations:</p>
+<ol><li>Reads one character using <code>getchar()</code>.</li><li>Checks whether the returned value is different from <code>EOF</code>.</li></ol>
+<p>If it is not <code>EOF</code>, the program processes the character.</p>
+<p>This makes it possible to read an entire input stream one character at a time.</p>
+<h2 id="7-understanding-newline-characters">7. Understanding Newline Characters</h2>
+<p>Your original program contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (ch == 10) continue;</code></pre></div>
+<p>The value <code>10</code> is the ASCII code for the line feed character (<code>LF</code>), which is represented in C by:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>'\n'</code></pre></div>
+<p>A clearer and more portable expression is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (ch == '\n')
+{
+    continue;
+}</code></pre></div>
+<p>The <code>continue</code> statement skips the remaining statements in the current loop iteration and starts the next iteration.</p>
+<p>This means the program does not display information about newline characters.</p>
+<p>For example, when the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ABC</code></pre></div>
+<p>The program processes <code>A</code>, <code>B</code>, and <code>C</code>, but skips the newline generated when Enter is pressed.</p>
+<h2 id="8-displaying-the-character-and-its-code">8. Displaying the Character and Its Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("ASCII code of %c is %d.\n", ch, ch);</code></pre></div>
+<p>This statement displays the character and its numeric value.</p>
+<p>The format specifiers are:</p>
+<div class="table-wrap"><table><thead><tr><th>Format</th><th>Meaning</th></tr></thead><tbody><tr><td><code>%c</code></td><td>Display a character</td></tr><tr><td><code>%d</code></td><td>Display an integer</td></tr></tbody></table></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ASCII code of A is 65.</code></pre></div>
+<p>The original message says ASCII code. This is accurate on ASCII-compatible systems. More generally, the program displays the character's numeric value in the implementation's character encoding.</p>
+<h2 id="9-character-classification-using-ctype-h">9. Character Classification Using ctype.h</h2>
+<p>The <code>&lt;ctype.h&gt;</code> library provides functions for checking character categories.</p>
+<p>These functions return zero if the character does not belong to the requested category, and a nonzero value if it does.</p>
+<p>The program uses five classification functions.</p>
+<h3 id="9-1-isdigit">9.1. isdigit()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isdigit(ch)</code></pre></div>
+<p>This function checks whether a character is a decimal digit.</p>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isdigit('5');  // Nonzero
+isdigit('9');  // Nonzero
+isdigit('A');  // Zero
+isdigit('?');  // Zero</code></pre></div>
+<p>The basic decimal digits are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>0 1 2 3 4 5 6 7 8 9</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (isdigit(ch))
+{
+    printf("%c is a digit.\n", ch);
+}
+else
+{
+    printf("%c is not a digit.\n", ch);
+}</code></pre></div>
+<h3 id="9-2-isalpha">9.2. isalpha()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isalpha(ch)</code></pre></div>
+<p>This function checks whether a character is an alphabetic letter in the current C locale.</p>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isalpha('A');  // Nonzero
+isalpha('z');  // Nonzero
+isalpha('5');  // Zero
+isalpha('#');  // Zero</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (isalpha(ch))
+{
+    printf("%c is a letter.\n", ch);
+}</code></pre></div>
+<h3 id="9-3-islower">9.3. islower()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>islower(ch)</code></pre></div>
+<p>This function checks whether a character is a lowercase letter.</p>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>islower('a');  // Nonzero
+islower('z');  // Nonzero
+islower('A');  // Zero
+islower('7');  // Zero</code></pre></div>
+<h3 id="9-4-isupper">9.4. isupper()</h3>
+<p>Although your program uses <code>islower()</code>, the <code>&lt;ctype.h&gt;</code> library also provides:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isupper(ch)</code></pre></div>
+<p>It checks whether a character is an uppercase letter.</p>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isupper('A');  // Nonzero
+isupper('Z');  // Nonzero
+isupper('a');  // Zero</code></pre></div>
+<p>The program uses this logic:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (isalpha(ch))
+{
+    if (islower(ch))
+    {
+        printf("%c is lowercase.\n", ch);
+    }
+    else
+    {
+        printf("%c is uppercase.\n", ch);
+    }
+}</code></pre></div>
+<p>The <code>isalpha()</code> condition is important. Without it, a digit or punctuation character would incorrectly be described as uppercase merely because <code>islower()</code> returned zero.</p>
+<h3 id="9-5-ispunct">9.5. ispunct()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ispunct(ch)</code></pre></div>
+<p>This function checks whether a character is a punctuation character in the current locale.</p>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ispunct('!');  // Nonzero
+ispunct('?');  // Nonzero
+ispunct(',');  // Nonzero
+ispunct('.');  // Nonzero
+ispunct('A');  // Zero</code></pre></div>
+<p>Examples of punctuation:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>! ? . , ; : ' " ( ) [ ] { } -</code></pre></div>
+<p>The exact classification depends on the active locale.</p>
+<h3 id="9-6-isspace">9.6. isspace()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isspace(ch)</code></pre></div>
+<p>This function checks whether a character is a whitespace character.</p>
+<p>Whitespace characters include:</p>
+<ul><li>Space (<code>' '</code>)</li><li>Horizontal tab (<code>'\t'</code>)</li><li>Newline (<code>'\n'</code>)</li><li>Vertical tab (<code>'\v'</code>)</li><li>Form feed (<code>'\f'</code>)</li><li>Carriage return (<code>'\r'</code>)</li></ul>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isspace(' ');   // Nonzero
+isspace('\t');  // Nonzero
+isspace('\n');  // Nonzero
+isspace('A');   // Zero</code></pre></div>
+<p>Your program skips <code>'\n'</code> before performing the classification. Therefore, it will not display the whitespace result for newline characters.</p>
+<p>However, it can still classify spaces and tabs entered by the user.</p>
+<h2 id="10-understanding-the-ternary-operator">10. Understanding the Ternary Operator</h2>
+<p>Your program uses this expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf(
+    isdigit(ch) ? "%c is a digit.\n" : "%c is not a digit.\n",
+    ch
+);</code></pre></div>
+<p>This is an example of the <strong>conditional operator</strong>, also called the ternary operator.</p>
+<p>Its general structure is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>condition ? expression_if_true : expression_if_false;</code></pre></div>
+<p>It works as follows:</p>
+<ul><li>If the condition is true, the first expression is selected.</li><li>If the condition is false, the second expression is selected.</li></ul>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int x = 10;
+
+printf("%s", x &gt; 5 ? "Greater than 5\n" : "Not greater than 5\n");</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Greater than 5</code></pre></div>
+<p>In your program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isdigit(ch) ? "%c is a digit.\n" : "%c is not a digit.\n"</code></pre></div>
+<p>Selects the appropriate format string.</p>
+<p>The same approach is used for:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf(
+    isalpha(ch) ? "%c is a letter.\n" : "%c is not a letter.\n",
+    ch
+);</code></pre></div>
+<p>And:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf(
+    ispunct(ch) ? "%c is a punctuation.\n" : "%c is not a punctuation.\n",
+    ch
+);</code></pre></div>
+<p>The ternary operator can make short conditional expressions more compact.</p>
+<p>For longer operations, a normal <code>if/else</code> statement is usually easier to read.</p>
+<h2 id="11-corrected-complete-program">11. Corrected Complete Program</h2>
+<p>The following code keeps the original program's behavior but corrects the input variable type and safely calls the character classification functions.</p>
+<p>It also uses <code>'\n'</code> instead of the numeric value <code>10</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main(void)
+{
+    int ch;
+
+    while ((ch = getchar()) != EOF)
+    {
+        if (ch == '\n')
+        {
+            continue;
+        }
+
+        printf("Character: %c\n", ch);
+        printf("Character code: %d\n", ch);
+
+        unsigned char c = (unsigned char)ch;
+
+        printf(
+            isdigit(c) ? "%c is a digit.\n" : "%c is not a digit.\n",
+            ch
+        );
+
+        printf(
+            isalpha(c) ? "%c is a letter.\n" : "%c is not a letter.\n",
+            ch
+        );
+
+        if (isalpha(c))
+        {
+            printf(
+                islower(c) ? "%c is lowercase.\n" : "%c is uppercase.\n",
+                ch
+            );
+        }
+
+        printf(
+            ispunct(c) ? "%c is a punctuation character.\n"
+                       : "%c is not a punctuation character.\n",
+            ch
+        );
+
+        printf(
+            isspace(c) ? "%c is a whitespace character.\n"
+                       : "%c is not a whitespace character.\n",
+            ch
+        );
+
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<h3 id="why-do-we-convert-ch-to-unsigned-char">Why Do We Convert ch to unsigned char?</h3>
+<p>The classification functions in <code>&lt;ctype.h&gt;</code> require an argument whose value is either:</p>
+<ul><li><code>EOF</code>, or</li><li>Representable as an <code>unsigned char</code>.</li></ul>
+<p>A plain <code>char</code> may be signed on some systems. If it contains a negative value, passing it directly to functions such as <code>isdigit()</code> can cause undefined behavior.</p>
+<p>This line solves the issue:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>unsigned char c = (unsigned char)ch;</code></pre></div>
+<p>The original <code>ch</code> is still an <code>int</code>, so it can safely store <code>EOF</code>.</p>
+<p>The converted value <code>c</code> is used with the classification functions.</p>
+<h2 id="12-understanding-the-original-commented-code">12. Understanding the Original Commented Code</h2>
+<p>Your original program includes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>/*
+if (isdigit(ch))
+    printf("%c is a digit.\n", ch);
+else
+    printf("%c is not a digit.\n", ch);
+*/</code></pre></div>
+<p>This is a normal <code>if/else</code> implementation.</p>
+<p>It can be replaced with the ternary expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>isdigit(ch)
+    ? printf("%c is a digit.\n", ch)
+    : printf("%c is not a digit.\n", ch);</code></pre></div>
+<p>Or with the format-string selection used in your program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf(
+    isdigit(c) ? "%c is a digit.\n" : "%c is not a digit.\n",
+    ch
+);</code></pre></div>
+<p>All three approaches can produce the same classification result when the character argument is valid.</p>
+<h2 id="13-example-input-and-output">13. Example Input and Output</h2>
+<p>Suppose the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>A5?</code></pre></div>
+<p>The program processes each character separately.</p>
+<p>Expected output on an ASCII-compatible system:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Character: A
+Character code: 65
+A is not a digit.
+A is a letter.
+A is uppercase.
+A is not a punctuation character.
+A is not a whitespace character.
+
+Character: 5
+Character code: 53
+5 is a digit.
+5 is not a letter.
+5 is not a punctuation character.
+5 is not a whitespace character.
+
+Character: ?
+Character code: 63
+? is not a digit.
+? is not a letter.
+? is a punctuation character.
+? is not a whitespace character.</code></pre></div>
+<p>The newline produced by pressing Enter is skipped.</p>
+<p>To stop the program, send EOF using the appropriate terminal key combination.</p>
+<h2 id="14-important-character-classification-functions">14. Important Character Classification Functions</h2>
+<p>The following table summarizes useful functions from <code>&lt;ctype.h&gt;</code>.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Purpose</th><th>Example</th></tr></thead><tbody><tr><td><code>isdigit(c)</code></td><td>Checks decimal digits</td><td><code>'5'</code></td></tr><tr><td><code>isalpha(c)</code></td><td>Checks alphabetic letters</td><td><code>'A'</code></td></tr><tr><td><code>islower(c)</code></td><td>Checks lowercase letters</td><td><code>'a'</code></td></tr><tr><td><code>isupper(c)</code></td><td>Checks uppercase letters</td><td><code>'Z'</code></td></tr><tr><td><code>isalnum(c)</code></td><td>Checks letters or digits</td><td><code>'A'</code>, <code>'5'</code></td></tr><tr><td><code>ispunct(c)</code></td><td>Checks punctuation</td><td><code>'!'</code></td></tr><tr><td><code>isspace(c)</code></td><td>Checks whitespace</td><td><code>' '</code></td></tr><tr><td><code>isxdigit(c)</code></td><td>Checks hexadecimal digits</td><td><code>'F'</code>, <code>'9'</code></td></tr><tr><td><code>isprint(c)</code></td><td>Checks printable characters, including space</td><td><code>'A'</code></td></tr><tr><td><code>isgraph(c)</code></td><td>Checks printable characters except space</td><td><code>'A'</code></td></tr><tr><td><code>iscntrl(c)</code></td><td>Checks control characters</td><td><code>'\n'</code></td></tr></tbody></table></div>
+<p>Remember that these functions return zero or a nonzero value, not necessarily exactly <code>1</code>.</p>
+<h2 id="15-ascii-ranges">15. ASCII Ranges</h2>
+<p>On ASCII-compatible systems, the following ranges are commonly used:</p>
+<div class="table-wrap"><table><thead><tr><th>Character category</th><th>Decimal range</th></tr></thead><tbody><tr><td>Digits</td><td>48–57</td></tr><tr><td>Uppercase letters</td><td>65–90</td></tr><tr><td>Lowercase letters</td><td>97–122</td></tr></tbody></table></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>'A' = 65
+'Z' = 90
+
+'a' = 97
+'z' = 122
+
+'0' = 48
+'9' = 57</code></pre></div>
+<p>You can use these ranges to understand how ASCII classification works.</p>
+<p>However, for general C programs, prefer <code>&lt;ctype.h&gt;</code> functions instead of manually checking numeric ranges. The library functions are designed to follow the active locale and avoid assumptions about character encoding.</p>
+<h2 id="16-strings-and-character-classification">16. Strings and Character Classification</h2>
+<p>The classification functions can also be used to process strings.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main(void)
+{
+    char text[] = "Hello123";
+
+    int i = 0;
+
+    while (text[i] != '\0')
+    {
+        unsigned char c = (unsigned char)text[i];
+
+        if (isalpha(c))
+        {
+            printf("%c is a letter.\n", c);
+        }
+        else if (isdigit(c))
+        {
+            printf("%c is a digit.\n", c);
+        }
+
+        i++;
+    }
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>H is a letter.
+e is a letter.
+l is a letter.
+l is a letter.
+o is a letter.
+1 is a digit.
+2 is a digit.
+3 is a digit.</code></pre></div>
+<p>Notice the difference:</p>
+<ul><li>Your original program reads characters from an input stream using <code>getchar()</code>.</li><li>This example reads characters from a string stored in a character array.</li></ul>
+<p>Both approaches process one character at a time.</p>
+<h2 id="17-useful-string-functions">17. Useful String Functions</h2>
+<p>The standard C library provides several functions for working with strings through <code>&lt;string.h&gt;</code>.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Purpose</th></tr></thead><tbody><tr><td><code>strlen()</code></td><td>Calculates string length, excluding <code>'\0'</code></td></tr><tr><td><code>strcpy()</code></td><td>Copies a string</td></tr><tr><td><code>strncpy()</code></td><td>Copies up to a specified number of characters</td></tr><tr><td><code>strcat()</code></td><td>Appends one string to another</td></tr><tr><td><code>strcmp()</code></td><td>Compares two strings</td></tr><tr><td><code>strchr()</code></td><td>Finds a character in a string</td></tr><tr><td><code>strstr()</code></td><td>Finds a substring</td></tr></tbody></table></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void)
+{
+    char name[] = "Amin";
+
+    printf("Name: %s\n", name);
+    printf("Length: %zu\n", strlen(name));
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Name: Amin
+Length: 4</code></pre></div>
+<p><code>strlen()</code> does not count the null terminator.</p>
+<h2 id="18-compile-and-run">18. Compile and Run</h2>
+<p>Using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o character_analyzer</code></pre></div>
+<p>For compiler warnings:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -Wall -Wextra -std=c11 main.c -o character_analyzer</code></pre></div>
+<p>Run on Linux or macOS:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./character_analyzer</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\character_analyzer.exe</code></pre></div>
+<p>Enter characters and observe their classifications.</p>
+<p>To terminate input, use EOF:</p>
+<ul><li>Linux/macOS: <code>Ctrl + D</code></li><li>Windows terminal: <code>Ctrl + Z</code>, usually followed by Enter.</li></ul>
+<h2 id="19-exercises">19. Exercises</h2>
+<h3 id="exercise-1-count-characters">Exercise 1 — Count Characters</h3>
+<p>Modify the program to count the number of characters entered before EOF.</p>
+<h3 id="exercise-2-count-digits">Exercise 2 — Count Digits</h3>
+<p>Count how many numeric digits the user enters.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input:
+Amin1234
+
+Digits:
+4</code></pre></div>
+<h3 id="exercise-3-count-letters">Exercise 3 — Count Letters</h3>
+<p>Count the number of alphabetic characters.</p>
+<h3 id="exercise-4-count-uppercase-and-lowercase-letters">Exercise 4 — Count Uppercase and Lowercase Letters</h3>
+<p>Display separate counts for uppercase and lowercase letters.</p>
+<h3 id="exercise-5-count-whitespace-characters">Exercise 5 — Count Whitespace Characters</h3>
+<p>Count spaces, tabs, and other whitespace characters.</p>
+<p>For this exercise, do not skip newline characters before classification.</p>
+<h3 id="exercise-6-convert-lowercase-to-uppercase">Exercise 6 — Convert Lowercase to Uppercase</h3>
+<p>Use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>toupper(ch);</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input:
+hello
+
+Output:
+HELLO</code></pre></div>
+<h3 id="exercise-7-convert-uppercase-to-lowercase">Exercise 7 — Convert Uppercase to Lowercase</h3>
+<p>Use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>tolower(ch);</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input:
+HELLO
+
+Output:
+hello</code></pre></div>
+<h3 id="exercise-8-analyze-a-complete-string">Exercise 8 — Analyze a Complete String</h3>
+<p>Instead of reading characters with <code>getchar()</code>, read a string into a character array and analyze every element until <code>'\0'</code>.</p>
+<h3 id="exercise-9-validate-a-password">Exercise 9 — Validate a Password</h3>
+<p>Write a program that checks whether a password contains:</p>
+<ul><li>At least one uppercase letter.</li><li>At least one lowercase letter.</li><li>At least one digit.</li><li>At least one punctuation character.</li></ul>
+<h2 id="20-learning-objectives">20. Learning Objectives</h2>
+<p>After completing this project, you should understand:</p>
+<ul><li>The difference between a character and a string.</li><li>How C represents strings using character arrays.</li><li>The purpose of the null terminator.</li><li>How character codes work.</li><li>How to read characters using <code>getchar()</code>.</li><li>Why <code>getchar()</code> returns <code>int</code>.</li><li>How <code>EOF</code> works.</li><li>How to classify characters using <code>&lt;ctype.h&gt;</code>.</li><li>How to use <code>isdigit()</code>, <code>isalpha()</code>, <code>islower()</code>, <code>ispunct()</code>, and <code>isspace()</code>.</li><li>How the ternary operator works.</li><li>How to process strings one character at a time.</li></ul>
+<h2 id="21-next-step">21. Next Step</h2>
+<p>The next recommended project is <strong>String Input and String Manipulation in C</strong>.</p>
+<p>It should cover:</p>
+<ol><li>Reading strings using <code>scanf()</code>.</li><li>Reading complete lines using <code>fgets()</code>.</li><li>String arrays and null termination.</li><li>Calculating string length.</li><li>Copying and comparing strings.</li><li>Concatenating strings.</li><li>Searching inside strings.</li><li>Converting uppercase and lowercase letters.</li><li>Implementing string functions manually.</li></ol>
+<p>These concepts are especially useful when processing commands, serial communication messages, TCP data, and text-based protocols in embedded systems.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">24 · Bubble Sort Using Function Pointers in C</span></a><a class="pager-link next" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="pager-dir">Next →</span><span class="pager-name">26 · String to Floating-Point Conversion in C (strtof and strtod)</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

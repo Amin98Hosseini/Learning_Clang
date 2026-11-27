@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C Programming – Comparing Strings Using strcmp() · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link active" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 33</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 33 of 40 · Part 6</p><h1>C Programming – Comparing Strings Using strcmp()</h1><p class="lesson-source">Folder <code>33-ComparingStrings_Using_strcmp_in_C_Language</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-complete-source-code">3. Complete Source Code</a></li><li><a href="#4-understanding-the-code">4. Understanding the Code</a></li><li><a href="#5-understanding-the-strcmp-function">5. Understanding the strcmp() Function</a></li><li><a href="#6-understanding-the-comparison-function">6. Understanding the Comparison Function</a></li><li><a href="#7-program-output">7. Program Output</a></li><li><a href="#8-important-concepts-and-common-mistakes">8. Important Concepts and Common Mistakes</a></li><li><a href="#9-difference-between-strcmp-and-strncmp">9. Difference Between strcmp() and strncmp()</a></li><li><a href="#10-compilation-and-execution">10. Compilation and Execution</a></li><li><a href="#11-practice-exercises">11. Practice Exercises</a></li><li><a href="#12-learning-objectives">12. Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, strings are character arrays terminated by a special character called the <strong>null terminator (<code>'\0'</code>)</strong>.</p>
+<p>Sometimes we need to compare two strings to determine whether they are equal or which one comes first in lexicographical (dictionary-like) order.</p>
+<p>The C standard library provides the <code>strcmp()</code> function in the <code>&lt;string.h&gt;</code> header file for this purpose.</p>
+<p>In this lesson, we will learn:</p>
+<ul><li>How to compare two strings using <code>strcmp()</code>.</li><li>How to check whether two strings are equal.</li><li>How to determine which string is lexicographically greater or smaller.</li><li>How to use a custom function to compare strings.</li><li>Why comparing strings with <code>==</code> is different from using <code>strcmp()</code>.</li></ul>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Header</th><th>Purpose</th></tr></thead><tbody><tr><td><code>stdio.h</code></td><td>Provides input/output functions such as <code>printf()</code>.</td></tr><tr><td><code>stdlib.h</code></td><td>Provides general-purpose functions. It is not required in this example.</td></tr><tr><td><code>string.h</code></td><td>Provides string manipulation functions, including <code>strcmp()</code>.</td></tr></tbody></table></div>
+<p>For this program, only <code>stdio.h</code> and <code>string.h</code> are necessary.</p>
+<h2 id="3-complete-source-code">3. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void CompareString(const char *str1, const char *str2);
+
+int main()
+{
+    char s1[] = "abc";
+    char s2[] = "abc";
+    char s3[] = "abd";
+    char s4[] = "abb";
+
+    printf("Input strings:\n");
+
+    printf("s1 = %s\n", s1);
+    printf("s2 = %s\n", s2);
+    printf("s3 = %s\n", s3);
+    printf("s4 = %s\n", s4);
+
+    printf("\n");
+
+    printf("Comparing s1 and s2:\n");
+    CompareString(s1, s2);
+
+    printf("\n");
+
+    printf("Comparing s1 and s3:\n");
+    CompareString(s1, s3);
+
+    printf("\n");
+
+    printf("Comparing s1 and s4:\n");
+    CompareString(s1, s4);
+
+    return 0;
+}
+
+void CompareString(const char *str1, const char *str2)
+{
+    int result = strcmp(str1, str2);
+
+    if (result == 0)
+    {
+        printf("%s = %s\n", str1, str2);
+    }
+    else if (result &gt; 0)
+    {
+        printf("%s &gt; %s\n", str1, str2);
+    }
+    else
+    {
+        printf("%s &lt; %s\n", str1, str2);
+    }
+}</code></pre></div>
+<p>This version preserves the original program's behavior but improves the comparison function by calling <code>strcmp()</code> only once and storing its result.</p>
+<h2 id="4-understanding-the-code">4. Understanding the Code</h2>
+<h3 id="4-1-function-declaration-prototype">4.1. Function Declaration (Prototype)</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void CompareString(const char *str1, const char *str2);</code></pre></div>
+<p>This line declares a function named <code>CompareString()</code>.</p>
+<p>The function receives two string arguments:</p>
+<ul><li><code>str1</code>: Pointer to the first string.</li><li><code>str2</code>: Pointer to the second string.</li></ul>
+<p>The return type is <code>void</code>, which means the function does not return a value.</p>
+<p>Instead, it compares the strings and displays the result using <code>printf()</code>.</p>
+<p><strong>Why do we use <code>const char *</code>?</strong></p>
+<p>The keyword <code>const</code> indicates that the function should not modify the characters of the strings through these pointers.</p>
+<p>For example, this is not allowed inside the function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>str1[0] = 'A';</code></pre></div>
+<p>Because <code>str1</code> points to characters that the function promises not to modify.</p>
+<p>This is useful when a function only needs to read string data.</p>
+<h3 id="4-2-declaring-the-strings">4.2. Declaring the Strings</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s1[] = "abc";
+char s2[] = "abc";
+char s3[] = "abd";
+char s4[] = "abb";</code></pre></div>
+<p>Here, four character arrays are initialized.</p>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>String</th><th>Description</th></tr></thead><tbody><tr><td><code>s1</code></td><td><code>"abc"</code></td><td>First string</td></tr><tr><td><code>s2</code></td><td><code>"abc"</code></td><td>Same as <code>s1</code></td></tr><tr><td><code>s3</code></td><td><code>"abd"</code></td><td>Different from <code>s1</code></td></tr><tr><td><code>s4</code></td><td><code>"abb"</code></td><td>Different from <code>s1</code></td></tr></tbody></table></div>
+<p>Each string is stored in memory with a null terminator.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s1:  a  b  c  \0
+s2:  a  b  c  \0
+s3:  a  b  d  \0
+s4:  a  b  b  \0</code></pre></div>
+<h3 id="4-3-displaying-the-input-strings">4.3. Displaying the Input Strings</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Input strings:\n");
+
+printf("s1 = %s\n", s1);
+printf("s2 = %s\n", s2);
+printf("s3 = %s\n", s3);
+printf("s4 = %s\n", s4);</code></pre></div>
+<p>The <code>%s</code> format specifier is used to print a null-terminated string.</p>
+<p>The output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input strings:
+s1 = abc
+s2 = abc
+s3 = abd
+s4 = abb</code></pre></div>
+<h3 id="4-4-calling-the-comparison-function">4.4. Calling the Comparison Function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>CompareString(s1, s2);
+CompareString(s1, s3);
+CompareString(s1, s4);</code></pre></div>
+<p>These statements call the <code>CompareString()</code> function three times.</p>
+<p>Each call passes two strings to the function.</p>
+<div class="table-wrap"><table><thead><tr><th>Function call</th><th>First argument</th><th>Second argument</th></tr></thead><tbody><tr><td><code>CompareString(s1, s2)</code></td><td><code>"abc"</code></td><td><code>"abc"</code></td></tr><tr><td><code>CompareString(s1, s3)</code></td><td><code>"abc"</code></td><td><code>"abd"</code></td></tr><tr><td><code>CompareString(s1, s4)</code></td><td><code>"abc"</code></td><td><code>"abb"</code></td></tr></tbody></table></div>
+<p>When the function is called, the addresses of the first characters of these arrays are passed to its pointer parameters.</p>
+<p>The function can then access the strings through <code>str1</code> and <code>str2</code>.</p>
+<h2 id="5-understanding-the-strcmp-function">5. Understanding the <code>strcmp()</code> Function</h2>
+<p>The <code>strcmp()</code> function compares two null-terminated strings.</p>
+<p>It is declared in:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;string.h&gt;</code></pre></div>
+<p><strong>Syntax:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp(string1, string2);</code></pre></div>
+<p>The function compares the strings character by character using the values of their characters.</p>
+<p>It returns an integer with one of three possible sign results:</p>
+<div class="table-wrap"><table><thead><tr><th>Return value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Both strings are equal.</td></tr><tr><td>A negative value</td><td>The first string is lexicographically smaller.</td></tr><tr><td>A positive value</td><td>The first string is lexicographically greater.</td></tr></tbody></table></div>
+<p><strong>Important:</strong> The C standard guarantees the sign of the result, not a specific positive or negative number.</p>
+<p>For example, you must not assume that <code>strcmp()</code> always returns <code>-1</code>, <code>0</code>, or <code>1</code>.</p>
+<h3 id="5-1-comparing-equal-strings">5.1. Comparing Equal Strings</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp("abc", "abc");</code></pre></div>
+<p>The function compares the characters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>First string:  a  b  c
+Second string: a  b  c
+               |  |  |
+               ✓  ✓  ✓</code></pre></div>
+<p>All corresponding characters are equal, and both strings end at the same position.</p>
+<p>Therefore, the result is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp("abc", "abc") == 0</code></pre></div>
+<p>In the program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (result == 0)
+{
+    printf("%s = %s\n", str1, str2);
+}</code></pre></div>
+<p>The condition is true, so the program prints:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>abc = abc</code></pre></div>
+<h3 id="5-2-comparing-abc-and-abd">5.2. Comparing <code>"abc"</code> and <code>"abd"</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp("abc", "abd");</code></pre></div>
+<p>The function compares the strings from left to right:</p>
+<div class="table-wrap"><table><thead><tr><th>Position</th><th>First string</th><th>Second string</th><th>Comparison</th></tr></thead><tbody><tr><td>1</td><td>a</td><td>a</td><td>Equal</td></tr><tr><td>2</td><td>b</td><td>b</td><td>Equal</td></tr><tr><td>3</td><td>c</td><td>d</td><td>Different</td></tr></tbody></table></div>
+<p>The first two characters are equal.</p>
+<p>At the third position, <code>c</code> has a smaller character value than <code>d</code> in the basic execution character set.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>abc &lt; abd</code></pre></div>
+<p>The return value of <code>strcmp()</code> is negative.</p>
+<p>The program checks:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>else
+{
+    printf("%s &lt; %s\n", str1, str2);
+}</code></pre></div>
+<p>And prints:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>abc &lt; abd</code></pre></div>
+<h3 id="5-3-comparing-abc-and-abb">5.3. Comparing <code>"abc"</code> and <code>"abb"</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp("abc", "abb");</code></pre></div>
+<p>The comparison is:</p>
+<div class="table-wrap"><table><thead><tr><th>Position</th><th>First string</th><th>Second string</th><th>Comparison</th></tr></thead><tbody><tr><td>1</td><td>a</td><td>a</td><td>Equal</td></tr><tr><td>2</td><td>b</td><td>b</td><td>Equal</td></tr><tr><td>3</td><td>c</td><td>b</td><td>Different</td></tr></tbody></table></div>
+<p>At the third position, <code>c</code> is greater than <code>b</code>.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>abc &gt; abb</code></pre></div>
+<p>The return value of <code>strcmp()</code> is positive.</p>
+<p>The program prints:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>abc &gt; abb</code></pre></div>
+<h2 id="6-understanding-the-comparison-function">6. Understanding the Comparison Function</h2>
+<p>The original program contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void CompareString(const char* str1, const char *str2)
+{
+    if(strcmp(str1,str2)==0)
+    {
+        printf("%s = %s\n",str1,str2);
+    }
+
+    if(strcmp(str1,str2)&gt;0)
+    {
+        printf("%s &gt; %s\n",str1,str2);
+    }
+
+    if(strcmp(str1,str2)&lt;0)
+    {
+        printf("%s &lt; %s\n",str1,str2);
+    }
+}</code></pre></div>
+<p>This function works correctly for valid null-terminated strings.</p>
+<p>However, it calls <code>strcmp()</code> three times.</p>
+<p>A better approach is to call it once and save the result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int result = strcmp(str1, str2);</code></pre></div>
+<p>Then use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (result == 0)
+{
+    /* Strings are equal */
+}
+else if (result &gt; 0)
+{
+    /* First string is greater */
+}
+else
+{
+    /* First string is smaller */
+}</code></pre></div>
+<p>This is more efficient and easier to read.</p>
+<p>The <code>else if</code> structure also ensures that only one comparison result is handled.</p>
+<h2 id="7-program-output">7. Program Output</h2>
+<p>The output of the program is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input strings:
+s1 = abc
+s2 = abc
+s3 = abd
+s4 = abb
+
+Comparing s1 and s2:
+abc = abc
+
+Comparing s1 and s3:
+abc &lt; abd
+
+Comparing s1 and s4:
+abc &gt; abb</code></pre></div>
+<h2 id="8-important-concepts-and-common-mistakes">8. Important Concepts and Common Mistakes</h2>
+<h3 id="8-1-do-not-compare-string-contents-using">8.1. Do Not Compare String Contents Using <code>==</code></h3>
+<p>A common mistake for beginners is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (s1 == s2)
+{
+    printf("Strings are equal");
+}</code></pre></div>
+<p>This does not compare the contents of the strings.</p>
+<p>In this expression, array names are converted to pointers in this context, and the comparison checks whether the pointers refer to the same location.</p>
+<p>Even if two separate arrays contain identical text, their addresses are generally different.</p>
+<p>Correct:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (strcmp(s1, s2) == 0)
+{
+    printf("Strings are equal");
+}</code></pre></div>
+<h3 id="8-2-strcmp-is-case-sensitive">8.2. <code>strcmp()</code> Is Case-Sensitive</h3>
+<p>The function distinguishes between uppercase and lowercase letters.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp("Hello", "hello");</code></pre></div>
+<p>These strings are not equal because <code>'H'</code> and <code>'h'</code> are different characters.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>"Hello" != "hello"</code></pre></div>
+<p>If you need case-insensitive comparison, some systems provide functions such as <code>strcasecmp()</code> or <code>_stricmp()</code>, but these are not part of the ISO C standard.</p>
+<h3 id="8-3-string-comparison-is-not-the-same-as-numeric-comparison">8.3. String Comparison Is Not the Same as Numeric Comparison</h3>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp("10", "2");</code></pre></div>
+<p>This compares the strings character by character, not their numeric values.</p>
+<p>The first characters are <code>'1'</code> and <code>'2'</code>. Since <code>'1'</code> is smaller, the first string is lexicographically smaller.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>"10" &lt; "2"</code></pre></div>
+<p>But numerically:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10 &gt; 2</code></pre></div>
+<p>If you want to compare numbers, convert the strings to numeric values first, for example with <code>strtol()</code>.</p>
+<h3 id="8-4-different-string-lengths">8.4. Different String Lengths</h3>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strcmp("abc", "abcd");</code></pre></div>
+<p>The first three characters are equal, but the first string ends before the second.</p>
+<p>The shorter string is lexicographically smaller when it is a prefix of the longer string.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>"abc" &lt; "abcd"</code></pre></div>
+<h3 id="8-5-always-use-null-terminated-strings">8.5. Always Use Null-Terminated Strings</h3>
+<p><code>strcmp()</code> expects both inputs to be valid null-terminated strings.</p>
+<p>Passing an array that does not contain a valid terminating <code>'\0'</code> can cause the function to read outside the array, resulting in undefined behavior.</p>
+<h2 id="9-difference-between-strcmp-and-strncmp">9. Difference Between <code>strcmp()</code> and <code>strncmp()</code></h2>
+<p>The <code>&lt;string.h&gt;</code> library also provides <code>strncmp()</code>.</p>
+<p>Unlike <code>strcmp()</code>, it compares at most a specified number of characters.</p>
+<p><strong>Syntax:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strncmp(string1, string2, number_of_characters);</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char s1[] = "abcdef";
+    char s2[] = "abcxyz";
+
+    printf("strcmp result: %d\n", strcmp(s1, s2));
+    printf("strncmp result: %d\n", strncmp(s1, s2, 3));
+
+    return 0;
+}</code></pre></div>
+<p>The first three characters are identical:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s1 = abcdef
+s2 = abcxyz
+     abc</code></pre></div>
+<p>Therefore, <code>strncmp()</code> returns zero because it compares only the first three characters.</p>
+<p>However, <code>strcmp()</code> continues comparing until it finds a difference.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Comparison</th></tr></thead><tbody><tr><td><code>strcmp(s1, s2)</code></td><td>Compares strings until a difference or the end of a string.</td></tr><tr><td><code>strncmp(s1, s2, n)</code></td><td>Compares at most the first <code>n</code> characters.</td></tr></tbody></table></div>
+<p>Remember that <code>strncmp()</code> is not a substitute for validating that arbitrary input buffers are properly terminated. It compares up to <code>n</code> characters, but both pointers must still refer to valid memory for the characters it reads.</p>
+<h2 id="10-compilation-and-execution">10. Compilation and Execution</h2>
+<p>Save the source code in a file named:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o string_compare</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./string_compare</code></pre></div>
+<p>Run on Windows PowerShell:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\string_compare.exe</code></pre></div>
+<p>You can also use Visual Studio Code, Code::Blocks, or another C development environment.</p>
+<h2 id="11-practice-exercises">11. Practice Exercises</h2>
+<p><strong>Exercise 1 – Compare Two User Strings</strong></p>
+<p>Write a program that reads two strings from the user and checks whether they are equal using <code>strcmp()</code>.</p>
+<p><strong>Exercise 2 – Find the Greater String</strong></p>
+<p>Read two strings and display which one is lexicographically greater.</p>
+<p><strong>Exercise 3 – Compare Three Strings</strong></p>
+<p>Create three strings and determine which one comes first in lexicographical order.</p>
+<p><strong>Exercise 4 – Case-Sensitive Comparison</strong></p>
+<p>Compare:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s1[] = "Embedded";
+char s2[] = "embedded";</code></pre></div>
+<p>Determine whether the strings are equal.</p>
+<p><strong>Exercise 5 – Compare Only the First Three Characters</strong></p>
+<p>Use <code>strncmp()</code> to compare only the first three characters of:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s1[] = "STM32F103";
+char s2[] = "STM32F407";</code></pre></div>
+<p><strong>Exercise 6 – Sort Strings</strong></p>
+<p>Create an array of five strings and sort them alphabetically using <code>strcmp()</code> and Bubble Sort.</p>
+<p>Hint: Use <code>strcmp()</code> to decide whether two adjacent strings need to be swapped.</p>
+<h2 id="12-learning-objectives">12. Learning Objectives</h2>
+<p>After completing this lesson, you should understand:</p>
+<ul><li>How strings are represented in C.</li><li>How to compare strings using <code>strcmp()</code>.</li><li>What the return value of <code>strcmp()</code> means.</li><li>How lexicographical string comparison works.</li><li>How to write a function that accepts strings through pointers.</li><li>Why <code>const char *</code> is useful for read-only string parameters.</li><li>Why <code>==</code> should not be used to compare string contents.</li><li>How case-sensitive comparison works.</li><li>The difference between <code>strcmp()</code> and <code>strncmp()</code>.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="pager-dir">← Previous</span><span class="pager-name">32 · C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a><a class="pager-link next" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="pager-dir">Next →</span><span class="pager-name">34 · C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

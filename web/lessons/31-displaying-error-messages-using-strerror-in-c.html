@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Displaying Error Messages Using strerror() in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link active" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 31</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 31 of 40 · Part 6</p><h1>Displaying Error Messages Using strerror() in C</h1><p class="lesson-source">Folder <code>31-Displaying_Error_Messages_Using_strerror_in_C</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-complete-original-source-code">3. Complete Original Source Code</a></li><li><a href="#4-understanding-the-code">4. Understanding the Code</a></li><li><a href="#5-what-is-strerror">5. What Is strerror()?</a></li><li><a href="#6-understanding-common-error-codes">6. Understanding Common Error Codes</a></li><li><a href="#7-improved-version-using-standard-error-constants">7. Improved Version Using Standard Error Constants</a></li><li><a href="#8-improved-interactive-version">8. Improved Interactive Version</a></li><li><a href="#9-practical-application-displaying-errors-when-opening-files">9. Practical Application: Displaying Errors When Opening Files</a></li><li><a href="#10-difference-between-strerror-and-perror">10. Difference Between strerror() and perror()</a></li><li><a href="#11-common-mistakes">11. Common Mistakes</a></li><li><a href="#12-compilation-and-execution">12. Compilation and Execution</a></li><li><a href="#13-exercises">13. Exercises</a></li><li><a href="#14-learning-objectives">14. Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>When developing C programs, errors can occur during operations such as opening files, accessing resources, allocating memory, or performing input/output operations.</p>
+<p>The C standard library provides a function called <code>strerror()</code> that converts an error code into a human-readable error message.</p>
+<p>For example, instead of displaying only an error number:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Error Code: 2</code></pre></div>
+<p>we can display a descriptive message:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>No such file or directory</code></pre></div>
+<p>The <code>strerror()</code> function is useful when we want to understand what an error code represents.</p>
+<p>In this tutorial, we will learn:</p>
+<ul><li>How to use the <code>strerror()</code> function.</li><li>How error codes are represented in C.</li><li>How to display error messages using <code>puts()</code> and <code>printf()</code>.</li><li>How to use the <code>errno.h</code> header and predefined error constants.</li><li>How to handle invalid user input.</li><li>How to use <code>strerror()</code> in practical C applications.</li></ul>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<p>The original program contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#define TRUE 1</code></pre></div>
+<p>However, it uses the <code>strerror()</code> function without including its required header.</p>
+<p>The correct header is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;string.h&gt;</code></pre></div>
+<p>A more complete set of headers for working with error codes is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;errno.h&gt;</code></pre></div>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>Provides standard input/output functions:</p>
+<ul><li><code>printf()</code> – Displays formatted output.</li><li><code>scanf()</code> – Reads formatted input.</li><li><code>puts()</code> – Displays a string followed by a newline.</li><li><code>fgets()</code> – Reads a line of text from an input stream.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>Provides general-purpose utility functions, including:</p>
+<ul><li><code>strtol()</code> – Converts a string into a long integer.</li><li><code>malloc()</code> – Allocates memory.</li><li><code>free()</code> – Releases allocated memory.</li><li><code>exit()</code> – Terminates a program.</li></ul>
+<p>The original program does not use any function from this header, but the improved version later in this tutorial uses <code>strtol()</code>.</p>
+<h3 id="string-h"><code>string.h</code></h3>
+<p>Provides string-handling functions, including:</p>
+<ul><li><code>strlen()</code></li><li><code>strcpy()</code></li><li><code>strcmp()</code></li><li><code>strcat()</code></li><li><code>strerror()</code></li></ul>
+<p>The <code>strerror()</code> function is declared in this header.</p>
+<h3 id="errno-h"><code>errno.h</code></h3>
+<p>Provides macros and declarations related to error reporting.</p>
+<p>It includes predefined error constants such as:</p>
+<ul><li><code>EINVAL</code> – Invalid argument.</li><li><code>ENOENT</code> – No such file or directory.</li><li><code>ERANGE</code> – Result out of range.</li><li><code>ENOMEM</code> – Not enough memory.</li><li><code>EACCES</code> – Permission denied.</li></ul>
+<p>The numeric values assigned to these error constants can differ between operating systems and C library implementations.</p>
+<h2 id="3-complete-original-source-code">3. Complete Original Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+#define TRUE 1
+
+int main()
+{
+    int e;
+
+    while (TRUE)
+    {
+        printf("Please enter an error code: ");
+        scanf("%d", &amp;e);
+        printf("\n");
+
+        if (e &lt; 0)
+            break;
+
+        printf("Error message for Error Code #%d:\n", e);
+        puts(strerror(e));
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<p>The important correction compared with the original code is the addition of:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;string.h&gt;</code></pre></div>
+<p>Without this header, the program does not have the proper declaration of <code>strerror()</code>.</p>
+<h2 id="4-understanding-the-code">4. Understanding the Code</h2>
+<h3 id="4-1-defining-the-true-macro">4.1. Defining the <code>TRUE</code> Macro</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#define TRUE 1</code></pre></div>
+<p>The <code>#define</code> directive creates a preprocessor macro.</p>
+<p>Whenever the preprocessor encounters <code>TRUE</code>, it replaces it with <code>1</code>.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (TRUE)</code></pre></div>
+<p>is effectively processed as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (1)</code></pre></div>
+<p>In C, a condition is considered true when its value is nonzero and false when its value is zero.</p>
+<p>Therefore:</p>
+<ul><li><code>1</code> means true.</li><li><code>0</code> means false.</li></ul>
+<p>This macro allows us to write a loop that continues indefinitely until we explicitly stop it.</p>
+<p>An alternative is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (1)
+{
+    // Statements
+}</code></pre></div>
+<p>Both approaches create an infinite loop.</p>
+<h3 id="4-2-declaring-the-error-code-variable">4.2. Declaring the Error Code Variable</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int e;</code></pre></div>
+<p>Here, we declare an integer variable named <code>e</code>.</p>
+<p>This variable stores the error code entered by the user.</p>
+<p>For example, the user might enter:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2</code></pre></div>
+<p>The variable then contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>e = 2;</code></pre></div>
+<h3 id="4-3-creating-an-infinite-loop">4.3. Creating an Infinite Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (TRUE)
+{
+    // Statements
+}</code></pre></div>
+<p>The <code>while</code> loop repeatedly executes its body because <code>TRUE</code> is equal to <code>1</code>.</p>
+<p>The loop continues until a <code>break</code> statement is executed.</p>
+<p>This approach is useful when a program needs to repeatedly request input from the user.</p>
+<h3 id="4-4-requesting-an-error-code">4.4. Requesting an Error Code</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Please enter an error code: ");</code></pre></div>
+<p>This statement displays a message asking the user to enter an error code.</p>
+<h3 id="4-5-reading-the-error-code-with-scanf">4.5. Reading the Error Code with <code>scanf()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d", &amp;e);</code></pre></div>
+<p>The <code>scanf()</code> function reads formatted input from the standard input, usually the keyboard.</p>
+<p>The format specifier:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>%d</code></pre></div>
+<p>indicates that the program expects an integer.</p>
+<p>The address operator:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;e</code></pre></div>
+<p>provides the memory address of the variable where the entered value will be stored.</p>
+<p>For example, if the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>5</code></pre></div>
+<p>the following assignment effectively occurs through <code>scanf()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>e = 5;</code></pre></div>
+<p><strong>Important:</strong> The original program does not check whether <code>scanf()</code> successfully reads an integer. This can cause problems when the user enters invalid input. We will improve this later.</p>
+<h3 id="4-6-checking-for-a-negative-error-code">4.6. Checking for a Negative Error Code</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (e &lt; 0)
+    break;</code></pre></div>
+<p>This condition checks whether the entered error code is negative.</p>
+<p>If the condition is true, the <code>break</code> statement immediately terminates the nearest enclosing loop.</p>
+<p>For example:</p>
+<div class="table-wrap"><table><thead><tr><th>Entered value</th><th>Result</th></tr></thead><tbody><tr><td><code>0</code></td><td>Continue and display a message</td></tr><tr><td><code>1</code></td><td>Continue and display a message</td></tr><tr><td><code>2</code></td><td>Continue and display a message</td></tr><tr><td><code>10</code></td><td>Continue and display a message</td></tr><tr><td><code>-1</code></td><td>Exit the loop</td></tr><tr><td><code>-5</code></td><td>Exit the loop</td></tr></tbody></table></div>
+<p>In this program, a negative number is used as a termination signal.</p>
+<p>It is important to understand that a negative number is not necessarily a valid error code for <code>strerror()</code>. Here, negative values are simply reserved to stop the program.</p>
+<h3 id="4-7-displaying-the-error-code">4.7. Displaying the Error Code</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Error message for Error Code #%d:\n", e);</code></pre></div>
+<p>This statement displays the error code entered by the user.</p>
+<p>The <code>%d</code> format specifier is used to display an integer.</p>
+<p>For example, if:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>e = 2;</code></pre></div>
+<p>the output will be:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Error message for Error Code #2:</code></pre></div>
+<h3 id="4-8-understanding-the-strerror-function">4.8. Understanding the <code>strerror()</code> Function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>puts(strerror(e));</code></pre></div>
+<p>This is the most important statement in the program.</p>
+<p>The <code>strerror()</code> function converts an error number into a human-readable string.</p>
+<p>Its general syntax is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(error_code);</code></pre></div>
+<p>The function receives an integer representing an error code and returns a pointer to a string describing that error.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(2);</code></pre></div>
+<p>On many systems, this may return:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>No such file or directory</code></pre></div>
+<p>However, the exact message and numeric error-code mapping depend on the operating system and C library implementation.</p>
+<p>In our program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>puts(strerror(e));</code></pre></div>
+<p>two functions are used together:</p>
+<ol><li><code>strerror(e)</code> obtains the error description.</li><li><code>puts()</code> displays the returned string.</li></ol>
+<p>The <code>puts()</code> function automatically adds a newline after displaying the message.</p>
+<p>The following statements are conceptually similar:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>puts(strerror(e));</code></pre></div>
+<p>and:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%s\n", strerror(e));</code></pre></div>
+<h3 id="4-9-adding-an-empty-line">4.9. Adding an Empty Line</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("\n");</code></pre></div>
+<p>This statement prints a newline character to separate the output of different iterations.</p>
+<p>It makes the terminal output easier to read.</p>
+<h3 id="4-10-returning-from-main">4.10. Returning from <code>main()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return 0;</code></pre></div>
+<p>This statement terminates the program and indicates successful execution.</p>
+<p>By convention, returning <code>0</code> from <code>main()</code> indicates that the program completed successfully.</p>
+<h2 id="5-what-is-strerror">5. What Is <code>strerror()</code>?</h2>
+<p>The <code>strerror()</code> function is part of the C standard library.</p>
+<p>It is declared in:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;string.h&gt;</code></pre></div>
+<p>Its function prototype is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *strerror(int errnum);</code></pre></div>
+<h3 id="parameter">Parameter</h3>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td><code>errnum</code></td><td>Integer error code whose description is requested</td></tr></tbody></table></div>
+<h3 id="return-value">Return Value</h3>
+<p>The function returns a pointer to a string containing a description of the specified error code.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%s\n", strerror(2));</code></pre></div>
+<p>Possible output on a common system:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>No such file or directory</code></pre></div>
+<p><strong>Important notes:</strong></p>
+<ul><li>The returned message is implementation-dependent and may be localized.</li><li>Do not assume that a particular numeric error code has the same meaning on every operating system.</li><li>The returned string should not be modified.</li><li>The returned pointer may refer to internal storage managed by the C library. Copy the text if you need to keep it independently.</li><li>In multithreaded programs, consult the platform's documentation for thread-safety guarantees. Some systems provide <code>strerror_r()</code> as an alternative, but its interface differs between implementations.</li></ul>
+<h2 id="6-understanding-common-error-codes">6. Understanding Common Error Codes</h2>
+<p>The <code>errno.h</code> header defines symbolic error constants.</p>
+<p>Some commonly available constants include:</p>
+<div class="table-wrap"><table><thead><tr><th>Constant</th><th>Meaning</th></tr></thead><tbody><tr><td><code>EINVAL</code></td><td>Invalid argument</td></tr><tr><td><code>ENOENT</code></td><td>No such file or directory</td></tr><tr><td><code>ERANGE</code></td><td>Result out of range</td></tr><tr><td><code>ENOMEM</code></td><td>Not enough memory</td></tr><tr><td><code>EACCES</code></td><td>Permission denied</td></tr><tr><td><code>EBADF</code></td><td>Bad file descriptor</td></tr><tr><td><code>EEXIST</code></td><td>File already exists</td></tr><tr><td><code>EIO</code></td><td>Input/output error</td></tr><tr><td><code>ENOSPC</code></td><td>No space left on device</td></tr></tbody></table></div>
+<p>These constants are more portable and readable than hardcoding numeric error codes.</p>
+<p>For example, instead of writing:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(2);</code></pre></div>
+<p>we can write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(ENOENT);</code></pre></div>
+<p>The second approach communicates the intended error more clearly.</p>
+<p><strong>Note:</strong> The exact set of available error constants and their numeric values depends on the implementation. Use the constants defined by your target system.</p>
+<h2 id="7-improved-version-using-standard-error-constants">7. Improved Version Using Standard Error Constants</h2>
+<p>The following example demonstrates how to use <code>strerror()</code> with predefined error constants:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;errno.h&gt;
+
+int main(void)
+{
+    printf("Common error messages:\n\n");
+
+    printf("EINVAL: %s\n", strerror(EINVAL));
+    printf("ENOENT: %s\n", strerror(ENOENT));
+    printf("ERANGE: %s\n", strerror(ERANGE));
+    printf("ENOMEM: %s\n", strerror(ENOMEM));
+    printf("EACCES: %s\n", strerror(EACCES));
+
+    return 0;
+}</code></pre></div>
+<p>This program does not ask the user to enter an error code.</p>
+<p>Instead, it displays messages associated with predefined error constants.</p>
+<p>The output will depend on the operating system and C library.</p>
+<h2 id="8-improved-interactive-version">8. Improved Interactive Version</h2>
+<p>The original program has two important limitations:</p>
+<ol><li>It does not check whether <code>scanf()</code> successfully reads an integer.</li><li>If the user enters text instead of a number, <code>scanf()</code> fails without consuming the invalid input. The loop may then repeatedly process the same invalid input.</li></ol>
+<p>We can improve the program by using <code>fgets()</code> and <code>strtol()</code> to read and convert input safely.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;limits.h&gt;
+
+int main(void)
+{
+    char input[100];
+    char *endptr;
+
+    while (1)
+    {
+        printf("Please enter an error code (negative number to exit): ");
+
+        if (fgets(input, sizeof(input), stdin) == NULL)
+        {
+            printf("\nInput ended.\n");
+            break;
+        }
+
+        errno = 0;
+
+        long value = strtol(input, &amp;endptr, 10);
+
+        if (endptr == input)
+        {
+            printf("Invalid input: Please enter an integer.\n\n");
+            continue;
+        }
+
+        while (isspace((unsigned char)*endptr))
+        {
+            endptr++;
+        }
+
+        if (*endptr != '\0')
+        {
+            printf("Invalid input: Unexpected characters found.\n\n");
+            continue;
+        }
+
+        if (errno == ERANGE || value &lt; INT_MIN || value &gt; INT_MAX)
+        {
+            printf("Error: Integer value is out of range.\n\n");
+            continue;
+        }
+
+        int e = (int)value;
+
+        if (e &lt; 0)
+        {
+            printf("Exiting program...\n");
+            break;
+        }
+
+        printf("\nError message for Error Code #%d:\n", e);
+        puts(strerror(e));
+        printf("\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<h3 id="understanding-the-improved-version">Understanding the Improved Version</h3>
+<p><strong>Step 1 – Read a complete line</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>fgets(input, sizeof(input), stdin);</code></pre></div>
+<p>Instead of reading an integer directly, we first read a complete line into a character array.</p>
+<p>This allows us to inspect the input before converting it.</p>
+<p><strong>Step 2 – Reset <code>errno</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>errno = 0;</code></pre></div>
+<p>The <code>errno</code> variable is used by many library functions to report certain errors.</p>
+<p>We reset it before calling <code>strtol()</code> so that an old error value does not interfere with checking the current conversion.</p>
+<p><strong>Step 3 – Convert the string into an integer</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>long value = strtol(input, &amp;endptr, 10);</code></pre></div>
+<p>The <code>strtol()</code> function converts a string into a <code>long</code> integer.</p>
+<p>Its general syntax is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strtol(string, endptr, base);</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td><code>string</code></td><td>String containing the numeric value</td></tr><tr><td><code>endptr</code></td><td>Receives the address of the first character that was not converted</td></tr><tr><td><code>base</code></td><td>Numeric base; <code>10</code> means decimal</td></tr></tbody></table></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char input[] = "123abc";
+char *endptr;
+
+long value = strtol(input, &amp;endptr, 10);</code></pre></div>
+<p>After conversion:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>value = 123</code></pre></div>
+<p>And <code>endptr</code> points to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>abc</code></pre></div>
+<p><strong>Step 4 – Check whether conversion occurred</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (endptr == input)</code></pre></div>
+<p>If <code>endptr</code> still points to the beginning of the input, no numeric conversion occurred.</p>
+<p>For example, this input is invalid:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>hello</code></pre></div>
+<p><strong>Step 5 – Ignore trailing whitespace</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (isspace((unsigned char)*endptr))
+{
+    endptr++;
+}</code></pre></div>
+<p>The <code>isspace()</code> function checks whether a character is whitespace, such as a space, tab, or newline.</p>
+<p>We use it to allow harmless whitespace after the number.</p>
+<p>The cast to <code>unsigned char</code> ensures that the argument is valid for <code>isspace()</code>.</p>
+<p><strong>Step 6 – Reject unexpected characters</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (*endptr != '\0')</code></pre></div>
+<p>After skipping whitespace, the program checks whether any additional characters remain.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>123abc</code></pre></div>
+<p>is rejected because <code>abc</code> remains after the numeric value.</p>
+<p><strong>Step 7 – Check the integer range</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (errno == ERANGE || value &lt; INT_MIN || value &gt; INT_MAX)</code></pre></div>
+<p><code>strtol()</code> returns a <code>long</code>, while the original program uses an <code>int</code>.</p>
+<p>Therefore, we must ensure that the converted value fits inside the range of an <code>int</code>.</p>
+<p><strong>Step 8 – Convert to <code>int</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int e = (int)value;</code></pre></div>
+<p>After validating the range, we safely convert the value to <code>int</code>.</p>
+<p><strong>Step 9 – Check the exit condition</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (e &lt; 0)
+{
+    printf("Exiting program...\n");
+    break;
+}</code></pre></div>
+<p>A negative value terminates the loop.</p>
+<p>Otherwise, the program displays the corresponding error description.</p>
+<h2 id="9-practical-application-displaying-errors-when-opening-files">9. Practical Application: Displaying Errors When Opening Files</h2>
+<p>One of the most common applications of <code>strerror()</code> is displaying a meaningful message when a file operation fails.</p>
+<p>Consider the following program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;errno.h&gt;
+
+int main(void)
+{
+    FILE *file = fopen("data.txt", "r");
+
+    if (file == NULL)
+    {
+        printf("Failed to open file!\n");
+        printf("Reason: %s\n", strerror(errno));
+
+        return 1;
+    }
+
+    printf("File opened successfully.\n");
+
+    fclose(file);
+
+    return 0;
+}</code></pre></div>
+<h3 id="explanation">Explanation</h3>
+<p>The program attempts to open a file named <code>data.txt</code> in read mode.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FILE *file = fopen("data.txt", "r");</code></pre></div>
+<p>If the file cannot be opened, <code>fopen()</code> returns <code>NULL</code>.</p>
+<p>We then display the error description:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(errno)</code></pre></div>
+<p>The <code>errno</code> variable is provided through <code>errno.h</code>.</p>
+<p>It is commonly set by library functions when an operation fails and an error code is available.</p>
+<p><strong>Important:</strong> Check <code>errno</code> only when the function's documented failure behavior makes it meaningful. A successful function call does not necessarily reset <code>errno</code>, so do not use an old <code>errno</code> value to describe a successful operation.</p>
+<h2 id="10-difference-between-strerror-and-perror">10. Difference Between <code>strerror()</code> and <code>perror()</code></h2>
+<p>C provides another useful function called <code>perror()</code>.</p>
+<p>Both functions help display error descriptions, but their behavior is different.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Purpose</th></tr></thead><tbody><tr><td><code>strerror()</code></td><td>Returns a string describing an error code</td></tr><tr><td><code>perror()</code></td><td>Displays a user-defined prefix followed by the message associated with the current <code>errno</code></td></tr></tbody></table></div>
+<h3 id="using-strerror">Using <code>strerror()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Error: %s\n", strerror(errno));</code></pre></div>
+<h3 id="using-perror">Using <code>perror()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>perror("File operation failed");</code></pre></div>
+<p>Example output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>File operation failed: No such file or directory</code></pre></div>
+<p>The <code>perror()</code> function is useful when you want to display an error message directly without manually formatting it.</p>
+<p>Use <code>strerror()</code> when you need the error description as a string, for example, when preparing a log message or storing it in a buffer.</p>
+<h2 id="11-common-mistakes">11. Common Mistakes</h2>
+<h3 id="mistake-1-forgetting-string-h">Mistake 1: Forgetting <code>string.h</code></h3>
+<p>Incorrect:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    puts(strerror(2));
+    return 0;
+}</code></pre></div>
+<p>Correct:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+int main(void)
+{
+    puts(strerror(2));
+    return 0;
+}</code></pre></div>
+<p>The declaration of <code>strerror()</code> is provided by <code>string.h</code>.</p>
+<h3 id="mistake-2-assuming-error-numbers-are-identical-on-all-system">Mistake 2: Assuming Error Numbers Are Identical on All Systems</h3>
+<p>Do not assume that an error number always represents the same error on every platform.</p>
+<p>Prefer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(ENOENT);</code></pre></div>
+<p>Instead of hardcoding a number:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(2);</code></pre></div>
+<h3 id="mistake-3-not-checking-scanf">Mistake 3: Not Checking <code>scanf()</code></h3>
+<p>Incorrect:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d", &amp;e);</code></pre></div>
+<p>Better:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (scanf("%d", &amp;e) != 1)
+{
+    printf("Invalid input!\n");
+}</code></pre></div>
+<p>However, a program using <code>scanf()</code> must also handle invalid characters remaining in the input stream. The <code>fgets()</code> and <code>strtol()</code> approach shown earlier provides better control.</p>
+<h3 id="mistake-4-assuming-strerror-detects-an-actual-error">Mistake 4: Assuming <code>strerror()</code> Detects an Actual Error</h3>
+<p>The <code>strerror()</code> function only translates an error number into a message.</p>
+<p>It does not detect errors or determine whether an operation failed.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strerror(ENOENT);</code></pre></div>
+<p>simply requests the description associated with <code>ENOENT</code>.</p>
+<p>To detect a real file-opening failure, you must first check the return value of <code>fopen()</code>.</p>
+<h3 id="mistake-5-assuming-the-message-is-always-in-english">Mistake 5: Assuming the Message Is Always in English</h3>
+<p>The returned message may depend on the implementation and the system's localization settings.</p>
+<p>Do not rely on exact message text for program logic. Use error constants and return values for decisions.</p>
+<h2 id="12-compilation-and-execution">12. Compilation and Execution</h2>
+<p>Save the source code as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o strerror_example</code></pre></div>
+<p>Run on Linux or macOS:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./strerror_example</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o strerror_example.exe
+.\strerror_example.exe</code></pre></div>
+<p>No additional external library is required.</p>
+<h2 id="13-exercises">13. Exercises</h2>
+<p>Try the following exercises to improve your understanding.</p>
+<p><strong>Exercise 1 – Display Common Error Messages</strong></p>
+<p>Write a program that displays the messages for:</p>
+<ul><li><code>EINVAL</code></li><li><code>ENOENT</code></li><li><code>ENOMEM</code></li><li><code>EACCES</code></li><li><code>ERANGE</code></li></ul>
+<p>Use <code>strerror()</code> for each error constant.</p>
+<p><strong>Exercise 2 – Interactive Error Lookup</strong></p>
+<p>Modify the original program so that the user can enter multiple error codes.</p>
+<p>The program should stop when the user enters a negative number.</p>
+<p><strong>Exercise 3 – Handle Invalid Input</strong></p>
+<p>Modify the interactive program to handle:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>hello</code></pre></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12abc</code></pre></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>999999999999999999999999</code></pre></div>
+<p>The program should display an appropriate error message instead of terminating unexpectedly or repeatedly processing invalid input.</p>
+<p><strong>Exercise 4 – File Error Handling</strong></p>
+<p>Write a program that attempts to open a file named <code>example.txt</code>.</p>
+<p>If the file cannot be opened, display the corresponding error message using <code>strerror(errno)</code>.</p>
+<p><strong>Exercise 5 – Compare <code>strerror()</code> and <code>perror()</code></strong></p>
+<p>Write a program that attempts to open a nonexistent file.</p>
+<p>Display the error once using <code>strerror()</code> and once using <code>perror()</code>.</p>
+<p>Compare their outputs.</p>
+<p><strong>Exercise 6 – Create a Simple Error Lookup Table</strong></p>
+<p>Create a program that displays several predefined error constants and their corresponding descriptions.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ENOENT: No such file or directory
+EINVAL: Invalid argument
+ENOMEM: Not enough memory</code></pre></div>
+<h2 id="14-learning-objectives">14. Learning Objectives</h2>
+<p>After completing this tutorial, you should understand:</p>
+<ul><li>How to use <code>strerror()</code> to obtain human-readable error messages.</li><li>Why <code>string.h</code> is required for <code>strerror()</code>.</li><li>How error codes are represented in C.</li><li>How to use predefined error constants from <code>errno.h</code>.</li><li>How to display strings returned by library functions.</li><li>How to use <code>while</code> loops and <code>break</code> statements.</li><li>How to validate user input.</li><li>How <code>strtol()</code> converts strings into integers.</li><li>The purpose of the <code>errno</code> variable.</li><li>The difference between <code>strerror()</code> and <code>perror()</code>.</li><li>How to display useful error messages when file operations fail.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">30 · Reading and Extracting Data from Strings Using sscanf() in C</span></a><a class="pager-link next" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="pager-dir">Next →</span><span class="pager-name">32 · C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

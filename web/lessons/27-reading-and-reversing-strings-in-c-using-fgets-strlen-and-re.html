@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link active" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 27</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 27 of 40 · Part 6</p><h1>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</h1><p class="lesson-source">Folder <code>27-Reading_and_Reversing_Strings_in_C_Using_fgets_strlen_and_Recursion</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-understanding-the-source-code">3. Understanding the Source Code</a></li><li><a href="#4-understanding-character-arrays">4. Understanding Character Arrays</a></li><li><a href="#5-reading-a-line-using-fgets">5. Reading a Line Using fgets()</a></li><li><a href="#6-understanding-strlen">6. Understanding strlen()</a></li><li><a href="#7-understanding-recursion">7. Understanding Recursion</a></li><li><a href="#8-understanding-putchar">8. Understanding putchar()</a></li><li><a href="#9-corrected-and-improved-program">9. Corrected and Improved Program</a></li><li><a href="#10-program-output">10. Program Output</a></li><li><a href="#11-how-recursion-reverses-a-string">11. How Recursion Reverses a String</a></li><li><a href="#12-recursive-reversal-vs-in-place-reversal">12. Recursive Reversal vs. In-Place Reversal</a></li><li><a href="#13-important-notes">13. Important Notes</a></li><li><a href="#14-compilation-and-execution">14. Compilation and Execution</a></li><li><a href="#15-exercises">15. Exercises</a></li><li><a href="#16-learning-objectives">16. Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, strings are sequences of characters stored in character arrays.</p>
+<p>In this lesson, we will learn how to:</p>
+<ul><li>Read a complete line of text from the user.</li><li>Store the input in a character array.</li><li>Use <code>fgets()</code> to safely read strings.</li><li>Calculate string length using <code>strlen()</code>.</li><li>Understand the null terminator (<code>'\0'</code>).</li><li>Reverse a string using recursion.</li><li>Understand how recursive function calls work.</li></ul>
+<p>Our program asks the user to enter a line of text, displays the entered text, calculates its length, and then prints the text in reverse order.</p>
+<p>For example, if the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World</code></pre></div>
+<p>The program displays:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Entered text is:
+Hello World
+
+Length of entered text: 11
+
+Reversed text:
+dlroW olleH</code></pre></div>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<p>The program uses the following header:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;</code></pre></div>
+<h3 id="stdio-h"><code>&lt;stdio.h&gt;</code></h3>
+<p>This header provides standard input/output functions, including:</p>
+<ul><li><code>printf()</code> – Displays formatted output.</li><li><code>fgets()</code> – Reads a line of text.</li><li><code>putchar()</code> – Prints a single character.</li><li><code>stdin</code> – Represents the standard input stream.</li></ul>
+<h3 id="string-h"><code>&lt;string.h&gt;</code></h3>
+<p>This header provides string-handling functions, including:</p>
+<ul><li><code>strlen()</code> – Calculates the length of a string.</li><li><code>strcpy()</code> – Copies a string.</li><li><code>strcat()</code> – Concatenates strings.</li><li><code>strcmp()</code> – Compares strings.</li><li><code>strchr()</code> – Searches for a character.</li><li><code>strcspn()</code> – Finds the length of the initial segment containing none of the specified characters.</li></ul>
+<p>The original program uses <code>strlen()</code> but does not include <code>&lt;string.h&gt;</code>. This should be corrected.</p>
+<h2 id="3-understanding-the-source-code">3. Understanding the Source Code</h2>
+<p>Let's first examine the original program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    char str[50];
+
+    printf("Enter a line of text:\n");
+    fgets(str, 50, stdin);
+
+    printf("\nEntered text is:\n%s\n", str);
+
+    printf("Length of entered text: %d\n", strlen(str) - 1);
+
+    printf("\nReversed text:\n");
+    ReverseString(str);
+    printf("\n");
+
+    return 0;
+}
+
+void ReverseString(const char *s)
+{
+    if (s[0] == '\0')
+    {
+        return;
+    }
+    else
+    {
+        ReverseString(&amp;s[1]);
+
+        if (s[0] != '\n')
+        {
+            putchar(s[0]);
+        }
+    }
+}</code></pre></div>
+<p>We will examine each part and then build a corrected version.</p>
+<h2 id="4-understanding-character-arrays">4. Understanding Character Arrays</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[50];</code></pre></div>
+<p>This statement creates an array capable of storing 50 characters.</p>
+<p>In C, a string is stored as a character array ending with a special character called the null terminator:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>'\0'</code></pre></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char name[] = "Amin";</code></pre></div>
+<p>The array contains:</p>
+<div class="table-wrap"><table><thead><tr><th>Index</th><th>Character</th></tr></thead><tbody><tr><td>0</td><td><code>A</code></td></tr><tr><td>1</td><td><code>m</code></td></tr><tr><td>2</td><td><code>i</code></td></tr><tr><td>3</td><td><code>n</code></td></tr><tr><td>4</td><td><code>\0</code></td></tr></tbody></table></div>
+<p>Although <code>"Amin"</code> contains four visible characters, the array needs five elements to store the null terminator.</p>
+<p>This is essential because C uses <code>'\0'</code> to determine where a string ends.</p>
+<h2 id="5-reading-a-line-using-fgets">5. Reading a Line Using <code>fgets()</code></h2>
+<p>The original program uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>fgets(str, 50, stdin);</code></pre></div>
+<p>The function prototype is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *fgets(char *str, int size, FILE *stream);</code></pre></div>
+<p>It receives three arguments:</p>
+<div class="table-wrap"><table><thead><tr><th>Argument</th><th>Description</th></tr></thead><tbody><tr><td><code>str</code></td><td>Destination character array</td></tr><tr><td><code>size</code></td><td>Maximum number of characters to store, including the null terminator</td></tr><tr><td><code>stream</code></td><td>Input stream from which data is read</td></tr></tbody></table></div>
+<h3 id="5-1-understanding-str">5.1. Understanding <code>str</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>fgets(str, 50, stdin);</code></pre></div>
+<p>The first argument is the destination array.</p>
+<p>The characters entered by the user are stored inside <code>str</code>.</p>
+<h3 id="5-2-understanding-50">5.2. Understanding <code>50</code></h3>
+<p>The second argument specifies the maximum number of characters that <code>fgets()</code> can store, including the terminating <code>'\0'</code>.</p>
+<p>For an array of 50 characters, the function can store at most 49 input characters plus the null terminator.</p>
+<p>This prevents writing beyond the end of the array.</p>
+<h3 id="5-3-understanding-stdin">5.3. Understanding <code>stdin</code></h3>
+<p><code>stdin</code> represents the standard input stream.</p>
+<p>Normally, this is the keyboard.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>fgets(str, 50, stdin);</code></pre></div>
+<p>means:</p>
+<p>Read a line from standard input and store it in <code>str</code>, reading no more than 49 input characters.</p>
+<h3 id="5-4-does-fgets-store-the-newline">5.4. Does <code>fgets()</code> Store the Newline?</h3>
+<p>Yes.</p>
+<p>If the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World</code></pre></div>
+<p>and presses Enter, <code>fgets()</code> normally stores the newline character <code>'\n'</code> as part of the string, provided there is room for it.</p>
+<p>The array will conceptually contain:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>H e l l o   W o r l d \n \0</code></pre></div>
+<p>The newline is different from the null terminator:</p>
+<ul><li><code>'\n'</code> represents the newline entered when the user presses Enter.</li><li><code>'\0'</code> marks the end of the C string.</li></ul>
+<p>This distinction is important when calculating string length and reversing strings.</p>
+<h2 id="6-understanding-strlen">6. Understanding <code>strlen()</code></h2>
+<p>The original program contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strlen(str) - 1</code></pre></div>
+<p>The <code>strlen()</code> function calculates the number of characters in a string, excluding the null terminator.</p>
+<p>Its prototype is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>size_t strlen(const char *str);</code></pre></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char text[] = "Hello";
+
+printf("Length = %zu\n", strlen(text));</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Length = 5</code></pre></div>
+<p>The null terminator is not included in the result.</p>
+<h3 id="6-1-why-does-the-original-code-subtract-one">6.1. Why Does the Original Code Subtract One?</h3>
+<p>The original program uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strlen(str) - 1</code></pre></div>
+<p>This is because <code>fgets()</code> normally stores the newline character <code>'\n'</code> when the user presses Enter.</p>
+<p>For example, the stored string may be:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello\n\0</code></pre></div>
+<p>The length is 6:</p>
+<ul><li><code>H</code></li><li><code>e</code></li><li><code>l</code></li><li><code>l</code></li><li><code>o</code></li><li><code>\n</code></li></ul>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strlen(str) - 1</code></pre></div>
+<p>produces 5.</p>
+<p>However, this method is not always safe.</p>
+<p>If the user enters more characters than the array can hold, <code>fgets()</code> may fill the buffer without reading the newline. In that situation, subtracting one would incorrectly reduce the length.</p>
+<p>It is better to explicitly remove the newline before calculating the string length.</p>
+<h2 id="7-understanding-recursion">7. Understanding Recursion</h2>
+<p>The most interesting part of this program is the following function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void ReverseString(const char *s)
+{
+    if (s[0] == '\0')
+    {
+        return;
+    }
+    else
+    {
+        ReverseString(&amp;s[1]);
+
+        if (s[0] != '\n')
+        {
+            putchar(s[0]);
+        }
+    }
+}</code></pre></div>
+<p>This function reverses the displayed order of the characters using recursion.</p>
+<h3 id="7-1-what-is-recursion">7.1. What Is Recursion?</h3>
+<p>Recursion is a programming technique in which a function calls itself.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void CountDown(int n)
+{
+    if (n == 0)
+    {
+        return;
+    }
+
+    printf("%d\n", n);
+
+    CountDown(n - 1);
+}</code></pre></div>
+<p>Calling:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>CountDown(5);</code></pre></div>
+<p>produces:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>5
+4
+3
+2
+1</code></pre></div>
+<p>Every recursive function needs a termination condition. Without one, the function may continue calling itself until the program runs out of stack space.</p>
+<h3 id="7-2-understanding-the-function-parameter">7.2. Understanding the Function Parameter</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void ReverseString(const char *s)</code></pre></div>
+<p>The parameter is a pointer to a constant character.</p>
+<p>It means:</p>
+<ul><li><code>s</code> points to a character or the beginning of a string.</li><li>The function can read the characters.</li><li>The function cannot modify the characters through this pointer.</li></ul>
+<p>The keyword <code>const</code> protects the original string from accidental modification through <code>s</code>.</p>
+<h3 id="7-3-the-base-case">7.3. The Base Case</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (s[0] == '\0')
+{
+    return;
+}</code></pre></div>
+<p>This condition checks whether the current character is the null terminator.</p>
+<p>If it is, the function returns without making another recursive call.</p>
+<p>This is called the base case.</p>
+<p>The base case prevents infinite recursion.</p>
+<h3 id="7-4-moving-to-the-next-character">7.4. Moving to the Next Character</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ReverseString(&amp;s[1]);</code></pre></div>
+<p>This is the key instruction.</p>
+<p>Let's understand it carefully.</p>
+<ul><li><code>s</code> points to the current character.</li><li><code>s[1]</code> represents the next character.</li><li><code>&amp;s[1]</code> represents the address of the next character.</li></ul>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ReverseString(&amp;s[1]);</code></pre></div>
+<p>calls the same function using the next character as its starting point.</p>
+<p>For example, if the string is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ABC</code></pre></div>
+<p>The recursive calls work as follows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ReverseString(&amp;s[0])  // A
+    ReverseString(&amp;s[1])  // B
+        ReverseString(&amp;s[2])  // C
+            ReverseString(&amp;s[3])  // '\0'</code></pre></div>
+<p>When the null terminator is reached, recursion stops.</p>
+<h3 id="7-5-printing-characters-after-the-recursive-call">7.5. Printing Characters After the Recursive Call</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>putchar(s[0]);</code></pre></div>
+<p>Notice that this instruction appears after the recursive call.</p>
+<p>This is the reason the characters are printed in reverse order.</p>
+<p>The function first moves to the end of the string. Then, as the recursive calls return, it prints each character.</p>
+<p>For the string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ABC</code></pre></div>
+<p>The execution order is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1. Call with A
+2. Call with B
+3. Call with C
+4. Reach '\0' and return
+5. Print C
+6. Print B
+7. Print A</code></pre></div>
+<p>Final output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>CBA</code></pre></div>
+<p>This is an important property of recursion: statements after a recursive call execute while the previous function calls are returning.</p>
+<h2 id="8-understanding-putchar">8. Understanding <code>putchar()</code></h2>
+<p>The function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>putchar(s[0]);</code></pre></div>
+<p>prints one character to standard output.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>putchar('A');
+putchar('B');
+putchar('C');</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ABC</code></pre></div>
+<p>Unlike <code>printf()</code>, <code>putchar()</code> is designed to output a single character.</p>
+<p>In our recursive function, it prints one character at a time in reverse order.</p>
+<h2 id="9-corrected-and-improved-program">9. Corrected and Improved Program</h2>
+<p>There are several improvements we should make to the original program:</p>
+<ol><li>Include <code>&lt;string.h&gt;</code> because we use string functions.</li><li>Add a function prototype before <code>main()</code>.</li><li>Check whether <code>fgets()</code> successfully reads input.</li><li>Remove the newline safely instead of assuming it is always present.</li><li>Use <code>%zu</code> to display the return value of <code>strlen()</code>, because its type is <code>size_t</code>.</li><li>Remove the unnecessary <code>&lt;stdlib.h&gt;</code> header.</li></ol>
+<p>Here is the complete corrected program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void ReverseString(const char *s);
+
+int main(void)
+{
+    char str[50];
+
+    printf("Enter a line of text:\n");
+
+    if (fgets(str, sizeof(str), stdin) == NULL)
+    {
+        printf("Error: Unable to read input.\n");
+        return 1;
+    }
+
+    /* Remove the newline character, if present */
+    str[strcspn(str, "\r\n")] = '\0';
+
+    printf("\nEntered text is:\n%s\n", str);
+
+    printf("Length of entered text: %zu\n", strlen(str));
+
+    printf("\nReversed text:\n");
+    ReverseString(str);
+    printf("\n");
+
+    return 0;
+}
+
+void ReverseString(const char *s)
+{
+    if (s[0] == '\0')
+    {
+        return;
+    }
+
+    ReverseString(&amp;s[1]);
+
+    putchar(s[0]);
+}</code></pre></div>
+<h3 id="9-1-understanding-the-improvements">9.1. Understanding the Improvements</h3>
+<p><strong>Using <code>sizeof(str)</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>fgets(str, sizeof(str), stdin);</code></pre></div>
+<p>Instead of writing <code>50</code> directly, we use <code>sizeof(str)</code>.</p>
+<p>This makes the code easier to maintain if the array size changes later.</p>
+<p><strong>Checking the return value of <code>fgets()</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (fgets(str, sizeof(str), stdin) == NULL)</code></pre></div>
+<p><code>fgets()</code> returns <code>NULL</code> if it cannot read any characters because of an error or because the end of the input stream is reached before reading any characters.</p>
+<p>Checking its return value prevents using an uninitialized string.</p>
+<p><strong>Removing the newline</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>str[strcspn(str, "\r\n")] = '\0';</code></pre></div>
+<p>The function <code>strcspn()</code> finds the position of the first character that matches either <code>'\r'</code> or <code>'\n'</code>.</p>
+<p>We replace that character with <code>'\0'</code>.</p>
+<p>This removes the line ending when present.</p>
+<p>If neither character exists, <code>strcspn()</code> returns the length of the string, and assigning <code>'\0'</code> at that position leaves the string unchanged.</p>
+<p><strong>Calculating the length</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strlen(str)</code></pre></div>
+<p>Now the newline has been removed, so the returned length is exactly the number of text characters.</p>
+<p><strong>Printing the length</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Length of entered text: %zu\n", strlen(str));</code></pre></div>
+<p>The <code>%zu</code> format specifier is appropriate for <code>size_t</code>, the type returned by <code>strlen()</code>.</p>
+<h2 id="10-program-output">10. Program Output</h2>
+<p>Example 1:</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter a line of text:
+
+Entered text is:
+Hello World
+Length of entered text: 11
+
+Reversed text:
+dlroW olleH</code></pre></div>
+<p>Example 2:</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Embedded Systems</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter a line of text:
+
+Entered text is:
+Embedded Systems
+Length of entered text: 16
+
+Reversed text:
+smetsyS deddebmE</code></pre></div>
+<p>Example 3:</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12345</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter a line of text:
+
+Entered text is:
+12345
+Length of entered text: 5
+
+Reversed text:
+54321</code></pre></div>
+<h2 id="11-how-recursion-reverses-a-string">11. How Recursion Reverses a String</h2>
+<p>Consider this string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>CODE</code></pre></div>
+<p>The recursive function first moves through the characters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>C → O → D → E → '\0'</code></pre></div>
+<p>Then it returns through the function calls:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>E → D → O → C</code></pre></div>
+<p>The result is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>EDOC</code></pre></div>
+<p>The important point is that the function does not modify the original character array. It only changes the order in which characters are printed.</p>
+<h2 id="12-recursive-reversal-vs-in-place-reversal">12. Recursive Reversal vs. In-Place Reversal</h2>
+<p>There are different ways to reverse a string.</p>
+<h3 id="method-1-recursive-printing">Method 1: Recursive Printing</h3>
+<p>Our current method:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void ReverseString(const char *s)
+{
+    if (*s == '\0')
+    {
+        return;
+    }
+
+    ReverseString(s + 1);
+    putchar(*s);
+}</code></pre></div>
+<p>Characteristics:</p>
+<ul><li>Does not modify the original string.</li><li>Uses recursive function calls.</li><li>Requires additional call-stack memory proportional to the string length.</li><li>Prints the reversed characters directly.</li></ul>
+<h3 id="method-2-reversing-the-array-itself">Method 2: Reversing the Array Itself</h3>
+<p>Another approach is to swap characters inside the array.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void ReverseString(char *s)
+{
+    size_t left = 0;
+    size_t right = strlen(s);
+
+    if (right == 0)
+    {
+        return;
+    }
+
+    right--;
+
+    while (left &lt; right)
+    {
+        char temp = s[left];
+
+        s[left] = s[right];
+        s[right] = temp;
+
+        left++;
+        right--;
+    }
+}
+
+int main(void)
+{
+    char str[] = "Hello World";
+
+    ReverseString(str);
+
+    printf("Reversed string: %s\n", str);
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Reversed string: dlroW olleH</code></pre></div>
+<p>This second method modifies the original string.</p>
+<p>Comparison:</p>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th>Recursive printing</th><th>In-place reversal</th></tr></thead><tbody><tr><td>Uses recursion</td><td>Yes</td><td>No</td></tr><tr><td>Modifies original string</td><td>No</td><td>Yes</td></tr><tr><td>Additional memory</td><td>O(N) call stack</td><td>O(1)</td></tr><tr><td>Time complexity</td><td>O(N)</td><td>O(N)</td></tr><tr><td>Output</td><td>Prints reversed characters</td><td>Stores reversed string</td></tr></tbody></table></div>
+<p>Both approaches are useful for learning different programming concepts.</p>
+<h2 id="13-important-notes">13. Important Notes</h2>
+<ul><li>A C string must end with <code>'\0'</code>.</li><li><code>fgets()</code> reads a line and limits the number of characters stored.</li><li><code>fgets()</code> normally retains the newline if it reads one and has enough space.</li><li><code>strlen()</code> does not count the null terminator.</li><li>The return type of <code>strlen()</code> is <code>size_t</code>.</li><li>Use <code>%zu</code> to print a <code>size_t</code> value.</li><li><code>putchar()</code> prints one character.</li><li>A recursive function calls itself.</li><li>Every recursive function needs a base case.</li><li><code>ReverseString()</code> prints the characters in reverse order but does not modify the original array.</li><li>Recursive functions consume stack space. For very long strings, an iterative approach is generally safer.</li><li>This example reverses bytes, not necessarily complete Unicode characters. UTF-8 characters may occupy multiple bytes.</li></ul>
+<p><strong>Important buffer limitation:</strong> <code>fgets()</code> can read at most 49 input characters into <code>str[50]</code>. If the user enters a longer line, the remaining characters stay in the input stream and may be read by a later operation. The program above processes the portion that fits in the array.</p>
+<h2 id="14-compilation-and-execution">14. Compilation and Execution</h2>
+<p>Using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o reverse_string</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./reverse_string</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o reverse_string.exe
+.\reverse_string.exe</code></pre></div>
+<h2 id="15-exercises">15. Exercises</h2>
+<p>Try the following exercises to improve your understanding.</p>
+<p><strong>Exercise 1:</strong></p>
+<p>Modify the program so that the user can enter a string containing spaces, numbers, and special characters.</p>
+<p><strong>Exercise 2:</strong></p>
+<p>Write a recursive function that counts the number of characters in a string without using <code>strlen()</code>.</p>
+<p>Suggested function prototype:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>size_t StringLength(const char *s);</code></pre></div>
+<p><strong>Exercise 3:</strong></p>
+<p>Write a recursive function that counts the number of vowels in a string.</p>
+<p><strong>Exercise 4:</strong></p>
+<p>Write a recursive function that prints a string in reverse order without using <code>putchar()</code>. Use <code>printf()</code> instead.</p>
+<p><strong>Exercise 5:</strong></p>
+<p>Write a function that checks whether a string is a palindrome.</p>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>madam  → Palindrome
+level  → Palindrome
+hello  → Not a palindrome</code></pre></div>
+<p><strong>Exercise 6:</strong></p>
+<p>Implement both recursive and iterative string reversal. Compare their behavior and memory usage.</p>
+<h2 id="16-learning-objectives">16. Learning Objectives</h2>
+<p>After completing this lesson, you should understand:</p>
+<ul><li>How to declare and initialize character arrays.</li><li>How to read text using <code>fgets()</code>.</li><li>The difference between <code>'\n'</code> and <code>'\0'</code>.</li><li>How to calculate string length using <code>strlen()</code>.</li><li>How to use <code>strcspn()</code> to remove line endings.</li><li>How to use <code>putchar()</code> to print individual characters.</li><li>How recursion works.</li><li>How to reverse a string using recursive function calls.</li><li>The difference between printing a reversed string and modifying the original array.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="pager-dir">← Previous</span><span class="pager-name">26 · String to Floating-Point Conversion in C (strtof and strtod)</span></a><a class="pager-link next" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="pager-dir">Next →</span><span class="pager-name">28 · Reading a String Character by Character in C Using getchar()</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

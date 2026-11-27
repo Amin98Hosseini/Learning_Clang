@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Splitting Strings into Tokens Using strtok() in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link active" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 35</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 35 of 40 · Part 6</p><h1>Splitting Strings into Tokens Using strtok() in C</h1><p class="lesson-source">Folder <code>35-Splitting_Strings_into_Tokens_Using_strtok_in_C_Language</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-complete-source-code">2. Complete Source Code</a></li><li><a href="#3-required-header-files">3. Required Header Files</a></li><li><a href="#4-understanding-the-strtok-function">4. Understanding the strtok() Function</a></li><li><a href="#5-understanding-the-delimiter-string">5. Understanding the Delimiter String</a></li><li><a href="#6-understanding-the-first-strtok-call">6. Understanding the First strtok() Call</a></li><li><a href="#7-understanding-the-while-loop">7. Understanding the while Loop</a></li><li><a href="#8-expected-output">8. Expected Output</a></li><li><a href="#9-important-characteristics-of-strtok">9. Important Characteristics of strtok()</a></li><li><a href="#10-converting-extracted-tokens-into-numbers">10. Converting Extracted Tokens into Numbers</a></li><li><a href="#11-important-limitations-and-best-practices">11. Important Limitations and Best Practices</a></li><li><a href="#12-compile-and-run">12. Compile and Run</a></li><li><a href="#13-practice-exercises">13. Practice Exercises</a></li><li><a href="#14-what-you-will-learn">14. What You Will Learn</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In this project, we learn how to split a string into smaller parts, called <strong>tokens</strong>, using the standard C library function <code>strtok()</code>.</p>
+<p>A token is a section of a string separated from other sections by one or more delimiter characters.</p>
+<p>For example, consider this string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "1.2 2.5 -5.6,7,8,10 1.41 -6.5,-17";</code></pre></div>
+<p>The string contains numbers separated by spaces and commas.</p>
+<p>We can use <code>strtok()</code> to extract each number separately without writing our own character-by-character parsing algorithm.</p>
+<p>The program uses both a space and a comma as delimiters.</p>
+<h2 id="2-complete-source-code">2. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char str[] = "1.2 2.5 -5.6,7,8,10 1.41 -6.5,-17";
+    char del[] = " ,";
+
+    char *pt;
+
+    pt = strtok(str, del);
+
+    while (pt != NULL)
+    {
+        printf("%s\n", pt);
+        pt = strtok(NULL, del);
+    }
+
+    return 0;
+}</code></pre></div>
+<h2 id="3-required-header-files">3. Required Header Files</h2>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>Provides standard input and output functions.</p>
+<p>This program uses:</p>
+<ul><li><code>printf()</code> to display each extracted token.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>Provides general-purpose utility functions.</p>
+<p>It is not required by the current program because none of its functions are used. You can remove this header.</p>
+<h3 id="string-h"><code>string.h</code></h3>
+<p>Provides string manipulation functions.</p>
+<p>This program uses:</p>
+<ul><li><code>strtok()</code> to split the string into tokens.</li></ul>
+<h2 id="4-understanding-the-strtok-function">4. Understanding the <code>strtok()</code> Function</h2>
+<p>The <code>strtok()</code> function divides a string into smaller sections based on specified delimiter characters.</p>
+<p>Its declaration is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *strtok(char *str, const char *delim);</code></pre></div>
+<h3 id="parameters">Parameters</h3>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td><code>str</code></td><td>The string to split.</td></tr><tr><td><code>delim</code></td><td>A string containing the delimiter characters.</td></tr></tbody></table></div>
+<h3 id="return-value">Return value</h3>
+<p><code>strtok()</code> returns a pointer to the next token.</p>
+<ul><li>If a token is found, it returns a pointer to the beginning of that token.</li><li>If no more tokens are available, it returns <code>NULL</code>.</li></ul>
+<p><strong>Important:</strong> <code>strtok()</code> modifies the original string. It replaces delimiter characters that separate tokens with the null character <code>'\0'</code>.</p>
+<p>Therefore, the input string must be writable. A character array such as <code>char str[]</code> is suitable, but a string literal accessed through a modifiable pointer is not.</p>
+<h2 id="5-understanding-the-delimiter-string">5. Understanding the Delimiter String</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char del[] = " ,";</code></pre></div>
+<p>This string contains two delimiter characters:</p>
+<ol><li>A space (<code>' '</code>).</li><li>A comma (<code>','</code>).</li></ol>
+<p>Every occurrence of either character can separate tokens.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2 2.5 -5.6,7,8,10 1.41 -6.5,-17</code></pre></div>
+<p>The delimiters divide the original string into:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2
+2.5
+-5.6
+7
+8
+10
+1.41
+-6.5
+-17</code></pre></div>
+<p><strong>Important:</strong> The delimiter argument is not treated as one complete separator. Each character inside it is considered an independent delimiter.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char del[] = ",;";</code></pre></div>
+<p>means that both commas and semicolons can separate tokens.</p>
+<h2 id="6-understanding-the-first-strtok-call">6. Understanding the First <code>strtok()</code> Call</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *pt;
+
+pt = strtok(str, del);</code></pre></div>
+<p>The first call receives:</p>
+<ul><li><code>str</code>: The original string.</li><li><code>del</code>: The delimiter characters.</li></ul>
+<p>The function searches for the first token and returns a pointer to its beginning.</p>
+<p>After this call:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pt</code></pre></div>
+<p>points to the first token:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2</code></pre></div>
+<p>Internally, <code>strtok()</code> replaces the delimiter after the token with <code>'\0'</code>.</p>
+<p>Conceptually, the original string begins to look like this in memory:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2\0 2.5 -5.6,7,8,10 1.41 -6.5,-17</code></pre></div>
+<p>The actual delimiter character is overwritten, allowing <code>pt</code> to be used as a normal C string.</p>
+<h2 id="7-understanding-the-while-loop">7. Understanding the <code>while</code> Loop</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (pt != NULL)
+{
+    printf("%s\n", pt);
+    pt = strtok(NULL, del);
+}</code></pre></div>
+<p>This loop extracts and displays tokens until no more tokens remain.</p>
+<h3 id="step-1-check-the-pointer">Step 1: Check the pointer</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (pt != NULL)</code></pre></div>
+<p>The loop continues as long as <code>pt</code> points to a valid token.</p>
+<p>When <code>strtok()</code> cannot find another token, it returns <code>NULL</code>, and the loop terminates.</p>
+<h3 id="step-2-print-the-current-token">Step 2: Print the current token</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%s\n", pt);</code></pre></div>
+<p>The <code>%s</code> format specifier prints the token as a string.</p>
+<p>For example, if <code>pt</code> points to <code>"1.2"</code>, the output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2</code></pre></div>
+<h3 id="step-3-extract-the-next-token">Step 3: Extract the next token</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pt = strtok(NULL, del);</code></pre></div>
+<p>This is an important part of using <code>strtok()</code>.</p>
+<p>The first call uses the original string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strtok(str, del);</code></pre></div>
+<p>Subsequent calls use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strtok(NULL, del);</code></pre></div>
+<p>Passing <code>NULL</code> tells <code>strtok()</code> to continue searching from where its previous call stopped.</p>
+<p>Each call returns the next token until all tokens have been extracted.</p>
+<h2 id="8-expected-output">8. Expected Output</h2>
+<p>When you run the program, the output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2
+2.5
+-5.6
+7
+8
+10
+1.41
+-6.5
+-17</code></pre></div>
+<p>Each token is printed on a separate line.</p>
+<h2 id="9-important-characteristics-of-strtok">9. Important Characteristics of <code>strtok()</code></h2>
+<h3 id="9-1-it-modifies-the-original-string">9.1. It modifies the original string</h3>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Hello,World";
+char *pt = strtok(str, ",");</code></pre></div>
+<p>After tokenization, the comma is replaced with <code>'\0'</code>.</p>
+<p>The original array is modified. If you need to preserve the original string, make a copy before calling <code>strtok()</code>.</p>
+<h3 id="9-2-consecutive-delimiters-are-treated-as-one-separator">9.2. Consecutive delimiters are treated as one separator</h3>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Hello,,,World";
+char *pt = strtok(str, ",");</code></pre></div>
+<p>The tokens are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello
+World</code></pre></div>
+<p>Empty tokens are not returned. Multiple consecutive delimiters are skipped.</p>
+<p>The same behavior applies to leading and trailing delimiters.</p>
+<h3 id="9-3-delimiters-can-contain-multiple-characters">9.3. Delimiters can contain multiple characters</h3>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char del[] = ",; ";</code></pre></div>
+<p>The function treats comma, semicolon, and space as independent delimiters.</p>
+<h3 id="9-4-tokenization-is-case-sensitive-only-when-token-contents">9.4. Tokenization is case-sensitive only when token contents are compared</h3>
+<p><code>strtok()</code> itself does not compare token letters or change their case. It only identifies delimiters.</p>
+<h3 id="9-5-strtok-maintains-internal-state">9.5. <code>strtok()</code> maintains internal state</h3>
+<p>The function remembers its position between calls. This means that nested tokenization or simultaneous tokenization of multiple strings can interfere with each other.</p>
+<p>In environments that provide it, <code>strtok_r()</code> is a reentrant alternative that uses a caller-provided state pointer. It is commonly available on POSIX systems, but it is not part of the ISO C standard.</p>
+<h2 id="10-converting-extracted-tokens-into-numbers">10. Converting Extracted Tokens into Numbers</h2>
+<p>The current program extracts numbers as strings.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pt = "1.2";</code></pre></div>
+<p>This is text, not a floating-point value.</p>
+<p>If you want to perform mathematical operations, you must convert each token into a numeric type.</p>
+<p>One option is <code>strtod()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+int main()
+{
+    char str[] = "1.2 2.5 -5.6,7,8,10 1.41 -6.5,-17";
+    const char del[] = " ,";
+
+    char *pt = strtok(str, del);
+
+    while (pt != NULL)
+    {
+        char *endptr;
+        double value = strtod(pt, &amp;endptr);
+
+        if (endptr != pt &amp;&amp; *endptr == '\0')
+        {
+            printf("Token: %-8s Value: %.2f\n", pt, value);
+        }
+        else
+        {
+            printf("Invalid number: %s\n", pt);
+        }
+
+        pt = strtok(NULL, del);
+    }
+
+    return 0;
+}</code></pre></div>
+<p>Here:</p>
+<ul><li><code>strtod()</code> converts a string into a <code>double</code>.</li><li><code>endptr</code> points to the first character that was not converted.</li><li><code>endptr != pt</code> checks that at least one character was converted.</li><li><code>*endptr == '\0'</code> checks that the entire token was a valid number.</li></ul>
+<p>Example output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Token: 1.2      Value: 1.20
+Token: 2.5      Value: 2.50
+Token: -5.6     Value: -5.60
+Token: 7        Value: 7.00
+Token: 8        Value: 8.00
+Token: 10       Value: 10.00
+Token: 1.41     Value: 1.41
+Token: -6.5     Value: -6.50
+Token: -17      Value: -17.00</code></pre></div>
+<p>This is useful when processing sensor data, configuration strings, CSV-like input, and numeric data received through UART, TCP, or other communication interfaces.</p>
+<h2 id="11-important-limitations-and-best-practices">11. Important Limitations and Best Practices</h2>
+<ul><li>Do not pass a string literal directly to <code>strtok()</code> because the function modifies its input.</li><li>Always check whether the returned pointer is <code>NULL</code> before using it.</li><li>Remember that consecutive delimiters do not produce empty tokens.</li><li>If you need to preserve the original string, copy it before tokenization.</li><li>Avoid using <code>strtok()</code> when multiple strings must be tokenized independently at the same time. Consider <code>strtok_r()</code> on POSIX systems or a custom parser.</li><li>If your input represents CSV data with quoted fields, commas inside quotation marks require a more advanced parser. Basic <code>strtok()</code> is not a complete CSV parser.</li></ul>
+<h2 id="12-compile-and-run">12. Compile and Run</h2>
+<p>Save the source code as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -std=c11 -Wall -Wextra -pedantic main.c -o strtok_example</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./strtok_example</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strtok_example.exe</code></pre></div>
+<h2 id="13-practice-exercises">13. Practice Exercises</h2>
+<p>Try modifying the program to complete these exercises:</p>
+<ol><li>Change the input string to <code>"Red,Green,Blue"</code> and use comma as the only delimiter.</li><li>Use spaces, commas, and semicolons as delimiters.</li><li>Count the total number of tokens.</li><li>Convert every extracted token into a <code>double</code> using <code>strtod()</code>.</li><li>Calculate the sum and average of all valid numeric tokens.</li><li>Make a copy of the original string and print it after tokenization to understand how <code>strtok()</code> modifies the input.</li><li>Write a program that splits a string containing sensor values separated by commas and spaces.</li></ol>
+<h2 id="14-what-you-will-learn">14. What You Will Learn</h2>
+<p>After completing this project, you should understand:</p>
+<ul><li>How to use <code>strtok()</code> from <code>&lt;string.h&gt;</code>.</li><li>How to split a string into smaller tokens.</li><li>How delimiter characters work.</li><li>How pointers can refer to parts of a character array.</li><li>Why <code>NULL</code> is used to indicate that no more tokens are available.</li><li>How a string function can modify its input.</li><li>How to convert extracted numeric strings into <code>double</code> values using <code>strtod()</code>.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="pager-dir">← Previous</span><span class="pager-name">34 · C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a><a class="pager-link next" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">36 · Reading Strings with scanf() Using a Scanset in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

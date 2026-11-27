@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>While Loop, Break, Sum &amp; Mean in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link active" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-2">Part 2 — Decisions, Operators and Loops</a><span>/</span><span aria-current="page">Lesson 07</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 07 of 40 · Part 2</p><h1>While Loop, Break, Sum &amp; Mean in C</h1><p class="lesson-source">Folder <code>7-WhileLoop_SumMean_Break</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#overview">Overview</a></li><li><a href="#learning-objectives">Learning Objectives</a></li><li><a href="#source-code-explanation">Source Code Explanation</a></li><li><a href="#example-output">Example Output</a></li><li><a href="#important-c-programming-concepts">Important C Programming Concepts</a></li><li><a href="#practice-exercises">Practice Exercises</a></li><li><a href="#important-note-division-by-zero">Important Note: Division by Zero</a></li><li><a href="#summary">Summary</a></li></ol></nav><article class="prose"><h2 id="overview">Overview</h2>
+<p>This project demonstrates how to use the <code>while</code> loop, <code>break</code> statement, and arithmetic operations in C programming.</p>
+<p>The program continuously receives integer numbers from the user, calculates their sum, and finally calculates the mean (average) of the entered numbers.</p>
+<p>The input process terminates when the user enters <code>-1</code>.</p>
+<h2 id="learning-objectives">Learning Objectives</h2>
+<p>By studying this example, you will learn:</p>
+<ul><li>How to use the <code>while</code> loop.</li><li>How to create an infinite loop.</li><li>How to use the <code>break</code> statement to exit a loop.</li><li>How to receive multiple inputs using <code>scanf()</code>.</li><li>How to calculate the sum of numbers.</li><li>How to calculate the arithmetic mean.</li><li>How to use type casting in C.</li><li>How to use a counter variable to track the number of inputs.</li></ul>
+<h2 id="source-code-explanation">Source Code Explanation</h2>
+<h3 id="1-header-file">1. Header File</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<p>Includes the Standard Input/Output library, which provides functions such as <code>printf()</code> and <code>scanf()</code>.</p>
+<h3 id="2-define-constants">2. Define Constants</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#define TRUE -1
+#define FALSE 0</code></pre></div>
+<p>Defines two symbolic constants:</p>
+<ul><li><code>TRUE</code>: Represents a true condition.</li><li><code>FALSE</code>: Represents a false condition.</li></ul>
+<p>In C, any non-zero integer is considered true, while zero is considered false.</p>
+<p><strong>Note:</strong> Using <code>1</code> for <code>TRUE</code> is more conventional, but <code>-1</code> also works.</p>
+<h3 id="3-variable-declaration">3. Variable Declaration</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int n = 10;
+int a, S, i;</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Description</th></tr></thead><tbody><tr><td><code>n</code></td><td>Maximum number of inputs (not currently used).</td></tr><tr><td><code>a</code></td><td>Stores the number entered by the user.</td></tr><tr><td><code>S</code></td><td>Stores the sum of entered numbers.</td></tr><tr><td><code>i</code></td><td>Counts the number of entered numbers.</td></tr></tbody></table></div>
+<h3 id="4-initialize-variables">4. Initialize Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>i = 0;
+S = 0;</code></pre></div>
+<ul><li><code>i = 0</code>: Initializes the counter.</li><li><code>S = 0</code>: Initializes the sum.</li></ul>
+<h3 id="5-while-loop">5. While Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while(TRUE)
+{
+    printf("Enter a number: ");
+    scanf("%d", &amp;a);
+
+    if(a == -1)
+        break;
+
+    S += a;
+    i++;
+}</code></pre></div>
+<p>The <code>while(TRUE)</code> statement creates an infinite loop because <code>TRUE</code> is defined as <code>-1</code>, which is non-zero.</p>
+<p>Inside the loop:</p>
+<ol><li>The program asks the user to enter a number.</li><li><code>scanf()</code> reads the entered number.</li><li>If the number is <code>-1</code>, the <code>break</code> statement terminates the loop.</li><li>Otherwise, the number is added to <code>S</code>.</li><li>The counter <code>i</code> increases by one.</li></ol>
+<p><strong>Important:</strong> The termination value <code>-1</code> is not included in the sum or the number of inputs.</p>
+<h3 id="6-calculate-the-sum">6. Calculate the Sum</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("\nSum of numbers = %d\n\n", S);</code></pre></div>
+<p>Displays the total sum of all entered numbers.</p>
+<h3 id="7-calculate-the-mean">7. Calculate the Mean</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float m = (float)S / i;</code></pre></div>
+<p>Calculates the arithmetic mean:</p>
+<p>\[ Mean = \frac{Sum}{Number\ of\ Inputs} \]</p>
+<p>The <code>(float)</code> operation is called <strong>type casting</strong>.</p>
+<p>It converts <code>S</code> from an integer to a floating-point number, allowing the division to produce a decimal result.</p>
+<h3 id="8-display-the-mean">8. Display the Mean</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Mean of numbers = %.2f", m);</code></pre></div>
+<p>Displays the calculated mean with two digits after the decimal point.</p>
+<h2 id="example-output">Example Output</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter a number: 10
+Enter a number: 20
+Enter a number: 30
+Enter a number: 40
+Enter a number: -1
+
+Sum of numbers = 100
+
+Mean of numbers = 25.00</code></pre></div>
+<h2 id="important-c-programming-concepts">Important C Programming Concepts</h2>
+<div class="table-wrap"><table><thead><tr><th>Concept</th><th>Description</th></tr></thead><tbody><tr><td><code>while()</code></td><td>Repeats a block of code while a condition is true.</td></tr><tr><td><code>break</code></td><td>Immediately terminates the current loop.</td></tr><tr><td><code>#define</code></td><td>Creates a preprocessor macro.</td></tr><tr><td><code>scanf()</code></td><td>Reads input from the user.</td></tr><tr><td><code>S += a</code></td><td>Adds <code>a</code> to <code>S</code> and stores the result in <code>S</code>.</td></tr><tr><td><code>i++</code></td><td>Increments the counter by one.</td></tr><tr><td><code>(float)</code></td><td>Converts a value to floating-point type.</td></tr><tr><td><code>%.2f</code></td><td>Prints a floating-point value with two decimal places.</td></tr></tbody></table></div>
+<h2 id="practice-exercises">Practice Exercises</h2>
+<p>Try modifying the program to improve your understanding:</p>
+<ol><li>Replace <code>while(TRUE)</code> with <code>while(i &lt; n)</code> to limit the number of inputs to 10.</li><li>Change the termination value from <code>-1</code> to <code>0</code>.</li><li>Calculate the maximum and minimum entered numbers.</li><li>Calculate the sum of only positive numbers.</li><li>Calculate the average of only even numbers.</li><li>Prevent division by zero when the user enters <code>-1</code> immediately.</li></ol>
+<h2 id="important-note-division-by-zero">Important Note: Division by Zero</h2>
+<p>The original program has a potential problem:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float m = (float)S / i;</code></pre></div>
+<p>If the user enters <code>-1</code> immediately, <code>i</code> remains zero, resulting in division by zero.</p>
+<p>A safer implementation is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(i &gt; 0)
+{
+    float m = (float)S / i;
+    printf("Mean of numbers = %.2f\n", m);
+}
+else
+{
+    printf("No numbers were entered.\n");
+}</code></pre></div>
+<h2 id="summary">Summary</h2>
+<p>This example is a practical introduction to loops and basic mathematical operations in C.</p>
+<p>The main concepts demonstrated are:</p>
+<ul><li>Repetition using <code>while</code>.</li><li>Loop termination using <code>break</code>.</li><li>Accumulation using <code>S += a</code>.</li><li>Counting using <code>i++</code>.</li><li>Average calculation using floating-point division.</li></ul>
+<p><strong>Next Step:</strong> Practice modifying the program and experiment with different loop conditions and termination values.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">06 · Pre-Increment and Post-Increment Operators in C</span></a><a class="pager-link next" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="pager-dir">Next →</span><span class="pager-name">08 · C Programming – Arithmetic Progression and Series Summation</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

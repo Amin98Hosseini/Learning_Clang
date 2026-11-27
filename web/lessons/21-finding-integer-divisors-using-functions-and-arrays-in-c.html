@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Finding Integer Divisors Using Functions and Arrays in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link active" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-4">Part 4 — Arrays, Data Analysis and Sorting</a><span>/</span><span aria-current="page">Lesson 21</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 21 of 40 · Part 4</p><h1>Finding Integer Divisors Using Functions and Arrays in C</h1><p class="lesson-source">Folder <code>21-Finding_Integer_Divisors_Using_Functions_and_Arrays</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#overview">Overview</a></li><li><a href="#source-code">Source Code</a></li><li><a href="#1-understanding-the-code">1. Understanding the Code</a></li><li><a href="#2-understanding-the-getdivisors-function">2. Understanding the GetDivisors() Function</a></li><li><a href="#3-understanding-the-printarray-function">3. Understanding the PrintArray() Function</a></li><li><a href="#4-example-execution">4. Example Execution</a></li><li><a href="#5-improved-and-safer-version">5. Improved and Safer Version</a></li><li><a href="#6-important-c-programming-concepts">6. Important C Programming Concepts</a></li><li><a href="#7-time-and-space-complexity">7. Time and Space Complexity</a></li><li><a href="#8-exercises">8. Exercises</a></li><li><a href="#9-learning-objectives">9. Learning Objectives</a></li><li><a href="#conclusion">Conclusion</a></li></ol></nav><article class="prose"><h2 id="overview">Overview</h2>
+<p>This project demonstrates how to find all positive divisors of an integer using a custom function in C.</p>
+<p>The program receives an integer from the user, calculates how many divisors it has, creates an array to store those divisors, and finally displays them.</p>
+<p>One interesting feature of this implementation is that the <code>GetDivisors()</code> function can work in two different modes:</p>
+<ol><li><strong>Counting mode:</strong> When the array parameter is <code>NULL</code>, the function only counts the divisors.</li><li><strong>Storage mode:</strong> When a valid array is provided, the function stores the divisors inside that array.</li></ol>
+<p>This example introduces several important C programming concepts:</p>
+<ul><li>Functions and function prototypes</li><li>Returning values from functions</li><li>Passing arrays to functions</li><li>The <code>NULL</code> pointer</li><li>Array initialization</li><li>Variable Length Arrays (VLAs)</li><li>Finding integer divisors using the modulo operator</li><li>Using a function for multiple purposes</li></ul>
+<hr>
+<h2 id="source-code">Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+void PrintArray(const int a[], int N);
+int GetDivisors(int n, int D[]);
+
+int main()
+{
+    int n;
+    int i;
+
+    printf("Enter an integer: ");
+    scanf("%d", &amp;n);
+    printf("\n");
+
+    int nd = GetDivisors(n, NULL);
+
+    printf("%d has %d divisors.\n", n, nd);
+
+    int D[nd];
+
+    for(i = 0; i &lt; nd; i++)
+    {
+        D[i] = 0;
+    }
+
+    GetDivisors(n, D);
+
+    printf("Divisors of %d = {", n);
+    PrintArray(D, nd);
+    printf("}\n");
+
+    return 0;
+}
+
+int GetDivisors(int n, int D[])
+{
+    if(n == 0) return 0;
+
+    if(n &lt; 0) n = -n;
+
+    int j = 0;
+    int i;
+
+    for(i = 1; i &lt;= n; i++)
+    {
+        if(n % i == 0)
+        {
+            if(D != NULL) D[j] = i;
+            j++;
+        }
+    }
+
+    return j;
+}
+
+void PrintArray(const int a[], int N)
+{
+    int i;
+
+    for(i = 0; i &lt; N; i++)
+    {
+        printf("%d", a[i]);
+
+        if(i &lt; N - 1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<hr>
+<h2 id="1-understanding-the-code">1. Understanding the Code</h2>
+<h3 id="1-1-including-the-standard-library">1.1 Including the Standard Library</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<p>This header file provides standard input/output functions.</p>
+<p>In this project, we use:</p>
+<ul><li><code>printf()</code> to display messages and results.</li><li><code>scanf()</code> to receive an integer from the user.</li></ul>
+<h3 id="1-2-function-prototypes">1.2 Function Prototypes</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N);
+int GetDivisors(int n, int D[]);</code></pre></div>
+<p>These are function prototypes.</p>
+<p>They tell the compiler the names, parameters, and return types of functions before their actual definitions appear.</p>
+<p><strong>First function:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N);</code></pre></div>
+<p>This function displays the elements of an array.</p>
+<p>Parameters:</p>
+<ul><li><code>const int a[]</code>: An array of integers that the function can read but cannot modify.</li><li><code>int N</code>: The number of elements in the array.</li></ul>
+<p>The return type is <code>void</code>, which means that this function does not return a value.</p>
+<p><strong>Second function:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int GetDivisors(int n, int D[]);</code></pre></div>
+<p>This function finds the positive divisors of an integer.</p>
+<p>Parameters:</p>
+<ul><li><code>int n</code>: The integer whose divisors we want to find.</li><li><code>int D[]</code>: An array used to store the divisors.</li></ul>
+<p>The return type is <code>int</code>, because the function returns the number of divisors found.</p>
+<h3 id="1-3-declaring-variables">1.3 Declaring Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int n;
+int i;</code></pre></div>
+<p>We declare two integer variables:</p>
+<ul><li><code>n</code>: Stores the integer entered by the user.</li><li><code>i</code>: Used as a loop counter.</li></ul>
+<h3 id="1-4-receiving-an-integer-from-the-user">1.4 Receiving an Integer from the User</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Enter an integer: ");
+scanf("%d", &amp;n);
+printf("\n");</code></pre></div>
+<p>The program asks the user to enter an integer.</p>
+<p>The <code>%d</code> format specifier is used to receive an integer, and <code>&amp;n</code> provides the address where the input value should be stored.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter an integer: 12</code></pre></div>
+<p>After this statement, <code>n</code> contains the value <code>12</code>.</p>
+<h3 id="1-5-calling-getdivisors-with-null">1.5 Calling GetDivisors() with NULL</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int nd = GetDivisors(n, NULL);</code></pre></div>
+<p>This is one of the most interesting parts of the program.</p>
+<p>We call <code>GetDivisors()</code> and pass two arguments:</p>
+<ul><li><code>n</code>: The input integer.</li><li><code>NULL</code>: Indicates that no destination array is provided.</li></ul>
+<p>The function uses this call to count the divisors without storing them.</p>
+<p>For example, if:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>n = 12;</code></pre></div>
+<p>The positive divisors are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1, 2, 3, 4, 6, 12</code></pre></div>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>nd = 6;</code></pre></div>
+<p>The variable <code>nd</code> stores the total number of divisors.</p>
+<p><strong>What is NULL?</strong></p>
+<p><code>NULL</code> is a null pointer constant. It represents a pointer that does not point to a valid object.</p>
+<p>In this program, it tells <code>GetDivisors()</code> that it should count divisors without writing them into an array.</p>
+<h3 id="1-6-displaying-the-number-of-divisors">1.6 Displaying the Number of Divisors</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%d has %d divisors.\n", n, nd);</code></pre></div>
+<p>This statement displays the input integer and the number of positive divisors found.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12 has 6 divisors.</code></pre></div>
+<h3 id="1-7-declaring-an-array-with-a-variable-size">1.7 Declaring an Array with a Variable Size</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int D[nd];</code></pre></div>
+<p>Now that we know the number of divisors, we can declare an array with exactly enough elements to store them.</p>
+<p>For example, if:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>nd = 6;</code></pre></div>
+<p>The declaration becomes equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int D[6];</code></pre></div>
+<p>This is another example of a <strong>Variable Length Array (VLA)</strong>.</p>
+<p>The size is determined at runtime.</p>
+<p><strong>Important:</strong> A VLA must have a positive size. Since the original function returns zero for input zero, <code>int D[nd]</code> is invalid when <code>nd</code> is zero.</p>
+<p>VLAs are supported in C99, while support in C11 and C17 is optional.</p>
+<h3 id="1-8-initializing-the-array">1.8 Initializing the Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(i = 0; i &lt; nd; i++)
+{
+    D[i] = 0;
+}</code></pre></div>
+<p>This loop initializes every element of the array to zero.</p>
+<p>For example, if <code>nd</code> is 6, the array becomes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>D = {0, 0, 0, 0, 0, 0}</code></pre></div>
+<p>In this particular program, initializing the array is not strictly necessary because <code>GetDivisors()</code> writes every element before it is printed.</p>
+<p>However, initialization is useful when learning how arrays work and can prevent accidental use of uninitialized values in other situations.</p>
+<h3 id="1-9-calling-getdivisors-again">1.9 Calling GetDivisors() Again</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>GetDivisors(n, D);</code></pre></div>
+<p>This time, we pass the actual array <code>D</code> instead of <code>NULL</code>.</p>
+<p>The function now stores the divisors in the array.</p>
+<p>For <code>n = 12</code>, the array becomes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>D = {1, 2, 3, 4, 6, 12}</code></pre></div>
+<p>Notice that the return value is not used in this second call because we already know the number of divisors from the first call.</p>
+<h3 id="1-10-displaying-the-divisors">1.10 Displaying the Divisors</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Divisors of %d = {", n);
+PrintArray(D, nd);
+printf("}\n");</code></pre></div>
+<p>First, the program prints the beginning of the result.</p>
+<p>Then <code>PrintArray()</code> displays the array elements separated by commas.</p>
+<p>Finally, the closing brace is printed.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Divisors of 12 = {1, 2, 3, 4, 6, 12}</code></pre></div>
+<hr>
+<h2 id="2-understanding-the-getdivisors-function">2. Understanding the GetDivisors() Function</h2>
+<p>This function is responsible for finding all positive divisors of an integer.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int GetDivisors(int n, int D[])
+{
+    if(n == 0) return 0;
+
+    if(n &lt; 0) n = -n;
+
+    int j = 0;
+    int i;
+
+    for(i = 1; i &lt;= n; i++)
+    {
+        if(n % i == 0)
+        {
+            if(D != NULL) D[j] = i;
+            j++;
+        }
+    }
+
+    return j;
+}</code></pre></div>
+<p>Let's examine its logic.</p>
+<h3 id="2-1-handling-zero">2.1 Handling Zero</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(n == 0) return 0;</code></pre></div>
+<p>The function returns zero when the input is zero.</p>
+<p>Mathematically, zero has infinitely many positive divisors because every positive integer divides zero.</p>
+<p>For example:</p>
+<p>\[ 0 \bmod 1 = 0 \]</p>
+<p>\[ 0 \bmod 2 = 0 \]</p>
+<p>\[ 0 \bmod 3 = 0 \]</p>
+<p>Therefore, this program defines zero as a special case and returns zero divisors for it.</p>
+<p>This is a programming convention, not the mathematical number of divisors of zero.</p>
+<h3 id="2-2-handling-negative-numbers">2.2 Handling Negative Numbers</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(n &lt; 0) n = -n;</code></pre></div>
+<p>If the input is negative, the function converts it to its positive magnitude.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>n = -12</code></pre></div>
+<p>becomes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>n = 12</code></pre></div>
+<p>The program then finds the positive divisors of 12.</p>
+<p>As a result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Divisors of -12 = {1, 2, 3, 4, 6, 12}</code></pre></div>
+<p><strong>Important limitation:</strong> Negating the smallest possible <code>int</code> value causes signed integer overflow because its positive magnitude cannot be represented by the same <code>int</code> type. A safer implementation must handle this case separately.</p>
+<h3 id="2-3-initializing-the-divisor-counter">2.3 Initializing the Divisor Counter</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int j = 0;</code></pre></div>
+<p>The variable <code>j</code> counts the number of divisors found.</p>
+<p>It also determines the next position in the destination array.</p>
+<h3 id="2-4-searching-for-divisors">2.4 Searching for Divisors</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(i = 1; i &lt;= n; i++)</code></pre></div>
+<p>This loop checks every integer from 1 through <code>n</code>.</p>
+<p>For each value of <code>i</code>, the program checks whether it divides <code>n</code> without a remainder.</p>
+<h3 id="2-5-using-the-modulo-operator">2.5 Using the Modulo Operator</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(n % i == 0)</code></pre></div>
+<p>The modulo operator <code>%</code> returns the remainder of an integer division.</p>
+<p>If the remainder is zero, <code>i</code> is a divisor of <code>n</code>.</p>
+<p>For example:</p>
+<p>\[ 12 \bmod 3 = 0 \]</p>
+<p>Therefore, 3 is a divisor of 12.</p>
+<p>But:</p>
+<p>\[ 12 \bmod 5 = 2 \]</p>
+<p>Therefore, 5 is not a divisor of 12.</p>
+<h3 id="2-6-checking-the-destination-array">2.6 Checking the Destination Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(D != NULL) D[j] = i;</code></pre></div>
+<p>This statement is responsible for the two different operating modes of the function.</p>
+<p>If <code>D</code> is <code>NULL</code>, the function skips the array assignment.</p>
+<p>If <code>D</code> points to a valid array, the divisor is stored at position <code>j</code>.</p>
+<p>This makes it possible to use the same function for counting and storing divisors.</p>
+<h3 id="2-7-increasing-the-counter">2.7 Increasing the Counter</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>j++;</code></pre></div>
+<p>Every time a divisor is found, the counter increases by one.</p>
+<p>This ensures that the next divisor is stored in the next available array position.</p>
+<h3 id="2-8-returning-the-number-of-divisors">2.8 Returning the Number of Divisors</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return j;</code></pre></div>
+<p>At the end of the function, <code>j</code> contains the total number of divisors found.</p>
+<p>The function returns this value to the calling function.</p>
+<hr>
+<h2 id="3-understanding-the-printarray-function">3. Understanding the PrintArray() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int a[], int N)
+{
+    int i;
+
+    for(i = 0; i &lt; N; i++)
+    {
+        printf("%d", a[i]);
+
+        if(i &lt; N - 1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<p>This function displays all elements of an integer array.</p>
+<p>Parameters:</p>
+<ul><li><code>const int a[]</code>: The array to display.</li><li><code>int N</code>: The number of elements.</li></ul>
+<p>The <code>const</code> keyword indicates that this function is not allowed to modify the array elements through <code>a</code>.</p>
+<p>The condition:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(i &lt; N - 1)</code></pre></div>
+<p>prevents the program from printing an unnecessary comma after the last element.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1, 2, 3, 4, 6, 12</code></pre></div>
+<hr>
+<h2 id="4-example-execution">4. Example Execution</h2>
+<h3 id="example-1-positive-integer">Example 1: Positive Integer</h3>
+<p><strong>Input:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter an integer: 12</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12 has 6 divisors.
+Divisors of 12 = {1, 2, 3, 4, 6, 12}</code></pre></div>
+<h3 id="example-2-prime-number">Example 2: Prime Number</h3>
+<p><strong>Input:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter an integer: 13</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>13 has 2 divisors.
+Divisors of 13 = {1, 13}</code></pre></div>
+<p>A prime number has exactly two positive divisors: 1 and itself.</p>
+<h3 id="example-3-negative-integer">Example 3: Negative Integer</h3>
+<p><strong>Input:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter an integer: -20</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>-20 has 6 divisors.
+Divisors of -20 = {1, 2, 4, 5, 10, 20}</code></pre></div>
+<p>The program finds the positive divisors of the absolute value of the input.</p>
+<h3 id="example-4-zero">Example 4: Zero</h3>
+<p><strong>Input:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter an integer: 0</code></pre></div>
+<p>The original function returns zero divisors. However, the subsequent declaration <code>int D[nd]</code> has an invalid zero-length VLA.</p>
+<p>This case must be handled before declaring the array.</p>
+<hr>
+<h2 id="5-improved-and-safer-version">5. Improved and Safer Version</h2>
+<p>The original implementation is useful for understanding functions, arrays, and <code>NULL</code>, but it has several limitations:</p>
+<ol><li>It does not check whether <code>scanf()</code> successfully receives an integer.</li><li>It attempts to declare a zero-length VLA when the input is zero.</li><li>Negating the minimum possible <code>int</code> value can cause signed integer overflow.</li><li>Its loop checks every integer from 1 to <code>n</code>, which can be slow for large inputs.</li><li>Very large arrays may exceed available stack memory.</li></ol>
+<p>The following version handles these issues and uses a more efficient divisor-search algorithm.</p>
+<p>It uses <code>long long</code> for the magnitude so that the minimum <code>int</code> value can be handled safely. The divisor array also uses <code>long long</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+
+void PrintArray(const long long a[], int N);
+int GetDivisors(long long n, long long D[]);
+
+int main(void)
+{
+    int input;
+    long long n;
+    int nd;
+
+    printf("Enter an integer: ");
+
+    if(scanf("%d", &amp;input) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    if(input == 0)
+    {
+        printf("Zero has infinitely many positive divisors.\n");
+        return 0;
+    }
+
+    n = input;
+
+    if(n &lt; 0)
+    {
+        n = -n;
+    }
+
+    nd = GetDivisors(n, NULL);
+
+    printf("%d has %d positive divisors.\n", input, nd);
+
+    long long *D = malloc((size_t)nd * sizeof(*D));
+
+    if(D == NULL)
+    {
+        printf("Memory allocation failed!\n");
+        return 1;
+    }
+
+    GetDivisors(n, D);
+
+    printf("Divisors of %d = {", input);
+    PrintArray(D, nd);
+    printf("}\n");
+
+    free(D);
+
+    return 0;
+}
+
+int GetDivisors(long long n, long long D[])
+{
+    if(n &lt;= 0)
+    {
+        return 0;
+    }
+
+    int count = 0;
+
+    for(long long i = 1; i &lt;= n / i; i++)
+    {
+        if(n % i == 0)
+        {
+            if(D != NULL)
+            {
+                D[count] = i;
+            }
+
+            count++;
+
+            long long other = n / i;
+
+            if(other != i)
+            {
+                if(D != NULL)
+                {
+                    D[count] = other;
+                }
+
+                count++;
+            }
+        }
+    }
+
+    if(D != NULL)
+    {
+        // Sort the divisors in ascending order.
+        for(int i = 0; i &lt; count - 1; i++)
+        {
+            for(int j = 0; j &lt; count - i - 1; j++)
+            {
+                if(D[j] &gt; D[j + 1])
+                {
+                    long long temp = D[j];
+                    D[j] = D[j + 1];
+                    D[j + 1] = temp;
+                }
+            }
+        }
+    }
+
+    return count;
+}
+
+void PrintArray(const long long a[], int N)
+{
+    for(int i = 0; i &lt; N; i++)
+    {
+        printf("%lld", a[i]);
+
+        if(i &lt; N - 1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<h3 id="improvements-in-this-version">Improvements in This Version</h3>
+<p><strong>1. Input validation</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(scanf("%d", &amp;input) != 1)</code></pre></div>
+<p>Checks whether the user entered a valid integer.</p>
+<p><strong>2. Handling zero</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(input == 0)
+{
+    printf("Zero has infinitely many positive divisors.\n");
+    return 0;
+}</code></pre></div>
+<p>Handles zero separately because it has infinitely many positive divisors.</p>
+<p><strong>3. Safe negative-number handling</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>n = input;
+
+if(n &lt; 0)
+{
+    n = -n;
+}</code></pre></div>
+<p>The value is first converted to <code>long long</code>, which can represent the positive magnitude of every <code>int</code> value.</p>
+<p><strong>4. Dynamic memory allocation</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>long long *D = malloc((size_t)nd * sizeof(*D));</code></pre></div>
+<p>Instead of using a VLA, this version dynamically allocates enough memory to store the divisors.</p>
+<p><strong>5. Checking memory allocation</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(D == NULL)</code></pre></div>
+<p>Checks whether memory allocation succeeded.</p>
+<p><strong>6. More efficient divisor search</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(long long i = 1; i &lt;= n / i; i++)</code></pre></div>
+<p>Instead of checking all integers from 1 to <code>n</code>, this version only searches up to the square root of <code>n</code>.</p>
+<p>When a divisor is found, its corresponding pair is also found:</p>
+<p>\[ i \times \frac{n}{i} = n \]</p>
+<p>For example, the divisors of 36 can be found in pairs:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1 × 36
+2 × 18
+3 × 12
+4 × 9
+6 × 6</code></pre></div>
+<p>This reduces the search complexity from O(n) to O(√n).</p>
+<p><strong>7. Sorting the results</strong></p>
+<p>The divisor pairs are discovered from the smallest divisor upward, but their corresponding partners are larger. The sorting section arranges all divisors in ascending order.</p>
+<p><strong>8. Releasing allocated memory</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>free(D);</code></pre></div>
+<p>Releases the dynamically allocated memory when it is no longer needed.</p>
+<hr>
+<h2 id="6-important-c-programming-concepts">6. Important C Programming Concepts</h2>
+<div class="table-wrap"><table><thead><tr><th>Concept</th><th>Explanation</th></tr></thead><tbody><tr><td>Function prototype</td><td>Declares a function before its definition</td></tr><tr><td><code>NULL</code></td><td>Represents a null pointer</td></tr><tr><td><code>int D[]</code></td><td>Array parameter used to receive an array</td></tr><tr><td><code>const int a[]</code></td><td>Read-only array parameter</td></tr><tr><td><code>return j</code></td><td>Returns the number of divisors</td></tr><tr><td><code>%</code></td><td>Calculates the remainder of integer division</td></tr><tr><td><code>sizeof()</code></td><td>Calculates the size of a data type or object</td></tr><tr><td>VLA</td><td>Array whose size is determined at runtime</td></tr><tr><td><code>malloc()</code></td><td>Dynamically allocates memory</td></tr><tr><td><code>free()</code></td><td>Releases dynamically allocated memory</td></tr></tbody></table></div>
+<hr>
+<h2 id="7-time-and-space-complexity">7. Time and Space Complexity</h2>
+<h3 id="original-implementation">Original Implementation</h3>
+<p>The original function checks every integer from 1 to <code>n</code>.</p>
+<div class="table-wrap"><table><thead><tr><th>Property</th><th>Complexity</th></tr></thead><tbody><tr><td>Time Complexity</td><td>O(n) per function call</td></tr><tr><td>Auxiliary Space</td><td>O(1) in counting mode</td></tr><tr><td>Divisor Storage</td><td>O(d)</td></tr></tbody></table></div>
+<p>Here, <code>d</code> represents the number of divisors.</p>
+<p>Since the original program calls <code>GetDivisors()</code> twice, its total search time is still O(n).</p>
+<h3 id="improved-implementation">Improved Implementation</h3>
+<p>The improved version checks divisors only up to the square root of <code>n</code>.</p>
+<div class="table-wrap"><table><thead><tr><th>Operation</th><th>Complexity</th></tr></thead><tbody><tr><td>Finding divisor pairs</td><td>O(√n)</td></tr><tr><td>Sorting divisors</td><td>O(d²)</td></tr><tr><td>Total time</td><td>O(√n + d²)</td></tr><tr><td>Divisor storage</td><td>O(d)</td></tr></tbody></table></div>
+<p>The sorting step can be replaced with a more efficient method if necessary.</p>
+<hr>
+<h2 id="8-exercises">8. Exercises</h2>
+<p>Try modifying the program to practice these concepts:</p>
+<ol><li>Write a function that returns only the number of divisors of an integer.</li><li>Write a function that calculates the sum of all positive divisors.</li><li>Find the largest divisor of an integer other than itself.</li><li>Determine whether a number is prime using <code>GetDivisors()</code>.</li><li>Find all divisors of a number in descending order.</li><li>Calculate the sum of all proper divisors (excluding the number itself).</li><li>Find all integers between 1 and 100 that have exactly six positive divisors.</li><li>Modify <code>GetDivisors()</code> to return the divisors through dynamic memory allocation.</li><li>Compare the execution time of the original O(n) algorithm and the improved O(√n) algorithm.</li></ol>
+<hr>
+<h2 id="9-learning-objectives">9. Learning Objectives</h2>
+<p>After completing this project, you should understand:</p>
+<ul><li>How to define and call functions in C.</li><li>How to return values from functions.</li><li>How to pass arrays to functions.</li><li>How to use <code>NULL</code> to indicate that no destination array is provided.</li><li>How to use one function for counting and storing data.</li><li>How to use the modulo operator to find divisors.</li><li>How to declare arrays with runtime-determined sizes.</li><li>How to allocate and release memory using <code>malloc()</code> and <code>free()</code>.</li><li>How to improve an algorithm using mathematical properties.</li></ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>This project demonstrates how functions and arrays can work together to solve a mathematical problem.</p>
+<p>The most interesting part is the use of <code>NULL</code> in <code>GetDivisors()</code>.</p>
+<p>By passing <code>NULL</code>, the function counts divisors without storing them. By passing a valid array, the same function stores the divisors.</p>
+<p>This technique is useful in C programming when a function needs to support different operations depending on whether the caller provides a destination array.</p>
+<p>The project also introduces more efficient divisor searching using the mathematical relationship between divisor pairs.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">20 · Array Size and Variable Length Arrays in C</span></a><a class="pager-link next" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="pager-dir">Next →</span><span class="pager-name">22 · Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

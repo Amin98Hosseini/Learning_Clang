@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Complex Numbers and Mathematical Operations Using Structures in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link active" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-7">Part 7 — Structures and Enumerations</a><span>/</span><span aria-current="page">Lesson 39</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 39 of 40 · Part 7</p><h1>Complex Numbers and Mathematical Operations Using Structures in C</h1><p class="lesson-source">Folder <code>39-Complex_Numbers_and_Mathematical_Operations_Using_Structures_in_C_Language</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-complete-source-code">2. Complete Source Code</a></li><li><a href="#3-header-files">3. Header Files</a></li><li><a href="#4-defining-the-complex-structure">4. Defining the Complex Structure</a></li><li><a href="#5-understanding-complex-numbers">5. Understanding Complex Numbers</a></li><li><a href="#6-function-prototypes">6. Function Prototypes</a></li><li><a href="#7-creating-complex-number-variables">7. Creating Complex Number Variables</a></li><li><a href="#8-displaying-complex-numbers">8. Displaying Complex Numbers</a></li><li><a href="#9-complex-conjugate">9. Complex Conjugate</a></li><li><a href="#10-absolute-value-or-magnitude-of-a-complex-number">10. Absolute Value or Magnitude of a Complex Number</a></li><li><a href="#11-addition-of-complex-numbers">11. Addition of Complex Numbers</a></li><li><a href="#12-subtraction-of-complex-numbers">12. Subtraction of Complex Numbers</a></li><li><a href="#13-multiplication-of-complex-numbers">13. Multiplication of Complex Numbers</a></li><li><a href="#14-division-of-complex-numbers">14. Division of Complex Numbers</a></li><li><a href="#15-important-problem-division-by-zero">15. Important Problem: Division by Zero</a></li><li><a href="#16-understanding-structure-return-values">16. Understanding Structure Return Values</a></li><li><a href="#17-expected-output">17. Expected Output</a></li><li><a href="#18-improving-the-display-function">18. Improving the Display Function</a></li><li><a href="#19-a-note-about-the-standard-c-complex-type">19. A Note About the Standard C Complex Type</a></li><li><a href="#20-compilation-and-execution">20. Compilation and Execution</a></li><li><a href="#21-practice-exercises">21. Practice Exercises</a></li><li><a href="#22-learning-outcomes">22. Learning Outcomes</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In mathematics, a complex number is a number that consists of two parts:</p>
+<ul><li>A real part.</li><li>An imaginary part.</li></ul>
+<p>A complex number is generally represented as:</p>
+<p>\[ z = a + bi \]</p>
+<p>Where:</p>
+<ul><li>\(a\) is the real part.</li><li>\(b\) is the imaginary part.</li><li>\(i\) is the imaginary unit.</li><li>\(i^2 = -1\).</li></ul>
+<p>For example:</p>
+<p>\[ z = 3 + 4i \]</p>
+<p>In this example:</p>
+<ul><li>Real part = 3</li><li>Imaginary part = 4</li></ul>
+<p>C does not require us to use a custom structure to represent complex numbers, but defining our own structure is an excellent way to understand structures, functions, and mathematical operations.</p>
+<p>This program defines a <code>Complex</code> structure and implements the following operations:</p>
+<ol><li>Displaying a complex number.</li><li>Calculating the complex conjugate.</li><li>Calculating the absolute value (magnitude).</li><li>Adding two complex numbers.</li><li>Subtracting two complex numbers.</li><li>Multiplying two complex numbers.</li><li>Dividing two complex numbers.</li></ol>
+<p>It also demonstrates how a function can receive a structure as an argument and return a structure as its result.</p>
+<hr>
+<h2 id="2-complete-source-code">2. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;
+
+typedef struct
+{
+    float real;
+    float imag;
+} Complex;
+
+void DispComplex(Complex z);
+Complex Conj(Complex z);
+float Abs(Complex z);
+Complex Add(Complex z1, Complex z2);
+Complex Subtract(Complex z1, Complex z2);
+Complex Product(Complex z1, Complex z2);
+Complex Division(Complex z1, Complex z2);
+
+int main()
+{
+
+    Complex z1={3,4};
+    printf("z1 = ");
+    DispComplex(z1);
+    printf("\n\n");
+
+    Complex z2={1,-5};
+    printf("z2 = ");
+    DispComplex(z2);
+    printf("\n\n");
+
+    Complex z3={0,0};
+    printf("z3 = ");
+    DispComplex(z3);
+    printf("\n\n");
+
+    Complex z4={-1,0};
+    printf("z4 = ");
+    DispComplex(z4);
+    printf("\n\n");
+
+    Complex z5={0,7};
+    printf("z5 = ");
+    DispComplex(z5);
+    printf("\n\n");
+
+    printf("Conj(z1) = ");
+    DispComplex(Conj(z1));
+    printf("\n\n");
+
+    printf("Abs(z1) = %f\n\n",Abs(z1));
+
+    printf("z1 + z2 = ");
+    DispComplex(Add(z1,z2));
+    printf("\n\n");
+
+    printf("z1 - z2 = ");
+    DispComplex(Subtract(z1,z2));
+    printf("\n\n");
+
+    printf("z1 * z2 = ");
+    DispComplex(Product(z1,z2));
+    printf("\n\n");
+
+    printf("z1 / z2 = ");
+    DispComplex(Division(z1,z2));
+    printf("\n\n");
+
+    printf("z1 / z1 = ");
+    DispComplex(Division(z1,z1));
+    printf("\n\n");
+
+    return 0;
+}
+
+void DispComplex(Complex z)
+{
+    float x=z.real;
+    float y=z.imag;
+
+    if(x==0)
+    {
+        if(y==0)
+            printf("0");
+        else
+            printf("%fi",y);
+    }
+    else
+    {
+        if(y==0)
+            printf("%f",x);
+        else
+        {
+            if(y&gt;0)
+                printf("%f + %fi",x,y);
+            else
+                printf("%f - %fi",x,-y);
+        }
+    }
+}
+
+Complex Conj(Complex z)
+{
+    Complex zc={z.real, -z.imag};
+    return zc;
+}
+
+float Abs(Complex z)
+{
+    return sqrt(z.real*z.real+z.imag*z.imag);
+}
+
+Complex Add(Complex z1, Complex z2)
+{
+    Complex z={z1.real + z2.real,z1.imag + z2.imag};
+    return z;
+}
+
+Complex Subtract(Complex z1, Complex z2)
+{
+    Complex z={z1.real - z2.real,z1.imag - z2.imag};
+    return z;
+}
+
+Complex Product(Complex z1, Complex z2)
+{
+    Complex z;
+    z.real = z1.real*z2.real-z1.imag*z2.imag;
+    z.imag = z1.real*z2.imag+z1.imag*z2.real;
+    return z;
+}
+
+Complex Division(Complex z1, Complex z2)
+{
+    Complex z;
+    float den = z2.real*z2.real + z2.imag*z2.imag;
+    z.real = (z1.real*z2.real+z1.imag*z2.imag)/den;
+    z.imag = (z1.imag*z2.real-z1.real*z2.imag)/den;
+    return z;
+}</code></pre></div>
+<hr>
+<h2 id="3-header-files">3. Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;math.h&gt;</code></pre></div>
+<p>The program includes three standard C header files.</p>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>This header provides standard input and output functions.</p>
+<p>The program uses:</p>
+<ul><li><code>printf()</code> – Displays text and numerical results.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>This header provides general-purpose functions, including memory allocation, conversions, and sorting.</p>
+<p>However, the current program does not use any function from <code>stdlib.h</code>.</p>
+<p>Therefore, this header can be removed.</p>
+<h3 id="math-h"><code>math.h</code></h3>
+<p>This header provides mathematical functions.</p>
+<p>The program uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sqrt()</code></pre></div>
+<p>The <code>sqrt()</code> function calculates the square root of a number.</p>
+<p>It is used when calculating the magnitude of a complex number.</p>
+<p>The simplified header section is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;</code></pre></div>
+<hr>
+<h2 id="4-defining-the-complex-structure">4. Defining the Complex Structure</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef struct
+{
+    float real;
+    float imag;
+} Complex;</code></pre></div>
+<p>This structure is the foundation of the program.</p>
+<p>It represents a complex number using two floating-point variables.</p>
+<h3 id="understanding-the-members">Understanding the members</h3>
+<div class="table-wrap"><table><thead><tr><th>Member</th><th>Data type</th><th>Description</th></tr></thead><tbody><tr><td><code>real</code></td><td><code>float</code></td><td>Real component</td></tr><tr><td><code>imag</code></td><td><code>float</code></td><td>Imaginary component</td></tr></tbody></table></div>
+<p>For example, consider:</p>
+<p>\[ z = 3 + 4i \]</p>
+<p>We can represent this number using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z1 = {3, 4};</code></pre></div>
+<p>The structure contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z1.real = 3
+z1.imag = 4</code></pre></div>
+<p>The first value is assigned to <code>real</code>, and the second value is assigned to <code>imag</code>.</p>
+<h3 id="why-use-typedef">Why use <code>typedef</code>?</h3>
+<p>The <code>typedef</code> keyword creates an alias for a data type.</p>
+<p>Without <code>typedef</code>, we could write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>struct Complex
+{
+    float real;
+    float imag;
+};</code></pre></div>
+<p>To declare a variable, we would need:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>struct Complex z1;</code></pre></div>
+<p>With <code>typedef</code>, we can simply write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z1;</code></pre></div>
+<p>This makes the code shorter and easier to understand.</p>
+<hr>
+<h2 id="5-understanding-complex-numbers">5. Understanding Complex Numbers</h2>
+<p>A complex number has the general form:</p>
+<p>\[ z = a + bi \]</p>
+<p>Where:</p>
+<ul><li>\(a\) is the real component.</li><li>\(b\) is the imaginary component.</li><li>\(i\) is the imaginary unit.</li></ul>
+<p>The imaginary unit has the following property:</p>
+<p>\[ i^2 = -1 \]</p>
+<p>For example:</p>
+<p>\[ z_1 = 3 + 4i \]</p>
+<p>\[ z_2 = 1 - 5i \]</p>
+<p>Their corresponding C structures are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z1 = {3, 4};
+Complex z2 = {1, -5};</code></pre></div>
+<p>The program also defines three additional complex numbers:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z3 = {0, 0};
+Complex z4 = {-1, 0};
+Complex z5 = {0, 7};</code></pre></div>
+<p>These represent:</p>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Mathematical representation</th></tr></thead><tbody><tr><td><code>z1</code></td><td>\(3 + 4i\)</td></tr><tr><td><code>z2</code></td><td>\(1 - 5i\)</td></tr><tr><td><code>z3</code></td><td>\(0\)</td></tr><tr><td><code>z4</code></td><td>\(-1\)</td></tr><tr><td><code>z5</code></td><td>\(7i\)</td></tr></tbody></table></div>
+<p>These examples are useful because they demonstrate different combinations of real and imaginary components.</p>
+<hr>
+<h2 id="6-function-prototypes">6. Function Prototypes</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DispComplex(Complex z);
+Complex Conj(Complex z);
+float Abs(Complex z);
+Complex Add(Complex z1, Complex z2);
+Complex Subtract(Complex z1, Complex z2);
+Complex Product(Complex z1, Complex z2);
+Complex Division(Complex z1, Complex z2);</code></pre></div>
+<p>These declarations inform the compiler about the functions before <code>main()</code>.</p>
+<p>Let's examine each function.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Return type</th><th>Purpose</th></tr></thead><tbody><tr><td><code>DispComplex()</code></td><td><code>void</code></td><td>Displays a complex number</td></tr><tr><td><code>Conj()</code></td><td><code>Complex</code></td><td>Calculates the conjugate</td></tr><tr><td><code>Abs()</code></td><td><code>float</code></td><td>Calculates the magnitude</td></tr><tr><td><code>Add()</code></td><td><code>Complex</code></td><td>Adds two complex numbers</td></tr><tr><td><code>Subtract()</code></td><td><code>Complex</code></td><td>Subtracts two complex numbers</td></tr><tr><td><code>Product()</code></td><td><code>Complex</code></td><td>Multiplies two complex numbers</td></tr><tr><td><code>Division()</code></td><td><code>Complex</code></td><td>Divides two complex numbers</td></tr></tbody></table></div>
+<p>Notice that most functions return a <code>Complex</code> structure.</p>
+<p>This is possible because C allows functions to return structures by value.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Add(Complex z1, Complex z2);</code></pre></div>
+<p>This function receives two complex numbers and returns a new complex number.</p>
+<hr>
+<h2 id="7-creating-complex-number-variables">7. Creating Complex Number Variables</h2>
+<p>Inside <code>main()</code>, the program creates five complex numbers.</p>
+<h3 id="first-complex-number">First complex number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z1={3,4};</code></pre></div>
+<p>This represents:</p>
+<p>\[ z_1 = 3 + 4i \]</p>
+<h3 id="second-complex-number">Second complex number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z2={1,-5};</code></pre></div>
+<p>This represents:</p>
+<p>\[ z_2 = 1 - 5i \]</p>
+<h3 id="third-complex-number">Third complex number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z3={0,0};</code></pre></div>
+<p>This represents:</p>
+<p>\[ z_3 = 0 + 0i = 0 \]</p>
+<p>It is the zero complex number.</p>
+<h3 id="fourth-complex-number">Fourth complex number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z4={-1,0};</code></pre></div>
+<p>This represents:</p>
+<p>\[ z_4 = -1 + 0i = -1 \]</p>
+<p>It is a purely real number.</p>
+<h3 id="fifth-complex-number">Fifth complex number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z5={0,7};</code></pre></div>
+<p>This represents:</p>
+<p>\[ z_5 = 0 + 7i = 7i \]</p>
+<p>It is a purely imaginary number.</p>
+<hr>
+<h2 id="8-displaying-complex-numbers">8. Displaying Complex Numbers</h2>
+<p>The program uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DispComplex(z1);</code></pre></div>
+<p>The function is defined as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DispComplex(Complex z)
+{
+    float x=z.real;
+    float y=z.imag;
+
+    if(x==0)
+    {
+        if(y==0)
+            printf("0");
+        else
+            printf("%fi",y);
+    }
+    else
+    {
+        if(y==0)
+            printf("%f",x);
+        else
+        {
+            if(y&gt;0)
+                printf("%f + %fi",x,y);
+            else
+                printf("%f - %fi",x,-y);
+        }
+    }
+}</code></pre></div>
+<p>This function displays a complex number in a readable mathematical format.</p>
+<p>The general representation is:</p>
+<p>\[ z = x + yi \]</p>
+<p>Where:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float x=z.real;
+float y=z.imag;</code></pre></div>
+<p>The local variable <code>x</code> stores the real part, and <code>y</code> stores the imaginary part.</p>
+<p>The function then checks four different cases.</p>
+<h3 id="case-1-both-real-and-imaginary-parts-are-zero">Case 1: Both real and imaginary parts are zero</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(x==0)
+{
+    if(y==0)
+        printf("0");
+}</code></pre></div>
+<p>If:</p>
+<p>\[ x=0,\quad y=0 \]</p>
+<p>The complex number is:</p>
+<p>\[ z=0 \]</p>
+<p>The output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>0</code></pre></div>
+<h3 id="case-2-real-part-is-zero">Case 2: Real part is zero</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>else
+    printf("%fi",y);</code></pre></div>
+<p>When the real component is zero but the imaginary component is not zero, the number is purely imaginary.</p>
+<p>For example:</p>
+<p>\[ z=7i \]</p>
+<p>The output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>7.000000i</code></pre></div>
+<h3 id="case-3-imaginary-part-is-zero">Case 3: Imaginary part is zero</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(y==0)
+    printf("%f",x);</code></pre></div>
+<p>When the imaginary component is zero, the number is purely real.</p>
+<p>For example:</p>
+<p>\[ z=-1 \]</p>
+<p>The output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>-1.000000</code></pre></div>
+<h3 id="case-4-both-components-are-nonzero">Case 4: Both components are nonzero</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(y&gt;0)
+    printf("%f + %fi",x,y);
+else
+    printf("%f - %fi",x,-y);</code></pre></div>
+<p>If the imaginary component is positive, the function prints a plus sign.</p>
+<p>For example:</p>
+<p>\[ z=3+4i \]</p>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>3.000000 + 4.000000i</code></pre></div>
+<p>If the imaginary component is negative, the function prints a minus sign.</p>
+<p>For example:</p>
+<p>\[ z=1-5i \]</p>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.000000 - 5.000000i</code></pre></div>
+<p>Notice the use of <code>-y</code> in the negative case.</p>
+<p>If <code>y</code> is <code>-5</code>, then <code>-y</code> becomes <code>5</code>, allowing the function to display:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.000000 - 5.000000i</code></pre></div>
+<p>instead of:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.000000 + -5.000000i</code></pre></div>
+<h3 id="important-floating-point-note">Important floating-point note</h3>
+<p>The function uses comparisons such as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(x==0)</code></pre></div>
+<p>Exact floating-point comparisons can be unreliable when values result from calculations because of rounding errors.</p>
+<p>For a more general implementation, we can use a small tolerance:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#define EPSILON 0.000001f
+
+if (fabsf(x) &lt; EPSILON)</code></pre></div>
+<p>However, the original comparisons work for the simple values used in this program.</p>
+<hr>
+<h2 id="9-complex-conjugate">9. Complex Conjugate</h2>
+<p>The program calculates the conjugate using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Conj(z1);</code></pre></div>
+<p>The function is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Conj(Complex z)
+{
+    Complex zc={z.real, -z.imag};
+    return zc;
+}</code></pre></div>
+<h3 id="what-is-a-complex-conjugate">What is a complex conjugate?</h3>
+<p>The complex conjugate of:</p>
+<p>\[ z=a+bi \]</p>
+<p>is:</p>
+<p>\[ \overline{z}=a-bi \]</p>
+<p>In other words:</p>
+<ul><li>The real component remains unchanged.</li><li>The imaginary component changes its sign.</li></ul>
+<p>For example:</p>
+<p>\[ z=3+4i \]</p>
+<p>Its conjugate is:</p>
+<p>\[ \overline{z}=3-4i \]</p>
+<h3 id="understanding-the-code">Understanding the code</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex zc={z.real, -z.imag};</code></pre></div>
+<p>This creates a new complex structure.</p>
+<p>Its real component is copied directly:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z.real</code></pre></div>
+<p>Its imaginary component is negated:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>-z.imag</code></pre></div>
+<p>Finally:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return zc;</code></pre></div>
+<p>The function returns the new structure.</p>
+<h3 id="important-property">Important property</h3>
+<p>The product of a complex number and its conjugate is always a nonnegative real number:</p>
+<p>\[ z\overline{z}=a^2+b^2 \]</p>
+<p>For example:</p>
+<p>\[ (3+4i)(3-4i)=9+16=25 \]</p>
+<p>This property is useful when calculating complex magnitudes and divisions.</p>
+<hr>
+<h2 id="10-absolute-value-or-magnitude-of-a-complex-number">10. Absolute Value or Magnitude of a Complex Number</h2>
+<p>The program uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Abs(z1);</code></pre></div>
+<p>The function is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float Abs(Complex z)
+{
+    return sqrt(z.real*z.real+z.imag*z.imag);
+}</code></pre></div>
+<h3 id="what-is-the-magnitude">What is the magnitude?</h3>
+<p>The magnitude of a complex number represents its distance from the origin in the complex plane.</p>
+<p>For:</p>
+<p>\[ z=a+bi \]</p>
+<p>The magnitude is:</p>
+<p>\[</p>
+<p>\]</p>
+<p>This is based on the Pythagorean theorem.</p>
+<h3 id="example">Example</h3>
+<p>Consider:</p>
+<p>\[ z_1=3+4i \]</p>
+<p>Its magnitude is:</p>
+<p>\[</p>
+<p>\]</p>
+<p>\[</p>
+<p>\]</p>
+<p>\[</p>
+<p>\]</p>
+<p>\[</p>
+<p>\]</p>
+<h3 id="understanding-the-code-2">Understanding the code</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sqrt(z.real*z.real+z.imag*z.imag)</code></pre></div>
+<p>The expression calculates:</p>
+<ol><li>The square of the real component.</li><li>The square of the imaginary component.</li><li>The sum of both squares.</li><li>The square root of the result.</li></ol>
+<p>The <code>sqrt()</code> function is provided by <code>math.h</code>.</p>
+<p>The function returns a <code>float</code> because the magnitude is a real number.</p>
+<hr>
+<h2 id="11-addition-of-complex-numbers">11. Addition of Complex Numbers</h2>
+<p>The program performs addition using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Add(z1,z2);</code></pre></div>
+<p>The function is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Add(Complex z1, Complex z2)
+{
+    Complex z={z1.real + z2.real,z1.imag + z2.imag};
+    return z;
+}</code></pre></div>
+<h3 id="mathematical-formula">Mathematical formula</h3>
+<p>Consider two complex numbers:</p>
+<p>\[ z_1=a+bi \]</p>
+<p>\[ z_2=c+di \]</p>
+<p>Their sum is:</p>
+<p>\[ z_1+z_2=(a+c)+(b+d)i \]</p>
+<p>This means:</p>
+<ul><li>Add the real components.</li><li>Add the imaginary components.</li></ul>
+<h3 id="example-2">Example</h3>
+<p>Given:</p>
+<p>\[ z_1=3+4i \]</p>
+<p>\[ z_2=1-5i \]</p>
+<p>The addition is:</p>
+<p>\[ z_1+z_2=(3+1)+(4-5)i \]</p>
+<p>\[ z_1+z_2=4-i \]</p>
+<h3 id="understanding-the-code-3">Understanding the code</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z={z1.real + z2.real,z1.imag + z2.imag};</code></pre></div>
+<p>The new structure receives:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>real = 3 + 1 = 4
+imag = 4 + (-5) = -1</code></pre></div>
+<p>Finally:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return z;</code></pre></div>
+<p>The function returns:</p>
+<p>\[ 4-i \]</p>
+<hr>
+<h2 id="12-subtraction-of-complex-numbers">12. Subtraction of Complex Numbers</h2>
+<p>The program performs subtraction using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Subtract(z1,z2);</code></pre></div>
+<p>The function is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Subtract(Complex z1, Complex z2)
+{
+    Complex z={z1.real - z2.real,z1.imag - z2.imag};
+    return z;
+}</code></pre></div>
+<h3 id="mathematical-formula-2">Mathematical formula</h3>
+<p>For two complex numbers:</p>
+<p>\[ z_1=a+bi \]</p>
+<p>\[ z_2=c+di \]</p>
+<p>Their difference is:</p>
+<p>\[ z_1-z_2=(a-c)+(b-d)i \]</p>
+<p>This means:</p>
+<ul><li>Subtract the real components.</li><li>Subtract the imaginary components.</li></ul>
+<h3 id="example-3">Example</h3>
+<p>Given:</p>
+<p>\[ z_1=3+4i \]</p>
+<p>\[ z_2=1-5i \]</p>
+<p>We calculate:</p>
+<p>\[ z_1-z_2=(3-1)+(4-(-5))i \]</p>
+<p>\[ z_1-z_2=2+9i \]</p>
+<h3 id="understanding-the-code-4">Understanding the code</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z={z1.real - z2.real,z1.imag - z2.imag};</code></pre></div>
+<p>The result is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>real = 3 - 1 = 2
+imag = 4 - (-5) = 9</code></pre></div>
+<p>The function returns:</p>
+<p>\[ 2+9i \]</p>
+<hr>
+<h2 id="13-multiplication-of-complex-numbers">13. Multiplication of Complex Numbers</h2>
+<p>The program performs multiplication using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Product(z1,z2);</code></pre></div>
+<p>The function is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Product(Complex z1, Complex z2)
+{
+    Complex z;
+
+    z.real = z1.real*z2.real-z1.imag*z2.imag;
+    z.imag = z1.real*z2.imag+z1.imag*z2.real;
+
+    return z;
+}</code></pre></div>
+<h3 id="mathematical-formula-3">Mathematical formula</h3>
+<p>Consider:</p>
+<p>\[ z_1=a+bi \]</p>
+<p>\[ z_2=c+di \]</p>
+<p>Their product is:</p>
+<p>\[ z_1z_2=(a+bi)(c+di) \]</p>
+<p>Using the distributive property:</p>
+<p>\[ z_1z_2=ac+adi+bci+bdi^2 \]</p>
+<p>Because:</p>
+<p>\[ i^2=-1 \]</p>
+<p>We obtain:</p>
+<p>\[ z_1z_2=ac+adi+bci-bd \]</p>
+<p>Separating real and imaginary components:</p>
+<p>\[ z_1z_2=(ac-bd)+(ad+bc)i \]</p>
+<p>Therefore:</p>
+<p>\[ Real=ac-bd \]</p>
+<p>\[ Imag=ad+bc \]</p>
+<h3 id="understanding-the-code-5">Understanding the code</h3>
+<p>The real component is calculated using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z.real = z1.real*z2.real-z1.imag*z2.imag;</code></pre></div>
+<p>This implements:</p>
+<p>\[ Real=ac-bd \]</p>
+<p>The imaginary component is calculated using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z.imag = z1.real*z2.imag+z1.imag*z2.real;</code></pre></div>
+<p>This implements:</p>
+<p>\[ Imag=ad+bc \]</p>
+<h3 id="example-4">Example</h3>
+<p>Given:</p>
+<p>\[ z_1=3+4i \]</p>
+<p>\[ z_2=1-5i \]</p>
+<p>The multiplication is:</p>
+<p>\[ z_1z_2=(3+4i)(1-5i) \]</p>
+<p>Expanding:</p>
+<p>\[ =3-15i+4i-20i^2 \]</p>
+<p>Since \(i^2=-1\):</p>
+<p>\[ =3-11i+20 \]</p>
+<p>Therefore:</p>
+<p>\[ z_1z_2=23-11i \]</p>
+<p>The function returns:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>23.000000 - 11.000000i</code></pre></div>
+<hr>
+<h2 id="14-division-of-complex-numbers">14. Division of Complex Numbers</h2>
+<p>The program performs division using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Division(z1,z2);</code></pre></div>
+<p>The function is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Division(Complex z1, Complex z2)
+{
+    Complex z;
+    float den = z2.real*z2.real + z2.imag*z2.imag;
+
+    z.real = (z1.real*z2.real+z1.imag*z2.imag)/den;
+    z.imag = (z1.imag*z2.real-z1.real*z2.imag)/den;
+
+    return z;
+}</code></pre></div>
+<p>This is the most mathematically involved operation in the program.</p>
+<h3 id="mathematical-formula-4">Mathematical formula</h3>
+<p>Consider:</p>
+<p>\[ z_1=a+bi \]</p>
+<p>\[ z_2=c+di \]</p>
+<p>We want to calculate:</p>
+<p>\[ \frac{z_1}{z_2}=\frac{a+bi}{c+di} \]</p>
+<p>To simplify the denominator, multiply both numerator and denominator by the conjugate of the denominator:</p>
+<p>\[ \frac{a+bi}{c+di} \times \frac{c-di}{c-di} \]</p>
+<p>Therefore:</p>
+<p>\[ \frac{z_1}{z_2} = \frac{(a+bi)(c-di)}{(c+di)(c-di)} \]</p>
+<p>The denominator becomes:</p>
+<p>\[ (c+di)(c-di)=c^2+d^2 \]</p>
+<p>The numerator becomes:</p>
+<p>\[ (a+bi)(c-di) \]</p>
+<p>Expanding:</p>
+<p>\[ =ac-adi+bci-bdi^2 \]</p>
+<p>Because \(i^2=-1\):</p>
+<p>\[ =ac+bd+(bc-ad)i \]</p>
+<p>Therefore:</p>
+<p>\[ \frac{z_1}{z_2} = \frac{ac+bd}{c^2+d^2} + \frac{bc-ad}{c^2+d^2}i \]</p>
+<p>The final formulas are:</p>
+<p>\[ Real=\frac{ac+bd}{c^2+d^2} \]</p>
+<p>\[ Imag=\frac{bc-ad}{c^2+d^2} \]</p>
+<h3 id="understanding-the-denominator">Understanding the denominator</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float den = z2.real*z2.real + z2.imag*z2.imag;</code></pre></div>
+<p>This calculates:</p>
+<p>\[ den=c^2+d^2 \]</p>
+<p>It is the square of the magnitude of the divisor.</p>
+<h3 id="calculating-the-real-component">Calculating the real component</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z.real = (z1.real*z2.real+z1.imag*z2.imag)/den;</code></pre></div>
+<p>This implements:</p>
+<p>\[ Real=\frac{ac+bd}{c^2+d^2} \]</p>
+<h3 id="calculating-the-imaginary-component">Calculating the imaginary component</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z.imag = (z1.imag*z2.real-z1.real*z2.imag)/den;</code></pre></div>
+<p>This implements:</p>
+<p>\[ Imag=\frac{bc-ad}{c^2+d^2} \]</p>
+<h3 id="example-5">Example</h3>
+<p>Given:</p>
+<p>\[ z_1=3+4i \]</p>
+<p>\[ z_2=1-5i \]</p>
+<p>First, calculate the denominator:</p>
+<p>\[ den=1^2+(-5)^2 \]</p>
+<p>\[ den=1+25=26 \]</p>
+<p>Calculate the real component:</p>
+<p>\[ Real=\frac{3(1)+4(-5)}{26} \]</p>
+<p>\[ Real=\frac{3-20}{26} \]</p>
+<p>\[ Real=-\frac{17}{26} \]</p>
+<p>Calculate the imaginary component:</p>
+<p>\[ Imag=\frac{4(1)-3(-5)}{26} \]</p>
+<p>\[ Imag=\frac{4+15}{26} \]</p>
+<p>\[ Imag=\frac{19}{26} \]</p>
+<p>Therefore:</p>
+<p>\[ \frac{3+4i}{1-5i} = -\frac{17}{26}+\frac{19}{26}i \]</p>
+<p>Approximately:</p>
+<p>\[ =-0.653846+0.730769i \]</p>
+<hr>
+<h2 id="15-important-problem-division-by-zero">15. Important Problem: Division by Zero</h2>
+<p>The original division function has an important limitation.</p>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z3 = {0, 0};</code></pre></div>
+<p>If we try:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Division(z1, z3);</code></pre></div>
+<p>The denominator becomes:</p>
+<p>\[ den=0^2+0^2=0 \]</p>
+<p>The program then attempts to divide by zero.</p>
+<p>Mathematically, division by zero is undefined.</p>
+<p>Therefore, the function must check whether the divisor is zero before performing the division.</p>
+<p>A simple improvement is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdbool.h&gt;
+
+bool Division(Complex z1, Complex z2, Complex *result)
+{
+    float den = z2.real*z2.real + z2.imag*z2.imag;
+
+    if (den == 0.0f)
+        return false;
+
+    result-&gt;real =
+        (z1.real*z2.real + z1.imag*z2.imag) / den;
+
+    result-&gt;imag =
+        (z1.imag*z2.real - z1.real*z2.imag) / den;
+
+    return true;
+}</code></pre></div>
+<p>This version:</p>
+<ul><li>Returns <code>true</code> when division succeeds.</li><li>Returns <code>false</code> when the divisor is zero.</li><li>Stores the result through a pointer.</li></ul>
+<p>For more general floating-point calculations, a more numerically robust division algorithm is preferable because squaring very large or very small components can overflow or underflow.</p>
+<hr>
+<h2 id="16-understanding-structure-return-values">16. Understanding Structure Return Values</h2>
+<p>One of the important C programming concepts in this example is returning a structure from a function.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Add(Complex z1, Complex z2)
+{
+    Complex z={z1.real + z2.real,z1.imag + z2.imag};
+    return z;
+}</code></pre></div>
+<p>The function creates a local structure:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z;</code></pre></div>
+<p>It calculates the result and returns the structure:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return z;</code></pre></div>
+<p>This is valid in C.</p>
+<p>The returned structure value is available to the calling function.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DispComplex(Add(z1,z2));</code></pre></div>
+<p>This statement performs two operations:</p>
+<ol><li><code>Add(z1,z2)</code> calculates and returns a new complex number.</li><li><code>DispComplex()</code> receives that returned structure and displays it.</li></ol>
+<p>We do not need to create a separate variable for every calculation.</p>
+<p>The same technique is used for:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DispComplex(Conj(z1));
+DispComplex(Subtract(z1,z2));
+DispComplex(Product(z1,z2));
+DispComplex(Division(z1,z2));</code></pre></div>
+<p>This makes the program shorter and more readable.</p>
+<hr>
+<h2 id="17-expected-output">17. Expected Output</h2>
+<p>The expected output for the original program is approximately:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z1 = 3.000000 + 4.000000i
+
+z2 = 1.000000 - 5.000000i
+
+z3 = 0
+
+z4 = -1.000000
+
+z5 = 7.000000i
+
+Conj(z1) = 3.000000 - 4.000000i
+
+Abs(z1) = 5.000000
+
+z1 + z2 = 4.000000 - 1.000000i
+
+z1 - z2 = 2.000000 + 9.000000i
+
+z1 * z2 = 23.000000 - 11.000000i
+
+z1 / z2 = -0.653846 + 0.730769i
+
+z1 / z1 = 1.000000</code></pre></div>
+<p>The last operation is:</p>
+<p>\[ \frac{3+4i}{3+4i}=1+0i \]</p>
+<p>This is why the display function prints:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.000000</code></pre></div>
+<p>The imaginary component is zero, so it is omitted.</p>
+<hr>
+<h2 id="18-improving-the-display-function">18. Improving the Display Function</h2>
+<p>The original display function works for the values used in this example, but it can be improved.</p>
+<p>For example, it always displays six decimal places, and it does not handle negative zero or tiny floating-point values particularly well.</p>
+<p>A more flexible version is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+#define EPSILON 0.000001f
+
+void DispComplex(Complex z)
+{
+    float x = z.real;
+    float y = z.imag;
+
+    if (fabsf(x) &lt; EPSILON)
+        x = 0.0f;
+
+    if (fabsf(y) &lt; EPSILON)
+        y = 0.0f;
+
+    if (x == 0.0f &amp;&amp; y == 0.0f)
+    {
+        printf("0");
+    }
+    else if (y == 0.0f)
+    {
+        printf("%.2f", x);
+    }
+    else if (x == 0.0f)
+    {
+        printf("%.2fi", y);
+    }
+    else
+    {
+        printf("%.2f %c %.2fi", x, (y &gt;= 0.0f) ? '+' : '-', fabsf(y));
+    }
+}</code></pre></div>
+<p>This version:</p>
+<ul><li>Uses a tolerance when checking for zero.</li><li>Displays two decimal places.</li><li>Handles positive and negative imaginary parts.</li><li>Avoids displaying negative zero.</li></ul>
+<p>The conditional operator:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(y &gt;= 0.0f) ? '+' : '-'</code></pre></div>
+<p>selects the appropriate sign.</p>
+<p>The function <code>fabsf()</code> returns the absolute value of a <code>float</code>.</p>
+<hr>
+<h2 id="19-a-note-about-the-standard-c-complex-type">19. A Note About the Standard C Complex Type</h2>
+<p>C also provides built-in support for complex arithmetic through the C99 complex-number facility.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;complex.h&gt;
+
+int main(void)
+{
+    double complex z1 = 3.0 + 4.0 * I;
+    double complex z2 = 1.0 - 5.0 * I;
+
+    double complex sum = z1 + z2;
+    double complex product = z1 * z2;
+    double complex quotient = z1 / z2;
+
+    printf("z1 = %.2f %+.2fi\n", creal(z1), cimag(z1));
+    printf("z2 = %.2f %+.2fi\n", creal(z2), cimag(z2));
+
+    printf("Sum = %.2f %+.2fi\n", creal(sum), cimag(sum));
+    printf("Product = %.2f %+.2fi\n", creal(product), cimag(product));
+    printf("Division = %.2f %+.2fi\n", creal(quotient), cimag(quotient));
+
+    return 0;
+}</code></pre></div>
+<p>Here:</p>
+<ul><li><code>double complex</code> declares a complex number.</li><li><code>I</code> represents the imaginary unit.</li><li><code>creal()</code> extracts the real component.</li><li><code>cimag()</code> extracts the imaginary component.</li></ul>
+<p>This feature is available in C99 and later implementations that support the complex arithmetic facility.</p>
+<p>However, implementing complex numbers manually using a structure is an excellent learning exercise because it helps you understand structures, function arguments, return values, and mathematical formulas.</p>
+<hr>
+<h2 id="20-compilation-and-execution">20. Compilation and Execution</h2>
+<p>Because the program uses <code>sqrt()</code> from <code>math.h</code>, GCC may require linking against the math library.</p>
+<p>Compile using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -std=c11 -Wall -Wextra -pedantic main.c -o complex -lm</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./complex</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\complex.exe</code></pre></div>
+<p>Some Windows GCC toolchains handle the math library differently, but the same source code can generally be compiled with GCC-based environments.</p>
+<hr>
+<h2 id="21-practice-exercises">21. Practice Exercises</h2>
+<p>Try these exercises to improve your understanding.</p>
+<h3 id="exercise-1-create-a-new-complex-number">Exercise 1 – Create a new complex number</h3>
+<p>Create another variable:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex z6 = {-2, 3};</code></pre></div>
+<p>Display its real and imaginary components.</p>
+<h3 id="exercise-2-calculate-the-conjugate">Exercise 2 – Calculate the conjugate</h3>
+<p>Calculate the conjugate of:</p>
+<p>\[ z=5-7i \]</p>
+<p>Verify that the result is:</p>
+<p>\[ \overline{z}=5+7i \]</p>
+<h3 id="exercise-3-calculate-the-magnitude">Exercise 3 – Calculate the magnitude</h3>
+<p>Calculate the magnitude of:</p>
+<p>\[ z=5+12i \]</p>
+<p>Expected result:</p>
+<p>\[</p>
+<p>\]</p>
+<h3 id="exercise-4-test-multiplication">Exercise 4 – Test multiplication</h3>
+<p>Calculate:</p>
+<p>\[ (2+3i)(4-2i) \]</p>
+<p>Check your result against the <code>Product()</code> function.</p>
+<h3 id="exercise-5-test-division">Exercise 5 – Test division</h3>
+<p>Calculate:</p>
+<p>\[ \frac{5+2i}{1+3i} \]</p>
+<p>Modify the program to display the result.</p>
+<h3 id="exercise-6-add-a-subtraction-test">Exercise 6 – Add a subtraction test</h3>
+<p>Calculate:</p>
+<p>\[ (7-4i)-(2+6i) \]</p>
+<h3 id="exercise-7-handle-division-by-zero">Exercise 7 – Handle division by zero</h3>
+<p>Modify <code>Division()</code> so that it detects a zero divisor and reports an error instead of dividing by zero.</p>
+<h3 id="exercise-8-add-a-function-for-the-square">Exercise 8 – Add a function for the square</h3>
+<p>Write a function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Complex Square(Complex z);</code></pre></div>
+<p>It should calculate:</p>
+<p>\[ z^2=(a+bi)^2 \]</p>
+<p>Expected formula:</p>
+<p>\[ z^2=(a^2-b^2)+2abi \]</p>
+<h3 id="exercise-9-calculate-the-distance-between-two-complex-number">Exercise 9 – Calculate the distance between two complex numbers</h3>
+<p>Write a function that calculates the distance between two complex numbers:</p>
+<p>\[ d=|z_1-z_2| \]</p>
+<p>You can reuse the <code>Subtract()</code> and <code>Abs()</code> functions.</p>
+<hr>
+<h2 id="22-learning-outcomes">22. Learning Outcomes</h2>
+<p>After studying this program, you should understand:</p>
+<ul><li>What complex numbers are.</li><li>How to represent complex numbers using structures.</li><li>How to use <code>typedef</code> to define a structure type.</li><li>How to initialize structure variables.</li><li>How to pass structures to functions.</li><li>How to return structures from functions.</li><li>How to separate mathematical operations into reusable functions.</li><li>How to implement complex conjugation.</li><li>How to calculate the magnitude of a complex number.</li><li>How to implement complex addition and subtraction.</li><li>How to implement complex multiplication.</li><li>How to implement complex division using the conjugate.</li><li>How to use mathematical functions from <code>math.h</code>.</li><li>Why division by zero must be handled.</li><li>How C99 provides built-in complex-number support.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">38 · Structures and Passing Structures to Functions in C</span></a><a class="pager-link next" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="pager-dir">Next →</span><span class="pager-name">40 · C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Structures and Passing Structures to Functions in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link active" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-7">Part 7 — Structures and Enumerations</a><span>/</span><span aria-current="page">Lesson 38</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 38 of 40 · Part 7</p><h1>Structures and Passing Structures to Functions in C</h1><p class="lesson-source">Folder <code>38-Structures_and_Passing_Structures_to_Functions_in_C_Language</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-complete-source-code">2. Complete Source Code</a></li><li><a href="#3-header-files">3. Header Files</a></li><li><a href="#4-defining-a-structure-using-typedef">4. Defining a Structure Using typedef</a></li><li><a href="#5-function-prototypes">5. Function Prototypes</a></li><li><a href="#6-creating-the-first-student">6. Creating the First Student</a></li><li><a href="#7-initializing-the-second-student">7. Initializing the Second Student</a></li><li><a href="#8-calling-the-first-function-passing-by-value">8. Calling the First Function – Passing by Value</a></li><li><a href="#9-understanding-the-first-function">9. Understanding the First Function</a></li><li><a href="#10-calling-the-second-function-passing-a-pointer">10. Calling the Second Function – Passing a Pointer</a></li><li><a href="#11-understanding-the-second-function">11. Understanding the Second Function</a></li><li><a href="#12-understanding-the-difference-between-and">12. Understanding the Difference Between . and -&gt;</a></li><li><a href="#13-understanding-the-program-execution-step-by-step">13. Understanding the Program Execution Step by Step</a></li><li><a href="#14-expected-output">14. Expected Output</a></li><li><a href="#15-memory-concept-structure-copy-vs-structure-pointer">15. Memory Concept: Structure Copy vs Structure Pointer</a></li><li><a href="#16-why-pass-a-structure-using-a-pointer">16. Why Pass a Structure Using a Pointer?</a></li><li><a href="#17-improving-the-program-use-const-for-read-only-functions">17. Improving the Program: Use const for Read-Only Functions</a></li><li><a href="#18-a-complete-improved-example">18. A Complete Improved Example</a></li><li><a href="#19-important-technical-notes">19. Important Technical Notes</a></li><li><a href="#20-compilation-and-execution">20. Compilation and Execution</a></li><li><a href="#21-practice-exercises">21. Practice Exercises</a></li><li><a href="#22-learning-outcomes">22. Learning Outcomes</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, a structure (<code>struct</code>) is a user-defined data type that allows us to group multiple variables of different data types under one name.</p>
+<p>For example, information about a student may include:</p>
+<ul><li>Student ID (<code>int</code>)</li><li>First name (<code>char *</code>)</li><li>Last name (<code>char *</code>)</li><li>GPA (<code>float</code>)</li></ul>
+<p>Instead of declaring four separate variables for every student, we can define a structure called <code>Student</code> and store all related information together.</p>
+<p>This program demonstrates:</p>
+<ol><li>Defining a structure using <code>typedef</code>.</li><li>Declaring structure variables.</li><li>Initializing structure members.</li><li>Accessing structure members using the dot (<code>.</code>) operator.</li><li>Passing a structure to a function by value.</li><li>Passing a structure to a function using a pointer.</li><li>Accessing structure members using the arrow (<code>-&gt;</code>) operator.</li><li>Understanding the difference between modifying a structure copy and modifying the original structure.</li></ol>
+<hr>
+<h2 id="2-complete-source-code">2. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef struct
+{
+    int id;
+    char *firstName;
+    char *lastName;
+    float gpa;
+} Student;
+
+void DisplayStudentInformation(Student stu);
+void DisplayStudentInformation2(Student *pstu);
+
+int main()
+{
+
+    Student stu1;
+    stu1.id=101;
+    stu1.firstName="Ali";
+    stu1.lastName="Alavi";
+    stu1.gpa=18;
+
+    Student stu2={102,"Reza","Razavi",19};
+
+    printf("Using First Function (By Value):\n");
+    DisplayStudentInformation(stu1);
+    DisplayStudentInformation(stu2);
+    DisplayStudentInformation(stu1);
+
+    printf("------------------------------------------------\n");
+
+    printf("Using Second Function (By Reference):\n");
+    DisplayStudentInformation2(&amp;stu1);
+    DisplayStudentInformation2(&amp;stu2);
+    DisplayStudentInformation2(&amp;stu1);
+
+    return 0;
+}
+
+void DisplayStudentInformation(Student stu)
+{
+    printf("Student Information:\n");
+    printf("        ID: %d\n",stu.id);
+    printf("First Name: %s\n",stu.firstName);
+    printf(" Last Name: %s\n",stu.lastName);
+    printf("       GPA: %.2f\n",stu.gpa);
+    stu.id+=1000;
+    printf("    New ID: %d\n",stu.id);
+    printf("\n");
+}
+
+void DisplayStudentInformation2(Student *pstu)
+{
+    printf("Student Information:\n");
+    printf("        ID: %d\n",pstu-&gt;id);
+    printf("First Name: %s\n",pstu-&gt;firstName);
+    printf(" Last Name: %s\n",pstu-&gt;lastName);
+    printf("       GPA: %.2f\n",pstu-&gt;gpa);
+    pstu-&gt;id+=1000;
+    printf("    New ID: %d\n",pstu-&gt;id);
+    printf("\n");
+}</code></pre></div>
+<hr>
+<h2 id="3-header-files">3. Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;</code></pre></div>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>The Standard Input/Output library provides functions for displaying information.</p>
+<p>This program uses:</p>
+<ul><li><code>printf()</code> – Prints formatted information to the console.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>The Standard Library header provides functions for memory management, conversions, sorting, and other general-purpose operations.</p>
+<p>However, this particular program does not use any function from <code>stdlib.h</code>, so this header is unnecessary.</p>
+<p>You can simplify the beginning of the program to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<hr>
+<h2 id="4-defining-a-structure-using-typedef">4. Defining a Structure Using <code>typedef</code></h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef struct
+{
+    int id;
+    char *firstName;
+    char *lastName;
+    float gpa;
+} Student;</code></pre></div>
+<p>This is one of the most important parts of the program.</p>
+<h3 id="what-is-a-structure">What is a structure?</h3>
+<p>A structure is a collection of variables, potentially with different data types, grouped under one data type.</p>
+<p>Here, we define a structure that stores student information.</p>
+<p>Let's examine each member.</p>
+<div class="table-wrap"><table><thead><tr><th>Member</th><th>Data type</th><th>Description</th></tr></thead><tbody><tr><td><code>id</code></td><td><code>int</code></td><td>Student identification number</td></tr><tr><td><code>firstName</code></td><td><code>char *</code></td><td>Pointer to the first name</td></tr><tr><td><code>lastName</code></td><td><code>char *</code></td><td>Pointer to the last name</td></tr><tr><td><code>gpa</code></td><td><code>float</code></td><td>Student grade point average</td></tr></tbody></table></div>
+<h3 id="what-is-typedef">What is <code>typedef</code>?</h3>
+<p>The <code>typedef</code> keyword creates an alias for an existing data type.</p>
+<p>Without <code>typedef</code>, we could define the structure like this:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>struct Student
+{
+    int id;
+    char *firstName;
+    char *lastName;
+    float gpa;
+};</code></pre></div>
+<p>To declare a variable, we would write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>struct Student stu1;</code></pre></div>
+<p>However, using <code>typedef</code> allows us to write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef struct
+{
+    int id;
+    char *firstName;
+    char *lastName;
+    float gpa;
+} Student;</code></pre></div>
+<p>Now, we can declare a variable more simply:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu1;</code></pre></div>
+<p><strong>Important:</strong> <code>typedef</code> does not create a new structure variable. It creates a type alias that makes declarations shorter and easier to read.</p>
+<h3 id="understanding-char">Understanding <code>char *</code></h3>
+<p>The following members are pointers:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *firstName;
+char *lastName;</code></pre></div>
+<p>They store addresses of characters rather than character arrays directly inside the structure.</p>
+<p>In this program, they point to string literals:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.firstName = "Ali";
+stu1.lastName = "Alavi";</code></pre></div>
+<p>String literals should not be modified. If you need to change a student's name, use writable character arrays or dynamically allocated memory with appropriate size management.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char firstName[] = "Ali";
+char lastName[] = "Alavi";</code></pre></div>
+<p>The structure could instead contain fixed-size arrays:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef struct
+{
+    int id;
+    char firstName[30];
+    char lastName[30];
+    float gpa;
+} Student;</code></pre></div>
+<p>This version stores the character arrays directly inside each structure.</p>
+<hr>
+<h2 id="5-function-prototypes">5. Function Prototypes</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DisplayStudentInformation(Student stu);
+void DisplayStudentInformation2(Student *pstu);</code></pre></div>
+<p>These lines declare two functions before <code>main()</code>.</p>
+<p>A function prototype informs the compiler about:</p>
+<ul><li>The function name.</li><li>Its return type.</li><li>The number and types of its parameters.</li></ul>
+<p>Both functions return <code>void</code>, which means they do not return a value.</p>
+<p>However, their parameters are different.</p>
+<h3 id="first-function">First function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DisplayStudentInformation(Student stu);</code></pre></div>
+<p>This function receives a <code>Student</code> structure directly.</p>
+<p>The structure is passed by value, meaning the function receives its own copy.</p>
+<h3 id="second-function">Second function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DisplayStudentInformation2(Student *pstu);</code></pre></div>
+<p>This function receives a pointer to a <code>Student</code> structure.</p>
+<p>The pointer contains the address of an existing structure variable.</p>
+<p>Therefore, the function can access and modify the original structure through that pointer.</p>
+<hr>
+<h2 id="6-creating-the-first-student">6. Creating the First Student</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu1;
+
+stu1.id=101;
+stu1.firstName="Ali";
+stu1.lastName="Alavi";
+stu1.gpa=18;</code></pre></div>
+<p>First, we declare a variable:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu1;</code></pre></div>
+<p>This creates a structure variable named <code>stu1</code>.</p>
+<p>Next, we assign values to its members.</p>
+<h3 id="accessing-members-using-the-dot-operator">Accessing members using the dot operator</h3>
+<p>The dot operator (<code>.</code>) is used when accessing a structure variable directly.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 101;</code></pre></div>
+<p>This means:</p>
+<ul><li>Access the structure named <code>stu1</code>.</li><li>Select its member named <code>id</code>.</li><li>Assign the value <code>101</code>.</li></ul>
+<p>The remaining assignments work in the same way:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.firstName = "Ali";
+stu1.lastName = "Alavi";
+stu1.gpa = 18;</code></pre></div>
+<p>After these statements, the structure contains:</p>
+<div class="table-wrap"><table><thead><tr><th>Member</th><th>Value</th></tr></thead><tbody><tr><td><code>id</code></td><td><code>101</code></td></tr><tr><td><code>firstName</code></td><td><code>"Ali"</code></td></tr><tr><td><code>lastName</code></td><td><code>"Alavi"</code></td></tr><tr><td><code>gpa</code></td><td><code>18.0</code></td></tr></tbody></table></div>
+<hr>
+<h2 id="7-initializing-the-second-student">7. Initializing the Second Student</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu2={102,"Reza","Razavi",19};</code></pre></div>
+<p>C allows us to initialize all structure members when declaring a structure variable.</p>
+<p>The values are assigned in the order in which the members were defined.</p>
+<p>Our structure definition is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef struct
+{
+    int id;
+    char *firstName;
+    char *lastName;
+    float gpa;
+} Student;</code></pre></div>
+<p>Therefore, the initialization is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu2;
+
+stu2.id = 102;
+stu2.firstName = "Reza";
+stu2.lastName = "Razavi";
+stu2.gpa = 19;</code></pre></div>
+<p>The second student contains:</p>
+<div class="table-wrap"><table><thead><tr><th>Member</th><th>Value</th></tr></thead><tbody><tr><td><code>id</code></td><td><code>102</code></td></tr><tr><td><code>firstName</code></td><td><code>"Reza"</code></td></tr><tr><td><code>lastName</code></td><td><code>"Razavi"</code></td></tr><tr><td><code>gpa</code></td><td><code>19.0</code></td></tr></tbody></table></div>
+<p>This initialization technique is called <strong>aggregate initialization</strong>.</p>
+<p>You can also use designated initializers in C:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu2 = {
+    .id = 102,
+    .firstName = "Reza",
+    .lastName = "Razavi",
+    .gpa = 19
+};</code></pre></div>
+<p>Designated initializers make the code easier to understand because each value is associated with its member name.</p>
+<hr>
+<h2 id="8-calling-the-first-function-passing-by-value">8. Calling the First Function – Passing by Value</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Using First Function (By Value):\n");
+
+DisplayStudentInformation(stu1);
+DisplayStudentInformation(stu2);
+DisplayStudentInformation(stu1);</code></pre></div>
+<p>Here, we call the first function three times.</p>
+<p>Each call passes a structure variable directly.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation(stu1);</code></pre></div>
+<p>The function receives a copy of <code>stu1</code>.</p>
+<p>Conceptually, the function behaves as if it has its own independent structure:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student localCopy = stu1;</code></pre></div>
+<p>This is an illustration of the behavior, not code that must be written explicitly.</p>
+<p>The original <code>stu1</code> remains unchanged when the function modifies its parameter.</p>
+<p>Let's understand why.</p>
+<hr>
+<h2 id="9-understanding-the-first-function">9. Understanding the First Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DisplayStudentInformation(Student stu)
+{
+    printf("Student Information:\n");
+    printf("        ID: %d\n",stu.id);
+    printf("First Name: %s\n",stu.firstName);
+    printf(" Last Name: %s\n",stu.lastName);
+    printf("       GPA: %.2f\n",stu.gpa);
+
+    stu.id+=1000;
+
+    printf("    New ID: %d\n",stu.id);
+    printf("\n");
+}</code></pre></div>
+<h3 id="function-parameter">Function parameter</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu</code></pre></div>
+<p>The function receives a complete structure object by value.</p>
+<p>The parameter <code>stu</code> is a separate local structure object.</p>
+<h3 id="displaying-structure-members">Displaying structure members</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("        ID: %d\n",stu.id);
+printf("First Name: %s\n",stu.firstName);
+printf(" Last Name: %s\n",stu.lastName);
+printf("       GPA: %.2f\n",stu.gpa);</code></pre></div>
+<p>These statements display the student's information.</p>
+<p>Notice that we use the dot operator (<code>.</code>), because <code>stu</code> is a structure variable, not a pointer.</p>
+<h3 id="increasing-the-id">Increasing the ID</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu.id+=1000;</code></pre></div>
+<p>This statement is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu.id = stu.id + 1000;</code></pre></div>
+<p>If the original ID is <code>101</code>, the function's local copy becomes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>101 + 1000 = 1101</code></pre></div>
+<p>The next statement prints the modified ID:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("    New ID: %d\n",stu.id);</code></pre></div>
+<p>However, the original structure is not changed.</p>
+<p>Why?</p>
+<p>Because <code>stu</code> is a copy of the original structure.</p>
+<p>The modification affects only the local parameter.</p>
+<h3 id="example">Example</h3>
+<p>Suppose we call:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation(stu1);</code></pre></div>
+<p>The original structure is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 101</code></pre></div>
+<p>Inside the function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu.id = 101
+stu.id = 101 + 1000
+stu.id = 1101</code></pre></div>
+<p>After the function finishes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 101</code></pre></div>
+<p>The original ID remains <code>101</code>.</p>
+<p>This is the main characteristic of passing a structure by value.</p>
+<hr>
+<h2 id="10-calling-the-second-function-passing-a-pointer">10. Calling the Second Function – Passing a Pointer</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Using Second Function (By Reference):\n");
+
+DisplayStudentInformation2(&amp;stu1);
+DisplayStudentInformation2(&amp;stu2);
+DisplayStudentInformation2(&amp;stu1);</code></pre></div>
+<p>This time, notice the ampersand (<code>&amp;</code>) before each structure variable.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation2(&amp;stu1);</code></pre></div>
+<p>The <code>&amp;</code> operator returns the memory address of the variable.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;stu1</code></pre></div>
+<p>means the address of the structure <code>stu1</code>.</p>
+<p>The function receives that address through a pointer.</p>
+<p>This allows it to access the original structure instead of creating a separate structure copy.</p>
+<p><strong>Important C language concept:</strong> C always passes function arguments by value. In this example, the pointer itself is passed by value, but it contains the address of the original structure. This allows the function to modify the original structure through that address. This technique is commonly called passing by reference, although technically C does not have true reference parameters like C++.</p>
+<hr>
+<h2 id="11-understanding-the-second-function">11. Understanding the Second Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DisplayStudentInformation2(Student *pstu)
+{
+    printf("Student Information:\n");
+    printf("        ID: %d\n",pstu-&gt;id);
+    printf("First Name: %s\n",pstu-&gt;firstName);
+    printf(" Last Name: %s\n",pstu-&gt;lastName);
+    printf("       GPA: %.2f\n",pstu-&gt;gpa);
+
+    pstu-&gt;id+=1000;
+
+    printf("    New ID: %d\n",pstu-&gt;id);
+    printf("\n");
+}</code></pre></div>
+<h3 id="function-parameter-2">Function parameter</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student *pstu</code></pre></div>
+<p>This declares a pointer named <code>pstu</code> that points to a <code>Student</code> structure.</p>
+<p>Unlike the first function, this function does not receive a complete structure copy.</p>
+<p>It receives the address of an existing structure.</p>
+<h3 id="understanding-the-arrow-operator">Understanding the arrow operator</h3>
+<p>In the first function, we accessed structure members using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu.id</code></pre></div>
+<p>In the second function, we use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pstu-&gt;id</code></pre></div>
+<p>Why?</p>
+<p>Because <code>pstu</code> is a pointer to a structure.</p>
+<p>The arrow operator (<code>-&gt;</code>) is used to access a structure member through a pointer.</p>
+<p>The following expressions are equivalent:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pstu-&gt;id</code></pre></div>
+<p>and:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(*pstu).id</code></pre></div>
+<p>The parentheses are necessary in the second expression because the dot operator has higher precedence than the dereference operator.</p>
+<h3 id="displaying-student-information">Displaying student information</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("        ID: %d\n",pstu-&gt;id);
+printf("First Name: %s\n",pstu-&gt;firstName);
+printf(" Last Name: %s\n",pstu-&gt;lastName);
+printf("       GPA: %.2f\n",pstu-&gt;gpa);</code></pre></div>
+<p>These statements access the members of the original structure through its address.</p>
+<h3 id="modifying-the-original-id">Modifying the original ID</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pstu-&gt;id+=1000;</code></pre></div>
+<p>This statement increases the ID of the original structure by 1000.</p>
+<p>For example, if:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 101;</code></pre></div>
+<p>After calling:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation2(&amp;stu1);</code></pre></div>
+<p>The original structure becomes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 1101;</code></pre></div>
+<p>Unlike the first function, this modification remains after the function finishes.</p>
+<hr>
+<h2 id="12-understanding-the-difference-between-and">12. Understanding the Difference Between <code>.</code> and <code>-&gt;</code></h2>
+<p>These two operators are important when working with structures.</p>
+<div class="table-wrap"><table><thead><tr><th>Operator</th><th>Purpose</th><th>Example</th></tr></thead><tbody><tr><td><code>.</code></td><td>Access a member directly through a structure variable</td><td><code>stu1.id</code></td></tr><tr><td><code>-&gt;</code></td><td>Access a member through a structure pointer</td><td><code>pstu-&gt;id</code></td></tr></tbody></table></div>
+<p>Consider the following example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu1;
+Student *pstu = &amp;stu1;</code></pre></div>
+<p>Accessing the ID directly:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 101;</code></pre></div>
+<p>Accessing the same ID through a pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pstu-&gt;id = 101;</code></pre></div>
+<p>Both statements modify the same structure member.</p>
+<p>The following are also equivalent:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pstu-&gt;id = 101;</code></pre></div>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(*pstu).id = 101;</code></pre></div>
+<hr>
+<h2 id="13-understanding-the-program-execution-step-by-step">13. Understanding the Program Execution Step by Step</h2>
+<p>This is the most important part of the example.</p>
+<p>Initially, the two structures contain:</p>
+<div class="table-wrap"><table><thead><tr><th>Structure</th><th>ID</th><th>First Name</th><th>Last Name</th><th>GPA</th></tr></thead><tbody><tr><td><code>stu1</code></td><td>101</td><td>Ali</td><td>Alavi</td><td>18</td></tr><tr><td><code>stu2</code></td><td>102</td><td>Reza</td><td>Razavi</td><td>19</td></tr></tbody></table></div>
+<h3 id="part-a-first-function-by-value">Part A: First function – By Value</h3>
+<p>The program executes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation(stu1);
+DisplayStudentInformation(stu2);
+DisplayStudentInformation(stu1);</code></pre></div>
+<p>Each function call receives a separate copy.</p>
+<p>The IDs displayed by the function are:</p>
+<div class="table-wrap"><table><thead><tr><th>Function call</th><th>Original ID</th><th>Local ID after adding 1000</th></tr></thead><tbody><tr><td>First call with <code>stu1</code></td><td>101</td><td>1101</td></tr><tr><td>Second call with <code>stu2</code></td><td>102</td><td>1102</td></tr><tr><td>Third call with <code>stu1</code></td><td>101</td><td>1101</td></tr></tbody></table></div>
+<p>Notice that the third call still starts with ID <code>101</code>.</p>
+<p>The first call did not change the original <code>stu1</code>.</p>
+<p>After all three calls, the original structures remain:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 101
+stu2.id = 102</code></pre></div>
+<h3 id="part-b-second-function-by-pointer">Part B: Second function – By Pointer</h3>
+<p>Next, the program executes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation2(&amp;stu1);
+DisplayStudentInformation2(&amp;stu2);
+DisplayStudentInformation2(&amp;stu1);</code></pre></div>
+<p>This time, each function call receives the address of the original structure.</p>
+<p>Let's follow the changes.</p>
+<p><strong>First call:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation2(&amp;stu1);</code></pre></div>
+<p>Initially:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 101</code></pre></div>
+<p>After adding 1000:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 1101</code></pre></div>
+<p><strong>Second call:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation2(&amp;stu2);</code></pre></div>
+<p>Initially:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu2.id = 102</code></pre></div>
+<p>After adding 1000:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu2.id = 1102</code></pre></div>
+<p><strong>Third call:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation2(&amp;stu1);</code></pre></div>
+<p>Remember that <code>stu1.id</code> is already <code>1101</code>.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 1101 + 1000
+stu1.id = 2101</code></pre></div>
+<p>At the end of the program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.id = 2101
+stu2.id = 1102</code></pre></div>
+<p>This clearly demonstrates the difference between passing by value and passing a pointer.</p>
+<hr>
+<h2 id="14-expected-output">14. Expected Output</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Using First Function (By Value):
+Student Information:
+        ID: 101
+First Name: Ali
+ Last Name: Alavi
+       GPA: 18.00
+    New ID: 1101
+
+Student Information:
+        ID: 102
+First Name: Reza
+ Last Name: Razavi
+       GPA: 19.00
+    New ID: 1102
+
+Student Information:
+        ID: 101
+First Name: Ali
+ Last Name: Alavi
+       GPA: 18.00
+    New ID: 1101
+
+------------------------------------------------
+Using Second Function (By Reference):
+Student Information:
+        ID: 101
+First Name: Ali
+ Last Name: Alavi
+       GPA: 18.00
+    New ID: 1101
+
+Student Information:
+        ID: 102
+First Name: Reza
+ Last Name: Razavi
+       GPA: 19.00
+    New ID: 1102
+
+Student Information:
+        ID: 1101
+First Name: Ali
+ Last Name: Alavi
+       GPA: 18.00
+    New ID: 2101</code></pre></div>
+<p>The important observation is the last function call.</p>
+<p>The second function displays <code>1101</code> as the starting ID because the previous pointer-based call modified the original <code>stu1</code>.</p>
+<hr>
+<h2 id="15-memory-concept-structure-copy-vs-structure-pointer">15. Memory Concept: Structure Copy vs Structure Pointer</h2>
+<p>A simplified illustration helps explain the difference.</p>
+<h3 id="passing-by-value">Passing by value</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation(stu1);</code></pre></div>
+<p>Conceptually:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Original structure                  Function parameter
++------------------+                +------------------+
+| ID: 101          |  ------------&gt; | ID: 101          |
+| First: Ali       |     Copy       | First: Ali       |
+| Last: Alavi      |                | Last: Alavi      |
+| GPA: 18.0        |                | GPA: 18.0        |
++------------------+                +------------------+</code></pre></div>
+<p>The function modifies its own structure object.</p>
+<p>Changing the local ID does not change the original ID.</p>
+<h3 id="passing-a-pointer">Passing a pointer</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>DisplayStudentInformation2(&amp;stu1);</code></pre></div>
+<p>Conceptually:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Original structure
++------------------+
+| ID: 101          |
+| First: Ali       |
+| Last: Alavi      |
+| GPA: 18.0        |
++------------------+
+         ^
+         |
+         | Address
+         |
++------------------+
+| pstu             |
+| Pointer to stu1  |
++------------------+</code></pre></div>
+<p>The pointer allows the function to access the original structure.</p>
+<p>When the function executes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pstu-&gt;id += 1000;</code></pre></div>
+<p>It modifies the original <code>stu1.id</code>.</p>
+<p><strong>Note:</strong> A structure copy copies the pointer values in <code>firstName</code> and <code>lastName</code>, not the characters they point to. In this example, those pointers refer to string literals, and neither function modifies the strings.</p>
+<hr>
+<h2 id="16-why-pass-a-structure-using-a-pointer">16. Why Pass a Structure Using a Pointer?</h2>
+<p>Passing a structure by value is useful when a function needs an independent copy.</p>
+<p>However, passing a structure by pointer has several advantages:</p>
+<ol><li>It avoids copying the entire structure.</li><li>It allows a function to modify the original structure.</li><li>It is often more efficient for large structures.</li><li>It allows multiple functions to work with the same structure object.</li><li>It is useful when working with arrays, linked lists, and other data structures.</li></ol>
+<p>For example, imagine a structure containing:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef struct
+{
+    int id;
+    char name[100];
+    float grades[1000];
+    int numberOfGrades;
+} Student;</code></pre></div>
+<p>Copying this entire structure every time a function is called can be unnecessary.</p>
+<p>Passing a pointer is generally more efficient when the function only needs to access or modify the existing object.</p>
+<hr>
+<h2 id="17-improving-the-program-use-const-for-read-only-functions">17. Improving the Program: Use <code>const</code> for Read-Only Functions</h2>
+<p>There is one important improvement we can make.</p>
+<p>Both functions display student information, but they also increase the ID.</p>
+<p>If a function should only display information, it should not modify the original data.</p>
+<p>A better design separates displaying information from modifying information.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DisplayStudent(const Student *pstu)
+{
+    printf("Student Information:\n");
+    printf("        ID: %d\n", pstu-&gt;id);
+    printf("First Name: %s\n", pstu-&gt;firstName);
+    printf(" Last Name: %s\n", pstu-&gt;lastName);
+    printf("       GPA: %.2f\n", pstu-&gt;gpa);
+    printf("\n");
+}</code></pre></div>
+<p>Here:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const Student *pstu</code></pre></div>
+<p>means that the function cannot modify the structure members through this pointer.</p>
+<p>For example, this is not allowed:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pstu-&gt;id += 1000;</code></pre></div>
+<p>The compiler will report an error.</p>
+<p>If we want to modify the ID, we can create another function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void IncreaseStudentID(Student *pstu)
+{
+    pstu-&gt;id += 1000;
+}</code></pre></div>
+<p>Now the responsibilities are separated:</p>
+<ul><li><code>DisplayStudent()</code> displays information.</li><li><code>IncreaseStudentID()</code> modifies the student's ID.</li></ul>
+<p>This is a cleaner programming design.</p>
+<hr>
+<h2 id="18-a-complete-improved-example">18. A Complete Improved Example</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+typedef struct
+{
+    int id;
+    char *firstName;
+    char *lastName;
+    float gpa;
+} Student;
+
+void DisplayStudent(const Student *pstu);
+void IncreaseStudentID(Student *pstu);
+
+int main(void)
+{
+    Student stu1 = {101, "Ali", "Alavi", 18.0f};
+    Student stu2 = {102, "Reza", "Razavi", 19.0f};
+
+    printf("Initial student information:\n\n");
+
+    DisplayStudent(&amp;stu1);
+    DisplayStudent(&amp;stu2);
+
+    printf("Increasing student IDs...\n\n");
+
+    IncreaseStudentID(&amp;stu1);
+    IncreaseStudentID(&amp;stu2);
+
+    printf("Updated student information:\n\n");
+
+    DisplayStudent(&amp;stu1);
+    DisplayStudent(&amp;stu2);
+
+    return 0;
+}
+
+void DisplayStudent(const Student *pstu)
+{
+    printf("Student Information:\n");
+    printf("        ID: %d\n", pstu-&gt;id);
+    printf("First Name: %s\n", pstu-&gt;firstName);
+    printf(" Last Name: %s\n", pstu-&gt;lastName);
+    printf("       GPA: %.2f\n", pstu-&gt;gpa);
+    printf("\n");
+}
+
+void IncreaseStudentID(Student *pstu)
+{
+    pstu-&gt;id += 1000;
+}</code></pre></div>
+<p>This version is easier to maintain because displaying information and modifying information are handled by separate functions.</p>
+<p>It also uses <code>const</code> to protect the structure from accidental modification inside the display function.</p>
+<hr>
+<h2 id="19-important-technical-notes">19. Important Technical Notes</h2>
+<h3 id="1-c-does-not-have-true-pass-by-reference-parameters">1. C does not have true pass-by-reference parameters</h3>
+<p>C always passes arguments by value.</p>
+<p>When passing a pointer, the pointer value (the address) is copied into the function parameter. Both the original pointer and the copied pointer refer to the same structure object.</p>
+<h3 id="2-structure-copying-and-pointers">2. Structure copying and pointers</h3>
+<p>When a structure containing pointers is copied, the pointer addresses are copied too.</p>
+<p>This is a shallow copy, not a deep copy.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student copy = stu1;</code></pre></div>
+<p>Both structures will contain pointers to the same name strings.</p>
+<h3 id="3-check-pointers-before-using-them">3. Check pointers before using them</h3>
+<p>The second function expects a valid pointer.</p>
+<p>A safer implementation can check for <code>NULL</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void DisplayStudentInformation2(Student *pstu)
+{
+    if (pstu == NULL)
+    {
+        printf("Invalid student pointer!\n");
+        return;
+    }
+
+    printf("ID: %d\n", pstu-&gt;id);
+}</code></pre></div>
+<h3 id="4-use-float-values-carefully">4. Use <code>float</code> values carefully</h3>
+<p>The structure defines:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float gpa;</code></pre></div>
+<p>You can initialize it with:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>stu1.gpa = 18.0f;</code></pre></div>
+<p>The <code>f</code> suffix indicates a <code>float</code> literal.</p>
+<h3 id="5-structure-parameters-can-be-large">5. Structure parameters can be large</h3>
+<p>Passing large structures by value can require additional copying.</p>
+<p>For large structures, a pointer is often a better choice.</p>
+<hr>
+<h2 id="20-compilation-and-execution">20. Compilation and Execution</h2>
+<p>You can compile this program using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -std=c11 -Wall -Wextra -pedantic main.c -o student</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./student</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\student.exe</code></pre></div>
+<hr>
+<h2 id="21-practice-exercises">21. Practice Exercises</h2>
+<p>Try the following exercises to improve your understanding.</p>
+<h3 id="exercise-1-add-a-new-student">Exercise 1 – Add a new student</h3>
+<p>Create a third structure variable:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student stu3 = {103, "Sara", "Ahmadi", 17.5f};</code></pre></div>
+<p>Display its information using both functions.</p>
+<h3 id="exercise-2-modify-the-gpa">Exercise 2 – Modify the GPA</h3>
+<p>Create a function that receives a pointer to a student and increases the GPA by <code>1.0</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void IncreaseGPA(Student *pstu);</code></pre></div>
+<p>Test whether the original structure changes.</p>
+<h3 id="exercise-3-compare-two-students">Exercise 3 – Compare two students</h3>
+<p>Write a function that receives two student pointers and determines which student has the higher GPA.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void CompareStudents(const Student *s1, const Student *s2);</code></pre></div>
+<h3 id="exercise-4-use-an-array-of-structures">Exercise 4 – Use an array of structures</h3>
+<p>Create an array containing five students:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Student students[5];</code></pre></div>
+<p>Use a loop to display all student information.</p>
+<h3 id="exercise-5-calculate-the-average-gpa">Exercise 5 – Calculate the average GPA</h3>
+<p>Write a function that receives an array of students and calculates the average GPA.</p>
+<h3 id="exercise-6-test-pass-by-value">Exercise 6 – Test pass by value</h3>
+<p>Create a function that receives a structure by value and changes all its members.</p>
+<p>After calling the function, print the original structure and observe whether it has changed.</p>
+<hr>
+<h2 id="22-learning-outcomes">22. Learning Outcomes</h2>
+<p>After studying this example, you should understand:</p>
+<ul><li>What a structure is in C.</li><li>How to define a structure using <code>typedef</code>.</li><li>How to declare and initialize structure variables.</li><li>How to access structure members using the dot operator.</li><li>How to pass a structure to a function by value.</li><li>How to pass a structure pointer to a function.</li><li>How to access members using the arrow operator.</li><li>Why pointer-based functions can modify original structures.</li><li>Why C technically uses pass-by-value for all function arguments.</li><li>How to use <code>const</code> with structure pointers.</li><li>The difference between shallow and deep copying.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">37 · Reading and Parsing Dates Using scanf() in C</span></a><a class="pager-link next" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="pager-dir">Next →</span><span class="pager-name">39 · Complex Numbers and Mathematical Operations Using Structures in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

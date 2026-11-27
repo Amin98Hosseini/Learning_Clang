@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formatting Floating-Point Numbers Using printf() and sprintf() in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link active" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 29</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 29 of 40 · Part 6</p><h1>Formatting Floating-Point Numbers Using printf() and sprintf() in C</h1><p class="lesson-source">Folder <code>29-Formatting_FloatingPoint_Numbers-Using_printf_and_sprintf_in_C</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-complete-source-code">3. Complete Source Code</a></li><li><a href="#4-understanding-the-code">4. Understanding the Code</a></li><li><a href="#5-difference-between-printf-sprintf-and-snprintf">5. Difference Between printf(), sprintf(), and snprintf()</a></li><li><a href="#6-complete-improved-version">6. Complete Improved Version</a></li><li><a href="#7-expected-output">7. Expected Output</a></li><li><a href="#8-practical-applications">8. Practical Applications</a></li><li><a href="#9-common-mistakes">9. Common Mistakes</a></li><li><a href="#10-compilation-and-execution">10. Compilation and Execution</a></li><li><a href="#11-exercises">11. Exercises</a></li><li><a href="#12-learning-objectives">12. Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, we often need to display numbers in a formatted way or convert numeric values into strings.</p>
+<p>For example, consider these two floating-point numbers:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x = 10.5624;
+double y = -4.8746;</code></pre></div>
+<p>Sometimes, displaying all decimal places is unnecessary. We may want to display only two digits after the decimal point:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(x = 10.56, y = -4.87)</code></pre></div>
+<p>C provides several functions for formatted output. Two commonly used functions are:</p>
+<ul><li><code>printf()</code> – Formats and displays data directly on the standard output (usually the terminal).</li><li><code>sprintf()</code> – Formats data and stores the resulting text inside a character array (string).</li></ul>
+<p>In this tutorial, we will learn how to use both functions and understand their differences.</p>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;</code></pre></div>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>The <code>stdio.h</code> header provides standard input/output functions, including:</p>
+<ul><li><code>printf()</code> – Displays formatted output.</li><li><code>sprintf()</code> – Writes formatted output into a string.</li><li><code>puts()</code> – Displays a string followed by a newline.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>The <code>stdlib.h</code> header provides general-purpose utility functions, such as:</p>
+<ul><li><code>malloc()</code></li><li><code>free()</code></li><li><code>atoi()</code></li><li><code>strtod()</code></li><li><code>exit()</code></li></ul>
+<p><strong>Note:</strong> This example does not use any function from <code>stdlib.h</code>, so this header can be removed without affecting the program.</p>
+<h2 id="3-complete-source-code">3. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    double x = 10.5624;
+    double y = -4.8746;
+
+    printf("Using printf function:\n");
+    printf("(x = %.2f, y = %.2f)", x, y);
+    printf("\n\n");
+
+    char str[100];
+
+    sprintf(str, "(x = %.2f, y = %.2f)", x, y);
+
+    printf("Using sprintf function:\n");
+    puts(str);
+    printf("\n\n");
+
+    return 0;
+}</code></pre></div>
+<h2 id="4-understanding-the-code">4. Understanding the Code</h2>
+<h3 id="4-1-declaring-floating-point-variables">4.1. Declaring Floating-Point Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x = 10.5624;
+double y = -4.8746;</code></pre></div>
+<p>Here, we declare two variables of type <code>double</code>.</p>
+<p>The <code>double</code> data type stores floating-point numbers with more precision than the <code>float</code> data type.</p>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Value</th></tr></thead><tbody><tr><td><code>x</code></td><td>10.5624</td></tr><tr><td><code>y</code></td><td>-4.8746</td></tr></tbody></table></div>
+<p>These values will be used to demonstrate formatted output.</p>
+<h3 id="4-2-displaying-text-with-printf">4.2. Displaying Text with <code>printf()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Using printf function:\n");</code></pre></div>
+<p>The <code>printf()</code> function displays formatted text on the standard output.</p>
+<p>The special character <code>\n</code> represents a newline.</p>
+<p>Therefore, the program prints the heading and moves the cursor to the next line.</p>
+<h3 id="4-3-formatting-floating-point-numbers">4.3. Formatting Floating-Point Numbers</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("(x = %.2f, y = %.2f)", x, y);</code></pre></div>
+<p>This statement is the most important part of the first example.</p>
+<p>The <code>printf()</code> function uses format specifiers to determine how values should be displayed.</p>
+<p>The format specifier:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>%.2f</code></pre></div>
+<p>means:</p>
+<ul><li><code>%</code> indicates the beginning of a format specifier.</li><li><code>.2</code> specifies two digits after the decimal point.</li><li><code>f</code> indicates a floating-point value formatted in decimal notation.</li></ul>
+<p>For example:</p>
+<div class="table-wrap"><table><thead><tr><th>Original value</th><th>Format</th><th>Displayed value</th></tr></thead><tbody><tr><td>10.5624</td><td><code>%.2f</code></td><td>10.56</td></tr><tr><td>-4.8746</td><td><code>%.2f</code></td><td>-4.87</td></tr><tr><td>10.5624</td><td><code>%.3f</code></td><td>10.562</td></tr><tr><td>-4.8746</td><td><code>%.1f</code></td><td>-4.9</td></tr><tr><td>10.5624</td><td><code>%.0f</code></td><td>11</td></tr></tbody></table></div>
+<p>The number of decimal places is controlled by the precision specified after the decimal point.</p>
+<p><strong>Important:</strong> Formatting with <code>%.2f</code> changes only the displayed representation. It does not modify the original value stored in the variable.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x = 10.5624;
+
+printf("%.2f\n", x);
+printf("%.4f\n", x);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10.56
+10.5624</code></pre></div>
+<p>The original value of <code>x</code> remains <code>10.5624</code>.</p>
+<h3 id="4-4-adding-new-lines">4.4. Adding New Lines</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("\n\n");</code></pre></div>
+<p>This statement prints two newline characters.</p>
+<p>It creates two line breaks, leaving an empty line before the next section of the output.</p>
+<h3 id="4-5-declaring-a-character-array">4.5. Declaring a Character Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[100];</code></pre></div>
+<p>Here, we declare a character array named <code>str</code> with a capacity of 100 characters.</p>
+<p>In C, a string is stored as a sequence of characters terminated by a special character called the null terminator:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>'\0'</code></pre></div>
+<p>For example, the string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello</code></pre></div>
+<p>is stored in memory as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>'H' 'e' 'l' 'l' 'o' '\0'</code></pre></div>
+<p>The array has enough space to store the formatted text generated by this example.</p>
+<h3 id="4-6-understanding-sprintf">4.6. Understanding <code>sprintf()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sprintf(str, "(x = %.2f, y = %.2f)", x, y);</code></pre></div>
+<p>The <code>sprintf()</code> function works similarly to <code>printf()</code>, but instead of displaying the formatted result on the terminal, it stores the result inside a character array.</p>
+<p>Its general syntax is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sprintf(destination, format, value1, value2, ...);</code></pre></div>
+<p>Parameters:</p>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td><code>destination</code></td><td>Character array where the formatted text is stored</td></tr><tr><td><code>format</code></td><td>Formatting string containing ordinary text and format specifiers</td></tr><tr><td><code>value1</code>, <code>value2</code>, ...</td><td>Values used to replace the format specifiers</td></tr></tbody></table></div>
+<p>In our example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sprintf(str, "(x = %.2f, y = %.2f)", x, y);</code></pre></div>
+<p>The function:</p>
+<ol><li>Reads the value of <code>x</code>.</li><li>Formats it with two decimal places.</li><li>Reads the value of <code>y</code>.</li><li>Formats it with two decimal places.</li><li>Stores the complete formatted string in <code>str</code>.</li><li>Adds the null terminator <code>'\0'</code> at the end.</li></ol>
+<p>After this statement, <code>str</code> contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(x = 10.56, y = -4.87)</code></pre></div>
+<p><strong>Important:</strong> <code>sprintf()</code> does not check the size of the destination array. If the formatted output is larger than the available buffer, it can write beyond the array boundaries and cause undefined behavior.</p>
+<p>For safer formatting, use <code>snprintf()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>snprintf(str, sizeof(str), "(x = %.2f, y = %.2f)", x, y);</code></pre></div>
+<p>The second argument specifies the maximum size of the destination buffer, including space for the null terminator.</p>
+<p>For this example, <code>snprintf()</code> is recommended.</p>
+<h3 id="4-7-displaying-the-formatted-string-with-puts">4.7. Displaying the Formatted String with <code>puts()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Using sprintf function:\n");
+puts(str);</code></pre></div>
+<p>The first statement displays a heading.</p>
+<p>The second statement displays the string stored in <code>str</code>.</p>
+<p>The <code>puts()</code> function automatically adds a newline after printing the string.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>puts(str);</code></pre></div>
+<p>is generally equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%s\n", str);</code></pre></div>
+<p>For displaying a string, both approaches are commonly used.</p>
+<h2 id="5-difference-between-printf-sprintf-and-snprintf">5. Difference Between <code>printf()</code>, <code>sprintf()</code>, and <code>snprintf()</code></h2>
+<p>These functions all support formatted output, but their destinations and safety characteristics are different.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Destination</th><th>Automatically adds null terminator?</th><th>Checks destination size?</th></tr></thead><tbody><tr><td><code>printf()</code></td><td>Standard output</td><td>Not applicable</td><td>Not applicable</td></tr><tr><td><code>sprintf()</code></td><td>Character array</td><td>Yes</td><td>No</td></tr><tr><td><code>snprintf()</code></td><td>Character array</td><td>Yes, when buffer size is greater than zero</td><td>Yes</td></tr></tbody></table></div>
+<h3 id="printf"><code>printf()</code></h3>
+<p>Displays formatted data directly:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Temperature: %.2f\n", 25.6789);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Temperature: 25.68</code></pre></div>
+<h3 id="sprintf"><code>sprintf()</code></h3>
+<p>Stores formatted data in a string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char buffer[50];
+
+sprintf(buffer, "Temperature: %.2f", 25.6789);</code></pre></div>
+<p>The resulting string is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Temperature: 25.68</code></pre></div>
+<h3 id="snprintf"><code>snprintf()</code></h3>
+<p>Stores formatted data in a string while limiting the number of characters written:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char buffer[50];
+
+snprintf(buffer, sizeof(buffer), "Temperature: %.2f", 25.6789);</code></pre></div>
+<p>This is generally the preferred approach when formatting text into a fixed-size character array.</p>
+<h2 id="6-complete-improved-version">6. Complete Improved Version</h2>
+<p>The following version uses <code>snprintf()</code> instead of <code>sprintf()</code> to prevent writing beyond the destination buffer.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    double x = 10.5624;
+    double y = -4.8746;
+
+    printf("Using printf function:\n");
+    printf("(x = %.2f, y = %.2f)\n\n", x, y);
+
+    char str[100];
+
+    int result = snprintf(
+        str,
+        sizeof(str),
+        "(x = %.2f, y = %.2f)",
+        x,
+        y
+    );
+
+    if (result &lt; 0)
+    {
+        printf("Formatting error!\n");
+        return 1;
+    }
+
+    if ((size_t)result &gt;= sizeof(str))
+    {
+        printf("Warning: Output was truncated!\n");
+        return 1;
+    }
+
+    printf("Using snprintf function:\n");
+    puts(str);
+
+    return 0;
+}</code></pre></div>
+<h3 id="why-use-snprintf">Why use <code>snprintf()</code>?</h3>
+<p>The function returns the number of characters that would have been written, excluding the terminating null character.</p>
+<ul><li>If the return value is negative, a formatting error occurred.</li><li>If the return value is greater than or equal to the buffer size, the output was truncated.</li><li>Otherwise, the complete formatted string was stored successfully.</li></ul>
+<p>The cast to <code>size_t</code> is safe in the comparison because the code first checks that <code>result</code> is nonnegative.</p>
+<h2 id="7-expected-output">7. Expected Output</h2>
+<p>For the original program and the improved version, the expected output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Using printf function:
+(x = 10.56, y = -4.87)
+
+Using sprintf function:
+(x = 10.56, y = -4.87)</code></pre></div>
+<p>The improved version displays <code>Using snprintf function:</code> instead of <code>Using sprintf function:</code>.</p>
+<p>Both approaches produce the same formatted numeric values.</p>
+<h2 id="8-practical-applications">8. Practical Applications</h2>
+<p>Formatted string generation is useful in many C programming applications.</p>
+<h3 id="8-1-creating-debug-messages">8.1. Creating Debug Messages</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char message[100];
+
+double voltage = 12.567;
+double current = 2.345;
+
+snprintf(message, sizeof(message),
+         "Voltage: %.2f V, Current: %.2f A",
+         voltage, current);
+
+printf("%s\n", message);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Voltage: 12.57 V, Current: 2.35 A</code></pre></div>
+<h3 id="8-2-preparing-data-for-uart-transmission">8.2. Preparing Data for UART Transmission</h3>
+<p>In embedded systems, you may need to convert numeric values into text before transmitting them through UART.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char uart_buffer[100];
+
+float temperature = 28.65f;
+
+snprintf(uart_buffer, sizeof(uart_buffer),
+         "TEMP:%.2f\r\n", temperature);</code></pre></div>
+<p>The resulting string can then be transmitted using an appropriate UART function.</p>
+<p>For example, in STM32 HAL:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>HAL_UART_Transmit(
+    &amp;huart1,
+    (uint8_t *)uart_buffer,
+    (uint16_t)strlen(uart_buffer),
+    HAL_MAX_DELAY
+);</code></pre></div>
+<p>This STM32 example requires:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;string.h&gt;</code></pre></div>
+<p>and the appropriate STM32 HAL header and UART handle declaration.</p>
+<h3 id="8-3-preparing-data-for-tcp-communication">8.3. Preparing Data for TCP Communication</h3>
+<p>Formatted strings can also be used to prepare readable messages before sending them over a TCP connection.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char tcp_buffer[100];
+
+double x = 10.5624;
+double y = -4.8746;
+
+int length = snprintf(
+    tcp_buffer,
+    sizeof(tcp_buffer),
+    "X=%.2f,Y=%.2f",
+    x,
+    y
+);</code></pre></div>
+<p>The resulting message is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>X=10.56,Y=-4.87</code></pre></div>
+<p>The returned <code>length</code> can be used to determine how many bytes should be sent.</p>
+<p>For TCP, remember that one <code>send()</code> call does not necessarily transmit the entire message. Your networking code must handle partial sends and define a message-framing protocol.</p>
+<h2 id="9-common-mistakes">9. Common Mistakes</h2>
+<h3 id="mistake-1-using-sprintf-without-considering-buffer-size">Mistake 1: Using <code>sprintf()</code> Without Considering Buffer Size</h3>
+<p>Unsafe:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[10];
+
+sprintf(str, "Temperature: %.2f", 25.67);</code></pre></div>
+<p>The destination buffer is too small for the resulting string.</p>
+<p>Safer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[100];
+
+snprintf(str, sizeof(str), "Temperature: %.2f", 25.67);</code></pre></div>
+<h3 id="mistake-2-confusing-precision-with-variable-accuracy">Mistake 2: Confusing Precision with Variable Accuracy</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%.2f", x);</code></pre></div>
+<p>This does not change the actual value of <code>x</code>. It only controls how the number is displayed.</p>
+<h3 id="mistake-3-forgetting-the-null-terminator">Mistake 3: Forgetting the Null Terminator</h3>
+<p>A C string must end with <code>'\0'</code>.</p>
+<p>Functions such as <code>sprintf()</code> and <code>snprintf()</code> add this terminator when there is sufficient destination space.</p>
+<h3 id="mistake-4-using-s-for-a-floating-point-number">Mistake 4: Using <code>%s</code> for a Floating-Point Number</h3>
+<p>Incorrect:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%s", x);</code></pre></div>
+<p>Correct:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%.2f", x);</code></pre></div>
+<p>The <code>%s</code> specifier is used for strings, while <code>%f</code> is used for floating-point values passed to <code>printf()</code>.</p>
+<h2 id="10-compilation-and-execution">10. Compilation and Execution</h2>
+<p>Save the source code as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o format_example</code></pre></div>
+<p>Run on Linux or macOS:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./format_example</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o format_example.exe
+.\format_example.exe</code></pre></div>
+<h2 id="11-exercises">11. Exercises</h2>
+<p>Try these exercises to improve your understanding.</p>
+<p><strong>Exercise 1 – Change Decimal Precision</strong></p>
+<p>Modify the program to display the values using:</p>
+<ul><li>One decimal place.</li><li>Three decimal places.</li><li>Four decimal places.</li></ul>
+<p><strong>Exercise 2 – Format More Variables</strong></p>
+<p>Add three more variables:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double temperature = 25.6789;
+double voltage = 12.3456;
+double current = 2.7891;</code></pre></div>
+<p>Use <code>sprintf()</code> or <code>snprintf()</code> to store all values in one string.</p>
+<p><strong>Exercise 3 – Add Units</strong></p>
+<p>Generate this formatted string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Temperature = 25.68 C, Voltage = 12.35 V</code></pre></div>
+<p><strong>Exercise 4 – Use Field Width</strong></p>
+<p>Explore the following format specifiers:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("|%10.2f|\n", x);
+printf("|%-10.2f|\n", x);</code></pre></div>
+<p>Understand the difference between right alignment and left alignment.</p>
+<p><strong>Exercise 5 – Create a UART Message</strong></p>
+<p>Create a string containing temperature, voltage, and current values, then transmit it using STM32 HAL UART.</p>
+<h2 id="12-learning-objectives">12. Learning Objectives</h2>
+<p>After completing this tutorial, you should understand:</p>
+<ul><li>How to format floating-point numbers using <code>printf()</code>.</li><li>How to control decimal precision using <code>%.2f</code>, <code>%.3f</code>, and similar specifiers.</li><li>How to convert numeric values into strings using <code>sprintf()</code>.</li><li>How to store formatted text in character arrays.</li><li>How <code>puts()</code> displays a string.</li><li>The differences between <code>printf()</code>, <code>sprintf()</code>, and <code>snprintf()</code>.</li><li>Why <code>snprintf()</code> is safer for fixed-size buffers.</li><li>How formatted strings are useful in embedded systems and communication protocols.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="pager-dir">← Previous</span><span class="pager-name">28 · Reading a String Character by Character in C Using getchar()</span></a><a class="pager-link next" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">30 · Reading and Extracting Data from Strings Using sscanf() in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

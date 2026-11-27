@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading and Extracting Data from Strings Using sscanf() in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link active" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 30</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 30 of 40 · Part 6</p><h1>Reading and Extracting Data from Strings Using sscanf() in C</h1><p class="lesson-source">Folder <code>30-Reading_and-Extracting_Data_from_Strings_Using_sscanf_in_C</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-complete-source-code">3. Complete Source Code</a></li><li><a href="#4-understanding-the-code">4. Understanding the Code</a></li><li><a href="#5-expected-output">5. Expected Output</a></li><li><a href="#6-understanding-the-return-value-of-sscanf">6. Understanding the Return Value of sscanf()</a></li><li><a href="#7-improved-and-safer-version">7. Improved and Safer Version</a></li><li><a href="#8-testing-with-different-input-strings">8. Testing with Different Input Strings</a></li><li><a href="#9-difference-between-scanf-and-sscanf">9. Difference Between scanf() and sscanf()</a></li><li><a href="#10-practical-applications">10. Practical Applications</a></li><li><a href="#11-common-mistakes">11. Common Mistakes</a></li><li><a href="#12-compilation-and-execution">12. Compilation and Execution</a></li><li><a href="#13-exercises">13. Exercises</a></li><li><a href="#14-learning-objectives">14. Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, sometimes we have data stored inside a character array (string), and we need to extract numeric values or other information from that string.</p>
+<p>For example, consider the following string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "(x = -5.45, y = 10.67)";</code></pre></div>
+<p>This string contains two floating-point values:</p>
+<ul><li><code>x = -5.45</code></li><li><code>y = 10.67</code></li></ul>
+<p>How can we extract these values and store them in separate variables?</p>
+<p>C provides a function called <code>sscanf()</code> that allows us to read formatted data directly from a string.</p>
+<p>The <code>sscanf()</code> function works similarly to <code>scanf()</code>, but instead of reading input from the keyboard, it reads data from an existing character array.</p>
+<p>In this tutorial, we will learn:</p>
+<ul><li>How to read formatted data from a string.</li><li>How to extract floating-point numbers using <code>sscanf()</code>.</li><li>How format specifiers work.</li><li>How to check whether data was extracted successfully.</li><li>How to handle invalid or unexpected input safely.</li></ul>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;</code></pre></div>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>The <code>stdio.h</code> header provides standard input/output functions, including:</p>
+<ul><li><code>printf()</code> – Displays formatted output.</li><li><code>puts()</code> – Displays a string followed by a newline.</li><li><code>scanf()</code> – Reads formatted input from standard input.</li><li><code>sscanf()</code> – Reads formatted data from a string.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>The <code>stdlib.h</code> header provides general-purpose utility functions, such as:</p>
+<ul><li><code>malloc()</code></li><li><code>free()</code></li><li><code>atoi()</code></li><li><code>strtod()</code></li><li><code>exit()</code></li></ul>
+<p><strong>Note:</strong> This example does not use any function from <code>stdlib.h</code>, so the header can be removed without affecting the program.</p>
+<h2 id="3-complete-source-code">3. Complete Source Code</h2>
+<p>Here is the original program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    char str[] = "(x = -5.45, y = 10.67)";
+
+    printf("Input string is:\n");
+    puts(str);
+    printf("\n\n");
+
+    float x, y;
+
+    sscanf(str, "(x = %f, y = %f)", &amp;x, &amp;y);
+
+    printf("Results of sscanf:\n");
+    printf("x = %.2f\n", x);
+    printf("y = %.2f\n", y);
+
+    return 0;
+}</code></pre></div>
+<h2 id="4-understanding-the-code">4. Understanding the Code</h2>
+<h3 id="4-1-declaring-and-initializing-a-string">4.1. Declaring and Initializing a String</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "(x = -5.45, y = 10.67)";</code></pre></div>
+<p>Here, we declare a character array named <code>str</code> and initialize it with a string.</p>
+<p>The string contains ordinary characters, labels, punctuation marks, and two numeric values.</p>
+<p>Its content is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(x = -5.45, y = 10.67)</code></pre></div>
+<p>In C, strings are stored as character arrays and terminated with a special null character:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>'\0'</code></pre></div>
+<p>The compiler automatically allocates enough space for the characters and the terminating null character when the array is initialized this way.</p>
+<h3 id="4-2-displaying-the-input-string">4.2. Displaying the Input String</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Input string is:\n");
+puts(str);
+printf("\n\n");</code></pre></div>
+<p>The first statement displays a heading:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input string is:</code></pre></div>
+<p>The second statement:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>puts(str);</code></pre></div>
+<p>prints the complete string stored in <code>str</code>.</p>
+<p>The <code>puts()</code> function automatically adds a newline after displaying the string.</p>
+<p>The last statement:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("\n\n");</code></pre></div>
+<p>prints two newline characters to create some space before the next section.</p>
+<h3 id="4-3-declaring-variables-for-extracted-values">4.3. Declaring Variables for Extracted Values</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float x, y;</code></pre></div>
+<p>We declare two floating-point variables:</p>
+<ul><li><code>x</code> will store the first extracted number.</li><li><code>y</code> will store the second extracted number.</li></ul>
+<p>After successful conversion, the expected values are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>x = -5.45
+y = 10.67</code></pre></div>
+<h3 id="4-4-understanding-the-sscanf-function">4.4. Understanding the <code>sscanf()</code> Function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sscanf(str, "(x = %f, y = %f)", &amp;x, &amp;y);</code></pre></div>
+<p>This is the most important statement in the program.</p>
+<p>The <code>sscanf()</code> function reads formatted data from a string and stores the extracted values in the variables provided.</p>
+<p>Its general syntax is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sscanf(source_string, format, argument1, argument2, ...);</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Description</th></tr></thead><tbody><tr><td><code>source_string</code></td><td>The string from which data is read</td></tr><tr><td><code>format</code></td><td>The expected pattern of the input string</td></tr><tr><td><code>argument1</code>, <code>argument2</code>, ...</td><td>Addresses of variables where extracted values are stored</td></tr></tbody></table></div>
+<p>In our example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sscanf(str, "(x = %f, y = %f)", &amp;x, &amp;y);</code></pre></div>
+<p>The function receives two main inputs:</p>
+<p><strong>First argument:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>str</code></pre></div>
+<p>This is the source string containing the data.</p>
+<p><strong>Second argument:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>"(x = %f, y = %f)"</code></pre></div>
+<p>This is the format string describing the expected input structure.</p>
+<p><strong>Third and fourth arguments:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;x, &amp;y</code></pre></div>
+<p>These are the memory addresses of the variables where the converted values will be stored.</p>
+<h3 id="4-5-understanding-the-format-string">4.5. Understanding the Format String</h3>
+<p>Let's examine this format string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>"(x = %f, y = %f)"</code></pre></div>
+<p>The format string contains two types of elements:</p>
+<ol><li>Ordinary characters that must match the input.</li><li>Format specifiers that indicate where values should be extracted.</li></ol>
+<div class="table-wrap"><table><thead><tr><th>Format element</th><th>Meaning</th></tr></thead><tbody><tr><td><code>(</code></td><td>Matches an opening parenthesis</td></tr><tr><td><code>x = </code></td><td>Matches the literal text <code>x = </code></td></tr><tr><td><code>%f</code></td><td>Reads a floating-point number</td></tr><tr><td><code>, y = </code></td><td>Matches the literal text <code>, y = </code></td></tr><tr><td><code>%f</code></td><td>Reads another floating-point number</td></tr><tr><td><code>)</code></td><td>Matches a closing parenthesis</td></tr></tbody></table></div>
+<p>The function processes the input from left to right.</p>
+<p>For the input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(x = -5.45, y = 10.67)</code></pre></div>
+<p>The conversion works as follows:</p>
+<ol><li>Matches the opening parenthesis <code>(</code>.</li><li>Matches the text <code>x = </code>.</li><li>Reads <code>-5.45</code> using <code>%f</code> and stores it in <code>x</code>.</li><li>Matches the text <code>, y = </code>.</li><li>Reads <code>10.67</code> using <code>%f</code> and stores it in <code>y</code>.</li><li>Matches the closing parenthesis <code>)</code>.</li></ol>
+<p>After successful extraction:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>x = -5.45f;
+y = 10.67f;</code></pre></div>
+<p><strong>Important:</strong> The format string must describe the structure of the input. If the input does not match the expected pattern, the function may stop before extracting all the values.</p>
+<h3 id="4-6-why-do-we-use-x-and-y">4.6. Why Do We Use <code>&amp;x</code> and <code>&amp;y</code>?</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sscanf(str, "(x = %f, y = %f)", &amp;x, &amp;y);</code></pre></div>
+<p>The <code>&amp;</code> operator returns the memory address of a variable.</p>
+<p>The <code>sscanf()</code> function needs these addresses because it must write the converted values into the variables.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float x;
+
+sscanf("12.5", "%f", &amp;x);</code></pre></div>
+<p>After successful conversion, <code>x</code> contains:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12.5</code></pre></div>
+<p><strong>Important:</strong> For <code>sscanf()</code>, the <code>%f</code> conversion specifier expects a pointer to <code>float</code>, so we pass <code>&amp;x</code> when <code>x</code> is declared as <code>float</code>.</p>
+<p>If the destination variable is <code>double</code>, use <code>%lf</code> instead:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x;
+
+sscanf("12.5", "%lf", &amp;x);</code></pre></div>
+<p>This distinction is important:</p>
+<div class="table-wrap"><table><thead><tr><th>Variable type</th><th><code>sscanf()</code> format specifier</th><th>Argument</th></tr></thead><tbody><tr><td><code>float</code></td><td><code>%f</code></td><td><code>&amp;x</code></td></tr><tr><td><code>double</code></td><td><code>%lf</code></td><td><code>&amp;x</code></td></tr></tbody></table></div>
+<p>For comparison, in <code>printf()</code>, <code>%f</code> is used to print both <code>float</code> and <code>double</code> values because a <code>float</code> argument is promoted to <code>double</code>.</p>
+<h3 id="4-7-displaying-the-extracted-values">4.7. Displaying the Extracted Values</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Results of sscanf:\n");
+printf("x = %.2f\n", x);
+printf("y = %.2f\n", y);</code></pre></div>
+<p>After extracting the numbers, we display their values.</p>
+<p>The format specifier:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>%.2f</code></pre></div>
+<p>means that the floating-point value should be displayed with two digits after the decimal point.</p>
+<p>The output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>x = -5.45
+y = 10.67</code></pre></div>
+<h2 id="5-expected-output">5. Expected Output</h2>
+<p>When the original program runs successfully, the output will be:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input string is:
+(x = -5.45, y = 10.67)
+
+
+Results of sscanf:
+x = -5.45
+y = 10.67</code></pre></div>
+<p>The first section displays the original string, while the second section displays the extracted numeric values.</p>
+<h2 id="6-understanding-the-return-value-of-sscanf">6. Understanding the Return Value of <code>sscanf()</code></h2>
+<p>One important detail about <code>sscanf()</code> is that it returns the number of input items successfully converted and assigned.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int result;
+
+result = sscanf(str, "(x = %f, y = %f)", &amp;x, &amp;y);</code></pre></div>
+<p>In this example, there are two floating-point conversions.</p>
+<p>If both conversions succeed:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>result = 2</code></pre></div>
+<p>If only the first conversion succeeds:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>result = 1</code></pre></div>
+<p>If no conversion succeeds:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>result = 0</code></pre></div>
+<p>The function can also return <code>EOF</code> if an input failure occurs before the first conversion is completed.</p>
+<p>For robust programs, always check the return value before using the extracted variables.</p>
+<h2 id="7-improved-and-safer-version">7. Improved and Safer Version</h2>
+<p>The original program does not check whether <code>sscanf()</code> successfully extracts both numbers.</p>
+<p>If the input string is malformed, one or both variables may remain uninitialized. Printing an uninitialized variable can result in undefined behavior.</p>
+<p>The following version checks the return value:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char str[] = "(x = -5.45, y = 10.67)";
+
+    float x, y;
+
+    printf("Input string is:\n");
+    puts(str);
+
+    int result = sscanf(
+        str,
+        "(x = %f, y = %f)",
+        &amp;x,
+        &amp;y
+    );
+
+    if (result == 2)
+    {
+        printf("\nResults of sscanf:\n");
+        printf("x = %.2f\n", x);
+        printf("y = %.2f\n", y);
+    }
+    else
+    {
+        printf("\nError: Could not extract both values!\n");
+        printf("Successfully converted values: %d\n", result);
+    }
+
+    return 0;
+}</code></pre></div>
+<h3 id="why-is-this-version-better">Why is this version better?</h3>
+<p>The program checks:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (result == 2)</code></pre></div>
+<p>This condition verifies that both floating-point values were successfully converted and assigned.</p>
+<p>If the result is not 2, the program reports an error instead of printing potentially uninitialized variables.</p>
+<p><strong>Note:</strong> This check confirms that both numeric conversions succeeded. It does not necessarily guarantee that the entire input string was consumed. For example, extra characters after the closing parenthesis may remain unread.</p>
+<h2 id="8-testing-with-different-input-strings">8. Testing with Different Input Strings</h2>
+<p>Let's examine how <code>sscanf()</code> behaves with different strings.</p>
+<h3 id="example-1-valid-input">Example 1: Valid Input</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "(x = -5.45, y = 10.67)";</code></pre></div>
+<p>Result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>x = -5.45
+y = 10.67</code></pre></div>
+<p>Both conversions succeed, so the return value is <code>2</code>.</p>
+<h3 id="example-2-invalid-second-number">Example 2: Invalid Second Number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "(x = -5.45, y = ABC)";</code></pre></div>
+<p>The first number can be converted, but the second number cannot.</p>
+<p>Return value:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1</code></pre></div>
+<p>The value of <code>x</code> is assigned, but <code>y</code> remains unchanged.</p>
+<h3 id="example-3-invalid-first-number">Example 3: Invalid First Number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "(x = ABC, y = 10.67)";</code></pre></div>
+<p>The first floating-point conversion fails.</p>
+<p>Return value:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>0</code></pre></div>
+<p>Neither variable receives a new value.</p>
+<h3 id="example-4-missing-closing-parenthesis">Example 4: Missing Closing Parenthesis</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "(x = -5.45, y = 10.67";</code></pre></div>
+<p>Both floating-point conversions can succeed before the function reaches the missing closing parenthesis.</p>
+<p>The return value can still be:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2</code></pre></div>
+<p>This demonstrates an important point: <code>sscanf()</code> counts successful conversions, not successful matches of every literal character in the format string.</p>
+<h2 id="9-difference-between-scanf-and-sscanf">9. Difference Between <code>scanf()</code> and <code>sscanf()</code></h2>
+<p>Both functions read formatted data, but their input sources are different.</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Input source</th><th>Typical application</th></tr></thead><tbody><tr><td><code>scanf()</code></td><td>Standard input, usually keyboard</td><td>Reading values entered by the user</td></tr><tr><td><code>sscanf()</code></td><td>Existing character string</td><td>Extracting values from stored text</td></tr></tbody></table></div>
+<h3 id="using-scanf">Using <code>scanf()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float x;
+
+printf("Enter a number: ");
+scanf("%f", &amp;x);
+
+printf("Value = %.2f\n", x);</code></pre></div>
+<p>Here, the user enters a number through the keyboard.</p>
+<h3 id="using-sscanf">Using <code>sscanf()</code></h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "25.75";
+
+float x;
+
+sscanf(str, "%f", &amp;x);
+
+printf("Value = %.2f\n", x);</code></pre></div>
+<p>Here, the number is already stored in a string, and <code>sscanf()</code> extracts it.</p>
+<h2 id="10-practical-applications">10. Practical Applications</h2>
+<p>The <code>sscanf()</code> function is useful when working with text-based data formats.</p>
+<h3 id="10-1-extracting-sensor-values">10.1. Extracting Sensor Values</h3>
+<p>Imagine receiving this message from a microcontroller:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>TEMP=28.65,HUM=45.20</code></pre></div>
+<p>We can extract temperature and humidity:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char message[] = "TEMP=28.65,HUM=45.20";
+
+    float temperature;
+    float humidity;
+
+    int result = sscanf(
+        message,
+        "TEMP=%f,HUM=%f",
+        &amp;temperature,
+        &amp;humidity
+    );
+
+    if (result == 2)
+    {
+        printf("Temperature: %.2f C\n", temperature);
+        printf("Humidity: %.2f %%\n", humidity);
+    }
+    else
+    {
+        printf("Invalid sensor message!\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Temperature: 28.65 C
+Humidity: 45.20 %</code></pre></div>
+<h3 id="10-2-extracting-coordinates">10.2. Extracting Coordinates</h3>
+<p>Consider a string containing two coordinates:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>X=12.50,Y=45.75</code></pre></div>
+<p>We can extract them as follows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char data[] = "X=12.50,Y=45.75";
+
+    float x, y;
+
+    int result = sscanf(data, "X=%f,Y=%f", &amp;x, &amp;y);
+
+    if (result == 2)
+    {
+        printf("X = %.2f\n", x);
+        printf("Y = %.2f\n", y);
+    }
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>X = 12.50
+Y = 45.75</code></pre></div>
+<h3 id="10-3-parsing-a-simple-command">10.3. Parsing a Simple Command</h3>
+<p>Suppose a device receives a command:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>SET,25.5,100</code></pre></div>
+<p>We can extract the numeric parameters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char command[] = "SET,25.5,100";
+
+    float temperature;
+    int duration;
+
+    int result = sscanf(
+        command,
+        "SET,%f,%d",
+        &amp;temperature,
+        &amp;duration
+    );
+
+    if (result == 2)
+    {
+        printf("Temperature = %.2f\n", temperature);
+        printf("Duration = %d\n", duration);
+    }
+    else
+    {
+        printf("Invalid command!\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Temperature = 25.50
+Duration = 100</code></pre></div>
+<p><strong>Embedded systems note:</strong> <code>sscanf()</code> is convenient for simple text protocols, but it can require considerable code size and stack space in small microcontrollers. For performance-critical or memory-constrained applications, a dedicated parser may be preferable. Also, <code>sscanf()</code> alone does not validate every protocol rule or guarantee that the entire message was consumed.</p>
+<h2 id="11-common-mistakes">11. Common Mistakes</h2>
+<h3 id="mistake-1-forgetting-the-address-operator">Mistake 1: Forgetting the Address Operator <code>&amp;</code></h3>
+<p>Incorrect:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float x;
+
+sscanf(str, "%f", x);</code></pre></div>
+<p>Correct:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float x;
+
+sscanf(str, "%f", &amp;x);</code></pre></div>
+<p>The function needs the variable's address so it can store the converted value.</p>
+<h3 id="mistake-2-using-the-wrong-format-specifier">Mistake 2: Using the Wrong Format Specifier</h3>
+<p>Incorrect for a <code>double</code> destination:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x;
+
+sscanf(str, "%f", &amp;x);</code></pre></div>
+<p>Correct:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x;
+
+sscanf(str, "%lf", &amp;x);</code></pre></div>
+<p>For <code>sscanf()</code>, <code>%f</code> expects <code>float *</code>, while <code>%lf</code> expects <code>double *</code>.</p>
+<h3 id="mistake-3-not-checking-the-return-value">Mistake 3: Not Checking the Return Value</h3>
+<p>Incorrect:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sscanf(str, "%f,%f", &amp;x, &amp;y);
+
+printf("%f %f\n", x, y);</code></pre></div>
+<p>If conversion fails, one or both variables may not have been assigned.</p>
+<p>Better:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (sscanf(str, "%f,%f", &amp;x, &amp;y) == 2)
+{
+    printf("%f %f\n", x, y);
+}
+else
+{
+    printf("Invalid input!\n");
+}</code></pre></div>
+<h3 id="mistake-4-assuming-all-input-characters-were-consumed">Mistake 4: Assuming All Input Characters Were Consumed</h3>
+<p>A successful conversion count does not always mean that the entire input string matches the format.</p>
+<p>For strict validation, additional parsing or checks are required.</p>
+<h3 id="mistake-5-confusing-sscanf-with-sprintf">Mistake 5: Confusing <code>sscanf()</code> with <code>sprintf()</code></h3>
+<p>These functions have different purposes:</p>
+<ul><li><code>sprintf()</code> formats values and writes the result into a string.</li><li><code>sscanf()</code> reads formatted values from a string and stores them in variables.</li></ul>
+<h2 id="12-compilation-and-execution">12. Compilation and Execution</h2>
+<p>Save the source code as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o sscanf_example</code></pre></div>
+<p>Run on Linux or macOS:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./sscanf_example</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o sscanf_example.exe
+.\sscanf_example.exe</code></pre></div>
+<p>No additional library is required for this example.</p>
+<h2 id="13-exercises">13. Exercises</h2>
+<p>Try the following exercises to improve your understanding.</p>
+<p><strong>Exercise 1 – Extract Three Floating-Point Values</strong></p>
+<p>Create this string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "A=12.5,B=25.7,C=30.9";</code></pre></div>
+<p>Use <code>sscanf()</code> to extract all three values into separate variables.</p>
+<p><strong>Exercise 2 – Extract Integer and Floating-Point Values</strong></p>
+<p>Create this string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "ID=125,TEMP=28.75";</code></pre></div>
+<p>Extract:</p>
+<ul><li><code>ID</code> as an integer.</li><li><code>TEMP</code> as a floating-point value.</li></ul>
+<p><strong>Exercise 3 – Parse Sensor Data</strong></p>
+<p>Create a program that reads the following string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>TEMP=27.5,HUM=60.2,VOLT=12.8</code></pre></div>
+<p>Extract temperature, humidity, and voltage.</p>
+<p><strong>Exercise 4 – Test Invalid Input</strong></p>
+<p>Modify the original program so that the input string contains an invalid second value:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "(x = -5.45, y = ABC)";</code></pre></div>
+<p>Check the return value of <code>sscanf()</code> and explain why only one conversion succeeds.</p>
+<p><strong>Exercise 5 – Compare <code>scanf()</code> and <code>sscanf()</code></strong></p>
+<p>Write a program that:</p>
+<ol><li>Reads a floating-point value from the keyboard using <code>scanf()</code>.</li><li>Stores a formatted message in a character array.</li><li>Uses <code>sscanf()</code> to extract the number from that message.</li><li>Displays the extracted value.</li></ol>
+<h2 id="14-learning-objectives">14. Learning Objectives</h2>
+<p>After completing this tutorial, you should understand:</p>
+<ul><li>How to use <code>sscanf()</code> to read formatted data from a string.</li><li>How to extract floating-point values from text.</li><li>How format strings describe the expected input structure.</li><li>Why the address operator <code>&amp;</code> is needed for destination variables.</li><li>The difference between <code>%f</code> and <code>%lf</code> in <code>sscanf()</code>.</li><li>How to check the return value of <code>sscanf()</code>.</li><li>The differences between <code>scanf()</code>, <code>sscanf()</code>, and <code>sprintf()</code>.</li><li>How to parse simple sensor messages and text-based commands.</li><li>Why successful conversions do not necessarily guarantee complete input validation.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="pager-dir">← Previous</span><span class="pager-name">29 · Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a><a class="pager-link next" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">31 · Displaying Error Messages Using strerror() in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link active" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-5">Part 5 — Pointers</a><span>/</span><span aria-current="page">Lesson 22</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 22 of 40 · Part 5</p><h1>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</h1><p class="lesson-source">Folder <code>22-Pointers_in_C_Memory_Addresses_Dereferencing_and_Function_Arguments</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-overview">1. Overview</a></li><li><a href="#2-source-code">2. Source Code</a></li><li><a href="#3-understanding-memory-in-c">3. Understanding Memory in C</a></li><li><a href="#4-what-is-a-pointer">4. What Is a Pointer?</a></li><li><a href="#5-understanding-the-two-main-pointer-operators">5. Understanding the Two Main Pointer Operators</a></li><li><a href="#5-1-address-of-operator">5.1 Address-of Operator (&amp;)</a></li><li><a href="#5-2-dereference-operator">5.2 Dereference Operator (*)</a></li><li><a href="#6-pointer-declaration-and-initialization">6. Pointer Declaration and Initialization</a></li><li><a href="#7-understanding-the-difference-between-and">7. Understanding the Difference Between &amp; and *</a></li><li><a href="#8-understanding-the-program-step-by-step">8. Understanding the Program Step by Step</a></li><li><a href="#8-1-function-prototypes">8.1 Function Prototypes</a></li><li><a href="#8-2-receiving-input">8.2 Receiving Input</a></li><li><a href="#8-3-displaying-the-initial-value">8.3 Displaying the Initial Value</a></li><li><a href="#8-4-calling-func1-call-by-value">8.4 Calling Func1(): Call by Value</a></li><li><a href="#8-5-calling-func2-call-by-value-assignment">8.5 Calling Func2(): Call by Value + Assignment</a></li><li><a href="#8-6-calling-func3-pointer-based-modification">8.6 Calling Func3(): Pointer-Based Modification</a></li><li><a href="#9-call-by-value-vs-pointer-based-modification">9. Call by Value vs Pointer-Based Modification</a></li><li><a href="#10-understanding-the-final-printf-statement">10. Understanding the Final printf() Statement</a></li><li><a href="#11-complete-execution-example">11. Complete Execution Example</a></li><li><a href="#12-important-pointer-safety-rules">12. Important Pointer Safety Rules</a></li><li><a href="#13-additional-pointer-examples">13. Additional Pointer Examples</a></li><li><a href="#example-1-changing-a-variable-through-a-pointer">Example 1: Changing a Variable Through a Pointer</a></li><li><a href="#example-2-changing-two-variables-using-pointers">Example 2: Changing Two Variables Using Pointers</a></li><li><a href="#example-3-pointer-to-a-character">Example 3: Pointer to a Character</a></li><li><a href="#14-pointers-and-arrays">14. Pointers and Arrays</a></li><li><a href="#15-why-pointers-are-important-in-embedded-systems">15. Why Pointers Are Important in Embedded Systems</a></li><li><a href="#16-compilation-and-execution">16. Compilation and Execution</a></li><li><a href="#17-learning-exercises">17. Learning Exercises</a></li><li><a href="#18-learning-objectives">18. Learning Objectives</a></li><li><a href="#conclusion">Conclusion</a></li></ol></nav><article class="prose"><h2 id="1-overview">1. Overview</h2>
+<p>This project introduces one of the most important concepts in the C programming language: <strong>Pointers</strong>.</p>
+<p>A pointer is a variable that stores the memory address of another variable.</p>
+<p>Pointers allow programmers to access and modify data through memory addresses. They are also essential for:</p>
+<ul><li>Passing variables to functions by address.</li><li>Modifying original variables inside functions.</li><li>Working with arrays and strings.</li><li>Dynamic memory allocation.</li><li>Implementing linked lists, trees, and other data structures.</li><li>Interacting with hardware registers in embedded systems.</li><li>Working with memory efficiently.</li></ul>
+<p>In this project, we compare three different ways of working with a variable through functions:</p>
+<ol><li><strong>Call by Value:</strong> A function receives a copy of a variable.</li><li><strong>Call by Value + Assignment:</strong> A function receives a copy, modifies it, and returns the result to the caller.</li><li><strong>Pointer-Based Modification:</strong> A function receives the variable's address and modifies the original variable through a pointer.</li></ol>
+<p>By the end of this lesson, you should understand how pointers work and why they are so important in C programming.</p>
+<hr>
+<h2 id="2-source-code">2. Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+void Func1(int a);
+int Func2(int a);
+void Func3(int *a);
+
+int main()
+{
+    int a;
+
+    printf("Please enter an integer: ");
+    scanf("%d", &amp;a);
+    printf("\n");
+
+    printf("You have entered %d.\n\n", a);
+
+    Func1(a); // Call by Value
+
+    printf("After calling Func1, the value of a is: %d\n\n", a);
+
+    a = Func2(a); // Call by Value + Assignment
+
+    printf("After calling Func2, the value of a is: %d\n\n", a);
+
+    Func3(&amp;a); // Call by Reference
+
+    printf("After calling Func3, the value of a is: %d\n\n", a);
+
+    printf("a = %d, is stored at %p", a, (void *)&amp;a);
+
+    return 0;
+}
+
+void Func1(int a)
+{
+    a *= 2;
+
+    printf("Inside function Func1, a is %d.\n", a);
+}
+
+int Func2(int a)
+{
+    a *= 2;
+
+    printf("Inside function Func2, a is %d.\n", a);
+
+    return a;
+}
+
+void Func3(int *aPtr)
+{
+    *aPtr *= 2;
+
+    printf("Inside function Func3, a is %d.\n", *aPtr);
+}</code></pre></div>
+<p><strong>Note:</strong> The code above includes one small correction to the original program: <code>(void *)&amp;a</code> is used with <code>%p</code> because <code>%p</code> expects a <code>void *</code> argument.</p>
+<hr>
+<h2 id="3-understanding-memory-in-c">3. Understanding Memory in C</h2>
+<p>Before learning pointers, it is important to understand how variables are stored in memory.</p>
+<p>When you declare a variable:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;</code></pre></div>
+<p>The computer reserves a location in memory to store the value <code>10</code>.</p>
+<p>Every memory location has an address.</p>
+<p>For example, imagine that variable <code>a</code> is stored at memory address <code>0x1000</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>+---------------------------+
+|       Computer Memory     |
++---------------------------+
+| Address  | Value          |
++---------------------------+
+| 0x1000   | 10             |
+| 0x1004   | ...            |
+| 0x1008   | ...            |
++---------------------------+</code></pre></div>
+<p>The addresses above are illustrative only. Actual addresses depend on the system, compiler, and execution.</p>
+<p>In C, we can access the address of a variable using the <strong>address-of operator (<code>&amp;</code>)</strong>.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;
+
+printf("%p", (void *)&amp;a);</code></pre></div>
+<p>The expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;a</code></pre></div>
+<p>means:</p>
+<p><strong>Give me the memory address of variable <code>a</code>.</strong></p>
+<p>The <code>%p</code> format specifier is used to print a pointer address.</p>
+<hr>
+<h2 id="4-what-is-a-pointer">4. What Is a Pointer?</h2>
+<p>A pointer is a variable that stores the memory address of another object.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;
+
+int *p;
+
+p = &amp;a;</code></pre></div>
+<p>Let's understand these statements.</p>
+<h3 id="step-1-declare-an-integer-variable">Step 1: Declare an integer variable</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;</code></pre></div>
+<p>We create an integer variable named <code>a</code> and initialize it with 10.</p>
+<h3 id="step-2-declare-a-pointer">Step 2: Declare a pointer</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *p;</code></pre></div>
+<p>We declare a pointer named <code>p</code>.</p>
+<p>The declaration means:</p>
+<ul><li><code>int</code>: The pointer will point to an integer object.</li><li><code>*</code>: Indicates that <code>p</code> is a pointer.</li><li><code>p</code>: The pointer variable name.</li></ul>
+<p>At this point, <code>p</code> has not been initialized. Its value is indeterminate, so it must not be dereferenced.</p>
+<h3 id="step-3-store-the-address-of-a-variable">Step 3: Store the address of a variable</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>p = &amp;a;</code></pre></div>
+<p>The address of <code>a</code> is stored inside pointer <code>p</code>.</p>
+<p>Now, <code>p</code> points to <code>a</code>.</p>
+<p>We can visualize this relationship as follows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>+---------------------+       +---------------------+
+| Variable a          |       | Pointer p           |
++---------------------+       +---------------------+
+| Value: 10           |       | Stores address of a |
+| Address: 0x1000     |&lt;------| Value: 0x1000       |
++---------------------+       +---------------------+</code></pre></div>
+<p>The addresses are examples, not actual memory addresses.</p>
+<hr>
+<h2 id="5-understanding-the-two-main-pointer-operators">5. Understanding the Two Main Pointer Operators</h2>
+<p>There are two important operators used with pointers:</p>
+<ol><li>Address-of operator (<code>&amp;</code>)</li><li>Dereference operator (<code>*</code>)</li></ol>
+<h2 id="5-1-address-of-operator">5.1 Address-of Operator (&amp;)</h2>
+<p>The <code>&amp;</code> operator returns the memory address of an object.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 20;
+
+int *p = &amp;a;</code></pre></div>
+<p>Here:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;a</code></pre></div>
+<p>returns the address of <code>a</code>.</p>
+<p>That address is stored in <code>p</code>.</p>
+<p>Another example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Value of a: %d\n", a);
+printf("Address of a: %p\n", (void *)&amp;a);
+printf("Value stored in p: %p\n", (void *)p);</code></pre></div>
+<p>The last two printed addresses should represent the same address because <code>p</code> stores the address of <code>a</code>.</p>
+<h2 id="5-2-dereference-operator">5.2 Dereference Operator (*)</h2>
+<p>The <code>*</code> operator can be used to access the object pointed to by a pointer.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 20;
+
+int *p = &amp;a;
+
+printf("%d\n", *p);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>20</code></pre></div>
+<p>The expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>*p</code></pre></div>
+<p>means:</p>
+<p><strong>Access the value stored at the memory address contained in pointer <code>p</code>.</strong></p>
+<p>We can also modify the original variable through the pointer.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>*p = 50;</code></pre></div>
+<p>Now the value of <code>a</code> becomes 50.</p>
+<p>Complete example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int a = 20;
+    int *p = &amp;a;
+
+    printf("Before modification: %d\n", a);
+
+    *p = 50;
+
+    printf("After modification: %d\n", a);
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Before modification: 20
+After modification: 50</code></pre></div>
+<p>This demonstrates one of the most important features of pointers: <strong>A pointer can be used to modify the original object it points to.</strong></p>
+<hr>
+<h2 id="6-pointer-declaration-and-initialization">6. Pointer Declaration and Initialization</h2>
+<p>The general syntax for declaring a pointer is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>data_type *pointer_name;</code></pre></div>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *p;
+float *fPtr;
+char *cPtr;
+double *dPtr;</code></pre></div>
+<p>Each pointer type is intended to point to an object of the corresponding type.</p>
+<div class="table-wrap"><table><thead><tr><th>Declaration</th><th>Pointer Type</th><th>Points to</th></tr></thead><tbody><tr><td><code>int *p</code></td><td>Integer pointer</td><td><code>int</code></td></tr><tr><td><code>float *p</code></td><td>Float pointer</td><td><code>float</code></td></tr><tr><td><code>char *p</code></td><td>Character pointer</td><td><code>char</code></td></tr><tr><td><code>double *p</code></td><td>Double pointer</td><td><code>double</code></td></tr></tbody></table></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;
+float b = 3.14f;
+char c = 'A';
+
+int *p1 = &amp;a;
+float *p2 = &amp;b;
+char *p3 = &amp;c;</code></pre></div>
+<p><strong>Important:</strong> The type of a pointer matters because it determines how the pointed-to object is accessed and how pointer arithmetic behaves.</p>
+<hr>
+<h2 id="7-understanding-the-difference-between-and">7. Understanding the Difference Between &amp; and *</h2>
+<p>These two operators are closely related but have different purposes.</p>
+<div class="table-wrap"><table><thead><tr><th>Expression</th><th>Meaning</th></tr></thead><tbody><tr><td><code>a</code></td><td>Value of variable <code>a</code></td></tr><tr><td><code>&amp;a</code></td><td>Address of variable <code>a</code></td></tr><tr><td><code>p</code></td><td>Address stored in pointer <code>p</code></td></tr><tr><td><code>*p</code></td><td>Value of the object pointed to by <code>p</code></td></tr><tr><td><code>&amp;p</code></td><td>Address of the pointer variable itself</td></tr></tbody></table></div>
+<p>Consider this example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;
+int *p = &amp;a;</code></pre></div>
+<p>Then:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a     // 10
+&amp;a    // Address of a
+p     // Address of a
+*p    // 10
+&amp;p    // Address of pointer p</code></pre></div>
+<p>A common beginner mistake is confusing <code>p</code> and <code>*p</code>.</p>
+<p>Remember:</p>
+<ul><li><code>p</code> gives the address stored in the pointer.</li><li><code>*p</code> accesses the value at that address.</li></ul>
+<hr>
+<h2 id="8-understanding-the-program-step-by-step">8. Understanding the Program Step by Step</h2>
+<p>Now let's examine the original program and understand how pointers work inside functions.</p>
+<h2 id="8-1-function-prototypes">8.1 Function Prototypes</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Func1(int a);
+int Func2(int a);
+void Func3(int *a);</code></pre></div>
+<p>These statements declare three functions.</p>
+<h3 id="func1">Func1</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Func1(int a);</code></pre></div>
+<p>Receives an integer by value and does not return anything.</p>
+<h3 id="func2">Func2</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int Func2(int a);</code></pre></div>
+<p>Receives an integer by value and returns an integer.</p>
+<h3 id="func3">Func3</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Func3(int *a);</code></pre></div>
+<p>Receives a pointer to an integer.</p>
+<p>The pointer allows the function to access and modify the original integer object.</p>
+<h2 id="8-2-receiving-input">8.2 Receiving Input</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a;
+
+printf("Please enter an integer: ");
+scanf("%d", &amp;a);
+printf("\n");</code></pre></div>
+<p>We declare an integer variable named <code>a</code>.</p>
+<p>The user enters a value, and <code>scanf()</code> stores it in <code>a</code>.</p>
+<p>Notice that we use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;a</code></pre></div>
+<p>because <code>scanf()</code> needs the address of the variable where it should store the input.</p>
+<h2 id="8-3-displaying-the-initial-value">8.3 Displaying the Initial Value</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("You have entered %d.\n\n", a);</code></pre></div>
+<p>This statement displays the original value entered by the user.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>You have entered 10.</code></pre></div>
+<h2 id="8-4-calling-func1-call-by-value">8.4 Calling Func1(): Call by Value</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Func1(a);</code></pre></div>
+<p>The function receives a copy of the value stored in <code>a</code>.</p>
+<p>Function definition:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Func1(int a)
+{
+    a *= 2;
+
+    printf("Inside function Func1, a is %d.\n", a);
+}</code></pre></div>
+<p>The statement:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a *= 2;</code></pre></div>
+<p>is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = a * 2;</code></pre></div>
+<p>If the original value is 10, the function's local copy becomes 20.</p>
+<p>However, the original variable in <code>main()</code> remains 10.</p>
+<p>Why?</p>
+<p>Because C passes function arguments by value. The function receives a separate copy of the integer.</p>
+<p>Conceptual illustration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main()                         Func1()
+
+a = 10                         a = 10
+  |                               |
+  |---- Copy of value -----------&gt;|
+                                  |
+                               a = a * 2
+                                  |
+                                a = 20
+
+Original a remains 10.</code></pre></div>
+<p>After the function returns, its local parameter no longer exists.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("After calling Func1, the value of a is: %d\n\n", a);</code></pre></div>
+<p>prints the original value.</p>
+<h2 id="8-5-calling-func2-call-by-value-assignment">8.5 Calling Func2(): Call by Value + Assignment</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = Func2(a);</code></pre></div>
+<p>This function also receives a copy of the original value.</p>
+<p>Function definition:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int Func2(int a)
+{
+    a *= 2;
+
+    printf("Inside function Func2, a is %d.\n", a);
+
+    return a;
+}</code></pre></div>
+<p>Let's assume the original value is 10.</p>
+<p>Inside the function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a *= 2;</code></pre></div>
+<p>The local copy becomes 20.</p>
+<p>Then:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>return a;</code></pre></div>
+<p>returns 20 to the calling function.</p>
+<p>The statement:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = Func2(a);</code></pre></div>
+<p>stores the returned value in the original variable.</p>
+<p>Now the original variable becomes 20.</p>
+<p>This method does not modify the caller's variable directly. Instead, it returns a result that the caller assigns to the variable.</p>
+<p>Conceptual illustration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main()                         Func2()
+
+a = 10                         a = 10
+  |                               |
+  |---- Copy of value -----------&gt;|
+                                  |
+                               a = 20
+                                  |
+                               return 20
+  |                               |
+  |&lt;----------- 20 ---------------|
+  |
+a = 20</code></pre></div>
+<h2 id="8-6-calling-func3-pointer-based-modification">8.6 Calling Func3(): Pointer-Based Modification</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Func3(&amp;a);</code></pre></div>
+<p>This time, we do not pass the value of <code>a</code>.</p>
+<p>We pass its address.</p>
+<p>The function definition is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Func3(int *aPtr)
+{
+    *aPtr *= 2;
+
+    printf("Inside function Func3, a is %d.\n", *aPtr);
+}</code></pre></div>
+<p>Let's understand this carefully.</p>
+<h3 id="step-1-pass-the-address">Step 1: Pass the address</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Func3(&amp;a);</code></pre></div>
+<p>The expression <code>&amp;a</code> returns the address of the original variable.</p>
+<h3 id="step-2-receive-the-address-using-a-pointer">Step 2: Receive the address using a pointer</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Func3(int *aPtr)</code></pre></div>
+<p>The parameter <code>aPtr</code> is an integer pointer.</p>
+<p>It receives the address passed from <code>main()</code>.</p>
+<p>Therefore, <code>aPtr</code> points to the original variable <code>a</code>.</p>
+<h3 id="step-3-dereference-the-pointer">Step 3: Dereference the pointer</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>*aPtr *= 2;</code></pre></div>
+<p>This statement accesses the original integer through its address and multiplies it by two.</p>
+<p>It is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>*aPtr = *aPtr * 2;</code></pre></div>
+<p>Because <code>aPtr</code> points to the original variable, the original value is modified.</p>
+<h3 id="step-4-display-the-modified-value">Step 4: Display the modified value</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Inside function Func3, a is %d.\n", *aPtr);</code></pre></div>
+<p>The expression <code>*aPtr</code> accesses the value stored in the original variable.</p>
+<p>If <code>a</code> was 20 before the function call, it becomes 40.</p>
+<p>After returning to <code>main()</code>, the original variable is still 40.</p>
+<p>Conceptual illustration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main()                         Func3()
+
+a = 20
+Address = 0x1000
+  |
+  |---- Address of a -----------&gt; aPtr
+                                  |
+                                  | stores 0x1000
+                                  |
+                               *aPtr = 20
+                                  |
+                               *aPtr *= 2
+                                  |
+                               *aPtr = 40
+
+Original a is now 40.</code></pre></div>
+<p>This is the fundamental idea behind modifying a variable through a pointer.</p>
+<hr>
+<h2 id="9-call-by-value-vs-pointer-based-modification">9. Call by Value vs Pointer-Based Modification</h2>
+<p>This is one of the most important comparisons in C programming.</p>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th>Func1</th><th>Func2</th><th>Func3</th></tr></thead><tbody><tr><td>Parameter</td><td><code>int a</code></td><td><code>int a</code></td><td><code>int *aPtr</code></td></tr><tr><td>Receives</td><td>Copy of value</td><td>Copy of value</td><td>Copy of address</td></tr><tr><td>Modifies original variable?</td><td>No</td><td>No, not directly</td><td>Yes</td></tr><tr><td>Returns a value?</td><td>No</td><td>Yes</td><td>No</td></tr><tr><td>Main technique</td><td>Call by value</td><td>Return and assignment</td><td>Pointer-based modification</td></tr></tbody></table></div>
+<p><strong>Important terminology:</strong> C technically uses call by value for every function argument, including pointers. In <code>Func3</code>, the pointer value (the address) is copied into the function parameter. The function can nevertheless modify the original object through that copied address.</p>
+<p>The term "call by reference" is commonly used informally to describe this pointer-based technique in C, but C does not have true reference parameters like C++.</p>
+<hr>
+<h2 id="10-understanding-the-final-printf-statement">10. Understanding the Final printf() Statement</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("a = %d, is stored at %p", a, (void *)&amp;a);</code></pre></div>
+<p>This statement displays the value and memory address of variable <code>a</code>.</p>
+<p>Let's examine the arguments:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a</code></pre></div>
+<p>Displays the value stored in the variable.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;a</code></pre></div>
+<p>Returns the address of the variable.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(void *)&amp;a</code></pre></div>
+<p>Converts the address to <code>void *</code>, which is the required argument type for the <code>%p</code> format specifier.</p>
+<p>Example output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = 40, is stored at 0x7ffd12345678</code></pre></div>
+<p>The displayed address is only an example. It will usually be different on another execution or system.</p>
+<hr>
+<h2 id="11-complete-execution-example">11. Complete Execution Example</h2>
+<p>Assume the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10</code></pre></div>
+<p>The program execution is:</p>
+<div class="table-wrap"><table><thead><tr><th>Step</th><th>Operation</th><th>Value of original <code>a</code></th></tr></thead><tbody><tr><td>1</td><td>User enters 10</td><td>10</td></tr><tr><td>2</td><td>Call <code>Func1(a)</code></td><td>10</td></tr><tr><td>3</td><td><code>Func1</code> doubles its local copy</td><td>10</td></tr><tr><td>4</td><td>Call <code>Func2(a)</code></td><td>10</td></tr><tr><td>5</td><td><code>Func2</code> returns 20 and assigns it to <code>a</code></td><td>20</td></tr><tr><td>6</td><td>Call <code>Func3(&amp;a)</code></td><td>40</td></tr></tbody></table></div>
+<p>Expected output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Please enter an integer: 10
+
+You have entered 10.
+
+Inside function Func1, a is 20.
+After calling Func1, the value of a is: 10
+
+Inside function Func2, a is 20.
+After calling Func2, the value of a is: 20
+
+Inside function Func3, a is 40.
+After calling Func3, the value of a is: 40
+
+a = 40, is stored at 0x...</code></pre></div>
+<p>The final address depends on the system.</p>
+<hr>
+<h2 id="12-important-pointer-safety-rules">12. Important Pointer Safety Rules</h2>
+<p>Pointers provide powerful access to memory, but incorrect pointer usage can cause serious bugs.</p>
+<h3 id="12-1-always-initialize-pointers">12.1 Always Initialize Pointers</h3>
+<p>Incorrect:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *p;
+*p = 10;</code></pre></div>
+<p>The pointer is uninitialized. Dereferencing it causes undefined behavior.</p>
+<p>Correct:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a;
+int *p = &amp;a;
+
+*p = 10;</code></pre></div>
+<h3 id="12-2-check-for-null-when-necessary">12.2 Check for NULL When Necessary</h3>
+<p>A pointer may intentionally contain <code>NULL</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *p = NULL;
+
+if(p != NULL)
+{
+    printf("%d\n", *p);
+}</code></pre></div>
+<p>Never dereference a null pointer.</p>
+<h3 id="12-3-do-not-access-memory-after-its-lifetime-ends">12.3 Do Not Access Memory After Its Lifetime Ends</h3>
+<p>A pointer must not be used to access an object after that object's lifetime has ended.</p>
+<p>For example, returning the address of a local variable from a function creates a dangling pointer.</p>
+<p>Incorrect:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *GetValue(void)
+{
+    int a = 10;
+    return &amp;a;
+}</code></pre></div>
+<p>The local variable <code>a</code> ceases to exist when the function returns.</p>
+<h3 id="12-4-match-pointer-types-correctly">12.4 Match Pointer Types Correctly</h3>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;
+int *p = &amp;a;</code></pre></div>
+<p>An <code>int *</code> should point to an appropriate integer object.</p>
+<p>Avoid incompatible pointer conversions because they can cause incorrect memory access and undefined behavior.</p>
+<h3 id="12-5-understand-pointer-declaration-syntax">12.5 Understand Pointer Declaration Syntax</h3>
+<p>These declarations are equivalent:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *p;
+int* p;</code></pre></div>
+<p>However:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int* p1, p2;</code></pre></div>
+<p>declares <code>p1</code> as a pointer to <code>int</code>, but <code>p2</code> as a normal integer.</p>
+<p>A clearer style is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *p1;
+int p2;</code></pre></div>
+<hr>
+<h2 id="13-additional-pointer-examples">13. Additional Pointer Examples</h2>
+<h2 id="example-1-changing-a-variable-through-a-pointer">Example 1: Changing a Variable Through a Pointer</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int a = 10;
+    int *p = &amp;a;
+
+    printf("Before: %d\n", a);
+
+    *p = 100;
+
+    printf("After: %d\n", a);
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Before: 10
+After: 100</code></pre></div>
+<h2 id="example-2-changing-two-variables-using-pointers">Example 2: Changing Two Variables Using Pointers</h2>
+<p>One of the most common applications of pointers is swapping two variables.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+void Swap(int *a, int *b);
+
+int main(void)
+{
+    int x = 10;
+    int y = 20;
+
+    printf("Before swapping:\n");
+    printf("x = %d, y = %d\n", x, y);
+
+    Swap(&amp;x, &amp;y);
+
+    printf("After swapping:\n");
+    printf("x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+
+void Swap(int *a, int *b)
+{
+    int temp = *a;
+
+    *a = *b;
+    *b = temp;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Before swapping:
+x = 10, y = 20
+
+After swapping:
+x = 20, y = 10</code></pre></div>
+<p>This example demonstrates why pointers are useful when a function needs to modify more than one original variable.</p>
+<h2 id="example-3-pointer-to-a-character">Example 3: Pointer to a Character</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    char c = 'A';
+    char *p = &amp;c;
+
+    printf("Character: %c\n", *p);
+
+    *p = 'B';
+
+    printf("Modified character: %c\n", c);
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Character: A
+Modified character: B</code></pre></div>
+<p>Pointers can work with different data types, not only integers.</p>
+<hr>
+<h2 id="14-pointers-and-arrays">14. Pointers and Arrays</h2>
+<p>Pointers and arrays are closely related in C.</p>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a[] = {10, 20, 30, 40};
+
+int *p = a;</code></pre></div>
+<p>In most expressions, the array name <code>a</code> is converted to a pointer to its first element.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>p = &amp;a[0];</code></pre></div>
+<p>is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>p = a;</code></pre></div>
+<p>We can access array elements through pointers:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%d\n", *p);
+printf("%d\n", *(p + 1));
+printf("%d\n", *(p + 2));
+printf("%d\n", *(p + 3));</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10
+20
+30
+40</code></pre></div>
+<p>The expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>*(p + 1)</code></pre></div>
+<p>accesses the second element of the array.</p>
+<p>This is called <strong>pointer arithmetic</strong>.</p>
+<p>Pointer arithmetic automatically accounts for the size of the pointed-to data type.</p>
+<p>For an <code>int *</code>, adding 1 moves to the next <code>int</code> element, not necessarily just one byte.</p>
+<hr>
+<h2 id="15-why-pointers-are-important-in-embedded-systems">15. Why Pointers Are Important in Embedded Systems</h2>
+<p>Pointers are especially important in embedded programming, including STM32 and other microcontroller platforms.</p>
+<p>They are used for:</p>
+<ul><li>Accessing hardware registers.</li><li>Working with peripheral memory addresses.</li><li>Passing large buffers to functions without copying the entire data.</li><li>Managing UART, SPI, I2C, CAN, and Ethernet data buffers.</li><li>Working with DMA.</li><li>Implementing drivers and hardware abstraction layers.</li><li>Managing dynamically allocated memory where appropriate.</li></ul>
+<p>For example, a hardware register can be accessed through a pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#define GPIO_REGISTER_ADDRESS 0x4001080C
+
+volatile unsigned int *GPIO_REGISTER =
+    (volatile unsigned int *)GPIO_REGISTER_ADDRESS;</code></pre></div>
+<p>The <code>volatile</code> keyword tells the compiler that the value may change independently of ordinary program execution, as can happen with hardware registers.</p>
+<p><strong>Important:</strong> This is only an illustrative example. Actual register addresses, access widths, and required qualifiers must come from the specific microcontroller reference manual. In STM32 projects, the HAL and CMSIS headers normally provide the appropriate register definitions.</p>
+<hr>
+<h2 id="16-compilation-and-execution">16. Compilation and Execution</h2>
+<p>Compile the program using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o pointers</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./pointers</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\pointers.exe</code></pre></div>
+<p>For additional compiler warnings:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -Wall -Wextra -Wpedantic -std=c11 main.c -o pointers</code></pre></div>
+<hr>
+<h2 id="17-learning-exercises">17. Learning Exercises</h2>
+<p>Try these exercises to improve your understanding of pointers.</p>
+<h3 id="beginner-level">Beginner Level</h3>
+<ol><li>Declare an integer variable and print its value and address.</li><li>Declare an integer pointer and make it point to the variable.</li><li>Print the pointer value using <code>%p</code>.</li><li>Print the value of the pointed-to variable using <code>*</code>.</li><li>Change the original variable using the pointer.</li><li>Create a <code>float</code> pointer and a <code>char</code> pointer.</li></ol>
+<h3 id="intermediate-level">Intermediate Level</h3>
+<ol><li>Write a function that doubles an integer using a pointer.</li><li>Write a function that triples an integer using a pointer.</li><li>Write a function that swaps two integers using pointers.</li><li>Write a function that receives an array and changes all its elements.</li><li>Write a function that calculates the sum and average of an array using pointer parameters.</li><li>Compare a function that returns a value with a function that modifies a variable through a pointer.</li></ol>
+<h3 id="advanced-level">Advanced Level</h3>
+<ol><li>Create a pointer to a pointer (<code>int **p</code>).</li><li>Use pointers to traverse an array without using array indexing.</li><li>Dynamically allocate an array using <code>malloc()</code>.</li><li>Write a function that allocates memory and returns it through a pointer parameter.</li><li>Explore how pointers are used to access STM32 peripheral registers.</li></ol>
+<hr>
+<h2 id="18-learning-objectives">18. Learning Objectives</h2>
+<p>After completing this lesson, you should understand:</p>
+<ul><li>What memory addresses are.</li><li>What pointers are and why they are used.</li><li>How to declare and initialize pointers.</li><li>The difference between <code>&amp;</code> and <code>*</code>.</li><li>How to access a variable through a pointer.</li><li>How to modify the original variable through a pointer.</li><li>The difference between call by value and pointer-based modification.</li><li>How to pass pointers to functions.</li><li>How pointers relate to arrays.</li><li>Basic pointer safety rules.</li><li>Why pointers are essential in embedded systems.</li></ul>
+<hr>
+<h2 id="conclusion">Conclusion</h2>
+<p>Pointers are one of the most powerful features of the C programming language.</p>
+<p>A normal variable stores a value, while a pointer stores the memory address of an object.</p>
+<p>The two most important operators are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>&amp;variable</code></pre></div>
+<p>Returns the address of a variable.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>*pointer</code></pre></div>
+<p>Accesses the object stored at the address contained in a pointer.</p>
+<p>The most important lesson from this project is that C functions always receive arguments by value. However, when we pass a pointer, the function receives a copy of the address and can use that address to modify the original object.</p>
+<p>Understanding pointers is essential before moving on to arrays, strings, dynamic memory allocation, structures, linked lists, and embedded systems programming.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">21 · Finding Integer Divisors Using Functions and Arrays in C</span></a><a class="pager-link next" href="23-bubble-sort-in-c-using-pointers.html"><span class="pager-dir">Next →</span><span class="pager-name">23 · Bubble Sort in C Using Pointers</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

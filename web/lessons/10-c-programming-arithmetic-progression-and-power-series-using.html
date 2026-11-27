@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C Programming – Arithmetic Progression and Power Series Using For Loop · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link active" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-2">Part 2 — Decisions, Operators and Loops</a><span>/</span><span aria-current="page">Lesson 10</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 10 of 40 · Part 2</p><h1>C Programming – Arithmetic Progression and Power Series Using For Loop</h1><p class="lesson-source">Folder <code>10-Arithmetic_Progression_and_Power_Series_Using_For_Loop</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-source-code">2. Source Code</a></li><li><a href="#3-mathematical-background">3. Mathematical Background</a></li><li><a href="#4-code-explanation">4. Code Explanation</a></li><li><a href="#5-program-execution-example">5. Program Execution Example</a></li><li><a href="#6-c-programming-concepts-learned">6. C Programming Concepts Learned</a></li><li><a href="#7-compile-and-run">7. Compile and Run</a></li><li><a href="#8-important-notes">8. Important Notes</a></li><li><a href="#9-practice-exercises">9. Practice Exercises</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In this example, we extend the previous arithmetic progression program by introducing mathematical power calculations using the <code>math.h</code> library.</p>
+<p>The program generates an arithmetic progression, calculates the sum of its elements, raises each element to a specified power, and calculates the sum of the resulting values.</p>
+<p>The program receives four values from the user:</p>
+<ul><li><code>a</code>: First element of the arithmetic progression.</li><li><code>d</code>: Common difference (step size).</li><li><code>n</code>: Number of elements.</li><li><code>p</code>: Exponent power.</li></ul>
+<p>The program calculates two different series:</p>
+<p><strong>First series – Original arithmetic progression:</strong></p>
+<p>\[ a_i = a + i \times d \]</p>
+<p>Its cumulative sum is:</p>
+<p>\[ S = \sum_{i=0}^{n-1}a_i \]</p>
+<p><strong>Second series – Power of each element:</strong></p>
+<p>\[ b_i = (a_i)^p \]</p>
+<p>Its cumulative sum is:</p>
+<p>\[ T = \sum_{i=0}^{n-1}(a_i)^p \]</p>
+<p>Finally, both sums are displayed separately.</p>
+<h2 id="2-source-code">2. Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main()
+{
+    float a, d, p;
+    int n;
+
+    // Get a
+    printf("Enter first element of series (a): ");
+    scanf("%f", &amp;a);
+    printf("\n");
+
+    // Get d
+    printf("Enter step size of series (d): ");
+    scanf("%f", &amp;d);
+    printf("\n");
+
+    // Get n
+    printf("Enter number of elements (n): ");
+    scanf("%d", &amp;n);
+    printf("\n");
+
+    // Get p
+    printf("Enter exponent power (p): ");
+    scanf("%f", &amp;p);
+    printf("\n");
+
+    float S = 0;
+    float ai;
+
+    float T = 0;
+    float bi;
+
+    printf("i\ta(i)\t\tS(i)\t\tb(i)\t\tT(i)\n");
+
+    for (int i = 0; i &lt; n; i++)
+    {
+        ai = a + i * d;     // calculate the i-th element
+        S += ai;
+
+        bi = pow(ai, p);
+        T += bi;
+
+        printf("%d\t%f\t%f\t%f\t%f\n", i, ai, S, bi, T);
+    }
+
+    printf("\n\nFinal Sum of Series (S) = %f\n", S);
+    printf("\n\nFinal Sum of Series Powers (T) = %f\n", T);
+
+    return 0;
+}</code></pre></div>
+<h2 id="3-mathematical-background">3. Mathematical Background</h2>
+<h3 id="3-1-arithmetic-progression">3.1. Arithmetic Progression</h3>
+<p>The first series is an arithmetic progression.</p>
+<p>Its elements are calculated using:</p>
+<p>\[ a_i = a + i \times d \]</p>
+<p>Where:</p>
+<ul><li>\(a_i\): Current element.</li><li>\(a\): First element.</li><li>\(i\): Element index, starting from zero.</li><li>\(d\): Common difference.</li></ul>
+<p>The sum of the original series is:</p>
+<p>\[ S = \sum_{i=0}^{n-1}a_i \]</p>
+<h3 id="3-2-power-series">3.2. Power Series</h3>
+<p>The second series is generated by raising each element of the original arithmetic progression to the power <code>p</code>.</p>
+<p>The formula is:</p>
+<p>\[ b_i = (a_i)^p \]</p>
+<p>The total sum of the power series is:</p>
+<p>\[ T = \sum_{i=0}^{n-1}(a_i)^p \]</p>
+<p><strong>Important:</strong> This program calculates the power of each individual element and then adds the results together. It does not calculate the power of the total sum.</p>
+<p>In general:</p>
+<p>\[ \sum_{i=0}^{n-1}(a_i)^p \neq \left(\sum_{i=0}^{n-1}a_i\right)^p \]</p>
+<h2 id="4-code-explanation">4. Code Explanation</h2>
+<h3 id="4-1-including-header-files">4.1. Including Header Files</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;</code></pre></div>
+<p>The program uses two standard C libraries.</p>
+<p><strong>stdio.h</strong></p>
+<p>Provides input and output functions:</p>
+<ul><li><code>printf()</code></li><li><code>scanf()</code></li></ul>
+<p><strong>math.h</strong></p>
+<p>Provides mathematical functions.</p>
+<p>In this program, we use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pow(ai, p);</code></pre></div>
+<p>The <code>pow()</code> function calculates a number raised to a specified power.</p>
+<p>Its general syntax is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pow(base, exponent);</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pow(2, 3);   // Result: 8
+pow(5, 2);   // Result: 25
+pow(4, 0.5); // Result: 2</code></pre></div>
+<p>The return type of <code>pow()</code> is <code>double</code>.</p>
+<h3 id="4-2-declaring-variables">4.2. Declaring Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float a, d, p;
+int n;</code></pre></div>
+<p>These variables store the user's input.</p>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Data Type</th><th>Description</th></tr></thead><tbody><tr><td><code>a</code></td><td>float</td><td>First element</td></tr><tr><td><code>d</code></td><td>float</td><td>Common difference</td></tr><tr><td><code>p</code></td><td>float</td><td>Exponent power</td></tr><tr><td><code>n</code></td><td>int</td><td>Number of elements</td></tr></tbody></table></div>
+<p>The exponent <code>p</code> is defined as <code>float</code>, allowing both integer and fractional powers.</p>
+<h3 id="4-3-receiving-user-input">4.3. Receiving User Input</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Enter exponent power (p): ");
+scanf("%f", &amp;p);</code></pre></div>
+<p>In addition to the previous inputs, the program receives an exponent value.</p>
+<p>For example:</p>
+<ul><li><code>p = 2</code>: Calculates squares.</li><li><code>p = 3</code>: Calculates cubes.</li><li><code>p = 0.5</code>: Calculates square roots for non-negative inputs.</li><li><code>p = 1</code>: Returns the original elements.</li></ul>
+<h3 id="4-4-initializing-the-summation-variables">4.4. Initializing the Summation Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float S = 0;
+float ai;
+
+float T = 0;
+float bi;</code></pre></div>
+<p>Four variables are declared:</p>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Description</th></tr></thead><tbody><tr><td><code>S</code></td><td>Cumulative sum of the original series</td></tr><tr><td><code>ai</code></td><td>Current element of the original series</td></tr><tr><td><code>T</code></td><td>Cumulative sum of the power series</td></tr><tr><td><code>bi</code></td><td>Current powered element</td></tr></tbody></table></div>
+<p>Both summation variables start at zero.</p>
+<h3 id="4-5-displaying-the-table-header">4.5. Displaying the Table Header</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("i\ta(i)\t\tS(i)\t\tb(i)\t\tT(i)\n");</code></pre></div>
+<p>The output table contains five columns:</p>
+<div class="table-wrap"><table><thead><tr><th>Column</th><th>Description</th></tr></thead><tbody><tr><td><code>i</code></td><td>Element index</td></tr><tr><td><code>a(i)</code></td><td>Original element</td></tr><tr><td><code>S(i)</code></td><td>Cumulative original sum</td></tr><tr><td><code>b(i)</code></td><td>Powered element</td></tr><tr><td><code>T(i)</code></td><td>Cumulative power sum</td></tr></tbody></table></div>
+<h3 id="4-6-understanding-the-for-loop">4.6. Understanding the For Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for (int i = 0; i &lt; n; i++)
+{
+    // Calculations
+}</code></pre></div>
+<p>The <code>for</code> loop executes the calculations for every element of the series.</p>
+<p>It contains three parts:</p>
+<ol><li>Initialization: <code>int i = 0</code></li><li>Condition: <code>i &lt; n</code></li><li>Increment: <code>i++</code></li></ol>
+<p>If <code>n = 5</code>, the loop executes five times with indices from zero to four.</p>
+<h3 id="4-7-calculating-the-original-element">4.7. Calculating the Original Element</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ai = a + i * d;</code></pre></div>
+<p>This calculates the current element of the arithmetic progression.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = 2
+d = 3
+n = 5</code></pre></div>
+<p>The resulting elements are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2, 5, 8, 11, 14</code></pre></div>
+<h3 id="4-8-calculating-the-original-series-sum">4.8. Calculating the Original Series Sum</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>S += ai;</code></pre></div>
+<p>This statement adds the current element to the previous cumulative sum.</p>
+<p>It is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>S = S + ai;</code></pre></div>
+<h3 id="4-9-calculating-the-power-of-each-element">4.9. Calculating the Power of Each Element</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>bi = pow(ai, p);</code></pre></div>
+<p>This is the new mathematical operation introduced in this example.</p>
+<p>The <code>pow()</code> function raises <code>ai</code> to the power <code>p</code>.</p>
+<p>For example, if:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ai = 5
+p = 2</code></pre></div>
+<p>The calculation becomes:</p>
+<p>\[ b_i = 5^2 = 25 \]</p>
+<p>If <code>p = 3</code>:</p>
+<p>\[ b_i = 5^3 = 125 \]</p>
+<p>The result is stored in variable <code>bi</code>.</p>
+<h3 id="4-10-calculating-the-power-series-sum">4.10. Calculating the Power Series Sum</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>T += bi;</code></pre></div>
+<p>This statement adds the current powered element to the cumulative power sum.</p>
+<p>It is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>T = T + bi;</code></pre></div>
+<p>Unlike <code>S</code>, which stores the sum of the original elements, <code>T</code> stores the sum of their powered values.</p>
+<h3 id="4-11-displaying-the-results-of-each-iteration">4.11. Displaying the Results of Each Iteration</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%d\t%f\t%f\t%f\t%f\n", i, ai, S, bi, T);</code></pre></div>
+<p>At every iteration, the program displays:</p>
+<ul><li>Current index.</li><li>Original element.</li><li>Cumulative original sum.</li><li>Powered element.</li><li>Cumulative power sum.</li></ul>
+<p>This allows us to observe both calculations simultaneously.</p>
+<h3 id="4-12-displaying-the-final-results">4.12. Displaying the Final Results</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("\n\nFinal Sum of Series (S) = %f\n", S);
+
+printf("\n\nFinal Sum of Series Powers (T) = %f\n", T);</code></pre></div>
+<p>These statements execute after the loop finishes.</p>
+<p>The first displays the total sum of the original arithmetic progression.</p>
+<p>The second displays the total sum of all powered elements.</p>
+<h2 id="5-program-execution-example">5. Program Execution Example</h2>
+<p><strong>Input:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter first element of series (a): 2
+
+Enter step size of series (d): 3
+
+Enter number of elements (n): 5
+
+Enter exponent power (p): 2</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>i       a(i)            S(i)            b(i)            T(i)
+0       2.000000        2.000000        4.000000        4.000000
+1       5.000000        7.000000        25.000000       29.000000
+2       8.000000        15.000000       64.000000       93.000000
+3       11.000000       26.000000       121.000000      214.000000
+4       14.000000       40.000000       196.000000      410.000000
+
+
+Final Sum of Series (S) = 40.000000
+
+Final Sum of Series Powers (T) = 410.000000</code></pre></div>
+<h3 id="verifying-the-results">Verifying the Results</h3>
+<p>Original series:</p>
+<p>\[ S = 2+5+8+11+14 = 40 \]</p>
+<p>Power series for \(p=2\):</p>
+<p>\[ T = 2^2+5^2+8^2+11^2+14^2 \]</p>
+<p>\[ T = 4+25+64+121+196 \]</p>
+<p>\[ T = 410 \]</p>
+<p>Both results match the program output.</p>
+<h2 id="6-c-programming-concepts-learned">6. C Programming Concepts Learned</h2>
+<p>This example introduces the following concepts:</p>
+<ol><li>Including multiple header files.</li><li>Standard input and output using <code>stdio.h</code>.</li><li>Mathematical functions using <code>math.h</code>.</li><li>Floating-point variables (<code>float</code>).</li><li>Integer variables (<code>int</code>).</li><li>Receiving user input with <code>scanf()</code>.</li><li>Using the <code>pow()</code> function.</li><li>Understanding function arguments.</li><li>Arithmetic progression calculations.</li><li>Power calculations.</li><li>The <code>for</code> loop.</li><li>Cumulative summation using <code>+=</code>.</li><li>Managing multiple calculations inside one loop.</li><li>Formatted output using <code>printf()</code>.</li></ol>
+<h2 id="7-compile-and-run">7. Compile and Run</h2>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o power_series -lm</code></pre></div>
+<p><strong>Important:</strong> The <code>-lm</code> option links the mathematical library when using GCC on many Linux and Unix-based systems.</p>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\power_series.exe</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./power_series</code></pre></div>
+<p>Depending on your Windows GCC distribution, <code>-lm</code> may not be necessary.</p>
+<h2 id="8-important-notes">8. Important Notes</h2>
+<ul><li>The <code>pow()</code> function returns a <code>double</code>, even when its arguments are <code>float</code>.</li><li>Assigning its result to <code>float bi</code> converts the result to <code>float</code>, which can lose some precision.</li><li>Negative bases with fractional exponents can produce undefined mathematical results in the real number system and may result in a domain error.</li><li>Zero raised to a negative exponent is also a domain error.</li><li>The current program assumes valid numeric input and does not validate <code>n</code>.</li><li>For higher precision, consider using <code>double</code> instead of <code>float</code>.</li></ul>
+<h2 id="9-practice-exercises">9. Practice Exercises</h2>
+<ul><li>Exercise 1: Change <code>p</code> to 2 and calculate the sum of squares.</li><li>Exercise 2: Change <code>p</code> to 3 and calculate the sum of cubes.</li><li>Exercise 3: Calculate the square root of each element using <code>p = 0.5</code>.</li><li>Exercise 4: Add another variable to calculate the sum of the absolute values of the elements.</li><li>Exercise 5: Display only the elements whose powered values are greater than 100.</li><li>Exercise 6: Replace <code>float</code> variables with <code>double</code>.</li><li>Exercise 7: Compare the results for different exponent values.</li><li>Exercise 8: Add input validation for invalid values of <code>n</code> and <code>p</code>.</li></ul>
+<hr>
+<p><strong>Learning Objective:</strong> Understand mathematical libraries, the <code>pow()</code> function, arithmetic progressions, power calculations, and multiple cumulative summations using the <code>for</code> loop in C.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="pager-dir">← Previous</span><span class="pager-name">09 · C Programming – Arithmetic Progression Using For Loop</span></a><a class="pager-link next" href="11-grade-statistics-analyzer-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">11 · Grade Statistics Analyzer in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

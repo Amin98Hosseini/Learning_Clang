@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading and Parsing Dates Using scanf() in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link active" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 37</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 37 of 40 · Part 6</p><h1>Reading and Parsing Dates Using scanf() in C</h1><p class="lesson-source">Folder <code>37-Reading_and_Parsing_Dates_Using_scanf_in_C_Language</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-complete-source-code">2. Complete Source Code</a></li><li><a href="#3-required-header-files">3. Required Header Files</a></li><li><a href="#4-understanding-the-variables">4. Understanding the Variables</a></li><li><a href="#5-understanding-the-scanf-function">5. Understanding the scanf() Function</a></li><li><a href="#6-understanding-the-alternative-scanf-format">6. Understanding the Alternative scanf() Format</a></li><li><a href="#7-understanding-assignment-suppression">7. Understanding Assignment Suppression (*)</a></li><li><a href="#8-displaying-the-result">8. Displaying the Result</a></li><li><a href="#9-expected-output">9. Expected Output</a></li><li><a href="#10-important-limitation-the-original-program-does-not-valida">10. Important Limitation: The Original Program Does Not Validate Input</a></li><li><a href="#11-safer-version-using-scanf-and-return-value-checking">11. Safer Version Using scanf() and Return-Value Checking</a></li><li><a href="#12-complete-version-with-calendar-date-validation">12. Complete Version with Calendar-Date Validation</a></li><li><a href="#13-compile-and-run">13. Compile and Run</a></li><li><a href="#14-practice-exercises">14. Practice Exercises</a></li><li><a href="#15-what-you-will-learn">15. What You Will Learn</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In this project, we learn how to read a date entered by the user and separate it into three integer values:</p>
+<ul><li>Year</li><li>Month</li><li>Day</li></ul>
+<p>The program expects the user to enter a date in the following format:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>YYYY-MM-DD</code></pre></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27</code></pre></div>
+<p>The program uses the <code>scanf()</code> function with the <code>%*c</code> format specifier to read the numbers while skipping the separator characters.</p>
+<p>This project introduces several important concepts in C:</p>
+<ul><li>Reading multiple values using <code>scanf()</code>.</li><li>Using format specifiers.</li><li>Suppressing input assignments with <code>*</code>.</li><li>Reading and skipping individual characters.</li><li>Parsing structured input.</li><li>Understanding the limitations of <code>scanf()</code> when validating dates.</li></ul>
+<h2 id="2-complete-source-code">2. Complete Source Code</h2>
+<p>Here is the original program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int y, m, d;
+
+    printf("Please enter the date as YYYY-MM-DD: ");
+
+    // scanf("%4d-%2d-%2d", &amp;y, &amp;m, &amp;d);
+    scanf("%d%*c%d%*c%d", &amp;y, &amp;m, &amp;d);
+
+    printf("\n");
+
+    printf("Result:\n");
+    printf(" Year: %d\n", y);
+    printf("Month: %d\n", m);
+    printf("  Day: %d\n", d);
+
+    return 0;
+}</code></pre></div>
+<p>The program reads three integer values and skips the characters between them.</p>
+<p>For example, when the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27</code></pre></div>
+<p>The program stores:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>y = 2026
+m = 11
+d = 27</code></pre></div>
+<p><strong>Important:</strong> The original code does not fully validate the input format or check whether the entered date exists. We will examine these limitations and improve the program later.</p>
+<h2 id="3-required-header-files">3. Required Header Files</h2>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>This header provides standard input and output functions.</p>
+<p>The program uses:</p>
+<ul><li><code>printf()</code> to display messages and results.</li><li><code>scanf()</code> to read the date entered by the user.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>This header provides general-purpose utility functions.</p>
+<p>The original program does not use any function from this library, so it can be removed.</p>
+<p>The program only needs:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<h2 id="4-understanding-the-variables">4. Understanding the Variables</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int y, m, d;</code></pre></div>
+<p>Three integer variables are declared.</p>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Meaning</th><th>Example</th></tr></thead><tbody><tr><td><code>y</code></td><td>Year</td><td>2026</td></tr><tr><td><code>m</code></td><td>Month</td><td>11</td></tr><tr><td><code>d</code></td><td>Day</td><td>27</td></tr></tbody></table></div>
+<p>These variables store the three numeric components of the date separately.</p>
+<p>For example, the date:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27</code></pre></div>
+<p>is divided into:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Year  = 2026
+Month = 11
+Day   = 27</code></pre></div>
+<h2 id="5-understanding-the-scanf-function">5. Understanding the <code>scanf()</code> Function</h2>
+<p>The most important instruction in this program is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d%*c%d%*c%d", &amp;y, &amp;m, &amp;d);</code></pre></div>
+<p>To understand it, we need to examine each part of the format string.</p>
+<h3 id="5-1-d">5.1. <code>%d</code></h3>
+<p>The <code>%d</code> format specifier reads a signed decimal integer.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d", &amp;y);</code></pre></div>
+<p>If the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026</code></pre></div>
+<p>the value <code>2026</code> is stored in the variable <code>y</code>.</p>
+<p>The <code>&amp;</code> operator provides the address of the variable so that <code>scanf()</code> can store the input value in it.</p>
+<h3 id="5-2-c">5.2. <code>%*c</code></h3>
+<p>The <code>%c</code> format specifier reads one character.</p>
+<p>Normally, we could use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%c", &amp;separator);</code></pre></div>
+<p>to read a character and store it in a variable.</p>
+<p>However, the asterisk (<code>*</code>) changes its behavior.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>%*c</code></pre></div>
+<p>means:</p>
+<p><strong>Read one character, but do not assign it to any variable.</strong></p>
+<p>This is called assignment suppression.</p>
+<p>In our program, <code>%*c</code> is used to skip the separator between the date components.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27
+    ^  ^
+    |  |
+    -  -</code></pre></div>
+<p>The two hyphens are consumed by the two <code>%*c</code> conversion specifications.</p>
+<h3 id="5-3-breaking-down-the-complete-format-string">5.3. Breaking Down the Complete Format String</h3>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>"%d%*c%d%*c%d"</code></pre></div>
+<p>It contains five conversion specifications:</p>
+<div class="table-wrap"><table><thead><tr><th>Format</th><th>Operation</th><th>Destination</th></tr></thead><tbody><tr><td><code>%d</code></td><td>Read an integer</td><td><code>y</code></td></tr><tr><td><code>%*c</code></td><td>Read and discard one character</td><td>None</td></tr><tr><td><code>%d</code></td><td>Read an integer</td><td><code>m</code></td></tr><tr><td><code>%*c</code></td><td>Read and discard one character</td><td>None</td></tr><tr><td><code>%d</code></td><td>Read an integer</td><td><code>d</code></td></tr></tbody></table></div>
+<p>The input is processed in this order:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27</code></pre></div>
+<ol><li><code>%d</code> reads <code>2026</code> and stores it in <code>y</code>.</li><li><code>%*c</code> reads and discards <code>-</code>.</li><li><code>%d</code> reads <code>11</code> and stores it in <code>m</code>.</li><li><code>%*c</code> reads and discards <code>-</code>.</li><li><code>%d</code> reads <code>27</code> and stores it in <code>d</code>.</li></ol>
+<p>The final values are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>y = 2026
+m = 11
+d = 27</code></pre></div>
+<h2 id="6-understanding-the-alternative-scanf-format">6. Understanding the Alternative <code>scanf()</code> Format</h2>
+<p>The original program also contains this commented instruction:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>// scanf("%4d-%2d-%2d", &amp;y, &amp;m, &amp;d);</code></pre></div>
+<p>This is another way to read a date.</p>
+<p>Let's examine it:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%4d-%2d-%2d", &amp;y, &amp;m, &amp;d);</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Format</th><th>Description</th></tr></thead><tbody><tr><td><code>%4d</code></td><td>Read an integer using at most 4 input characters</td></tr><tr><td><code>-</code></td><td>Match a literal hyphen</td></tr><tr><td><code>%2d</code></td><td>Read an integer using at most 2 input characters</td></tr><tr><td><code>-</code></td><td>Match another literal hyphen</td></tr><tr><td><code>%2d</code></td><td>Read an integer using at most 2 input characters</td></tr></tbody></table></div>
+<p>For the input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27</code></pre></div>
+<p>the function reads:</p>
+<ul><li><code>2026</code> into <code>y</code>.</li><li>The first literal <code>-</code> must match the input.</li><li><code>11</code> into <code>m</code>.</li><li>The second literal <code>-</code> must match the input.</li><li><code>27</code> into <code>d</code>.</li></ul>
+<h3 id="difference-between-the-two-approaches">Difference Between the Two Approaches</h3>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th><code>%d%*c%d%*c%d</code></th><th><code>%4d-%2d-%2d</code></th></tr></thead><tbody><tr><td>Reads year, month, and day</td><td>Yes</td><td>Yes</td></tr><tr><td>Skips separators</td><td>Reads and discards any character</td><td>Matches literal hyphens</td></tr><tr><td>Checks for hyphens</td><td>No</td><td>Yes</td></tr><tr><td>Limits field width</td><td>No</td><td>Yes</td></tr><tr><td>Enforces exact date layout</td><td>No</td><td>More closely, but not completely</td></tr></tbody></table></div>
+<p><strong>Recommendation:</strong> For the specific <code>YYYY-MM-DD</code> format, the second approach is generally better because it explicitly expects hyphens.</p>
+<p>However, neither approach alone guarantees that the input is a valid calendar date.</p>
+<h2 id="7-understanding-assignment-suppression">7. Understanding Assignment Suppression (<code>*</code>)</h2>
+<p>Assignment suppression is useful when you need to consume part of an input without storing it.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d%*c%d", &amp;a, &amp;b);</code></pre></div>
+<p>If the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>25,50</code></pre></div>
+<p>the function:</p>
+<ol><li>Reads <code>25</code> into <code>a</code>.</li><li>Reads and discards <code>,</code>.</li><li>Reads <code>50</code> into <code>b</code>.</li></ol>
+<p>The result is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = 25
+b = 50</code></pre></div>
+<p>Another example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d%*c%d%*c%d", &amp;a, &amp;b, &amp;c);</code></pre></div>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10-20-30</code></pre></div>
+<p>Result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = 10
+b = 20
+c = 30</code></pre></div>
+<p>Remember that <code>%*c</code> discards exactly one character. It does not specifically check whether that character is a comma, hyphen, or another separator.</p>
+<h2 id="8-displaying-the-result">8. Displaying the Result</h2>
+<p>After reading the date, the program displays:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Result:\n");
+printf(" Year: %d\n", y);
+printf("Month: %d\n", m);
+printf("  Day: %d\n", d);</code></pre></div>
+<p>Each variable is printed separately.</p>
+<p>The <code>%d</code> format specifier is used because all three variables have the <code>int</code> data type.</p>
+<p>For the input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27</code></pre></div>
+<p>the output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Result:
+ Year: 2026
+Month: 11
+  Day: 27</code></pre></div>
+<h2 id="9-expected-output">9. Expected Output</h2>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Please enter the date as YYYY-MM-DD: 2026-11-27
+
+Result:
+ Year: 2026
+Month: 11
+  Day: 27</code></pre></div>
+<p>Another example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Please enter the date as YYYY-MM-DD: 2000-01-05
+
+Result:
+ Year: 2000
+Month: 1
+  Day: 5</code></pre></div>
+<p>Notice that the integer variables do not preserve leading zeros.</p>
+<p>For example, the input month <code>01</code> is stored as the integer <code>1</code>.</p>
+<p>If you need to display the month with two digits, use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Month: %02d\n", m);</code></pre></div>
+<p>The <code>0</code> flag pads the number with leading zeros to reach the specified width.</p>
+<h2 id="10-important-limitation-the-original-program-does-not-valida">10. Important Limitation: The Original Program Does Not Validate Input</h2>
+<p>Consider the following input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026/11/27</code></pre></div>
+<p>The original format:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d%*c%d%*c%d", &amp;y, &amp;m, &amp;d);</code></pre></div>
+<p>will accept the slash characters because <code>%*c</code> discards any character.</p>
+<p>The program can therefore produce:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Year: 2026
+Month: 11
+Day: 27</code></pre></div>
+<p>even though the user did not enter the requested hyphen-separated format.</p>
+<p>The original program also does not reject impossible dates such as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-15-40</code></pre></div>
+<p>The values can be read successfully as integers, but they do not represent a valid calendar date.</p>
+<p>This is why input parsing and date validation should be treated as two separate tasks:</p>
+<ol><li><strong>Parsing:</strong> Extract the year, month, and day.</li><li><strong>Validation:</strong> Check whether the extracted values form a valid date.</li></ol>
+<h2 id="11-safer-version-using-scanf-and-return-value-checking">11. Safer Version Using <code>scanf()</code> and Return-Value Checking</h2>
+<p>The following version uses the literal-hyphen format and checks whether all three integer values were successfully read.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int y, m, d;
+
+    printf("Please enter the date as YYYY-MM-DD: ");
+
+    if (scanf("%4d-%2d-%2d", &amp;y, &amp;m, &amp;d) != 3)
+    {
+        printf("Invalid input format.\n");
+        return 1;
+    }
+
+    printf("\nResult:\n");
+    printf(" Year: %04d\n", y);
+    printf("Month: %02d\n", m);
+    printf("  Day: %02d\n", d);
+
+    return 0;
+}</code></pre></div>
+<h3 id="what-has-changed">What has changed?</h3>
+<p><strong>1. Removed the unnecessary header</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<p>Only standard input/output functions are required.</p>
+<p><strong>2. Used literal hyphens</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%4d-%2d-%2d", &amp;y, &amp;m, &amp;d);</code></pre></div>
+<p>This requires hyphens between the numeric fields.</p>
+<p><strong>3. Checked the return value</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (scanf("%4d-%2d-%2d", &amp;y, &amp;m, &amp;d) != 3)</code></pre></div>
+<p><code>scanf()</code> returns the number of successfully assigned input items.</p>
+<p>In this case:</p>
+<ul><li><code>3</code> means all three integers were successfully read.</li><li>A smaller value means that parsing stopped before all three assignments were completed.</li><li><code>EOF</code> means input failure or end-of-file occurred before the first conversion could be completed.</li></ul>
+<p>This check prevents the program from using variables that were not successfully assigned.</p>
+<p><strong>Important:</strong> This version checks the three conversions, but it does not guarantee that the entire input line contains only a date. For strict validation, use a line-based parser.</p>
+<h2 id="12-complete-version-with-calendar-date-validation">12. Complete Version with Calendar-Date Validation</h2>
+<p>The following example reads a complete line using <code>fgets()</code>, parses the date with <code>sscanf()</code>, checks the separators and verifies that the date is valid.</p>
+<p>It also handles leap years.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int IsLeapYear(int year)
+{
+    return (year % 400 == 0) ||
+           (year % 4 == 0 &amp;&amp; year % 100 != 0);
+}
+
+int IsValidDate(int year, int month, int day)
+{
+    int daysInMonth[] =
+    {
+        31, 28, 31, 30, 31, 30,
+        31, 31, 30, 31, 30, 31
+    };
+
+    if (year &lt; 1 || month &lt; 1 || month &gt; 12)
+    {
+        return 0;
+    }
+
+    if (IsLeapYear(year))
+    {
+        daysInMonth[1] = 29;
+    }
+
+    if (day &lt; 1 || day &gt; daysInMonth[month - 1])
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+int main()
+{
+    char input[100];
+    int y, m, d;
+    char extra;
+
+    printf("Please enter the date as YYYY-MM-DD: ");
+
+    if (fgets(input, sizeof(input), stdin) == NULL)
+    {
+        printf("Input error.\n");
+        return 1;
+    }
+
+    if (sscanf(input, "%4d-%2d-%2d %c", &amp;y, &amp;m, &amp;d, &amp;extra) != 3)
+    {
+        printf("Invalid date format.\n");
+        return 1;
+    }
+
+    if (!IsValidDate(y, m, d))
+    {
+        printf("Invalid calendar date.\n");
+        return 1;
+    }
+
+    printf("\nValid date:\n");
+    printf(" Year: %04d\n", y);
+    printf("Month: %02d\n", m);
+    printf("  Day: %02d\n", d);
+
+    return 0;
+}</code></pre></div>
+<h3 id="understanding-the-additional-functions">Understanding the additional functions</h3>
+<h4 id="isleapyear"><code>IsLeapYear()</code></h4>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int IsLeapYear(int year)
+{
+    return (year % 400 == 0) ||
+           (year % 4 == 0 &amp;&amp; year % 100 != 0);
+}</code></pre></div>
+<p>A year is a leap year if:</p>
+<ul><li>It is divisible by 400, or</li><li>It is divisible by 4 but not divisible by 100.</li></ul>
+<p>Examples:</p>
+<div class="table-wrap"><table><thead><tr><th>Year</th><th>Leap year?</th></tr></thead><tbody><tr><td>2024</td><td>Yes</td></tr><tr><td>2025</td><td>No</td></tr><tr><td>1900</td><td>No</td></tr><tr><td>2000</td><td>Yes</td></tr><tr><td>2028</td><td>Yes</td></tr></tbody></table></div>
+<p>A leap year has 29 days in February instead of 28.</p>
+<h4 id="isvaliddate"><code>IsValidDate()</code></h4>
+<p>This function checks:</p>
+<ol><li>The year must be greater than zero.</li><li>The month must be between 1 and 12.</li><li>The day must be at least 1.</li><li>The day must not exceed the number of days in the specified month.</li><li>February must have 29 days in a leap year.</li></ol>
+<p>For example:</p>
+<div class="table-wrap"><table><thead><tr><th>Date</th><th>Result</th><th>Explanation</th></tr></thead><tbody><tr><td><code>2026-11-27</code></td><td>Valid</td><td>Normal date</td></tr><tr><td><code>2024-02-29</code></td><td>Valid</td><td>Leap-year date</td></tr><tr><td><code>2025-02-29</code></td><td>Invalid</td><td>2025 is not a leap year</td></tr><tr><td><code>2026-04-31</code></td><td>Invalid</td><td>April has 30 days</td></tr><tr><td><code>2026-13-10</code></td><td>Invalid</td><td>Month 13 does not exist</td></tr><tr><td><code>2026-00-10</code></td><td>Invalid</td><td>Month 0 does not exist</td></tr></tbody></table></div>
+<h4 id="understanding-the-sscanf-format">Understanding the <code>sscanf()</code> format</h4>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sscanf(input, "%4d-%2d-%2d %c", &amp;y, &amp;m, &amp;d, &amp;extra)</code></pre></div>
+<p>The format reads:</p>
+<ul><li>Up to four characters for the year.</li><li>A literal hyphen.</li><li>Up to two characters for the month.</li><li>Another literal hyphen.</li><li>Up to two characters for the day.</li><li>Optional whitespace.</li><li>One additional character, if present.</li></ul>
+<p>The extra <code>%c</code> helps detect non-whitespace characters after the date.</p>
+<p>If the return value is exactly <code>3</code>, the three date fields were successfully read and no additional non-whitespace character was found.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27</code></pre></div>
+<p>is accepted, while:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>2026-11-27abc</code></pre></div>
+<p>is rejected.</p>
+<p>This example checks the calendar date, but it does not enforce exactly four, two, and two digit characters in every possible malformed input. For strict character-by-character format validation, additional checks can be added.</p>
+<h2 id="13-compile-and-run">13. Compile and Run</h2>
+<p>Save the source code as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -std=c11 -Wall -Wextra -pedantic main.c -o date_parser</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./date_parser</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>date_parser.exe</code></pre></div>
+<p>No additional libraries are required.</p>
+<h2 id="14-practice-exercises">14. Practice Exercises</h2>
+<p>Try modifying the program to complete these exercises:</p>
+<ol><li>Read a date in the format <code>DD-MM-YYYY</code>.</li><li>Read a date in the format <code>YYYY/MM/DD</code>.</li><li>Display the month using its name, such as <code>November</code>.</li><li>Check whether the entered year is a leap year.</li><li>Calculate the number of days in the entered month.</li><li>Reject dates with invalid separators.</li><li>Modify the program to accept multiple dates.</li><li>Write a function that converts the date into the format <code>27 November 2026</code>.</li><li>Calculate the number of days between two valid dates.</li></ol>
+<h2 id="15-what-you-will-learn">15. What You Will Learn</h2>
+<p>After completing this project, you should understand:</p>
+<ul><li>How to read multiple integer values using <code>scanf()</code>.</li><li>How <code>%d</code> reads decimal integers.</li><li>How <code>%*c</code> reads and discards a character.</li><li>What assignment suppression means.</li><li>How literal characters in a <code>scanf()</code> format string work.</li><li>The difference between <code>%d%*c%d</code> and <code>%d-%d</code>.</li><li>How field widths limit the number of characters consumed by a conversion.</li><li>Why checking the return value of <code>scanf()</code> is important.</li><li>The difference between parsing input and validating a calendar date.</li><li>How to use <code>fgets()</code> and <code>sscanf()</code> for safer line-based input processing.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">36 · Reading Strings with scanf() Using a Scanset in C</span></a><a class="pager-link next" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">38 · Structures and Passing Structures to Functions in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

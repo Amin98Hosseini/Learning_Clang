@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link active" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-7">Part 7 — Structures and Enumerations</a><span>/</span><span aria-current="page">Lesson 40</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 40 of 40 · Part 7</p><h1>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</h1><p class="lesson-source">Folder <code>40-Enumerations_enum_and_Arrays_Persian_Calendar_Months</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-complete-source-code">2. Complete Source Code</a></li><li><a href="#3-understanding-the-header-files">3. Understanding the Header Files</a></li><li><a href="#4-understanding-enumeration-enum">4. Understanding Enumeration (enum)</a></li><li><a href="#5-declaring-an-enumeration-variable">5. Declaring an Enumeration Variable</a></li><li><a href="#6-understanding-the-array-of-strings">6. Understanding the Array of Strings</a></li><li><a href="#7-understanding-the-for-loop">7. Understanding the for Loop</a></li><li><a href="#8-understanding-the-program-execution">8. Understanding the Program Execution</a></li><li><a href="#9-expected-output">9. Expected Output</a></li><li><a href="#10-why-use-enum-instead-of-normal-integer-variables">10. Why Use enum Instead of Normal Integer Variables?</a></li><li><a href="#11-important-technical-notes">11. Important Technical Notes</a></li><li><a href="#12-improved-version-with-input-validation">12. Improved Version with Input Validation</a></li><li><a href="#13-compilation-and-execution">13. Compilation and Execution</a></li><li><a href="#14-practice-exercises">14. Practice Exercises</a></li><li><a href="#15-summary">15. Summary</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C, an <strong>enumeration (<code>enum</code>)</strong> is a user-defined data type that allows us to assign meaningful names to integer constants.</p>
+<p>Instead of working with numbers such as <code>1</code>, <code>2</code>, <code>3</code>, and so on, we can define readable names such as:</p>
+<ul><li><code>FAR</code> for Farvardin</li><li><code>ORD</code> for Ordibehesht</li><li><code>KHR</code> for Khordad</li><li><code>ESF</code> for Esfand</li></ul>
+<p>In this example, we define an enumeration named <code>Month</code> containing the twelve months of the Persian calendar.</p>
+<p>We also create an array of strings containing the full names of those months. The enumeration values are used as array indexes to print each month's number and name.</p>
+<h3 id="learning-objectives">Learning objectives</h3>
+<p>After studying this program, you will understand:</p>
+<ul><li>What an enumeration (<code>enum</code>) is.</li><li>How to define an enumeration using <code>typedef</code>.</li><li>How to assign specific integer values to enumeration members.</li><li>How automatic enumeration values are assigned.</li><li>How to use an enumeration variable in a <code>for</code> loop.</li><li>How to create and use an array of strings.</li><li>How to use enumeration values as array indexes.</li><li>How to connect symbolic constants with array elements.</li></ul>
+<hr>
+<h2 id="2-complete-source-code">2. Complete Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+typedef enum months {
+    FAR=1, ORD, KHR, TIR, MOR, SHR,
+    MHR, ABN, AZR, DAY, BAH, ESF
+} Month;
+
+int main()
+{
+    Month m;
+
+    char *MonthNames[] = {
+        "",
+        "Farvardin",
+        "Ordibehesht",
+        "Khordad",
+        "Tir",
+        "Mordad",
+        "Shahrivar",
+        "Mehr",
+        "Aban",
+        "Azar",
+        "Day",
+        "Bahman",
+        "Esfand"
+    };
+
+    for(m=FAR; m&lt;=ESF; m++)
+    {
+        printf("%3d %s\n", m, MonthNames[m]);
+    }
+
+    return 0;
+}</code></pre></div>
+<hr>
+<h2 id="3-understanding-the-header-files">3. Understanding the Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;</code></pre></div>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>The <code>stdio.h</code> header provides standard input/output functions.</p>
+<p>This program uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf();</code></pre></div>
+<p>The <code>printf()</code> function displays formatted text on the console.</p>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>The <code>stdlib.h</code> header provides general-purpose functions such as:</p>
+<ul><li><code>malloc()</code></li><li><code>calloc()</code></li><li><code>realloc()</code></li><li><code>free()</code></li><li><code>exit()</code></li><li><code>atoi()</code></li></ul>
+<p>However, this program does not use any function from <code>stdlib.h</code>.</p>
+<p>Therefore, we can remove it without affecting the program.</p>
+<p>The simplified header section is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<hr>
+<h2 id="4-understanding-enumeration-enum">4. Understanding Enumeration (<code>enum</code>)</h2>
+<p>The most important part of this program is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef enum months {
+    FAR=1, ORD, KHR, TIR, MOR, SHR,
+    MHR, ABN, AZR, DAY, BAH, ESF
+} Month;</code></pre></div>
+<p>Let's examine this declaration step by step.</p>
+<h3 id="4-1-what-is-an-enumeration">4.1. What is an enumeration?</h3>
+<p>An enumeration is a user-defined type that represents a group of named integer constants.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>enum Days {
+    SATURDAY,
+    SUNDAY,
+    MONDAY,
+    TUESDAY
+};</code></pre></div>
+<p>By default, C assigns integer values starting from zero:</p>
+<div class="table-wrap"><table><thead><tr><th>Enumeration member</th><th>Integer value</th></tr></thead><tbody><tr><td>SATURDAY</td><td>0</td></tr><tr><td>SUNDAY</td><td>1</td></tr><tr><td>MONDAY</td><td>2</td></tr><tr><td>TUESDAY</td><td>3</td></tr></tbody></table></div>
+<p>This makes the code easier to read because we can use meaningful names instead of unexplained numbers.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int day = MONDAY;</code></pre></div>
+<p>Instead of:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int day = 2;</code></pre></div>
+<p>Both represent the same integer value in this example, but the first version is more readable.</p>
+<h3 id="4-2-assigning-a-starting-value">4.2. Assigning a starting value</h3>
+<p>In our program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FAR=1</code></pre></div>
+<p>We explicitly assign the value <code>1</code> to the first enumeration member.</p>
+<p>The remaining members receive consecutive integer values automatically.</p>
+<p>Therefore:</p>
+<div class="table-wrap"><table><thead><tr><th>Enumeration member</th><th>Month name</th><th>Integer value</th></tr></thead><tbody><tr><td>FAR</td><td>Farvardin</td><td>1</td></tr><tr><td>ORD</td><td>Ordibehesht</td><td>2</td></tr><tr><td>KHR</td><td>Khordad</td><td>3</td></tr><tr><td>TIR</td><td>Tir</td><td>4</td></tr><tr><td>MOR</td><td>Mordad</td><td>5</td></tr><tr><td>SHR</td><td>Shahrivar</td><td>6</td></tr><tr><td>MHR</td><td>Mehr</td><td>7</td></tr><tr><td>ABN</td><td>Aban</td><td>8</td></tr><tr><td>AZR</td><td>Azar</td><td>9</td></tr><tr><td>DAY</td><td>Day</td><td>10</td></tr><tr><td>BAH</td><td>Bahman</td><td>11</td></tr><tr><td>ESF</td><td>Esfand</td><td>12</td></tr></tbody></table></div>
+<p><strong>Important:</strong> When an enumeration member does not have an explicitly assigned value, its value is one greater than the previous member.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>enum Example {
+    A = 5,
+    B,
+    C,
+    D
+};</code></pre></div>
+<p>The values will be:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>A = 5
+B = 6
+C = 7
+D = 8</code></pre></div>
+<h3 id="4-3-understanding-typedef">4.3. Understanding <code>typedef</code></h3>
+<p>Notice that the declaration starts with:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef enum months</code></pre></div>
+<p>And ends with:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>} Month;</code></pre></div>
+<p>The <code>typedef</code> keyword creates an alternative type name.</p>
+<p>Without <code>typedef</code>, we could declare the enumeration as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>enum months {
+    FAR = 1,
+    ORD,
+    KHR,
+    TIR,
+    MOR,
+    SHR,
+    MHR,
+    ABN,
+    AZR,
+    DAY,
+    BAH,
+    ESF
+};</code></pre></div>
+<p>To declare a variable, we would write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>enum months m;</code></pre></div>
+<p>But with <code>typedef</code>, we can simply write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Month m;</code></pre></div>
+<p>This makes the code shorter and cleaner.</p>
+<p>The two names have different purposes:</p>
+<ul><li><code>months</code> is the enumeration tag.</li><li><code>Month</code> is the type alias created by <code>typedef</code>.</li></ul>
+<h3 id="4-4-can-enum-values-be-used-as-integers">4.4. Can enum values be used as integers?</h3>
+<p>Yes.</p>
+<p>In C, enumeration constants have integer values and can be used in integer expressions.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%d\n", FAR);
+printf("%d\n", ESF);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1
+12</code></pre></div>
+<p>This is why we can use enumeration values as array indexes and loop boundaries.</p>
+<hr>
+<h2 id="5-declaring-an-enumeration-variable">5. Declaring an Enumeration Variable</h2>
+<p>Inside <code>main()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Month m;</code></pre></div>
+<p>This declares a variable named <code>m</code> whose type is <code>Month</code>.</p>
+<p>It can hold one of the enumeration values:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = FAR;
+m = ORD;
+m = ESF;</code></pre></div>
+<p>Since the enumeration values correspond to integers, the variable can also be used in integer comparisons and arithmetic expressions.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = FAR;
+
+if(m == FAR)
+{
+    printf("The month is Farvardin.\n");
+}</code></pre></div>
+<hr>
+<h2 id="6-understanding-the-array-of-strings">6. Understanding the Array of Strings</h2>
+<p>The next important section is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *MonthNames[] = {
+    "",
+    "Farvardin",
+    "Ordibehesht",
+    "Khordad",
+    "Tir",
+    "Mordad",
+    "Shahrivar",
+    "Mehr",
+    "Aban",
+    "Azar",
+    "Day",
+    "Bahman",
+    "Esfand"
+};</code></pre></div>
+<p>This declaration creates an array of pointers to characters.</p>
+<p>Each element points to a string containing the name of a Persian calendar month.</p>
+<h3 id="6-1-what-does-char-mean">6.1. What does <code>char *</code> mean?</h3>
+<p>In C:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *name;</code></pre></div>
+<p>Declares a pointer to a character.</p>
+<p>A pointer can store the address of a character. When it points to a null-terminated character sequence, it can be used to access a string.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *name = "Farvardin";
+
+printf("%s\n", name);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Farvardin</code></pre></div>
+<h3 id="6-2-what-does-monthnames-mean">6.2. What does <code>MonthNames[]</code> mean?</h3>
+<p>The declaration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *MonthNames[];</code></pre></div>
+<p>Defines an array whose elements are character pointers.</p>
+<p>Each element refers to one month name.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>MonthNames[1]</code></pre></div>
+<p>Refers to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Farvardin</code></pre></div>
+<p>And:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>MonthNames[12]</code></pre></div>
+<p>Refers to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Esfand</code></pre></div>
+<h3 id="6-3-why-is-the-first-element-an-empty-string">6.3. Why is the first element an empty string?</h3>
+<p>Notice this element:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>""</code></pre></div>
+<p>It occupies index zero.</p>
+<p>The reason is that our enumeration starts at <code>1</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FAR = 1</code></pre></div>
+<p>Therefore, the month numbers and array indexes match directly.</p>
+<p>The array is organized like this:</p>
+<div class="table-wrap"><table><thead><tr><th>Array index</th><th>Array value</th></tr></thead><tbody><tr><td>0</td><td>Empty string</td></tr><tr><td>1</td><td>Farvardin</td></tr><tr><td>2</td><td>Ordibehesht</td></tr><tr><td>3</td><td>Khordad</td></tr><tr><td>4</td><td>Tir</td></tr><tr><td>5</td><td>Mordad</td></tr><tr><td>6</td><td>Shahrivar</td></tr><tr><td>7</td><td>Mehr</td></tr><tr><td>8</td><td>Aban</td></tr><tr><td>9</td><td>Azar</td></tr><tr><td>10</td><td>Day</td></tr><tr><td>11</td><td>Bahman</td></tr><tr><td>12</td><td>Esfand</td></tr></tbody></table></div>
+<p>The empty string at index zero is not a month. It is simply a placeholder.</p>
+<p>This technique allows us to access the correct month name directly using its enumeration value.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Month m = FAR;
+
+printf("%s\n", MonthNames[m]);</code></pre></div>
+<p>Since <code>FAR</code> equals <code>1</code>, this is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%s\n", MonthNames[1]);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Farvardin</code></pre></div>
+<p><strong>Important:</strong> C arrays use zero-based indexing. The first element is at index <code>0</code>, not index <code>1</code>.</p>
+<hr>
+<h2 id="7-understanding-the-for-loop">7. Understanding the <code>for</code> Loop</h2>
+<p>The next section is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(m=FAR; m&lt;=ESF; m++)
+{
+    printf("%3d %s\n", m, MonthNames[m]);
+}</code></pre></div>
+<p>This loop displays all twelve months.</p>
+<p>Let's analyze its three parts.</p>
+<h3 id="7-1-initialization">7.1. Initialization</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = FAR;</code></pre></div>
+<p>The loop starts with the first month.</p>
+<p>Because:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FAR = 1;</code></pre></div>
+<p>The initial value of <code>m</code> is <code>1</code>.</p>
+<h3 id="7-2-loop-condition">7.2. Loop condition</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m &lt;= ESF;</code></pre></div>
+<p>The loop continues as long as <code>m</code> is less than or equal to <code>ESF</code>.</p>
+<p>Since:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>ESF = 12;</code></pre></div>
+<p>The loop executes for values from <code>1</code> through <code>12</code>.</p>
+<h3 id="7-3-increment">7.3. Increment</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m++;</code></pre></div>
+<p>After each iteration, the value of <code>m</code> increases by one.</p>
+<p>The loop therefore follows this sequence:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</code></pre></div>
+<p>After printing the twelfth month, <code>m</code> becomes <code>13</code>.</p>
+<p>The condition:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>13 &lt;= 12</code></pre></div>
+<p>is false, so the loop terminates.</p>
+<h3 id="7-4-displaying-each-month">7.4. Displaying each month</h3>
+<p>Inside the loop:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%3d %s\n", m, MonthNames[m]);</code></pre></div>
+<p>Two values are printed:</p>
+<ol><li>The numeric month value.</li><li>The corresponding month name.</li></ol>
+<p>Let's understand the format specifiers.</p>
+<p><strong><code>%3d</code></strong></p>
+<ul><li><code>%d</code> displays an integer.</li><li><code>3</code> specifies a minimum field width of three characters.</li><li>It right-aligns the number within that field by default.</li></ul>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>  1
+  2
+ 10
+ 12</code></pre></div>
+<p><strong><code>%s</code></strong></p>
+<p>Displays a null-terminated string.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%s", MonthNames[1]);</code></pre></div>
+<p>Displays:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Farvardin</code></pre></div>
+<p><strong><code>\n</code></strong></p>
+<p>Moves the cursor to the next line.</p>
+<hr>
+<h2 id="8-understanding-the-program-execution">8. Understanding the Program Execution</h2>
+<p>Let's follow the program execution.</p>
+<p>Initially:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = FAR;</code></pre></div>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = 1</code></pre></div>
+<p>The first loop iteration executes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%3d %s\n", m, MonthNames[m]);</code></pre></div>
+<p>This is equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%3d %s\n", 1, MonthNames[1]);</code></pre></div>
+<p>The output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>  1 Farvardin</code></pre></div>
+<p>In the next iteration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = 2</code></pre></div>
+<p>The program accesses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>MonthNames[2]</code></pre></div>
+<p>And prints:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>  2 Ordibehesht</code></pre></div>
+<p>This process continues until:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = 12</code></pre></div>
+<p>The final output is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code> 12 Esfand</code></pre></div>
+<hr>
+<h2 id="9-expected-output">9. Expected Output</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>  1 Farvardin
+  2 Ordibehesht
+  3 Khordad
+  4 Tir
+  5 Mordad
+  6 Shahrivar
+  7 Mehr
+  8 Aban
+  9 Azar
+ 10 Day
+ 11 Bahman
+ 12 Esfand</code></pre></div>
+<hr>
+<h2 id="10-why-use-enum-instead-of-normal-integer-variables">10. Why Use <code>enum</code> Instead of Normal Integer Variables?</h2>
+<p>Consider two approaches.</p>
+<h3 id="approach-1-using-integers">Approach 1: Using integers</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int month = 1;
+
+if(month == 1)
+{
+    printf("Farvardin");
+}</code></pre></div>
+<p>The number <code>1</code> does not explain its meaning by itself.</p>
+<h3 id="approach-2-using-an-enumeration">Approach 2: Using an enumeration</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Month month = FAR;
+
+if(month == FAR)
+{
+    printf("Farvardin");
+}</code></pre></div>
+<p>This version is easier to understand because the constant name describes its meaning.</p>
+<h3 id="advantages-of-enumerations">Advantages of enumerations</h3>
+<ol><li><strong>Readability:</strong> Code becomes easier to understand.</li><li><strong>Maintainability:</strong> Named constants are easier to update.</li><li><strong>Organization:</strong> Related constants are grouped into one type.</li><li><strong>Fewer unexplained numbers:</strong> You do not need to remember what each integer represents.</li><li><strong>Convenience:</strong> Enumeration values can be used in conditions, loops, and array indexes.</li></ol>
+<hr>
+<h2 id="11-important-technical-notes">11. Important Technical Notes</h2>
+<h3 id="11-1-enumeration-values-are-not-automatically-restricted-to">11.1. Enumeration values are not automatically restricted to valid members</h3>
+<p>Although <code>Month</code> is an enumeration type, C does not automatically guarantee that a variable always contains one of the twelve defined month values.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Month m = 20;</code></pre></div>
+<p>This is permitted by the C language's rules for enumeration types, although <code>20</code> is not one of the named months.</p>
+<p>Therefore, when a value comes from user input or an external source, validate it before using it as an array index.</p>
+<h3 id="11-2-array-indexes-must-be-valid">11.2. Array indexes must be valid</h3>
+<p>This is safe:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>MonthNames[1];
+MonthNames[12];</code></pre></div>
+<p>But this is unsafe:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>MonthNames[20];</code></pre></div>
+<p>The array contains only thirteen elements, with valid indexes from <code>0</code> to <code>12</code>.</p>
+<p>Accessing an element outside the array bounds causes undefined behavior.</p>
+<h3 id="11-3-char-monthnames-versus-char-monthnames-20">11.3. <code>char *MonthNames[]</code> versus <code>char MonthNames[][20]</code></h3>
+<p>There are multiple ways to store strings in an array.</p>
+<p><strong>Array of character pointers:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *MonthNames[] = {
+    "",
+    "Farvardin",
+    "Ordibehesht",
+    "Khordad"
+};</code></pre></div>
+<p>Each array element is a pointer to a string.</p>
+<p><strong>Two-dimensional character array:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char MonthNames[][20] = {
+    "",
+    "Farvardin",
+    "Ordibehesht",
+    "Khordad"
+};</code></pre></div>
+<p>Each row provides space for up to 19 characters plus the terminating <code>'\0'</code>.</p>
+<p>The first approach is suitable when the strings do not need to be modified.</p>
+<p>The second approach stores the character arrays directly and allows their contents to be modified.</p>
+<h3 id="11-4-why-can-we-use-d-with-an-enum">11.4. Why can we use <code>%d</code> with an enum?</h3>
+<p>Enumeration constants are integer constants, and enumeration values can be passed to <code>printf()</code> using <code>%d</code> after the required integer argument conversion.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%d", m);</code></pre></div>
+<p>is appropriate for displaying the numeric value.</p>
+<h3 id="11-5-is-month-an-integer-type">11.5. Is <code>Month</code> an integer type?</h3>
+<p><code>Month</code> is an enumeration type.</p>
+<p>In C, its compatible integer type is implementation-defined, but enumeration values are integer values and can be used in integer expressions.</p>
+<p>Do not assume that every enumeration always has a particular storage size.</p>
+<hr>
+<h2 id="12-improved-version-with-input-validation">12. Improved Version with Input Validation</h2>
+<p>The original program is correct for displaying all twelve months.</p>
+<p>However, we can improve it by allowing the user to enter a month number and then displaying the corresponding name.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+typedef enum months {
+    FAR = 1,
+    ORD,
+    KHR,
+    TIR,
+    MOR,
+    SHR,
+    MHR,
+    ABN,
+    AZR,
+    DAY,
+    BAH,
+    ESF
+} Month;
+
+int main()
+{
+    Month m;
+
+    const char *MonthNames[] = {
+        "",
+        "Farvardin",
+        "Ordibehesht",
+        "Khordad",
+        "Tir",
+        "Mordad",
+        "Shahrivar",
+        "Mehr",
+        "Aban",
+        "Azar",
+        "Day",
+        "Bahman",
+        "Esfand"
+    };
+
+    int number;
+
+    printf("Enter month number (1-12): ");
+
+    if(scanf("%d", &amp;number) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    if(number &gt;= FAR &amp;&amp; number &lt;= ESF)
+    {
+        m = (Month)number;
+
+        printf("Month number: %d\n", m);
+        printf("Month name: %s\n", MonthNames[m]);
+    }
+    else
+    {
+        printf("Invalid month number!\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<h3 id="what-has-changed">What has changed?</h3>
+<p><strong>1. Using <code>const char *</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const char *MonthNames[];</code></pre></div>
+<p>The strings are string literals, which should not be modified.</p>
+<p>Using <code>const</code> helps prevent accidental modification through these pointers.</p>
+<p><strong>2. Getting input from the user</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%d", &amp;number);</code></pre></div>
+<p>The user enters a number between 1 and 12.</p>
+<p><strong>3. Checking whether input is valid</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if(number &gt;= FAR &amp;&amp; number &lt;= ESF)</code></pre></div>
+<p>This checks that the entered number is within the valid month range.</p>
+<p><strong>4. Converting the integer into an enumeration value</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>m = (Month)number;</code></pre></div>
+<p>This is an explicit type conversion, also called a cast.</p>
+<p><strong>5. Displaying the month name</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Month name: %s\n", MonthNames[m]);</code></pre></div>
+<p>The entered month number is used as the array index.</p>
+<h3 id="example-execution">Example execution</h3>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter month number (1-12): 7</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Month number: 7
+Month name: Mehr</code></pre></div>
+<p>Another example:</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter month number (1-12): 15</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Invalid month number!</code></pre></div>
+<hr>
+<h2 id="13-compilation-and-execution">13. Compilation and Execution</h2>
+<p>If you use GCC, save the source file as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -std=c11 -Wall -Wextra -pedantic main.c -o months</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./months</code></pre></div>
+<p>Run on Windows PowerShell:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\months.exe</code></pre></div>
+<p>Note: The program only uses <code>stdio.h</code>, so no additional math or other libraries are required.</p>
+<hr>
+<h2 id="14-practice-exercises">14. Practice Exercises</h2>
+<p>Try completing these exercises to improve your understanding.</p>
+<h3 id="exercise-1-display-the-month-number">Exercise 1: Display the month number</h3>
+<p>Write a program that asks the user for a month number and displays its corresponding name.</p>
+<h3 id="exercise-2-display-the-previous-month">Exercise 2: Display the previous month</h3>
+<p>Ask the user for a month number and display the previous month.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input: 5
+Output: Tir</code></pre></div>
+<h3 id="exercise-3-display-the-next-month">Exercise 3: Display the next month</h3>
+<p>Ask the user for a month number and display the next month.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input: 5
+Output: Shahrivar</code></pre></div>
+<p>Decide how your program should handle Esfand, the last month.</p>
+<h3 id="exercise-4-use-enum-for-weekdays">Exercise 4: Use <code>enum</code> for weekdays</h3>
+<p>Create an enumeration for the seven days of the week and use an array of strings to display their names.</p>
+<h3 id="exercise-5-display-months-in-reverse-order">Exercise 5: Display months in reverse order</h3>
+<p>Modify the original <code>for</code> loop so that the months are printed from Esfand to Farvardin.</p>
+<h3 id="exercise-6-create-a-month-selection-menu">Exercise 6: Create a month selection menu</h3>
+<p>Display a menu containing all twelve months. Let the user enter a number and print the selected month.</p>
+<hr>
+<h2 id="15-summary">15. Summary</h2>
+<p>In this program, we learned how to combine enumerations and arrays in C.</p>
+<p>The most important declaration is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>typedef enum months {
+    FAR = 1, ORD, KHR, TIR, MOR, SHR,
+    MHR, ABN, AZR, DAY, BAH, ESF
+} Month;</code></pre></div>
+<p>It defines twelve named integer constants and creates the type alias <code>Month</code>.</p>
+<p>The array:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *MonthNames[];</code></pre></div>
+<p>stores the names of the twelve months.</p>
+<p>Finally:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for(m = FAR; m &lt;= ESF; m++)
+{
+    printf("%3d %s\n", m, MonthNames[m]);
+}</code></pre></div>
+<p>uses enumeration values as array indexes to display all month names.</p>
+<p><strong>The main concept to remember:</strong></p>
+<p>An enumeration provides meaningful names for integer constants, while an array allows us to associate each integer value with its corresponding string.</p>
+<p>These techniques are useful when developing menus, state machines, communication protocols, embedded systems, and other C applications.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="pager-dir">← Previous</span><span class="pager-name">39 · Complex Numbers and Mathematical Operations Using Structures in C</span></a><a class="pager-link next" href="../index.html#curriculum"><span class="pager-dir">Finished</span><span class="pager-name">Back to the curriculum</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

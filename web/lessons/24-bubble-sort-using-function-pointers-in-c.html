@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bubble Sort Using Function Pointers in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link active" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-5">Part 5 — Pointers</a><span>/</span><span aria-current="page">Lesson 24</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 24 of 40 · Part 5</p><h1>Bubble Sort Using Function Pointers in C</h1><p class="lesson-source">Folder <code>24-Bubble_Sort_Using_Function_Pointers_in_C</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-project-structure">2. Project Structure</a></li><li><a href="#3-complete-source-code">3. Complete Source Code</a></li><li><a href="#4-understanding-the-program">4. Understanding the Program</a></li><li><a href="#5-what-is-a-function-pointer">5. What Is a Function Pointer?</a></li><li><a href="#6-understanding-the-array-of-function-pointers">6. Understanding the Array of Function Pointers</a></li><li><a href="#7-understanding-the-comparison-functions">7. Understanding the Comparison Functions</a></li><li><a href="#8-understanding-bubblesort-with-a-function-pointer">8. Understanding BubbleSort() with a Function Pointer</a></li><li><a href="#9-understanding-the-swap-function">9. Understanding the Swap() Function</a></li><li><a href="#10-understanding-printarray">10. Understanding PrintArray()</a></li><li><a href="#11-understanding-the-main-function">11. Understanding the Main Function</a></li><li><a href="#12-expected-output">12. Expected Output</a></li><li><a href="#13-what-is-a-stable-sorting-algorithm">13. What Is a Stable Sorting Algorithm?</a></li><li><a href="#14-important-c-programming-concepts">14. Important C Programming Concepts</a></li><li><a href="#15-time-and-space-complexity">15. Time and Space Complexity</a></li><li><a href="#16-compile-and-run">16. Compile and Run</a></li><li><a href="#17-exercises">17. Exercises</a></li><li><a href="#18-learning-objectives">18. Learning Objectives</a></li><li><a href="#19-next-step">19. Next Step</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>This project demonstrates how to implement a flexible Bubble Sort algorithm using <strong>function pointers</strong> in the C programming language.</p>
+<p>Unlike a traditional Bubble Sort implementation, which has a fixed sorting condition, this program receives a comparison function as an argument. This allows the same sorting algorithm to arrange data according to different rules.</p>
+<p>The program demonstrates three sorting methods:</p>
+<ol><li><strong>Ascending:</strong> Sort numbers from smallest to largest.</li><li><strong>Descending:</strong> Sort numbers from largest to smallest.</li><li><strong>Ascending by Remainder:</strong> Sort numbers according to their remainder when divided by 3.</li></ol>
+<p>The main concepts covered in this project are:</p>
+<ul><li>Function pointers</li><li>Arrays of function pointers</li><li>Passing functions as arguments</li><li>Callback functions</li><li>Pointer declarations and syntax</li><li>Bubble Sort</li><li>Custom comparison rules</li><li>Stable sorting</li><li>Reusable and flexible functions</li></ul>
+<h2 id="2-project-structure">2. Project Structure</h2>
+<p>A suggested folder structure:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>24_Bubble_Sort_Function_Pointers/
+│
+├── main.c
+└── README.md</code></pre></div>
+<h2 id="3-complete-source-code">3. Complete Source Code</h2>
+<p>The following version preserves the original program's behavior while improving the Bubble Sort loop by reducing unnecessary comparisons.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+void PrintArray(const int *const a, int N);
+void BubbleSort(int *const a, int N, int (*compare)(int a, int b));
+void Swap(int *p1, int *p2);
+
+int Ascending(int a, int b);
+int Descending(int a, int b);
+int AscendingRem3(int a, int b);
+
+int main()
+{
+    int a[] = {
+        23, 53, 12, 10, 17, 56, 78, 34, 29,
+        37, 45, 12, 19, 20, 40, 90, 43, 48, 62
+    };
+
+    int N = sizeof(a) / sizeof(a[0]);
+
+    printf("Array before sorting:\n");
+    PrintArray(a, N);
+    printf("\n\n");
+
+    int (*f[3])(int, int) = {
+        Ascending,
+        Descending,
+        AscendingRem3
+    };
+
+    int i;
+
+    for (i = 0; i &lt; 3; i++)
+    {
+        BubbleSort(a, N, f[i]);
+
+        printf("Array after sorting with f[%d]:\n", i);
+        PrintArray(a, N);
+        printf("\n\n");
+    }
+
+    return 0;
+}
+
+void BubbleSort(int *const a, int N, int (*compare)(int a, int b))
+{
+    int i, j;
+    int swapped;
+
+    for (i = 0; i &lt; N - 1; i++)
+    {
+        swapped = 0;
+
+        for (j = 0; j &lt; N - i - 1; j++)
+        {
+            if (!compare(a[j], a[j + 1]))
+            {
+                Swap(&amp;a[j], &amp;a[j + 1]);
+                swapped = 1;
+            }
+        }
+
+        if (!swapped)
+        {
+            break;
+        }
+    }
+}
+
+void Swap(int *p1, int *p2)
+{
+    int temp;
+
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}
+
+int Ascending(int a, int b)
+{
+    return (a &lt;= b);
+}
+
+int Descending(int a, int b)
+{
+    return (a &gt;= b);
+}
+
+int AscendingRem3(int a, int b)
+{
+    return ((a % 3) &lt;= (b % 3));
+}
+
+void PrintArray(const int *const a, int N)
+{
+    int i;
+
+    for (i = 0; i &lt; N; i++)
+    {
+        printf("%d", a[i]);
+
+        if (i &lt; N - 1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<h2 id="4-understanding-the-program">4. Understanding the Program</h2>
+<h3 id="4-1-header-file">4.1. Header File</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<p>This library provides standard input/output functions.</p>
+<p>The program uses <code>printf()</code> to display the original and sorted arrays.</p>
+<h3 id="4-2-function-prototypes">4.2. Function Prototypes</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int *const a, int N);
+
+void BubbleSort(
+    int *const a,
+    int N,
+    int (*compare)(int a, int b)
+);
+
+void Swap(int *p1, int *p2);
+
+int Ascending(int a, int b);
+int Descending(int a, int b);
+int AscendingRem3(int a, int b);</code></pre></div>
+<p>These declarations tell the compiler about the functions before they are called.</p>
+<p>The important new declaration is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int (*compare)(int a, int b);</code></pre></div>
+<p>This is a function pointer.</p>
+<p>It can point to a function that:</p>
+<ul><li>Receives two <code>int</code> arguments.</li><li>Returns an <code>int</code> value.</li></ul>
+<p>The comparison functions all have this same signature, so they can be passed to <code>BubbleSort()</code>.</p>
+<h2 id="5-what-is-a-function-pointer">5. What Is a Function Pointer?</h2>
+<p>A normal pointer stores the memory address of an object or variable.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int x = 10;
+int *p = &amp;x;</code></pre></div>
+<p>Here, <code>p</code> stores the address of the integer variable <code>x</code>.</p>
+<p>A function pointer is similar, but instead of storing the address of a variable, it stores the address of a function.</p>
+<h3 id="5-1-a-simple-function-pointer-example">5.1. A Simple Function Pointer Example</h3>
+<p>Consider this function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int Add(int a, int b)
+{
+    return a + b;
+}</code></pre></div>
+<p>We can declare a pointer that can refer to this function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int (*operation)(int, int);</code></pre></div>
+<p>The declaration means:</p>
+<ul><li><code>operation</code> is a pointer.</li><li>It points to a function.</li><li>The function receives two integers.</li><li>The function returns an integer.</li></ul>
+<p>We can assign the function to the pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>operation = Add;</code></pre></div>
+<p>We can now call the function through the pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int result = operation(10, 20);</code></pre></div>
+<p>The result is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>result = 30</code></pre></div>
+<p>The following call is also valid:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int result = (*operation)(10, 20);</code></pre></div>
+<p>Both forms call the function through the function pointer.</p>
+<h3 id="5-2-understanding-the-syntax">5.2. Understanding the Syntax</h3>
+<p>Compare these declarations:</p>
+<div class="table-wrap"><table><thead><tr><th>Declaration</th><th>Meaning</th></tr></thead><tbody><tr><td><code>int *p</code></td><td>Pointer to an integer</td></tr><tr><td><code>int (*f)(int, int)</code></td><td>Pointer to a function receiving two integers and returning an integer</td></tr><tr><td><code>int *f(int, int)</code></td><td>Function receiving two integers and returning a pointer to an integer</td></tr></tbody></table></div>
+<p>Parentheses are very important.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int (*f)(int, int);</code></pre></div>
+<p>declares a function pointer.</p>
+<p>But:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int *f(int, int);</code></pre></div>
+<p>declares a function that returns an integer pointer.</p>
+<p>These declarations have different meanings.</p>
+<h2 id="6-understanding-the-array-of-function-pointers">6. Understanding the Array of Function Pointers</h2>
+<p>One of the most important lines in this project is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int (*f[3])(int, int) = {
+    Ascending,
+    Descending,
+    AscendingRem3
+};</code></pre></div>
+<p>This declaration creates an array containing three function pointers.</p>
+<p>Let's break it down:</p>
+<div class="table-wrap"><table><thead><tr><th>Part</th><th>Meaning</th></tr></thead><tbody><tr><td><code>f</code></td><td>Name of the array</td></tr><tr><td><code>[3]</code></td><td>Three elements</td></tr><tr><td><code>*</code></td><td>Each element is a pointer</td></tr><tr><td><code>(int, int)</code></td><td>Each function receives two integers</td></tr><tr><td><code>int</code></td><td>Each function returns an integer</td></tr></tbody></table></div>
+<p>The array contains the addresses of three functions:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>f[0] -&gt; Ascending
+f[1] -&gt; Descending
+f[2] -&gt; AscendingRem3</code></pre></div>
+<p>We can call each function through its corresponding pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>f[0](10, 20);
+f[1](10, 20);
+f[2](10, 20);</code></pre></div>
+<p>Each call executes a different comparison rule.</p>
+<h3 id="why-use-an-array-of-function-pointers">Why Use an Array of Function Pointers?</h3>
+<p>Without function pointers, we might need to write separate sorting functions:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BubbleSortAscending();
+BubbleSortDescending();
+BubbleSortByRemainder();</code></pre></div>
+<p>This would duplicate much of the sorting code.</p>
+<p>With function pointers, we only need one sorting function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BubbleSort(a, N, compare);</code></pre></div>
+<p>The comparison behavior can change without changing the sorting algorithm itself.</p>
+<p>This is a powerful technique for writing reusable C code.</p>
+<h2 id="7-understanding-the-comparison-functions">7. Understanding the Comparison Functions</h2>
+<p>All three comparison functions receive two integers and return an integer.</p>
+<p>The return value is interpreted as a Boolean-like result:</p>
+<ul><li>Nonzero: The two elements are already in the required order.</li><li>Zero: The two elements are not in the required order and should be swapped.</li></ul>
+<h3 id="7-1-ascending">7.1. Ascending()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int Ascending(int a, int b)
+{
+    return (a &lt;= b);
+}</code></pre></div>
+<p>This function checks whether the first value is less than or equal to the second value.</p>
+<p>If:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = 10
+b = 20</code></pre></div>
+<p>Then:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Ascending(10, 20);</code></pre></div>
+<p>returns <code>1</code>.</p>
+<p>The elements are already in ascending order.</p>
+<p>But:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Ascending(20, 10);</code></pre></div>
+<p>returns <code>0</code>.</p>
+<p>The elements must be swapped.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Original: 23, 12, 10, 17
+Sorted:   10, 12, 17, 23</code></pre></div>
+<h3 id="7-2-descending">7.2. Descending()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int Descending(int a, int b)
+{
+    return (a &gt;= b);
+}</code></pre></div>
+<p>This function checks whether the first value is greater than or equal to the second value.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Descending(30, 20);</code></pre></div>
+<p>returns <code>1</code>.</p>
+<p>The elements are already in descending order.</p>
+<p>However:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Descending(10, 20);</code></pre></div>
+<p>returns <code>0</code>, so the elements must be swapped.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Original: 10, 20, 30, 40
+Sorted:   40, 30, 20, 10</code></pre></div>
+<h3 id="7-3-ascendingrem3">7.3. AscendingRem3()</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int AscendingRem3(int a, int b)
+{
+    return ((a % 3) &lt;= (b % 3));
+}</code></pre></div>
+<p>This function introduces a different sorting rule.</p>
+<p>Instead of comparing the actual numbers, it compares their remainders after division by 3.</p>
+<p>The <code>%</code> operator is called the modulus or remainder operator.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10 % 3 = 1
+20 % 3 = 2
+30 % 3 = 0</code></pre></div>
+<p>The function compares:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>(a % 3) &lt;= (b % 3)</code></pre></div>
+<p>This produces three remainder groups:</p>
+<ol><li>Numbers with remainder 0.</li><li>Numbers with remainder 1.</li><li>Numbers with remainder 2.</li></ol>
+<p>The numbers are arranged according to the remainder group, not their numerical value.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input:
+5, 3, 7, 9, 4, 8
+
+Remainders:
+5 % 3 = 2
+3 % 3 = 0
+7 % 3 = 1
+9 % 3 = 0
+4 % 3 = 1
+8 % 3 = 2
+
+Sorted by remainder:
+3, 9, 7, 4, 5, 8</code></pre></div>
+<p>Notice that the numbers within the same remainder group are not necessarily sorted numerically.</p>
+<p>The sorting rule is based only on the remainder.</p>
+<p><strong>Important:</strong> In C, the remainder of a negative number can be negative. For example, <code>-4 % 3</code> is <code>-1</code>. This comparison function therefore groups negative values according to C's remainder rules, not according to a mathematical modulo operation that always produces a nonnegative result.</p>
+<h2 id="8-understanding-bubblesort-with-a-function-pointer">8. Understanding BubbleSort() with a Function Pointer</h2>
+<p>The main sorting function is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(
+    int *const a,
+    int N,
+    int (*compare)(int a, int b)
+)</code></pre></div>
+<p>It receives three arguments:</p>
+<div class="table-wrap"><table><thead><tr><th>Parameter</th><th>Meaning</th></tr></thead><tbody><tr><td><code>a</code></td><td>Pointer to the original array</td></tr><tr><td><code>N</code></td><td>Number of elements</td></tr><tr><td><code>compare</code></td><td>Pointer to a comparison function</td></tr></tbody></table></div>
+<p>The function does not need to know whether it is sorting in ascending order, descending order, or by remainder.</p>
+<p>It simply calls the comparison function it receives.</p>
+<h3 id="8-1-outer-loop">8.1. Outer Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for (i = 0; i &lt; N - 1; i++)</code></pre></div>
+<p>The outer loop controls the sorting passes.</p>
+<p>For an array containing <code>N</code> elements, at most <code>N-1</code> passes are required.</p>
+<h3 id="8-2-resetting-the-swapped-variable">8.2. Resetting the swapped Variable</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>swapped = 0;</code></pre></div>
+<p>This variable indicates whether any elements were exchanged during the current pass.</p>
+<ul><li><code>0</code>: No swaps have occurred.</li><li><code>1</code>: At least one swap has occurred.</li></ul>
+<h3 id="8-3-inner-loop">8.3. Inner Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for (j = 0; j &lt; N - i - 1; j++)</code></pre></div>
+<p>The inner loop compares adjacent elements.</p>
+<p>The comparison range decreases after every pass because the largest remaining element, according to the selected comparison rule, reaches its final position at the end of the unsorted section.</p>
+<h3 id="8-4-calling-the-comparison-function">8.4. Calling the Comparison Function</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (!compare(a[j], a[j + 1]))</code></pre></div>
+<p>This is the key line of the program.</p>
+<p>The function pointer <code>compare</code> is used to execute the selected comparison function.</p>
+<p>For example, if <code>compare</code> points to <code>Ascending</code>, this expression behaves like:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (!Ascending(a[j], a[j + 1]))</code></pre></div>
+<p>If it points to <code>Descending</code>, it behaves like:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (!Descending(a[j], a[j + 1]))</code></pre></div>
+<p>The <code>!</code> operator means logical NOT.</p>
+<p>Therefore:</p>
+<ul><li>If the comparison function returns nonzero, no swap is required.</li><li>If the comparison function returns zero, the two elements are swapped.</li></ul>
+<p>You can also write the function call as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (!(*compare)(a[j], a[j + 1]))</code></pre></div>
+<p>Both forms are valid in C.</p>
+<h3 id="8-5-swapping-elements">8.5. Swapping Elements</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Swap(&amp;a[j], &amp;a[j + 1]);</code></pre></div>
+<p>The addresses of the two elements are passed to <code>Swap()</code>.</p>
+<p>This allows the function to exchange the original array values.</p>
+<h3 id="8-6-early-termination">8.6. Early Termination</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (!swapped)
+{
+    break;
+}</code></pre></div>
+<p>If no elements were exchanged during a complete pass, the array is already sorted according to the selected comparison function.</p>
+<p>The algorithm can stop immediately.</p>
+<h2 id="9-understanding-the-swap-function">9. Understanding the Swap() Function</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void Swap(int *p1, int *p2)
+{
+    int temp;
+
+    temp = *p1;
+    *p1 = *p2;
+    *p2 = temp;
+}</code></pre></div>
+<p>This function exchanges two integer values using pointers.</p>
+<p>Suppose:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a = 10;
+int b = 20;</code></pre></div>
+<p>We call:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Swap(&amp;a, &amp;b);</code></pre></div>
+<p>The function receives the addresses of <code>a</code> and <code>b</code>.</p>
+<p>The operations are:</p>
+<ol><li>Save the first value in <code>temp</code>.</li><li>Copy the second value into the first variable.</li><li>Copy the temporary value into the second variable.</li></ol>
+<p>Result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Before:
+a = 10
+b = 20
+
+After:
+a = 20
+b = 10</code></pre></div>
+<p>This is a common example of using pointers to modify variables inside another function.</p>
+<h2 id="10-understanding-printarray">10. Understanding PrintArray()</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(const int *const a, int N)
+{
+    int i;
+
+    for (i = 0; i &lt; N; i++)
+    {
+        printf("%d", a[i]);
+
+        if (i &lt; N - 1)
+        {
+            printf(", ");
+        }
+    }
+}</code></pre></div>
+<p>This function displays all array elements.</p>
+<p>The declaration:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const int *const a</code></pre></div>
+<p>means:</p>
+<ul><li>The function cannot modify the array elements through <code>a</code>.</li><li>The pointer itself cannot be reassigned.</li></ul>
+<p>This is appropriate because printing an array should not change its contents.</p>
+<h2 id="11-understanding-the-main-function">11. Understanding the Main Function</h2>
+<h3 id="11-1-creating-the-array">11.1. Creating the Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a[] = {
+    23, 53, 12, 10, 17, 56, 78, 34, 29,
+    37, 45, 12, 19, 20, 40, 90, 43, 48, 62
+};</code></pre></div>
+<p>The array contains 19 integers.</p>
+<h3 id="11-2-calculating-the-number-of-elements">11.2. Calculating the Number of Elements</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int N = sizeof(a) / sizeof(a[0]);</code></pre></div>
+<p>This calculates the number of elements automatically.</p>
+<h3 id="11-3-creating-the-function-pointer-array">11.3. Creating the Function Pointer Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int (*f[3])(int, int) = {
+    Ascending,
+    Descending,
+    AscendingRem3
+};</code></pre></div>
+<p>This creates an array containing the three comparison functions.</p>
+<h3 id="11-4-calling-each-sorting-method">11.4. Calling Each Sorting Method</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>for (i = 0; i &lt; 3; i++)
+{
+    BubbleSort(a, N, f[i]);
+
+    printf("Array after sorting with f[%d]:\n", i);
+    PrintArray(a, N);
+    printf("\n\n");
+}</code></pre></div>
+<p>The loop executes three times.</p>
+<div class="table-wrap"><table><thead><tr><th>Iteration</th><th>Function pointer</th><th>Sorting rule</th></tr></thead><tbody><tr><td>0</td><td><code>f[0]</code></td><td>Ascending</td></tr><tr><td>1</td><td><code>f[1]</code></td><td>Descending</td></tr><tr><td>2</td><td><code>f[2]</code></td><td>Ascending by remainder when divided by 3</td></tr></tbody></table></div>
+<p>The important detail is that the same array <code>a</code> is passed to every sorting operation.</p>
+<p>The array is not recreated or reset between iterations.</p>
+<p>Therefore:</p>
+<ol><li>The first operation sorts the original array in ascending order.</li><li>The second operation takes that already-sorted array and sorts it in descending order.</li><li>The third operation takes the descending array and sorts it by remainder.</li></ol>
+<p>The third operation is not sorting the original input order.</p>
+<h2 id="12-expected-output">12. Expected Output</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Array before sorting:
+23, 53, 12, 10, 17, 56, 78, 34, 29, 37, 45, 12, 19, 20, 40, 90, 43, 48, 62
+
+Array after sorting with f[0]:
+10, 12, 12, 17, 19, 20, 23, 29, 34, 37, 40, 43, 45, 48, 53, 56, 62, 78, 90
+
+Array after sorting with f[1]:
+90, 78, 62, 56, 53, 48, 45, 43, 40, 37, 34, 29, 23, 20, 19, 17, 12, 12, 10
+
+Array after sorting with f[2]:
+90, 78, 48, 45, 12, 12, 43, 40, 37, 34, 19, 10, 62, 56, 53, 29, 23, 20, 17</code></pre></div>
+<h3 id="understanding-the-third-result">Understanding the Third Result</h3>
+<p>The third sorting function compares only the remainder after division by 3.</p>
+<p>The result is divided into three groups:</p>
+<div class="table-wrap"><table><thead><tr><th>Group</th><th>Remainder</th><th>Values in output order</th></tr></thead><tbody><tr><td>First</td><td>0</td><td>90, 78, 48, 45, 12, 12</td></tr><tr><td>Second</td><td>1</td><td>43, 40, 37, 34, 19, 10</td></tr><tr><td>Third</td><td>2</td><td>62, 56, 53, 29, 23, 20, 17</td></tr></tbody></table></div>
+<p>Why are the values inside each group still in descending order?</p>
+<p>Because Bubble Sort is stable with these comparison functions. Equal comparison keys are not swapped, so their relative order is preserved.</p>
+<p>The input to the third sorting operation is already in descending numerical order. Therefore, the values within each remainder group retain that descending order.</p>
+<h2 id="13-what-is-a-stable-sorting-algorithm">13. What Is a Stable Sorting Algorithm?</h2>
+<p>A sorting algorithm is called <strong>stable</strong> when it preserves the relative order of elements that have equal sorting keys.</p>
+<p>For example, consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>8, 5, 11</code></pre></div>
+<p>Their remainders after division by 3 are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>8 % 3  = 2
+5 % 3  = 2
+11 % 3 = 2</code></pre></div>
+<p>All three elements have the same sorting key.</p>
+<p>A stable sorting algorithm preserves their original relative order.</p>
+<p>In this program, the comparison functions use <code>&lt;=</code> or <code>&gt;=</code>. Equal keys therefore do not trigger a swap.</p>
+<p>That is why this Bubble Sort implementation is stable.</p>
+<h2 id="14-important-c-programming-concepts">14. Important C Programming Concepts</h2>
+<h3 id="14-1-function-pointers-vs-normal-pointers">14.1. Function Pointers vs. Normal Pointers</h3>
+<p>Normal pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int x = 10;
+int *p = &amp;x;</code></pre></div>
+<p>Function pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int (*f)(int, int);</code></pre></div>
+<p>The first stores the address of an integer variable.</p>
+<p>The second stores the address of a function.</p>
+<h3 id="14-2-passing-a-function-as-an-argument">14.2. Passing a Function as an Argument</h3>
+<p>The following function receives another function through a pointer:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void BubbleSort(
+    int *a,
+    int N,
+    int (*compare)(int, int)
+);</code></pre></div>
+<p>This is commonly called a callback function technique.</p>
+<p>The receiving function can execute the supplied function whenever it needs to perform a comparison.</p>
+<h3 id="14-3-why-all-comparison-functions-have-the-same-signature">14.3. Why All Comparison Functions Have the Same Signature</h3>
+<p>These functions:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int Ascending(int a, int b);
+int Descending(int a, int b);
+int AscendingRem3(int a, int b);</code></pre></div>
+<p>all have the same function type:</p>
+<ul><li>Two integer arguments.</li><li>One integer return value.</li></ul>
+<p>This makes them compatible with:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int (*compare)(int, int);</code></pre></div>
+<p>A function with a different parameter or return type cannot safely be used as this callback.</p>
+<h2 id="15-time-and-space-complexity">15. Time and Space Complexity</h2>
+<p>For the optimized Bubble Sort implementation:</p>
+<div class="table-wrap"><table><thead><tr><th>Case</th><th>Time complexity</th><th>Explanation</th></tr></thead><tbody><tr><td>Best</td><td>O(N)</td><td>Already sorted according to the selected comparison function</td></tr><tr><td>Average</td><td>O(N²)</td><td>Multiple passes and swaps are usually required</td></tr><tr><td>Worst</td><td>O(N²)</td><td>Reverse order according to the selected comparison rule</td></tr></tbody></table></div>
+<p>Space complexity:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>O(1)</code></pre></div>
+<p>The algorithm sorts the original array and uses only a constant amount of additional memory.</p>
+<p>Function pointers do not change the asymptotic complexity of Bubble Sort.</p>
+<p>They make the sorting behavior configurable without requiring multiple implementations.</p>
+<h2 id="16-compile-and-run">16. Compile and Run</h2>
+<p>Using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o function_pointer_sort</code></pre></div>
+<p>Enable compiler warnings:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -Wall -Wextra -std=c11 main.c -o function_pointer_sort</code></pre></div>
+<p>Run on Linux or macOS:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./function_pointer_sort</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\function_pointer_sort.exe</code></pre></div>
+<h2 id="17-exercises">17. Exercises</h2>
+<h3 id="exercise-1-add-a-new-comparison-function">Exercise 1 — Add a New Comparison Function</h3>
+<p>Create a function that sorts numbers according to their absolute values.</p>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input:
+-8, 3, -2, 5, 1
+
+Sorted by absolute value:
+1, -2, 3, 5, -8</code></pre></div>
+<p>Hint: Use <code>abs()</code> from <code>&lt;stdlib.h&gt;</code>.</p>
+<h3 id="exercise-2-sort-by-even-and-odd-groups">Exercise 2 — Sort by Even and Odd Groups</h3>
+<p>Create a comparison function that places even numbers before odd numbers.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Input:
+5, 2, 7, 4, 3, 8
+
+Output:
+2, 4, 8, 5, 7, 3</code></pre></div>
+<h3 id="exercise-3-sort-by-last-digit">Exercise 3 — Sort by Last Digit</h3>
+<p>Create a comparison function that sorts integers according to their last decimal digit.</p>
+<p>Hint:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a % 10</code></pre></div>
+<h3 id="exercise-4-add-more-function-pointers">Exercise 4 — Add More Function Pointers</h3>
+<p>Add two more comparison functions and expand the function pointer array.</p>
+<h3 id="exercise-5-use-user-selection">Exercise 5 — Use User Selection</h3>
+<p>Instead of executing all sorting methods, ask the user to select a sorting method.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Select sorting method:
+
+1. Ascending
+2. Descending
+3. Sort by remainder
+
+Your choice:</code></pre></div>
+<p>Then call the selected function pointer.</p>
+<h3 id="exercise-6-reset-the-array">Exercise 6 — Reset the Array</h3>
+<p>Modify the program so every sorting method starts with the original unsorted array.</p>
+<p>You can use another array or copy the original array before each sorting operation.</p>
+<h3 id="exercise-7-create-a-generic-comparison-interface">Exercise 7 — Create a Generic Comparison Interface</h3>
+<p>Try to understand how function pointers can be used to build reusable sorting functions for other data types.</p>
+<p>Study the standard library function:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>qsort()</code></pre></div>
+<p>The <code>qsort()</code> function uses a comparison callback, making it a practical example of the same concept.</p>
+<h2 id="18-learning-objectives">18. Learning Objectives</h2>
+<p>After completing this project, you should understand:</p>
+<ul><li>What a function pointer is.</li><li>How to declare and use a function pointer.</li><li>How to create an array of function pointers.</li><li>How to pass a function as an argument to another function.</li><li>What callback functions are.</li><li>How to separate sorting logic from comparison logic.</li><li>How to create custom sorting rules.</li><li>How stable sorting works.</li><li>How to reuse one sorting algorithm for different ordering rules.</li></ul>
+<h2 id="19-next-step">19. Next Step</h2>
+<p>A useful next project is to implement a reusable sorting interface using <code>qsort()</code>.</p>
+<p>After that, explore:</p>
+<ul><li>Function pointers in structures.</li><li>Callback functions in embedded systems.</li><li>State machines using function pointers.</li><li>Interrupt callback tables.</li><li>Driver interfaces and hardware abstraction layers.</li></ul>
+<p>Function pointers are especially useful in embedded C when different hardware devices or operating modes need to execute different functions through a common interface.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="23-bubble-sort-in-c-using-pointers.html"><span class="pager-dir">← Previous</span><span class="pager-name">23 · Bubble Sort in C Using Pointers</span></a><a class="pager-link next" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="pager-dir">Next →</span><span class="pager-name">25 · Characters, Strings, ASCII Codes, and Character Classification in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

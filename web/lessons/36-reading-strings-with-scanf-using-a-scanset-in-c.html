@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reading Strings with scanf() Using a Scanset in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link active" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 36</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 36 of 40 · Part 6</p><h1>Reading Strings with scanf() Using a Scanset in C</h1><p class="lesson-source">Folder <code>36-Reading_Strings_with_scanf_Using_Scanset _in_C_Language</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-complete-source-code">2. Complete Source Code</a></li><li><a href="#3-required-header-files">3. Required Header Files</a></li><li><a href="#4-understanding-the-scanset-in-scanf">4. Understanding the Scanset in scanf()</a></li><li><a href="#5-understanding-the-program-step-by-step">5. Understanding the Program Step by Step</a></li><li><a href="#6-expected-output-examples">6. Expected Output Examples</a></li><li><a href="#7-difference-between-s-and-aeiou">7. Difference Between %s and %[^aeiou]</a></li><li><a href="#8-important-prevent-buffer-overflow">8. Important: Prevent Buffer Overflow</a></li><li><a href="#9-safer-complete-version">9. Safer Complete Version</a></li><li><a href="#10-important-behavior-input-is-not-automatically-consumed-co">10. Important Behavior: Input Is Not Automatically Consumed Completely</a></li><li><a href="#11-more-scanset-examples">11. More Scanset Examples</a></li><li><a href="#12-compile-and-run">12. Compile and Run</a></li><li><a href="#13-practice-exercises">13. Practice Exercises</a></li><li><a href="#14-what-you-will-learn">14. What You Will Learn</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In this project, we learn how to use the <strong>scanset feature of <code>scanf()</code></strong> to read characters from standard input according to a specified set of characters.</p>
+<p>Unlike the common <code>%s</code> format specifier, which reads characters until it encounters whitespace, a scanset lets us define exactly which characters should be accepted or where input reading should stop.</p>
+<p>The program uses this format:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[^aeiou]", str);</code></pre></div>
+<p>This scanset tells <code>scanf()</code> to read characters until it encounters one of the following lowercase vowels:</p>
+<ul><li><code>a</code></li><li><code>e</code></li><li><code>i</code></li><li><code>o</code></li><li><code>u</code></li></ul>
+<p>In other words, it reads all characters that are <strong>not lowercase vowels</strong>.</p>
+<p>This is an example of a negated scanset.</p>
+<h2 id="2-complete-source-code">2. Complete Source Code</h2>
+<p>Here is the original program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    char str[10];
+
+    printf("Enter the string: ");
+    scanf("%[^aeiou]", str);
+    printf("\n");
+
+    printf("Result:\n");
+    puts(str);
+    printf("\n");
+
+    return 0;
+}</code></pre></div>
+<p><strong>Important:</strong> The original code has two potential problems:</p>
+<ol><li><code>str</code> can store at most 9 input characters plus the terminating null character. The scanset has no width limit, so a longer input can cause a buffer overflow.</li><li>If the first input character is a lowercase vowel, <code>scanf()</code> does not assign anything to <code>str</code>. Calling <code>puts(str)</code> afterward would then use an uninitialized array.</li></ol>
+<p>We will fix these problems in the safer version later in this tutorial.</p>
+<h2 id="3-required-header-files">3. Required Header Files</h2>
+<h3 id="stdio-h"><code>stdio.h</code></h3>
+<p>Provides standard input and output functions.</p>
+<p>This program uses:</p>
+<ul><li><code>printf()</code> to display messages.</li><li><code>scanf()</code> to read input.</li><li><code>puts()</code> to display a string followed by a newline.</li></ul>
+<h3 id="stdlib-h"><code>stdlib.h</code></h3>
+<p>Provides general-purpose utility functions.</p>
+<p>The original program does not use any function from this library, so this header can be removed.</p>
+<h2 id="4-understanding-the-scanset-in-scanf">4. Understanding the Scanset in <code>scanf()</code></h2>
+<p>The most important part of this program is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[^aeiou]", str);</code></pre></div>
+<p>To understand it, we need to examine how a scanset works.</p>
+<p>A scanset is a feature of the <code>scanf()</code> family of functions that allows us to specify a set of characters to be accepted during input.</p>
+<p>Its general format is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>%[characters]</code></pre></div>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[abc]", str);</code></pre></div>
+<p>This reads consecutive characters as long as each character is <code>a</code>, <code>b</code>, or <code>c</code>.</p>
+<h3 id="what-does-mean">What does <code>^</code> mean?</h3>
+<p>When the caret character <code>^</code> appears immediately after the opening square bracket, it negates the scanset.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>%[^abc]</code></pre></div>
+<p>means:</p>
+<p>Read characters until a character belonging to the set <code>a</code>, <code>b</code>, or <code>c</code> is encountered.</p>
+<p>The caret does not mean that the program searches for the literal <code>^</code> character. It means that the specified set is excluded.</p>
+<h3 id="understanding-aeiou">Understanding <code>%[^aeiou]</code></h3>
+<p>In our program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[^aeiou]", str);</code></pre></div>
+<p>The scanset excludes these characters:</p>
+<div class="table-wrap"><table><thead><tr><th>Character</th><th>Description</th></tr></thead><tbody><tr><td><code>a</code></td><td>Lowercase a</td></tr><tr><td><code>e</code></td><td>Lowercase e</td></tr><tr><td><code>i</code></td><td>Lowercase i</td></tr><tr><td><code>o</code></td><td>Lowercase o</td></tr><tr><td><code>u</code></td><td>Lowercase u</td></tr></tbody></table></div>
+<p>Therefore, the function reads characters until it finds one of these lowercase vowels.</p>
+<p>For example, if the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World</code></pre></div>
+<p>The input is processed as follows:</p>
+<ul><li><code>H</code> is accepted.</li><li><code>e</code> is a lowercase vowel, so input reading stops.</li><li>The remaining characters are not consumed by this conversion.</li></ul>
+<p>The result stored in <code>str</code> is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>H</code></pre></div>
+<h2 id="5-understanding-the-program-step-by-step">5. Understanding the Program Step by Step</h2>
+<h3 id="step-1-declare-the-character-array">Step 1: Declare the character array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[10];</code></pre></div>
+<p>This creates an array capable of storing 10 characters.</p>
+<p>However, a C string must end with the null character <code>'\0'</code>.</p>
+<p>Therefore, the array can hold:</p>
+<ul><li>Up to 9 ordinary characters.</li><li>1 terminating null character.</li></ul>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello\0</code></pre></div>
+<p>uses 6 array elements.</p>
+<h3 id="step-2-display-the-input-message">Step 2: Display the input message</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Enter the string: ");</code></pre></div>
+<p>This displays a message asking the user to enter a string.</p>
+<h3 id="step-3-read-characters-using-the-scanset">Step 3: Read characters using the scanset</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[^aeiou]", str);</code></pre></div>
+<p>This is the central instruction.</p>
+<p>The function reads consecutive characters until it encounters a lowercase vowel.</p>
+<p>Unlike <code>%s</code>, the scanset does not automatically stop at spaces.</p>
+<p>For example, if the input is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BCD Hello 123</code></pre></div>
+<p>all characters are accepted because none of them is a lowercase vowel.</p>
+<p>The resulting string is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BCD Hello 123</code></pre></div>
+<p>However, the original array has only 10 elements, so this example would overflow the buffer. The safe version must specify a maximum input width.</p>
+<h3 id="step-4-print-a-newline">Step 4: Print a newline</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("\n");</code></pre></div>
+<p>This moves the cursor to the next line.</p>
+<h3 id="step-5-display-the-result">Step 5: Display the result</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Result:\n");
+puts(str);</code></pre></div>
+<p><code>printf()</code> displays the result heading.</p>
+<p><code>puts()</code> prints the string and automatically adds a newline at the end.</p>
+<h2 id="6-expected-output-examples">6. Expected Output Examples</h2>
+<h3 id="example-1-input-starts-with-a-consonant">Example 1: Input starts with a consonant</h3>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter the string: Hello</code></pre></div>
+<p>The first character is <code>H</code>, which is accepted.</p>
+<p>The next character is <code>e</code>, which is excluded.</p>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Result:
+H</code></pre></div>
+<h3 id="example-2-input-contains-no-lowercase-vowels">Example 2: Input contains no lowercase vowels</h3>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter the string: BCDXYZ</code></pre></div>
+<p>All characters are accepted.</p>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Result:
+BCDXYZ</code></pre></div>
+<h3 id="example-3-input-contains-spaces">Example 3: Input contains spaces</h3>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter the string: BCD XYZ 123</code></pre></div>
+<p>Spaces are not part of the excluded set, so they are accepted.</p>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Result:
+BCD XYZ 123</code></pre></div>
+<p>This is an important difference between <code>%s</code> and <code>%[^aeiou]</code>.</p>
+<h3 id="example-4-input-starts-with-a-lowercase-vowel">Example 4: Input starts with a lowercase vowel</h3>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Enter the string: apple</code></pre></div>
+<p>The first character is <code>a</code>, which belongs to the excluded set.</p>
+<p>Therefore, the scanset matches zero characters.</p>
+<p>The <code>scanf()</code> conversion fails to assign a string to <code>str</code>. The original program then attempts to print an uninitialized array, which causes undefined behavior.</p>
+<p>We must check the return value of <code>scanf()</code> before using the array.</p>
+<h2 id="7-difference-between-s-and-aeiou">7. Difference Between <code>%s</code> and <code>%[^aeiou]</code></h2>
+<p>These two format specifiers behave differently.</p>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th><code>%s</code></th><th><code>%[^aeiou]</code></th></tr></thead><tbody><tr><td>Reads characters</td><td>Until whitespace</td><td>Until a lowercase vowel</td></tr><tr><td>Accepts spaces</td><td>No</td><td>Yes</td></tr><tr><td>Accepts digits</td><td>Yes</td><td>Yes</td></tr><tr><td>Accepts punctuation</td><td>Yes</td><td>Yes</td></tr><tr><td>Can use a field width</td><td>Yes</td><td>Yes</td></tr><tr><td>Can be used with a scanset</td><td>No</td><td>Yes</td></tr></tbody></table></div>
+<p>For example, consider this input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BCD XYZ</code></pre></div>
+<p>Using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%s", str);</code></pre></div>
+<p>The result is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BCD</code></pre></div>
+<p>Using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[^aeiou]", str);</code></pre></div>
+<p>The result is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BCD XYZ</code></pre></div>
+<p>The scanset continues reading across spaces because a space is not excluded.</p>
+<h2 id="8-important-prevent-buffer-overflow">8. Important: Prevent Buffer Overflow</h2>
+<p>The original code uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[10];
+
+scanf("%[^aeiou]", str);</code></pre></div>
+<p>This is unsafe because the scanset has no maximum field width.</p>
+<p>If the user enters more than 9 accepted characters, <code>scanf()</code> can write beyond the array boundaries.</p>
+<p>This causes a <strong>buffer overflow</strong>, which can lead to unpredictable behavior or program crashes.</p>
+<p>For a 10-character array, we should limit the input to 9 characters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%9[^aeiou]", str);</code></pre></div>
+<p>The number <code>9</code> specifies the maximum number of input characters to store.</p>
+<p>The remaining array element is reserved for <code>'\0'</code>, which <code>scanf()</code> automatically appends after a successful scanset conversion.</p>
+<p><strong>Important:</strong> A field width prevents writing beyond the array, but it does not guarantee that the entire input line has been consumed. Any remaining input stays in the input stream.</p>
+<h2 id="9-safer-complete-version">9. Safer Complete Version</h2>
+<p>The following version fixes the buffer overflow problem and checks whether the scanset successfully reads any characters.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    char str[10];
+
+    printf("Enter the string: ");
+
+    if (scanf("%9[^aeiou]", str) == 1)
+    {
+        printf("\nResult:\n");
+        puts(str);
+    }
+    else
+    {
+        printf("\nNo valid characters were read.\n");
+    }
+
+    return 0;
+}</code></pre></div>
+<h3 id="what-has-changed">What has changed?</h3>
+<p><strong>1. Removed the unnecessary header</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<p>The program only needs standard input/output functions.</p>
+<p><strong>2. Added a field width</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%9[^aeiou]", str);</code></pre></div>
+<p>This prevents the function from storing more than 9 input characters in the 10-element array.</p>
+<p><strong>3. Checked the return value</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (scanf("%9[^aeiou]", str) == 1)</code></pre></div>
+<p><code>scanf()</code> returns the number of successfully assigned input items.</p>
+<p>For this program:</p>
+<ul><li><code>1</code> means the scanset successfully read and assigned a string.</li><li><code>0</code> means no characters matched the scanset.</li><li><code>EOF</code> means an input failure or end-of-file occurred before the conversion could begin.</li></ul>
+<p>The program only prints <code>str</code> when the conversion succeeds.</p>
+<h2 id="10-important-behavior-input-is-not-automatically-consumed-co">10. Important Behavior: Input Is Not Automatically Consumed Completely</h2>
+<p>Suppose the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BCD123456789XYZ</code></pre></div>
+<p>With:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[10];
+scanf("%9[^aeiou]", str);</code></pre></div>
+<p>The first call reads only the first 9 characters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>BCD123456</code></pre></div>
+<p>The remaining characters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>789XYZ</code></pre></div>
+<p>stay in the input stream.</p>
+<p>This matters if you plan to read more input afterward.</p>
+<p>If your goal is to process a complete input line safely, <code>fgets()</code> is often a better choice because it provides a clear buffer-size limit. You can then process the received string yourself.</p>
+<h2 id="11-more-scanset-examples">11. More Scanset Examples</h2>
+<h3 id="example-1-read-only-digits">Example 1: Read only digits</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[0123456789]", str);</code></pre></div>
+<p>Reads consecutive digits.</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12345ABC</code></pre></div>
+<p>Result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>12345</code></pre></div>
+<h3 id="example-2-read-only-lowercase-letters">Example 2: Read only lowercase letters</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[abcdefghijklmnopqrstuvwxyz]", str);</code></pre></div>
+<p>Reads consecutive lowercase English letters.</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>hello123</code></pre></div>
+<p>Result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>hello</code></pre></div>
+<h3 id="example-3-read-everything-except-digits">Example 3: Read everything except digits</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[^0123456789]", str);</code></pre></div>
+<p>Reads characters until a digit is encountered.</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello123</code></pre></div>
+<p>Result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello</code></pre></div>
+<h3 id="example-4-read-everything-except-spaces">Example 4: Read everything except spaces</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[^ ]", str);</code></pre></div>
+<p>Reads characters until a space is encountered.</p>
+<p>This behaves similarly to <code>%s</code> for ordinary input, although the handling of other whitespace characters differs.</p>
+<h3 id="example-5-read-letters-and-spaces">Example 5: Read letters and spaces</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%[a-zA-Z ]", str);</code></pre></div>
+<p>Reads consecutive uppercase letters, lowercase letters, and spaces.</p>
+<p>Input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World123</code></pre></div>
+<p>Result:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Hello World</code></pre></div>
+<p>Remember to specify a field width based on the destination array size.</p>
+<p>For example, for <code>char str[50]</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanf("%49[a-zA-Z ]", str);</code></pre></div>
+<h2 id="12-compile-and-run">12. Compile and Run</h2>
+<p>Save the source code as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -std=c11 -Wall -Wextra -pedantic main.c -o scanset_example</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./scanset_example</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>scanset_example.exe</code></pre></div>
+<h2 id="13-practice-exercises">13. Practice Exercises</h2>
+<p>Try completing these exercises:</p>
+<ol><li>Change the scanset to read everything except uppercase vowels (<code>AEIOU</code>).</li><li>Write a program that reads only numeric digits.</li><li>Write a program that reads only lowercase English letters.</li><li>Read characters until a comma is encountered.</li><li>Read everything except digits and spaces.</li><li>Change the array size to 50 and use the correct field width.</li><li>Count how many characters were successfully read.</li><li>Use <code>fgets()</code> to read a complete line and then process it to remove lowercase vowels.</li></ol>
+<h2 id="14-what-you-will-learn">14. What You Will Learn</h2>
+<p>After completing this project, you should understand:</p>
+<ul><li>How <code>scanf()</code> works with scansets.</li><li>The meaning of <code>%[...]</code> in a format string.</li><li>How the <code>^</code> character negates a scanset.</li><li>How to read characters until a specific character is encountered.</li><li>The difference between <code>%s</code> and <code>%[^...]</code>.</li><li>How to limit input width to prevent buffer overflow.</li><li>Why checking the return value of <code>scanf()</code> is important.</li><li>How to process strings using character arrays.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">35 · Splitting Strings into Tokens Using strtok() in C</span></a><a class="pager-link next" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">37 · Reading and Parsing Dates Using scanf() in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

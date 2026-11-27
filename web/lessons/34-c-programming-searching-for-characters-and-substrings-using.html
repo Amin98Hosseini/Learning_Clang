@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C Programming – Searching for Characters and Substrings Using strchr() and strstr() · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link active" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 34</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 34 of 40 · Part 6</p><h1>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</h1><p class="lesson-source">Folder <code>34-Searching_for_Characters-and_Substrings_Using_strchr_and_strstr_In_C_Clanguage</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-complete-source-code">3. Complete Source Code</a></li><li><a href="#4-understanding-the-code">4. Understanding the Code</a></li><li><a href="#5-searching-for-a-character-using-strchr">5. Searching for a Character Using strchr()</a></li><li><a href="#6-understanding-findcharacter">6. Understanding FindCharacter()</a></li><li><a href="#7-searching-for-a-substring-using-strstr">7. Searching for a Substring Using strstr()</a></li><li><a href="#8-understanding-findword">8. Understanding FindWord()</a></li><li><a href="#9-program-output">9. Program Output</a></li><li><a href="#10-important-differences-between-strchr-and-strstr">10. Important Differences Between strchr() and strstr()</a></li><li><a href="#11-important-notes-and-common-mistakes">11. Important Notes and Common Mistakes</a></li><li><a href="#12-optional-improvement-finding-complete-words">12. Optional Improvement – Finding Complete Words</a></li><li><a href="#13-compilation-and-execution">13. Compilation and Execution</a></li><li><a href="#14-practice-exercises">14. Practice Exercises</a></li><li><a href="#15-learning-objectives">15. Learning Objectives</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, the <code>&lt;string.h&gt;</code> library provides several functions for searching and manipulating strings.</p>
+<p>Sometimes we need to find a specific character inside a string. In other situations, we need to search for a complete word or a smaller string (substring) inside a larger string.</p>
+<p>In this lesson, we will learn two important string-searching functions:</p>
+<ul><li><code>strchr()</code> – Finds the first occurrence of a specified character in a string.</li><li><code>strstr()</code> – Finds the first occurrence of a substring inside another string.</li></ul>
+<p>We will also learn how to use pointers to find the positions of characters and words, count repeated characters, and search for multiple occurrences.</p>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;</code></pre></div>
+<div class="table-wrap"><table><thead><tr><th>Header</th><th>Purpose</th></tr></thead><tbody><tr><td><code>stdio.h</code></td><td>Provides input/output functions such as <code>printf()</code> and <code>puts()</code>.</td></tr><tr><td><code>stdlib.h</code></td><td>Provides general-purpose functions. It is not required in this example.</td></tr><tr><td><code>string.h</code></td><td>Provides string functions such as <code>strchr()</code> and <code>strstr()</code>.</td></tr></tbody></table></div>
+<p>For this program, only <code>stdio.h</code> and <code>string.h</code> are necessary.</p>
+<h2 id="3-complete-source-code">3. Complete Source Code</h2>
+<p>The following version preserves the functionality of the original program and includes a few improvements:</p>
+<ul><li>Uses <code>const char *</code> for pointers to read-only strings.</li><li>Uses <code>size_t</code> for string positions and occurrence counts.</li><li>Uses zero-based indexes in the output, matching normal C array indexing.</li><li>Searches for all occurrences of a character and the first occurrence of a substring.</li></ul>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+
+void FindCharacter(const char *str, char c);
+void FindWord(const char *str, const char *w);
+
+int main()
+{
+    char str[] = "To be, or not to be. That's the question.";
+
+    FindCharacter(str, 'b');
+
+    // FindCharacter(str, 'e');
+    // FindCharacter(str, 'a');
+    // FindCharacter(str, 'w');
+
+    FindWord(str, "not");
+    FindWord(str, "This");
+
+    return 0;
+}
+
+void FindCharacter(const char *str, char c)
+{
+    printf("Finding all occurrences of character '%c' "
+           "in the following string:\n", c);
+
+    puts(str);
+    printf("\n");
+
+    const char *pc;
+    size_t i, n = 0;
+
+    pc = strchr(str, c);
+
+    while (pc != NULL)
+    {
+        i = (size_t)(pc - str);
+
+        printf("Found '%c' at index %zu\n", c, i);
+
+        n++;
+
+        pc = strchr(pc + 1, c);
+    }
+
+    printf("\n");
+
+    if (n &gt; 0)
+    {
+        printf("%zu occurrences of character '%c' found.\n", n, c);
+    }
+    else
+    {
+        printf("Nothing found.\n");
+    }
+
+    printf("---------------------------------------\n");
+}
+
+void FindWord(const char *str, const char *w)
+{
+    printf("Finding first occurrence of word '%s' "
+           "in the following sentence:\n", w);
+
+    puts(str);
+    printf("\n");
+
+    const char *pw = strstr(str, w);
+
+    if (pw == NULL)
+    {
+        printf("Nothing found.\n");
+    }
+    else
+    {
+        size_t i = (size_t)(pw - str);
+
+        printf("Found at index %zu.\n", i);
+    }
+
+    printf("\n---------------------------------------\n");
+}</code></pre></div>
+<h2 id="4-understanding-the-code">4. Understanding the Code</h2>
+<h3 id="4-1-declaring-the-functions">4.1. Declaring the Functions</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void FindCharacter(const char *str, char c);
+void FindWord(const char *str, const char *w);</code></pre></div>
+<p>Two functions are declared before <code>main()</code>.</p>
+<p><strong>Function 1: <code>FindCharacter()</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void FindCharacter(const char *str, char c);</code></pre></div>
+<p>This function receives:</p>
+<ul><li><code>str</code>: The string in which we want to search.</li><li><code>c</code>: The character we want to find.</li></ul>
+<p>It searches for all occurrences of the specified character and displays their positions.</p>
+<p><strong>Function 2: <code>FindWord()</code></strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void FindWord(const char *str, const char *w);</code></pre></div>
+<p>This function receives:</p>
+<ul><li><code>str</code>: The original string.</li><li><code>w</code>: The substring we want to find.</li></ul>
+<p>It searches for the first occurrence of the specified substring.</p>
+<p>Both functions have a <code>void</code> return type, meaning they display their results instead of returning a value.</p>
+<h3 id="4-2-understanding-const-char">4.2. Understanding <code>const char *</code></h3>
+<p>The parameters are declared as:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const char *str</code></pre></div>
+<p>This means that <code>str</code> is a pointer to characters that must not be modified through this pointer.</p>
+<p>For example, the following operation is not allowed:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>str[0] = 'A';</code></pre></div>
+<p>This is useful because our searching functions only need to read the original string.</p>
+<p>The pointer itself can still be changed. For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pc = strchr(pc + 1, c);</code></pre></div>
+<p>Here, <code>pc</code> is moved to another position, but the characters it points to are not modified.</p>
+<h3 id="4-3-declaring-the-main-string">4.3. Declaring the Main String</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "To be, or not to be. That's the question.";</code></pre></div>
+<p>This statement creates a character array containing the sentence:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>To be, or not to be. That's the question.</code></pre></div>
+<p>The compiler automatically adds a null terminator (<code>'\0'</code>) at the end.</p>
+<p>The string is stored as a sequence of characters in memory:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>T o   b e ,   o r   n o t   t o   b e .   T h a t ' s   t h e   q u e s t i o n . \0</code></pre></div>
+<p>The null terminator indicates where the string ends.</p>
+<h3 id="4-4-calling-the-search-functions">4.4. Calling the Search Functions</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FindCharacter(str, 'b');
+
+FindWord(str, "not");
+FindWord(str, "This");</code></pre></div>
+<p>The first call searches for every occurrence of the character <code>'b'</code>.</p>
+<p>The second call searches for the substring <code>"not"</code>.</p>
+<p>The third call searches for the substring <code>"This"</code>.</p>
+<p>Notice the difference between the arguments:</p>
+<ul><li>A single character uses single quotation marks: <code>'b'</code>.</li><li>A string uses double quotation marks: <code>"not"</code>.</li></ul>
+<p>The commented statements:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>// FindCharacter(str, 'e');
+// FindCharacter(str, 'a');
+// FindCharacter(str, 'w');</code></pre></div>
+<p>are examples of additional searches. They are ignored by the compiler because they begin with <code>//</code>.</p>
+<p>You can remove the comment markers to search for those characters as well.</p>
+<h2 id="5-searching-for-a-character-using-strchr">5. Searching for a Character Using <code>strchr()</code></h2>
+<p>The <code>strchr()</code> function searches for the first occurrence of a specified character in a string.</p>
+<p>It is declared in <code>&lt;string.h&gt;</code>.</p>
+<p><strong>Syntax:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strchr(string, character);</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Hello World!";
+
+char *p = strchr(str, 'o');</code></pre></div>
+<p>The function searches the string from left to right.</p>
+<p>For <code>"Hello World!"</code>, the first <code>'o'</code> appears at index 4.</p>
+<p>The returned pointer points directly to that character.</p>
+<h3 id="5-1-understanding-the-return-value">5.1. Understanding the Return Value</h3>
+<p>The function returns:</p>
+<ul><li>A pointer to the first matching character if the character is found.</li><li><code>NULL</code> if the character does not exist in the string.</li></ul>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Hello";
+
+char *p1 = strchr(str, 'e');
+char *p2 = strchr(str, 'x');</code></pre></div>
+<p>The results are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>p1 -&gt; points to 'e'
+p2 -&gt; NULL</code></pre></div>
+<p><strong>Important:</strong> <code>strchr()</code> can also search for the null terminator itself:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strchr(str, '\0');</code></pre></div>
+<p>This returns a pointer to the terminating null character.</p>
+<h2 id="6-understanding-findcharacter">6. Understanding <code>FindCharacter()</code></h2>
+<p>Let's examine the function step by step.</p>
+<h3 id="6-1-displaying-the-search-information">6.1. Displaying the Search Information</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Finding all occurrences of character '%c' "
+       "in the following string:\n", c);
+
+puts(str);
+printf("\n");</code></pre></div>
+<p>The <code>%c</code> format specifier displays a single character.</p>
+<p>The <code>puts()</code> function prints the complete string and automatically adds a newline at the end.</p>
+<h3 id="6-2-declaring-variables">6.2. Declaring Variables</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const char *pc;
+size_t i, n = 0;</code></pre></div>
+<p>We declare three variables:</p>
+<div class="table-wrap"><table><thead><tr><th>Variable</th><th>Type</th><th>Purpose</th></tr></thead><tbody><tr><td><code>pc</code></td><td><code>const char *</code></td><td>Points to the character found by <code>strchr()</code>.</td></tr><tr><td><code>i</code></td><td><code>size_t</code></td><td>Stores the zero-based character index.</td></tr><tr><td><code>n</code></td><td><code>size_t</code></td><td>Counts the number of occurrences.</td></tr></tbody></table></div>
+<p>Why use <code>size_t</code> instead of <code>int</code>?</p>
+<p>String positions and sizes are naturally represented by <code>size_t</code>, the unsigned integer type used by C for object sizes and array indexing.</p>
+<p>The <code>%zu</code> format specifier is used to print a <code>size_t</code> value.</p>
+<h3 id="6-3-finding-the-first-occurrence">6.3. Finding the First Occurrence</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pc = strchr(str, c);</code></pre></div>
+<p>This statement searches for the first occurrence of character <code>c</code> in <code>str</code>.</p>
+<p>For the function call:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FindCharacter(str, 'b');</code></pre></div>
+<p>the statement becomes logically equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pc = strchr(str, 'b');</code></pre></div>
+<p>The first <code>'b'</code> in the sentence is found at index 3.</p>
+<p>Therefore, <code>pc</code> points to the character <code>'b'</code> at that location.</p>
+<h3 id="6-4-understanding-the-while-loop">6.4. Understanding the <code>while</code> Loop</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>while (pc != NULL)
+{
+    /* Search results */
+}</code></pre></div>
+<p>The loop continues as long as <code>pc</code> does not equal <code>NULL</code>.</p>
+<p>This means that the character was found.</p>
+<p>If <code>strchr()</code> cannot find another occurrence, it returns <code>NULL</code>, and the loop terminates.</p>
+<h3 id="6-5-calculating-the-character-position">6.5. Calculating the Character Position</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>i = (size_t)(pc - str);</code></pre></div>
+<p>This is one of the most important concepts in this example.</p>
+<p>Both <code>pc</code> and <code>str</code> are pointers into the same character array.</p>
+<p>Subtracting them gives the number of character positions between the beginning of the string and the found character.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Index:   0  1  2  3  4  5
+String:  T  o     b  e  ,
+                  ^
+                  pc</code></pre></div>
+<p>Here:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pc - str</code></pre></div>
+<p>equals:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>3</code></pre></div>
+<p>Therefore, the character is located at index 3.</p>
+<p>The result is converted to <code>size_t</code> for storage.</p>
+<p><strong>Important:</strong> Pointer subtraction is valid here because both pointers refer to elements of the same array (or its one-past-the-end position). The result is measured in elements, not bytes.</p>
+<h3 id="6-6-displaying-the-position">6.6. Displaying the Position</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Found '%c' at index %zu\n", c, i);</code></pre></div>
+<p>This prints the character and its position.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Found 'b' at index 3</code></pre></div>
+<h3 id="6-7-counting-occurrences">6.7. Counting Occurrences</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>n++;</code></pre></div>
+<p>Every time the character is found, the occurrence counter increases by one.</p>
+<p>The <code>++</code> operator increments the value of <code>n</code> by one.</p>
+<h3 id="6-8-searching-for-the-next-occurrence">6.8. Searching for the Next Occurrence</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pc = strchr(pc + 1, c);</code></pre></div>
+<p>This is the key statement that allows the program to find multiple occurrences.</p>
+<p>Instead of searching again from the beginning of the original string, we start searching from the character immediately after the current match.</p>
+<p>Let's examine it:</p>
+<ul><li><code>pc</code> points to the currently found character.</li><li><code>pc + 1</code> points to the next character.</li><li><code>strchr(pc + 1, c)</code> searches from that position onward.</li></ul>
+<p>For example, suppose we search for <code>'b'</code> in:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>To be, or not to be.</code></pre></div>
+<p>The first occurrence is found at index 3.</p>
+<p>The next search begins at index 4, so the same occurrence is not found again.</p>
+<p>The next <code>'b'</code> is found at index 16.</p>
+<p>When there are no more occurrences, <code>strchr()</code> returns <code>NULL</code>.</p>
+<p>This prevents an infinite loop and allows the function to count all matches.</p>
+<h3 id="6-9-displaying-the-final-count">6.9. Displaying the Final Count</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (n &gt; 0)
+{
+    printf("%zu occurrences of character '%c' found.\n", n, c);
+}
+else
+{
+    printf("Nothing found.\n");
+}</code></pre></div>
+<p>If <code>n</code> is greater than zero, at least one occurrence was found.</p>
+<p>Otherwise, the character does not exist in the string.</p>
+<h2 id="7-searching-for-a-substring-using-strstr">7. Searching for a Substring Using <code>strstr()</code></h2>
+<p>The <code>strstr()</code> function searches for the first occurrence of one string inside another string.</p>
+<p>It is also declared in <code>&lt;string.h&gt;</code>.</p>
+<p><strong>Syntax:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strstr(main_string, substring);</code></pre></div>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Hello World!";
+
+char *p = strstr(str, "World");</code></pre></div>
+<p>The function searches for <code>"World"</code> inside <code>"Hello World!"</code>.</p>
+<p>It returns a pointer to the first character of the matching substring.</p>
+<p>If the substring does not exist, the function returns <code>NULL</code>.</p>
+<h3 id="7-1-understanding-the-return-value">7.1. Understanding the Return Value</h3>
+<p>Example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Embedded Systems";
+
+char *p1 = strstr(str, "Systems");
+char *p2 = strstr(str, "Hardware");</code></pre></div>
+<p>The results are:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>p1 -&gt; points to the beginning of "Systems"
+p2 -&gt; NULL</code></pre></div>
+<p><strong>Important:</strong> If the substring is an empty string (<code>""</code>), <code>strstr()</code> returns a pointer to the beginning of the main string.</p>
+<h2 id="8-understanding-findword">8. Understanding <code>FindWord()</code></h2>
+<p>Now let's examine the second function.</p>
+<h3 id="8-1-displaying-the-search-information">8.1. Displaying the Search Information</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Finding first occurrence of word '%s' "
+       "in the following sentence:\n", w);
+
+puts(str);
+printf("\n");</code></pre></div>
+<p>The <code>%s</code> format specifier displays a string.</p>
+<p>The function prints the substring being searched for and the original sentence.</p>
+<h3 id="8-2-searching-for-the-substring">8.2. Searching for the Substring</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>const char *pw = strstr(str, w);</code></pre></div>
+<p>This statement searches for the first occurrence of <code>w</code> inside <code>str</code>.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FindWord(str, "not");</code></pre></div>
+<p>The function searches for <code>"not"</code> inside:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>To be, or not to be. That's the question.</code></pre></div>
+<p>The substring is found.</p>
+<p>The pointer <code>pw</code> points to the first character of <code>"not"</code>.</p>
+<h3 id="8-3-checking-whether-the-substring-exists">8.3. Checking Whether the Substring Exists</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>if (pw == NULL)
+{
+    printf("Nothing found.\n");
+}</code></pre></div>
+<p>If <code>strstr()</code> returns <code>NULL</code>, the requested substring does not exist.</p>
+<p>Otherwise, the function executes the <code>else</code> block.</p>
+<h3 id="8-4-calculating-the-substring-position">8.4. Calculating the Substring Position</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>size_t i = (size_t)(pw - str);</code></pre></div>
+<p>Just like in the character-searching function, pointer subtraction calculates the position of the match relative to the beginning of the original string.</p>
+<p>For the substring <code>"not"</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>To be, or not to be.
+           ^
+           |
+           First character of "not"</code></pre></div>
+<p>The zero-based index is 11.</p>
+<p>Therefore, the program prints:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Found at index 11.</code></pre></div>
+<p><strong>Important:</strong> The original code uses:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int i = pw - str + 1;</code></pre></div>
+<p>This produces a one-based position, not a zero-based index.</p>
+<p>For the substring <code>"not"</code>, the original program displays position 12.</p>
+<p>Both conventions are valid, but they mean different things:</p>
+<ul><li>Zero-based index: starts counting at 0.</li><li>One-based position: starts counting at 1.</li></ul>
+<p>In this README, we use zero-based indexing because it matches C array indexing.</p>
+<h3 id="8-5-does-strstr-find-a-complete-word">8.5. Does <code>strstr()</code> Find a Complete Word?</h3>
+<p>No. <code>strstr()</code> searches for a sequence of characters, not necessarily a complete word.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strstr("notebook", "not");</code></pre></div>
+<p>This finds <code>"not"</code> at the beginning of <code>"notebook"</code>.</p>
+<p>Similarly:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strstr("another", "not");</code></pre></div>
+<p>can find <code>"not"</code> inside <code>"another"</code>.</p>
+<p>Therefore, the original function name <code>FindWord()</code> is convenient for this example, but technically it searches for a <strong>substring</strong>, not necessarily a complete word.</p>
+<p>If you need to find complete words, you must additionally check the characters immediately before and after the match.</p>
+<h2 id="9-program-output">9. Program Output</h2>
+<p>With the original function calls:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>FindCharacter(str, 'b');
+
+FindWord(str, "not");
+FindWord(str, "This");</code></pre></div>
+<p>the output of the improved version is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Finding all occurrences of character 'b' in the following string:
+To be, or not to be. That's the question.
+
+Found 'b' at index 3
+Found 'b' at index 16
+
+2 occurrences of character 'b' found.
+---------------------------------------
+Finding first occurrence of word 'not' in the following sentence:
+To be, or not to be. That's the question.
+
+Found at index 11.
+
+---------------------------------------
+Finding first occurrence of word 'This' in the following sentence:
+To be, or not to be. That's the question.
+
+Nothing found.
+
+---------------------------------------</code></pre></div>
+<h2 id="10-important-differences-between-strchr-and-strstr">10. Important Differences Between <code>strchr()</code> and <code>strstr()</code></h2>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Purpose</th><th>Search argument</th></tr></thead><tbody><tr><td><code>strchr()</code></td><td>Searches for a character.</td><td>A single character</td></tr><tr><td><code>strstr()</code></td><td>Searches for a substring.</td><td>A string</td></tr></tbody></table></div>
+<p>Examples:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strchr(str, 'a');</code></pre></div>
+<p>Searches for the character <code>'a'</code>.</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strstr(str, "abc");</code></pre></div>
+<p>Searches for the substring <code>"abc"</code>.</p>
+<p>Both functions return a pointer to the first match or <code>NULL</code> if no match is found.</p>
+<h2 id="11-important-notes-and-common-mistakes">11. Important Notes and Common Mistakes</h2>
+<h3 id="11-1-case-sensitivity">11.1. Case Sensitivity</h3>
+<p>Both <code>strchr()</code> and <code>strstr()</code> perform case-sensitive searches.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>strstr("Hello World", "hello");</code></pre></div>
+<p>does not find a match because uppercase <code>'H'</code> and lowercase <code>'h'</code> are different characters.</p>
+<h3 id="11-2-searching-for-multiple-occurrences">11.2. Searching for Multiple Occurrences</h3>
+<p><code>strchr()</code> returns only the first match in each call.</p>
+<p>To find every occurrence, search again starting from the character after the previous match:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pc = strchr(pc + 1, c);</code></pre></div>
+<h3 id="11-3-pointer-arithmetic">11.3. Pointer Arithmetic</h3>
+<p>The expression:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>pc - str</code></pre></div>
+<p>calculates the number of elements between two pointers into the same array.</p>
+<p>It does not calculate a byte offset in the general sense. For a <code>char</code> array, each element occupies one byte, so the numerical values happen to correspond to byte positions as well.</p>
+<h3 id="11-4-use-the-correct-format-specifier">11.4. Use the Correct Format Specifier</h3>
+<p>If a position is stored in <code>size_t</code>, use:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("%zu", i);</code></pre></div>
+<p>Do not use <code>%d</code> for a <code>size_t</code> value.</p>
+<h3 id="11-5-strstr-searches-for-substrings-not-complete-words">11.5. <code>strstr()</code> Searches for Substrings, Not Complete Words</h3>
+<p>If you search for <code>"cat"</code> inside <code>"concatenate"</code>, the function can find a match.</p>
+<p>It does not automatically check word boundaries.</p>
+<h3 id="11-6-empty-search-strings">11.6. Empty Search Strings</h3>
+<ul><li><code>strchr(str, '\0')</code> finds the terminating null character.</li><li><code>strstr(str, "")</code> returns the beginning of the original string.</li></ul>
+<p>These are valid behaviors defined by the C standard.</p>
+<h2 id="12-optional-improvement-finding-complete-words">12. Optional Improvement – Finding Complete Words</h2>
+<p>If you want to search for complete words rather than arbitrary substrings, you need to check word boundaries.</p>
+<p>For example, searching for <code>"cat"</code> should match:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>The cat is sleeping.</code></pre></div>
+<p>But it should not match:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>The concatenate function.</code></pre></div>
+<p>A simple implementation for text where words are separated by whitespace or punctuation is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;ctype.h&gt;
+
+void FindWholeWord(const char *str, const char *word)
+{
+    size_t len = strlen(word);
+    const char *p = str;
+
+    while ((p = strstr(p, word)) != NULL)
+    {
+        int left_ok = (p == str || !isalnum((unsigned char)p[-1]));
+        int right_ok = (p[len] == '\0' ||
+                        !isalnum((unsigned char)p[len]));
+
+        if (left_ok &amp;&amp; right_ok)
+        {
+            printf("Whole word found at index %zu\n",
+                   (size_t)(p - str));
+            return;
+        }
+
+        p++;
+    }
+
+    printf("Whole word not found.\n");
+}
+
+int main()
+{
+    FindWholeWord("The cat is sleeping.", "cat");
+    FindWholeWord("The concatenate function.", "cat");
+
+    return 0;
+}</code></pre></div>
+<p>This example treats letters and digits as word characters. It is a simple ASCII-oriented approach; more advanced text processing may need additional rules for Unicode and language-specific word boundaries.</p>
+<h2 id="13-compilation-and-execution">13. Compilation and Execution</h2>
+<p>Save your source code in a file named:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>main.c</code></pre></div>
+<p>Compile using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o string_search</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./string_search</code></pre></div>
+<p>Run on Windows PowerShell:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\string_search.exe</code></pre></div>
+<p>You can also use Visual Studio Code, Code::Blocks, or another C development environment.</p>
+<h2 id="14-practice-exercises">14. Practice Exercises</h2>
+<p><strong>Exercise 1 – Find All Occurrences of a Character</strong></p>
+<p>Write a program that searches for the character <code>'a'</code> in:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "banana";</code></pre></div>
+<p>Display every occurrence and its index.</p>
+<p>Expected indexes:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1, 3, 5</code></pre></div>
+<p><strong>Exercise 2 – Search for a Substring</strong></p>
+<p>Search for <code>"System"</code> inside:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Embedded Systems Programming";</code></pre></div>
+<p>Display the index where the substring begins.</p>
+<p><strong>Exercise 3 – Search for a Missing Character</strong></p>
+<p>Search for <code>'z'</code> inside:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "Hello World";</code></pre></div>
+<p>Display an appropriate message if the character is not found.</p>
+<p><strong>Exercise 4 – Count All Occurrences of a Substring</strong></p>
+<p>Modify <code>FindWord()</code> so that it finds and counts every occurrence of a substring instead of stopping at the first one.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char str[] = "one two one three one";</code></pre></div>
+<p>Search for:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>one</code></pre></div>
+<p>Expected number of occurrences: <code>3</code>.</p>
+<p><strong>Exercise 5 – Search for a Complete Word</strong></p>
+<p>Modify the program so that searching for <code>"cat"</code> finds complete words only, not occurrences inside longer words.</p>
+<p><strong>Exercise 6 – Case-Insensitive Search</strong></p>
+<p>Create a program that searches for a word without distinguishing between uppercase and lowercase letters.</p>
+<p>For example, searching for <code>"hello"</code> should also find <code>"Hello"</code>.</p>
+<h2 id="15-learning-objectives">15. Learning Objectives</h2>
+<p>After completing this lesson, you should understand:</p>
+<ul><li>How to search for a character using <code>strchr()</code>.</li><li>How to search for a substring using <code>strstr()</code>.</li><li>How to check whether a search was successful using <code>NULL</code>.</li><li>How to find multiple occurrences of a character.</li><li>How to calculate a string position using pointer subtraction.</li><li>How pointer arithmetic works with character arrays.</li><li>The difference between a character and a string.</li><li>The difference between searching for a substring and searching for a complete word.</li><li>Why <code>size_t</code> and <code>%zu</code> are useful for string positions and counts.</li></ul></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="pager-dir">← Previous</span><span class="pager-name">33 · C Programming – Comparing Strings Using strcmp()</span></a><a class="pager-link next" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">35 · Splitting Strings into Tokens Using strtok() in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

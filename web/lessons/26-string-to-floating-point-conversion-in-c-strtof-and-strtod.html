@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>String to Floating-Point Conversion in C (strtof and strtod) · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link active" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-6">Part 6 — Characters and Strings</a><span>/</span><span aria-current="page">Lesson 26</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 26 of 40 · Part 6</p><h1>String to Floating-Point Conversion in C (strtof and strtod)</h1><p class="lesson-source">Folder <code>26-String_to_FloatingPoint_Conversion_in_C_strtof_and_strtod</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#1-introduction">1. Introduction</a></li><li><a href="#2-required-header-files">2. Required Header Files</a></li><li><a href="#3-understanding-the-source-code">3. Understanding the Source Code</a></li><li><a href="#4-program-output">4. Program Output</a></li><li><a href="#5-important-difference-between-strtof-and-strtod">5. Important Difference Between strtof() and strtod()</a></li><li><a href="#6-improved-version-using-strtod">6. Improved Version Using strtod()</a></li><li><a href="#7-a-more-robust-version-with-error-checking">7. A More Robust Version With Error Checking</a></li><li><a href="#8-understanding-the-conversion-process-visually">8. Understanding the Conversion Process Visually</a></li><li><a href="#9-other-examples">9. Other Examples</a></li><li><a href="#10-important-notes">10. Important Notes</a></li><li><a href="#11-compilation-and-execution">11. Compilation and Execution</a></li><li><a href="#12-exercises">12. Exercises</a></li><li><a href="#13-what-you-will-learn">13. What You Will Learn</a></li><li><a href="#14-suggested-next-lesson">14. Suggested Next Lesson</a></li></ol></nav><article class="prose"><h2 id="1-introduction">1. Introduction</h2>
+<p>In C programming, data is sometimes received as text rather than as numeric values.</p>
+<p>For example, a program might receive the following string:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s[] = "1.2 -3.5 10.8";</code></pre></div>
+<p>Although this string contains three numbers, C stores it as an array of characters.</p>
+<p>To perform mathematical calculations with these values, we must convert the text into numeric data types such as <code>float</code> or <code>double</code>.</p>
+<p>The C standard library provides several conversion functions:</p>
+<div class="table-wrap"><table><thead><tr><th>Function</th><th>Return type</th><th>Purpose</th></tr></thead><tbody><tr><td><code>atoi()</code></td><td><code>int</code></td><td>Converts a string to an integer</td></tr><tr><td><code>atof()</code></td><td><code>double</code></td><td>Converts a string to a floating-point value</td></tr><tr><td><code>strtol()</code></td><td><code>long</code></td><td>Converts a string to a long integer</td></tr><tr><td><code>strtof()</code></td><td><code>float</code></td><td>Converts a string to a float</td></tr><tr><td><code>strtod()</code></td><td><code>double</code></td><td>Converts a string to a double</td></tr><tr><td><code>strtold()</code></td><td><code>long double</code></td><td>Converts a string to a long double</td></tr></tbody></table></div>
+<p>In this lesson, we will focus on <code>strtof()</code> and <code>strtod()</code>.</p>
+<h2 id="2-required-header-files">2. Required Header Files</h2>
+<p>Our program uses two header files:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;</code></pre></div>
+<ul><li><code>&lt;stdio.h&gt;</code> provides <code>printf()</code> for displaying output.</li><li><code>&lt;stdlib.h&gt;</code> provides <code>strtof()</code> and <code>strtod()</code>.</li></ul>
+<h2 id="3-understanding-the-source-code">3. Understanding the Source Code</h2>
+<p>Here is the original program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    char s[] = "1.2 -3.5 10.8";
+    char *pEnd;
+
+    double x = strtof(s, &amp;pEnd);
+    double y = strtof(pEnd, &amp;pEnd);
+    double z = strtof(pEnd, NULL);
+
+    printf("x = %f\n", x);
+    printf("y = %f\n", y);
+    printf("z = %f\n", z);
+
+    return 0;
+}</code></pre></div>
+<p>Let's examine each part.</p>
+<h3 id="3-1-creating-a-string">3.1. Creating a String</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s[] = "1.2 -3.5 10.8";</code></pre></div>
+<p>This statement creates a character array containing the following text:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2 -3.5 10.8</code></pre></div>
+<p>The string contains three floating-point numbers separated by spaces.</p>
+<p>Conceptually, its contents are:</p>
+<div class="table-wrap"><table><thead><tr><th>Index</th><th>Character</th></tr></thead><tbody><tr><td>0</td><td><code>1</code></td></tr><tr><td>1</td><td><code>.</code></td></tr><tr><td>2</td><td><code>2</code></td></tr><tr><td>3</td><td><code> </code></td></tr><tr><td>4</td><td><code>-</code></td></tr><tr><td>5</td><td><code>3</code></td></tr><tr><td>6</td><td><code>.</code></td></tr><tr><td>7</td><td><code>5</code></td></tr><tr><td>8</td><td><code> </code></td></tr><tr><td>9</td><td><code>1</code></td></tr><tr><td>10</td><td><code>0</code></td></tr><tr><td>11</td><td><code>.</code></td></tr><tr><td>12</td><td><code>8</code></td></tr><tr><td>13</td><td><code>\0</code></td></tr></tbody></table></div>
+<p>The final character <code>'\0'</code> is the null terminator. It marks the end of a C string.</p>
+<h3 id="3-2-declaring-a-pointer">3.2. Declaring a Pointer</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *pEnd;</code></pre></div>
+<p>This declares a pointer to a character.</p>
+<p>The pointer will be used by <code>strtof()</code> to identify where the numeric conversion stopped.</p>
+<p>It is important to understand that <code>pEnd</code> does not contain the converted number. It contains an address pointing to a character inside the original string.</p>
+<h3 id="3-3-understanding-strtof">3.3. Understanding <code>strtof()</code></h3>
+<p>The function prototype is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>float strtof(const char *str, char **endptr);</code></pre></div>
+<p>It has two parameters:</p>
+<ol><li><code>str</code>: A pointer to the beginning of the text to convert.</li><li><code>endptr</code>: A pointer to a character pointer. The function stores the address of the first character that was not part of the converted number.</li></ol>
+<p>The function returns the converted value as a <code>float</code>.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char text[] = "25.75";
+char *end;
+
+float value = strtof(text, &amp;end);
+
+printf("Value = %f\n", value);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Value = 25.750000</code></pre></div>
+<p>After conversion, <code>end</code> points to the null terminator because the entire string was a valid floating-point number.</p>
+<h3 id="3-4-understanding-char-endptr">3.4. Understanding <code>char **endptr</code></h3>
+<p>This is an important pointer concept.</p>
+<p>Consider:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char *pEnd;
+strtof(s, &amp;pEnd);</code></pre></div>
+<ul><li><code>pEnd</code> is a pointer to a character.</li><li><code>&amp;pEnd</code> is the address of that pointer.</li><li><code>strtof()</code> receives <code>&amp;pEnd</code> so that it can modify the pointer itself.</li></ul>
+<p>The second parameter is therefore a pointer to a pointer.</p>
+<p>This allows <code>strtof()</code> to return two pieces of information:</p>
+<ul><li>The converted floating-point value.</li><li>The location where conversion stopped.</li></ul>
+<h3 id="3-5-converting-the-first-number">3.5. Converting the First Number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x = strtof(s, &amp;pEnd);</code></pre></div>
+<p>The function starts reading from the beginning of <code>s</code>.</p>
+<p>The first number is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2</code></pre></div>
+<p>The conversion stops when the function encounters the space character.</p>
+<p>After this statement:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>x    = 1.2
+pEnd = address of the space after 1.2</code></pre></div>
+<p>Conceptually:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>s:
+1 . 2 _ - 3 . 5 _ 1 0 . 8 \0
+      ^
+      |
+     pEnd</code></pre></div>
+<p>Here <code>_</code> represents a space.</p>
+<h3 id="3-6-converting-the-second-number">3.6. Converting the Second Number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double y = strtof(pEnd, &amp;pEnd);</code></pre></div>
+<p>This statement starts the next conversion from the position stored in <code>pEnd</code>.</p>
+<p>The input begins with a space:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code> -3.5 10.8</code></pre></div>
+<p><code>strtof()</code> automatically skips leading whitespace characters.</p>
+<p>It then converts:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>-3.5</code></pre></div>
+<p>After conversion, <code>pEnd</code> points to the space after <code>-3.5</code>.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>y = -3.5</code></pre></div>
+<p>Notice that the same pointer is used as both the starting position and the destination for the new ending position.</p>
+<p>This is valid because the function reads the original pointer value and then stores the new ending address through the supplied pointer-to-pointer.</p>
+<h3 id="3-7-converting-the-third-number">3.7. Converting the Third Number</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double z = strtof(pEnd, NULL);</code></pre></div>
+<p>The final conversion starts from the position stored in <code>pEnd</code>.</p>
+<p>The remaining text is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code> 10.8</code></pre></div>
+<p>The function skips the leading space and converts:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>10.8</code></pre></div>
+<p>The second argument is <code>NULL</code> because we do not need to know where the conversion stopped.</p>
+<p>Therefore:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>z = 10.8</code></pre></div>
+<h2 id="4-program-output">4. Program Output</h2>
+<p>The program produces:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>x = 1.200000
+y = -3.500000
+z = 10.800000</code></pre></div>
+<p>The <code>%f</code> format specifier displays floating-point values with six digits after the decimal point by default.</p>
+<h2 id="5-important-difference-between-strtof-and-strtod">5. Important Difference Between <code>strtof()</code> and <code>strtod()</code></h2>
+<p>Your original program declares the variables as <code>double</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x = strtof(s, &amp;pEnd);</code></pre></div>
+<p>However, <code>strtof()</code> returns a <code>float</code>.</p>
+<p>C automatically converts the returned <code>float</code> to <code>double</code> when assigning it to <code>x</code>, but this does not restore any precision that might have been lost during the original <code>float</code> conversion.</p>
+<p>If you want to work with <code>double</code>, use <code>strtod()</code>:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double x = strtod(s, &amp;pEnd);</code></pre></div>
+<p>The function prototype is:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>double strtod(const char *str, char **endptr);</code></pre></div>
+<p>Comparison:</p>
+<div class="table-wrap"><table><thead><tr><th>Feature</th><th><code>strtof()</code></th><th><code>strtod()</code></th></tr></thead><tbody><tr><td>Return type</td><td><code>float</code></td><td><code>double</code></td></tr><tr><td>Typical precision</td><td>About 6–7 decimal digits</td><td>About 15–16 decimal digits</td></tr><tr><td>Memory size</td><td>Usually 4 bytes</td><td>Usually 8 bytes</td></tr><tr><td>Appropriate variable</td><td><code>float</code></td><td><code>double</code></td></tr></tbody></table></div>
+<p>The exact precision and sizes depend on the implementation.</p>
+<h2 id="6-improved-version-using-strtod">6. Improved Version Using <code>strtod()</code></h2>
+<p>Since our variables are declared as <code>double</code>, this is the recommended version:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main(void)
+{
+    char s[] = "1.2 -3.5 10.8";
+    char *pEnd;
+
+    double x = strtod(s, &amp;pEnd);
+    double y = strtod(pEnd, &amp;pEnd);
+    double z = strtod(pEnd, NULL);
+
+    printf("x = %f\n", x);
+    printf("y = %f\n", y);
+    printf("z = %f\n", z);
+
+    return 0;
+}</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>x = 1.200000
+y = -3.500000
+z = 10.800000</code></pre></div>
+<h2 id="7-a-more-robust-version-with-error-checking">7. A More Robust Version With Error Checking</h2>
+<p>The original example assumes that all three numbers are valid.</p>
+<p>In real applications, input should be checked before using converted values.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;errno.h&gt;
+
+int main(void)
+{
+    char s[] = "1.2 -3.5 10.8";
+    char *pEnd;
+    double values[3];
+
+    char *p = s;
+
+    for (int i = 0; i &lt; 3; i++)
+    {
+        while (isspace((unsigned char)*p))
+        {
+            p++;
+        }
+
+        if (*p == '\0')
+        {
+            printf("Error: Not enough numbers.\n");
+            return 1;
+        }
+
+        errno = 0;
+        values[i] = strtod(p, &amp;pEnd);
+
+        if (p == pEnd)
+        {
+            printf("Error: Invalid number at position %d.\n", i + 1);
+            return 1;
+        }
+
+        if (errno == ERANGE)
+        {
+            printf("Error: Number is outside the representable range.\n");
+            return 1;
+        }
+
+        p = pEnd;
+    }
+
+    while (isspace((unsigned char)*p))
+    {
+        p++;
+    }
+
+    if (*p != '\0')
+    {
+        printf("Error: Unexpected extra characters: %s\n", p);
+        return 1;
+    }
+
+    printf("First number  = %f\n", values[0]);
+    printf("Second number = %f\n", values[1]);
+    printf("Third number  = %f\n", values[2]);
+
+    return 0;
+}</code></pre></div>
+<p>This version:</p>
+<ol><li>Skips whitespace before each number.</li><li>Converts the next number using <code>strtod()</code>.</li><li>Checks whether any characters were converted.</li><li>Checks <code>errno</code> for range errors.</li><li>Rejects unexpected additional characters after the three numbers.</li></ol>
+<p>The check <code>p == pEnd</code> is particularly important: it means that the conversion did not consume any characters.</p>
+<p>For production code, you should also decide whether special values such as <code>NaN</code> and infinity are acceptable, and whether the input format should allow them.</p>
+<h2 id="8-understanding-the-conversion-process-visually">8. Understanding the Conversion Process Visually</h2>
+<p>For the original input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>1.2 -3.5 10.8</code></pre></div>
+<p>The conversion proceeds as follows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Step 1:
+strtod(s, &amp;pEnd)
+
+Converted value: 1.2
+Remaining text:  -3.5 10.8
+
+Step 2:
+strtod(pEnd, &amp;pEnd)
+
+Converted value: -3.5
+Remaining text:   10.8
+
+Step 3:
+strtod(pEnd, NULL)
+
+Converted value: 10.8
+Remaining text:  Not requested</code></pre></div>
+<p>The important idea is that we do not need to create a separate string for each number. We can move through the original string using a pointer.</p>
+<h2 id="9-other-examples">9. Other Examples</h2>
+<h3 id="example-1-positive-and-negative-values">Example 1: Positive and Negative Values</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s[] = "100 -25 3.14159";
+char *end;
+
+double a = strtod(s, &amp;end);
+double b = strtod(end, &amp;end);
+double c = strtod(end, NULL);</code></pre></div>
+<p>Results:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = 100
+b = -25
+c = 3.14159</code></pre></div>
+<h3 id="example-2-scientific-notation">Example 2: Scientific Notation</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s[] = "1.5e3 -2.5e-2";
+char *end;
+
+double a = strtod(s, &amp;end);
+double b = strtod(end, NULL);</code></pre></div>
+<p>Results:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>a = 1500
+b = -0.025</code></pre></div>
+<p><code>strtod()</code> supports scientific notation.</p>
+<h3 id="example-3-conversion-stops-at-invalid-text">Example 3: Conversion Stops at Invalid Text</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s[] = "123.45ABC";
+char *end;
+
+double value = strtod(s, &amp;end);
+
+printf("Value = %f\n", value);
+printf("Remaining text = %s\n", end);</code></pre></div>
+<p>Output:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Value = 123.450000
+Remaining text = ABC</code></pre></div>
+<p>This demonstrates why the <code>endptr</code> parameter is useful.</p>
+<h2 id="10-important-notes">10. Important Notes</h2>
+<ul><li><code>strtof()</code> converts text to <code>float</code>.</li><li><code>strtod()</code> converts text to <code>double</code>.</li><li><code>strtold()</code> converts text to <code>long double</code>.</li><li><code>endptr</code> identifies where conversion stopped.</li><li><code>NULL</code> can be used when the ending position is not needed.</li><li>Leading whitespace is automatically skipped.</li><li>A conversion can stop before the end of the string.</li><li>Always check whether conversion succeeded when processing untrusted input.</li><li><code>strtof()</code> and <code>strtod()</code> may recognize decimal and scientific notation.</li><li>The decimal separator is affected by the active C locale. In the usual <code>"C"</code> locale, a period is used.</li><li>These functions do not automatically split or validate an entire list of numbers. Your program must handle the remaining text.</li></ul>
+<h2 id="11-compilation-and-execution">11. Compilation and Execution</h2>
+<p>Using GCC:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o string_conversion</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./string_conversion</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o string_conversion.exe
+.\string_conversion.exe</code></pre></div>
+<h2 id="12-exercises">12. Exercises</h2>
+<p>Try these exercises to improve your understanding.</p>
+<p><strong>Exercise 1:</strong> Change the string to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s[] = "12.5 20.75 30.25";</code></pre></div>
+<p>Convert all three values and calculate their sum.</p>
+<p><strong>Exercise 2:</strong> Use the following input:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>char s[] = "-10.5 5.25 -2.75";</code></pre></div>
+<p>Calculate the average of the three numbers.</p>
+<p><strong>Exercise 3:</strong> Create a program that converts four numbers from a single string.</p>
+<p><strong>Exercise 4:</strong> Use <code>strtof()</code> instead of <code>strtod()</code> and compare the result types.</p>
+<p><strong>Exercise 5:</strong> Create a function with this prototype:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int ParseNumbers(const char *text, double values[], int count);</code></pre></div>
+<p>The function should extract <code>count</code> numbers from a string and return whether the conversion succeeded.</p>
+<h2 id="13-what-you-will-learn">13. What You Will Learn</h2>
+<p>After completing this lesson, you should understand:</p>
+<ul><li>How C strings store text.</li><li>How to convert strings into floating-point numbers.</li><li>How <code>strtof()</code> and <code>strtod()</code> work.</li><li>How to use a pointer to track the conversion position.</li><li>What a pointer to a pointer (<code>char **</code>) means.</li><li>How to parse multiple numbers from one string.</li><li>How to check conversion errors.</li></ul>
+<h2 id="14-suggested-next-lesson">14. Suggested Next Lesson</h2>
+<p><strong>String Parsing in C: <code>strtok()</code>, <code>strchr()</code>, <code>strstr()</code>, and <code>sscanf()</code></strong></p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="pager-dir">← Previous</span><span class="pager-name">25 · Characters, Strings, ASCII Codes, and Character Classification in C</span></a><a class="pager-link next" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="pager-dir">Next →</span><span class="pager-name">27 · Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>

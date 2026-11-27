@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Array Size and Variable Length Arrays in C · Learning C</title>
+<meta name="description" content="A progressive, hands-on C course in 40 lessons, from Hello World to pointers, strings, structures and enumerations.">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body class="lesson-page">
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header"><div class="container header-inner"><button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sidebar"><span></span><span></span><span></span></button><a class="brand" href="../index.html"><span class="brand-mark">C</span><span class="brand-text">Learning C<small>40 hands-on lessons</small></span></a><nav class="top-nav"><a href="../index.html">Home</a><a href="../index.html#curriculum">Curriculum</a><a href="../index.html#build">Build &amp; run</a></nav><a class="btn btn-sm" href="../lessons/01-hello-world-in-c.html">Start learning</a></div></header><div class="scrim" id="scrim" hidden></div>
+<div class="container layout"><aside class="sidebar" id="sidebar"><div class="side-head"><p class="side-label">The course</p><input type="search" id="lesson-search" class="side-search" placeholder="Filter lessons…" aria-label="Filter lessons"></div><details class="side-group"><summary><span class="side-part">Part 1</span><span class="side-title">First Programs</span></summary><ul><li><a class="side-link" href="01-hello-world-in-c.html"><span class="side-num">01</span><span>Hello World in C</span></a></li><li><a class="side-link" href="02-escape-sequences-and-special-characters-in-c.html"><span class="side-num">02</span><span>Escape Sequences and Special Characters in C</span></a></li><li><a class="side-link" href="03-user-input-scanf-and-printf.html"><span class="side-num">03</span><span>User Input (scanf and printf)</span></a></li><li><a class="side-link" href="04-c-programming-adding-two-integer-numbers.html"><span class="side-num">04</span><span>C Programming – Adding Two Integer Numbers</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 2</span><span class="side-title">Decisions, Operators and Loops</span></summary><ul><li><a class="side-link" href="05-even-odd-and-positive-negative-number-checker-in-c.html"><span class="side-num">05</span><span>Even/Odd and Positive/Negative Number Checker in C</span></a></li><li><a class="side-link" href="06-pre-increment-and-post-increment-operators-in-c.html"><span class="side-num">06</span><span>Pre-Increment and Post-Increment Operators in C</span></a></li><li><a class="side-link" href="07-while-loop-break-sum-mean-in-c.html"><span class="side-num">07</span><span>While Loop, Break, Sum &amp; Mean in C</span></a></li><li><a class="side-link" href="08-c-programming-arithmetic-progression-and-series-summation.html"><span class="side-num">08</span><span>C Programming – Arithmetic Progression and Series Summation</span></a></li><li><a class="side-link" href="09-c-programming-arithmetic-progression-using-for-loop.html"><span class="side-num">09</span><span>C Programming – Arithmetic Progression Using For Loop</span></a></li><li><a class="side-link" href="10-c-programming-arithmetic-progression-and-power-series-using.html"><span class="side-num">10</span><span>C Programming – Arithmetic Progression and Power Series Using For Loop</span></a></li><li><a class="side-link" href="11-grade-statistics-analyzer-in-c.html"><span class="side-num">11</span><span>Grade Statistics Analyzer in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 3</span><span class="side-title">Functions, Recursion and Mathematics</span></summary><ul><li><a class="side-link" href="12-prime-number-checker-in-c.html"><span class="side-num">12</span><span>Prime Number Checker in C</span></a></li><li><a class="side-link" href="13-fibonacci-sequence-in-c-iterative-vs-recursive.html"><span class="side-num">13</span><span>Fibonacci Sequence in C — Iterative vs Recursive</span></a></li><li><a class="side-link" href="14-quadratic-equation-solver-in-c.html"><span class="side-num">14</span><span>Quadratic Equation Solver in C</span></a></li></ul></details><details class="side-group" open><summary><span class="side-part">Part 4</span><span class="side-title">Arrays, Data Analysis and Sorting</span></summary><ul><li><a class="side-link" href="15-fibonacci-sequence-using-an-array-in-c.html"><span class="side-num">15</span><span>Fibonacci Sequence Using an Array in C</span></a></li><li><a class="side-link" href="16-statistical-analysis-and-histogram-using-c.html"><span class="side-num">16</span><span>Statistical Analysis and Histogram Using C</span></a></li><li><a class="side-link" href="17-character-array-and-string-length-in-c.html"><span class="side-num">17</span><span>Character Array and String Length in C</span></a></li><li><a class="side-link" href="18-functions-arrays-and-parameter-passing-in-c.html"><span class="side-num">18</span><span>Functions, Arrays, and Parameter Passing in C</span></a></li><li><a class="side-link" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="side-num">19</span><span>Bubble Sort Algorithm Using Functions in C</span></a></li><li><a class="side-link active" href="20-array-size-and-variable-length-arrays-in-c.html"><span class="side-num">20</span><span>Array Size and Variable Length Arrays in C</span></a></li><li><a class="side-link" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="side-num">21</span><span>Finding Integer Divisors Using Functions and Arrays in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 5</span><span class="side-title">Pointers</span></summary><ul><li><a class="side-link" href="22-pointers-in-c-memory-addresses-dereferencing-and-function-ar.html"><span class="side-num">22</span><span>Pointers in C – Memory Addresses, Dereferencing, and Function Arguments</span></a></li><li><a class="side-link" href="23-bubble-sort-in-c-using-pointers.html"><span class="side-num">23</span><span>Bubble Sort in C Using Pointers</span></a></li><li><a class="side-link" href="24-bubble-sort-using-function-pointers-in-c.html"><span class="side-num">24</span><span>Bubble Sort Using Function Pointers in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 6</span><span class="side-title">Characters and Strings</span></summary><ul><li><a class="side-link" href="25-characters-strings-ascii-codes-and-character-classification.html"><span class="side-num">25</span><span>Characters, Strings, ASCII Codes, and Character Classification in C</span></a></li><li><a class="side-link" href="26-string-to-floating-point-conversion-in-c-strtof-and-strtod.html"><span class="side-num">26</span><span>String to Floating-Point Conversion in C (strtof and strtod)</span></a></li><li><a class="side-link" href="27-reading-and-reversing-strings-in-c-using-fgets-strlen-and-re.html"><span class="side-num">27</span><span>Reading and Reversing Strings in C Using fgets(), strlen(), and Recursion</span></a></li><li><a class="side-link" href="28-reading-a-string-character-by-character-in-c-using-getchar.html"><span class="side-num">28</span><span>Reading a String Character by Character in C Using getchar()</span></a></li><li><a class="side-link" href="29-formatting-floating-point-numbers-using-printf-and-sprintf-i.html"><span class="side-num">29</span><span>Formatting Floating-Point Numbers Using printf() and sprintf() in C</span></a></li><li><a class="side-link" href="30-reading-and-extracting-data-from-strings-using-sscanf-in-c.html"><span class="side-num">30</span><span>Reading and Extracting Data from Strings Using sscanf() in C</span></a></li><li><a class="side-link" href="31-displaying-error-messages-using-strerror-in-c.html"><span class="side-num">31</span><span>Displaying Error Messages Using strerror() in C</span></a></li><li><a class="side-link" href="32-c-programming-string-copy-and-concatenation-strcpy-strncpy-a.html"><span class="side-num">32</span><span>C Programming – String Copy and Concatenation (strcpy, strncpy, and strcat)</span></a></li><li><a class="side-link" href="33-c-programming-comparing-strings-using-strcmp.html"><span class="side-num">33</span><span>C Programming – Comparing Strings Using strcmp()</span></a></li><li><a class="side-link" href="34-c-programming-searching-for-characters-and-substrings-using.html"><span class="side-num">34</span><span>C Programming – Searching for Characters and Substrings Using strchr() and strstr()</span></a></li><li><a class="side-link" href="35-splitting-strings-into-tokens-using-strtok-in-c.html"><span class="side-num">35</span><span>Splitting Strings into Tokens Using strtok() in C</span></a></li><li><a class="side-link" href="36-reading-strings-with-scanf-using-a-scanset-in-c.html"><span class="side-num">36</span><span>Reading Strings with scanf() Using a Scanset in C</span></a></li><li><a class="side-link" href="37-reading-and-parsing-dates-using-scanf-in-c.html"><span class="side-num">37</span><span>Reading and Parsing Dates Using scanf() in C</span></a></li></ul></details><details class="side-group"><summary><span class="side-part">Part 7</span><span class="side-title">Structures and Enumerations</span></summary><ul><li><a class="side-link" href="38-structures-and-passing-structures-to-functions-in-c.html"><span class="side-num">38</span><span>Structures and Passing Structures to Functions in C</span></a></li><li><a class="side-link" href="39-complex-numbers-and-mathematical-operations-using-structures.html"><span class="side-num">39</span><span>Complex Numbers and Mathematical Operations Using Structures in C</span></a></li><li><a class="side-link" href="40-c-programming-enumerations-enum-and-arrays-persian-calendar.html"><span class="side-num">40</span><span>C Programming – Enumerations (enum) and Arrays: Persian Calendar Months</span></a></li></ul></details><p class="side-empty" id="side-empty" hidden>No lesson matches that search.</p><a class="side-home" href="../index.html">← Course home</a></aside><main class="content" id="main"><nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span>/</span><a href="../index.html#part-4">Part 4 — Arrays, Data Analysis and Sorting</a><span>/</span><span aria-current="page">Lesson 20</span></nav><header class="lesson-head"><p class="eyebrow">Lesson 20 of 40 · Part 4</p><h1>Array Size and Variable Length Arrays in C</h1><p class="lesson-source">Folder <code>20-Array_Size_and_Variable_Length_Arrays</code> · source <code>main.c</code></p></header><nav class="toc" aria-label="On this page"><p class="toc-title">On this page</p><ol><li><a href="#overview">Overview</a></li><li><a href="#source-code">Source Code</a></li><li><a href="#1-understanding-the-code">1. Understanding the Code</a></li><li><a href="#2-example-execution">2. Example Execution</a></li><li><a href="#3-important-concepts">3. Important Concepts</a></li><li><a href="#4-improved-and-safer-version">4. Improved and Safer Version</a></li><li><a href="#5-compilation-and-execution">5. Compilation and Execution</a></li><li><a href="#6-time-and-space-complexity">6. Time and Space Complexity</a></li><li><a href="#7-exercises">7. Exercises</a></li><li><a href="#8-learning-objectives">8. Learning Objectives</a></li><li><a href="#9-project-structure">9. Project Structure</a></li><li><a href="#conclusion">Conclusion</a></li></ol></nav><article class="prose"><h2 id="overview">Overview</h2>
+<p>This project demonstrates how to declare an array whose size depends on user input and how to calculate the number of elements in an array using the <code>sizeof()</code> operator.</p>
+<p>The program asks the user to enter an integer <code>N</code>, declares an array with <code>2 * N</code> elements, and calculates its total number of elements.</p>
+<p>This example introduces several important C programming concepts:</p>
+<ul><li>User input with <code>scanf()</code></li><li>Array declaration</li><li>Variable Length Arrays (VLAs)</li><li>The <code>sizeof()</code> operator</li><li>Calculating the number of array elements</li><li>The relationship between array size and data type size</li></ul>
+<hr>
+<h2 id="source-code">Source Code</h2>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main()
+{
+    int N;
+
+    printf("Please enter the array size (N): ");
+    scanf("%d", &amp;N);
+    printf("\n");
+
+    int a[2 * N];
+
+    int L = sizeof(a) / sizeof(a[0]);
+
+    printf("Size of array is: %d\n", L);
+
+    return 0;
+}</code></pre></div>
+<hr>
+<h2 id="1-understanding-the-code">1. Understanding the Code</h2>
+<h3 id="1-1-including-the-standard-input-output-library">1.1 Including the Standard Input/Output Library</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;</code></pre></div>
+<p>This header file provides standard input/output functions.</p>
+<p>In this program, we use:</p>
+<ul><li><code>printf()</code> to display messages.</li><li><code>scanf()</code> to receive input from the user.</li></ul>
+<h3 id="1-2-declaring-the-array-size-variable">1.2 Declaring the Array Size Variable</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int N;</code></pre></div>
+<p>We declare an integer variable named <code>N</code>.</p>
+<p>This variable stores the array size entered by the user.</p>
+<h3 id="1-3-receiving-user-input">1.3 Receiving User Input</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Please enter the array size (N): ");
+scanf("%d", &amp;N);
+printf("\n");</code></pre></div>
+<p>The <code>printf()</code> function asks the user to enter an integer.</p>
+<p>The <code>scanf()</code> function reads the entered value and stores it in <code>N</code>.</p>
+<p>The <code>%d</code> format specifier is used for integer values.</p>
+<p>The <code>&amp;N</code> expression provides the memory address of <code>N</code>, allowing <code>scanf()</code> to write the input value into that variable.</p>
+<h3 id="1-4-declaring-a-variable-length-array">1.4 Declaring a Variable Length Array</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a[2 * N];</code></pre></div>
+<p>This statement declares an integer array named <code>a</code>.</p>
+<p>Its number of elements is calculated using:</p>
+<p>\[ \text{Array Length} = 2 \times N \]</p>
+<p>For example, if the user enters:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>N = 5</code></pre></div>
+<p>The declaration becomes equivalent to:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int a[10];</code></pre></div>
+<p>This type of array is called a <strong>Variable Length Array (VLA)</strong> because its size is determined at runtime rather than being a constant expression known at compile time.</p>
+<p><strong>Important:</strong> VLAs are supported in C99. In C11 and C17, compiler support for VLAs is optional. Some compilers or configurations do not support them.</p>
+<p>Also, the array size must be valid and positive. A zero or negative array length is not valid for a VLA.</p>
+<h3 id="1-5-calculating-the-number-of-elements">1.5 Calculating the Number of Elements</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int L = sizeof(a) / sizeof(a[0]);</code></pre></div>
+<p>This is one of the most useful techniques for calculating the number of elements in a local array.</p>
+<p>Let's understand both parts.</p>
+<p><strong>First part:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sizeof(a)</code></pre></div>
+<p>Returns the total size of the array in bytes.</p>
+<p><strong>Second part:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sizeof(a[0])</code></pre></div>
+<p>Returns the size of the first array element in bytes.</p>
+<p>Because the array is an integer array, <code>sizeof(a[0])</code> returns the size of an <code>int</code> on the current system.</p>
+<p>Dividing the total array size by the size of one element gives the number of elements:</p>
+<p>\[ L = \frac{\text{sizeof}(a)}{\text{sizeof}(a[0])} \]</p>
+<p>For example, if:</p>
+<ul><li><code>N = 5</code></li><li>Array length = <code>2 * 5 = 10</code></li><li><code>sizeof(int) = 4</code> bytes</li></ul>
+<p>Then:</p>
+<p>\[ L = \frac{40}{4} = 10 \]</p>
+<p>The result is the number of elements, not the number of bytes.</p>
+<p><strong>Note:</strong> The size of <code>int</code> is not guaranteed to be 4 bytes in every C implementation. The <code>sizeof()</code> operator automatically uses the correct size for the current system.</p>
+<h3 id="1-6-displaying-the-result">1.6 Displaying the Result</h3>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Size of array is: %d\n", L);</code></pre></div>
+<p>This statement prints the number of elements calculated by the previous expression.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Size of array is: 10</code></pre></div>
+<p>The message says "Size of array", but the value represents the <strong>number of elements</strong>, not the memory size in bytes.</p>
+<p>A clearer message would be:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>printf("Number of elements in array: %d\n", L);</code></pre></div>
+<hr>
+<h2 id="2-example-execution">2. Example Execution</h2>
+<h3 id="example-1">Example 1</h3>
+<p><strong>Input:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Please enter the array size (N): 5</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Size of array is: 10</code></pre></div>
+<p>Explanation:</p>
+<p>\[ L = 2 \times 5 = 10 \]</p>
+<h3 id="example-2">Example 2</h3>
+<p><strong>Input:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Please enter the array size (N): 8</code></pre></div>
+<p><strong>Output:</strong></p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Output</span><button class="copy-btn" type="button">Copy</button></div><pre><code>Size of array is: 16</code></pre></div>
+<p>Explanation:</p>
+<p>\[ L = 2 \times 8 = 16 \]</p>
+<hr>
+<h2 id="3-important-concepts">3. Important Concepts</h2>
+<h3 id="3-1-difference-between-array-length-and-array-memory-size">3.1 Difference Between Array Length and Array Memory Size</h3>
+<p>These two expressions return different results:</p>
+<div class="table-wrap"><table><thead><tr><th>Expression</th><th>Meaning</th></tr></thead><tbody><tr><td><code>sizeof(a)</code></td><td>Total memory occupied by the array, in bytes</td></tr><tr><td><code>sizeof(a[0])</code></td><td>Memory occupied by one element, in bytes</td></tr><tr><td><code>sizeof(a) / sizeof(a[0])</code></td><td>Number of elements in the array</td></tr></tbody></table></div>
+<p>For an array containing 10 integers, assuming each <code>int</code> occupies 4 bytes:</p>
+<div class="table-wrap"><table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Number of elements</td><td>10</td></tr><tr><td>Size of one element</td><td>4 bytes</td></tr><tr><td>Total array memory</td><td>40 bytes</td></tr></tbody></table></div>
+<h3 id="3-2-why-use-sizeof-instead-of-a-fixed-number">3.2 Why Use <code>sizeof()</code> Instead of a Fixed Number?</h3>
+<p>Instead of writing:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int L = 10;</code></pre></div>
+<p>We can write:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>int L = sizeof(a) / sizeof(a[0]);</code></pre></div>
+<p>This makes the program more flexible.</p>
+<p>If the array size changes, the calculated number of elements changes automatically.</p>
+<h3 id="3-3-a-limitation-of-sizeof-with-function-parameters">3.3 A Limitation of <code>sizeof()</code> with Function Parameters</h3>
+<p>The array-length calculation works when <code>a</code> is an actual array in the current scope.</p>
+<p>However, when an array is passed to a function, its parameter is adjusted to a pointer.</p>
+<p>For example:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(int a[])
+{
+    printf("%zu\n", sizeof(a));
+}</code></pre></div>
+<p>Here, <code>sizeof(a)</code> returns the size of a pointer, not the size of the original array.</p>
+<p>Therefore, when passing arrays to functions, pass their element count separately:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>void PrintArray(int a[], int N);</code></pre></div>
+<hr>
+<h2 id="4-improved-and-safer-version">4. Improved and Safer Version</h2>
+<p>The original program is useful for learning VLAs and <code>sizeof()</code>, but it does not validate the input.</p>
+<p>For example, entering zero or a negative number can result in an invalid VLA declaration. Also, <code>scanf()</code> may fail if the user enters non-numeric input.</p>
+<p>Here is an improved version:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int N;
+
+    printf("Please enter the array size (N): ");
+
+    if (scanf("%d", &amp;N) != 1)
+    {
+        printf("Invalid input!\n");
+        return 1;
+    }
+
+    if (N &lt;= 0)
+    {
+        printf("Array size must be positive!\n");
+        return 1;
+    }
+
+    int a[2 * N];
+
+    size_t L = sizeof(a) / sizeof(a[0]);
+
+    printf("\nNumber of elements in array: %zu\n", L);
+    printf("Total memory used by array: %zu bytes\n", sizeof(a));
+    printf("Memory used by one element: %zu bytes\n", sizeof(a[0]));
+
+    return 0;
+}</code></pre></div>
+<h3 id="improvements">Improvements</h3>
+<ol><li><code>scanf()</code> return value is checked to ensure that valid input was received.</li><li>Zero and negative input values are rejected.</li><li><code>size_t</code> is used for the result of <code>sizeof()</code> calculations.</li><li><code>%zu</code> is used to print <code>size_t</code> values correctly.</li><li>The program displays both the number of elements and memory size in bytes.</li></ol>
+<p><strong>Additional safety consideration:</strong> This version is suitable for learning, but a production program should also impose a reasonable maximum on <code>N</code> to prevent excessively large stack allocations and integer overflow in <code>2 * N</code>. For large arrays, dynamic allocation with <code>malloc()</code> is often more appropriate.</p>
+<hr>
+<h2 id="5-compilation-and-execution">5. Compilation and Execution</h2>
+<h3 id="using-gcc">Using GCC</h3>
+<p>Compile the program:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc main.c -o array_size</code></pre></div>
+<p>Run on Linux:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>./array_size</code></pre></div>
+<p>Run on Windows:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">PowerShell</span><button class="copy-btn" type="button">Copy</button></div><pre><code>.\array_size.exe</code></pre></div>
+<p>For strict C99 compilation:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">Terminal</span><button class="copy-btn" type="button">Copy</button></div><pre><code>gcc -std=c99 -Wall -Wextra -pedantic main.c -o array_size</code></pre></div>
+<p>Remember that VLA support depends on the compiler and selected C standard.</p>
+<hr>
+<h2 id="6-time-and-space-complexity">6. Time and Space Complexity</h2>
+<p>The program performs a constant number of operations.</p>
+<div class="table-wrap"><table><thead><tr><th>Property</th><th>Complexity</th></tr></thead><tbody><tr><td>Time Complexity</td><td>O(1)</td></tr><tr><td>Space Complexity</td><td>O(N)</td></tr></tbody></table></div>
+<ul><li><strong>Time Complexity:</strong> Calculating the array length using <code>sizeof()</code> requires constant time.</li><li><strong>Space Complexity:</strong> The array contains <code>2 * N</code> integer elements, so its memory usage grows linearly with <code>N</code>.</li></ul>
+<hr>
+<h2 id="7-exercises">7. Exercises</h2>
+<p>Try modifying the program to practice the concepts:</p>
+<ol><li>Change the array declaration to <code>int a[N];</code> and calculate its length.</li><li>Display the total memory occupied by the array in bytes.</li><li>Display the memory size of one integer using <code>sizeof(int)</code>.</li><li>Create an array of <code>float</code> values and calculate its element count.</li><li>Ask the user for two values and declare an array with <code>N * M</code> elements.</li><li>Compare the results of <code>sizeof(a)</code> and <code>sizeof(a[0])</code>.</li><li>Rewrite the program using <code>malloc()</code> instead of a VLA.</li></ol>
+<hr>
+<h2 id="8-learning-objectives">8. Learning Objectives</h2>
+<p>After completing this example, you should understand:</p>
+<ul><li>How to receive array-size input from a user.</li><li>How to declare a Variable Length Array.</li><li>How the <code>sizeof()</code> operator works.</li><li>How to calculate the number of array elements.</li><li>The difference between array length and memory size.</li><li>Why <code>size_t</code> and <code>%zu</code> are useful when working with <code>sizeof()</code>.</li><li>Why array sizes and user input must be validated.</li></ul>
+<hr>
+<h2 id="9-project-structure">9. Project Structure</h2>
+<h2 id="conclusion">Conclusion</h2>
+<p>This example introduces an important technique in C programming: calculating the number of elements in an array using:</p>
+<div class="code-block"><div class="code-head"><span class="code-lang">C</span><button class="copy-btn" type="button">Copy</button></div><pre><code>sizeof(array) / sizeof(array[0])</code></pre></div>
+<p>It also demonstrates Variable Length Arrays, which allow array dimensions to depend on runtime input.</p>
+<p>Understanding these concepts is useful when developing programs that process user-defined amounts of data, work with arrays, or manage memory in C.</p></article><nav class="pager" aria-label="Lesson navigation"><a class="pager-link prev" href="19-bubble-sort-algorithm-using-functions-in-c.html"><span class="pager-dir">← Previous</span><span class="pager-name">19 · Bubble Sort Algorithm Using Functions in C</span></a><a class="pager-link next" href="21-finding-integer-divisors-using-functions-and-arrays-in-c.html"><span class="pager-dir">Next →</span><span class="pager-name">21 · Finding Integer Divisors Using Functions and Arrays in C</span></a></nav></main></div>
+<footer class="site-footer"><div class="container footer-inner"><p><strong>Learning C</strong> — a progressive C course, 40 lessons from <code>Hello World!</code> to structures and enumerations.</p><p class="muted">Released under the GNU General Public License v3.0. Lesson notes come from each folder’s <code>Readme.md</code>.</p><p class="muted"><a href="../index.html">Home</a> · <a href="../index.html#curriculum">All lessons</a></p></div></footer>
+<script src="../assets/app.js"></script>
+</body>
+</html>
